@@ -1,24 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <div id="A">
+    <form>
+      <!-- LABEL FOR EMAIL, PASSWORD & LOGIN BUTTON -->
+      <label for="email"></label>
+      <input ng-model="txtEmail" type="email" id="email" name="email" placeholder="Email" required>
+      <label for="password"></label>
+      <input ng-model="txtPassword" ng-change="checkMatch()" type="password" id="password" name="password" placeholder="Password" required>
+      <button ng-click="LogUser()">Log In</button><br>
 
-<!--error message when login-->
-<div ng-if="errorpopup != '' " class="eoko-popup-error-message">{{errorpopup}}</div>
-
-<form style="text-align: center">
-
-    <!--email field-->
-    <label for="email"></label>
-    <input ng-model="txtEmail" type="email" id="email" name="email" placeholder="Email" required>
-
-    <!--password field-->
-    <label for="password"></label>
-    <input ng-model="txtPassword" ng-change="checkMatch()" type="password" id="password" name="password"
-           placeholder="Password" required>
-
-    <!--login button-->
-    <button ng-click="LogUser()">Log In</button><br>
-
-    <!--login options-->
-        <div>
-            <button ui-sref="signup">Sign up</button>
-            <a ui-sref="forgotpassword">Forgot your password?</a>
-        </div>
-</form>
+      <!-- LINK TO SIGNUP OR FORGOT PASSWORD -->
+      <div>
+        <button ui-sref="signup">Sign up</button>
+        <a ui-sref="forgotpassword">Forgot your password?</a>
+      </div>
+    </form>
+  </div>
+</html>
