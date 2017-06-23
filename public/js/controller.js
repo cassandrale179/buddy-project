@@ -1,6 +1,6 @@
 angular.module('app.controllers', [])
 
-    .controller('portalPageCtrl', ['$scope',
+    .controller('profilePageCtrl', ['$scope',
         function ($scope){
 
         }])
@@ -12,7 +12,24 @@ angular.module('app.controllers', [])
           firebase.auth().signInWithEmailAndPassword($scope.txtEmail, $scope.txtPassword)
           .then(function(resolve){
             console.log("loginPageCtrl: Logged in!");
-            $state.go('portal');
+            $state.go('profile');
           });
   };
-}]);
+}])
+
+//Register controller
+    .controller('registerPageCtrl', ['$scope', '$state',
+      function ($scope, $state){
+        $scope.RegisterUser = function() {
+          console.log("registerPageCtrl: Registering");
+          firebase.auth().createUserWithEmailAndPassword($scope.txtEmail, $scope.txtPassword)
+          .then(function(resolve){
+            console.log("registerPageCtrl: Registered!");
+            $state.go('login');
+        });
+
+        }
+      }
+
+
+  ])
