@@ -24,8 +24,6 @@ angular.module('app.routes', ['ui.router'])
   url: '/registerPage',
     templateUrl: 'templates/register.html',
     controller: 'registerPageCtrl'
-})
-=======
 });
 
 $urlRouterProvider.otherwise('/registerPage');
