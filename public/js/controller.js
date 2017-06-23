@@ -1,10 +1,12 @@
 angular.module('app.controllers', [])
 
-    .controller('portalPageCtrl', ['$scope',
+    //---------- CONTROLLER FOR THE PROFILE PAGE ----------
+    .controller('profilePageCtrl', ['$scope',
         function ($scope){
 
         }])
 
+    //---------- CONTROLLER FOR THE LOGIN PAGE ----------
     .controller('loginPageCtrl', ['$scope', '$state',
       function ($scope, $state){
         $scope.LogUser = function (){
@@ -12,7 +14,7 @@ angular.module('app.controllers', [])
           firebase.auth().signInWithEmailAndPassword($scope.txtEmail, $scope.txtPassword)
           .then(function(resolve){
             console.log("loginPageCtrl: Logged in!");
-            $state.go('portal');
+            $state.go('profile');
           });
   };
 }]);
