@@ -1,5 +1,3 @@
-
-<!--error message when login-->
 <div ng-if="errorpopup != '' " class="eoko-popup-error-message">{{errorpopup}}</div>
 
 <form style="text-align: center">
@@ -13,12 +11,8 @@
     <input ng-model="txtPassword" ng-change="checkMatch()" type="password" id="password" name="password"
            placeholder="Password" required>
 
-    <!--login button-->
-    <button ng-click="LogUser()">Log In</button><br>
+    <!--Register button-->
+    <button ng-click="RegisterUser()">Register</button><br>
 
-    <!--login options-->
-        <div>
-            <button ui-sref="register">Register</button>
-            <a ui-sref="forgotpassword">Forgot your password?</a>
-        </div>
+
 </form>
