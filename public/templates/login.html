@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <div id="A">
+    <div id="A0">
+    </div>
+    <h1> BUDDY</h1>
+      <!-- LABEL FOR EMAIL, PASSWORD & LOGIN BUTTON -->
+      <div id="AA">
+        <div id="A1">
+          <label for="email"></label>
+          <input ng-model="txtEmail" type="email" id="email" name="email" placeholder="EMAIL" required>
+          <label for="password"></label>
+          <input ng-model="txtPassword" ng-change="checkMatch()" type="password" id="password" name="password" placeholder="PASSWORD" required>
+        </div>
+        <div id="A2">
+          <button ng-click="LogUser()">LOGIN</button>
+          <button>SIGNUP</button>
+          <p>Forgot your password? Click <a ui-sref=""> HERE!</a></p>
+        </div>
+      </div>
+  </div>
+</body>
+</html>
