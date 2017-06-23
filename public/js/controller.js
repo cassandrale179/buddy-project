@@ -1,6 +1,5 @@
 angular.module('app.controllers', [])
 
-  //---------- CONTROLLER FOR THE PROFILE PAGE ----------
     .controller('profilePageCtrl', ['$scope',
         function ($scope){
 
@@ -17,4 +16,21 @@ angular.module('app.controllers', [])
             $state.go('profile');
           });
   };
-}]);
+}])
+
+//Register controller
+    .controller('registerPageCtrl', ['$scope', '$state',
+      function ($scope, $state){
+        $scope.RegisterUser = function() {
+          console.log("registerPageCtrl: Registering");
+          firebase.auth().createUserWithEmailAndPassword($scope.txtEmail, $scope.txtPassword)
+          .then(function(resolve){
+            console.log("registerPageCtrl: Registered!");
+            $state.go('login');
+        });
+
+        }
+      }
+
+
+  ])
