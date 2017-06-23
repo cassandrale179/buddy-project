@@ -5,6 +5,7 @@ angular.module('app.controllers', [])
 
         }])
 
+  //---------- CONTROLLER FOR THE LOGIN PAGE ----------
     .controller('loginPageCtrl', ['$scope', '$state',
       function ($scope, $state){
         $scope.LogUser = function (){

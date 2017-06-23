@@ -16,6 +16,7 @@ angular.module('app.routes', ['ui.router'])
   url: '/profilePage',
     templateUrl: 'templates/profile.html',
     controller: 'profilePageCtrl'
+
 })
 
 .state('register', {
@@ -24,6 +25,8 @@ angular.module('app.routes', ['ui.router'])
     templateUrl: 'templates/register.html',
     controller: 'registerPageCtrl'
 })
+=======
+});
 
 $urlRouterProvider.otherwise('/registerPage');
 
