@@ -26,6 +26,15 @@ angular.module('app.controllers', [])
           firebase.auth().createUserWithEmailAndPassword($scope.txtEmail, $scope.txtPassword)
           .then(function(resolve){
             console.log("registerPageCtrl: Registered!");
+            //Add user to database
+            var database = firebase.database().ref();
+            //Create a new unique ID
+            var newChildRef = database.push();
+            //Write to database
+            newChildRef.set({
+              email: $scope.txtEmail,
+              name: $scope.txtName
+            })
             $state.go('login');
         });
 
