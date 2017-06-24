@@ -53,6 +53,14 @@ input:focus{
   padding-bottom: 4%;
 }
 
+#error{
+  font-family: 'Hind', sans-serif;
+  color: #C0392B;
+  font-size: 12px;
+  text-align: center;
+  font-style: italic;
+}
+
 /* ----- STYLING FOR SIGN IN AND REGISTRATION PAGE --------- */
 #A{
   font-family: 'Hind', sans-serif;
@@ -67,6 +75,32 @@ input:focus{
   border-bottom: 0.1px #85929E solid;
   font-family: 'Hind', sans-serif;
   margin-bottom: 20px;
+}
+
+#A p{
+  font-size: 13px;
+  color: #909497;
+  text-align: center;
+}
+
+#A a{
+  color: #283747;
+  font-size: 15px;
+  text-decoration: none;
+}
+
+#A h1{
+  background: #34495E;
+  width: 60%;
+  left: 20%;
+  color: white;
+  text-align: center;
+  top: 40%;
+  position: fixed;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 50px;
+  border: 3px solid white;
 }
 
 #A0{
@@ -114,30 +148,10 @@ input:focus{
   font-family: 'Hind', sans-serif;
 }
 
-#A p{
-  font-size: 13px;
-  color: #909497;
-  text-align: center;
-}
-
-#A a{
-  color: #283747;
-  font-size: 15px;
-  text-decoration: none;
-}
-
-#A h1{
-  background: #34495E;
-  width: 60%;
-  left: 20%;
-  color: white;
-  text-align: center;
-  top: 40%;
-  position: fixed;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  border-radius: 50px;
-  border: 3px solid white;
+#A2 button:hover{
+  background-color: white;
+  border: rgb(40,55,71) 1px solid;
+  color: rgb(40,55,71);
 }
 
 
