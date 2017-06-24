@@ -24,6 +24,14 @@ angular.module('app.routes', ['ui.router'])
     templateUrl: 'templates/profile.html',
     controller: 'profilePageCtrl'
 
+})
+
+.state('interest',{
+  name: 'Interest',
+  url: '/interestPage',
+    templateUrl: 'templates/interest.html',
+    controller: 'interestPageCtrl'
+
 });
 
 $urlRouterProvider.otherwise('/loginPage');

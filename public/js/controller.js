@@ -12,7 +12,7 @@ angular.module('app.controllers', [])
 
   }])
 
-//---------- CONTROLLER FOR THE LOGIN PAGE ----------
+//---------- CONTROLLER FOR THE LOGIN & REGISTER PAGE ----------
 .controller('loginPageCtrl', ['$scope', '$state',
   function ($scope, $state){
     $scope.LogUser = function ()
@@ -21,7 +21,7 @@ angular.module('app.controllers', [])
        firebase.auth().signInWithEmailAndPassword($scope.txtEmail, $scope.txtPassword)
         .then(function(resolve){
           console.log("loginPageCtrl: Logged in!");
-          $state.go('profile');
+          $state.go('interest');
       });
     };
     $scope.RegisterUser = function()
@@ -29,8 +29,7 @@ angular.module('app.controllers', [])
       $scope.errorMessage = "";
       console.log("registerPageCtrl: Registering");
       firebase.auth().createUserWithEmailAndPassword($scope.txtEmail, $scope.txtPassword)
-      .catch(function(error){
-        // Handle Errors here.
+      .catch(function(error){                                   // Handle Errors here
         var errorCode = error.code;
         $scope.errorMessage = error.message;
         if (errorCode == 'auth/weak-password') {
@@ -42,12 +41,24 @@ angular.module('app.controllers', [])
       .then(function(resolve)
       {
         console.log("registerPageCtrl: Registered!");
-        var database = firebase.database().ref();        //create a reference to database
-        var newChildRef = database.push();              //create a new unique ID
+        var database = firebase.database().ref();               //create a reference to database
+        var newChildRef = database.push();                      //create a new unique ID
         newChildRef.set({
           email: $scope.txtEmail
         });
-          //$state.go('profile');
+          $state.go('interest');
       });
+    };
+}])
+
+//---------- CONTROLLER FOR INPUTTING IN INTEREST PAGE ----------
+.controller('interestPageCtrl', ['$scope', '$state',
+  function($scope, $state){
+    $scope.CaptureInterest = function(){
+      var database = firebase.database().ref('-KnMU6XxnQHRykPDk3Za');
+      database.update({
+        interest2: $scope.i1
+      });
+      $state.go('profile');
     };
 }]);

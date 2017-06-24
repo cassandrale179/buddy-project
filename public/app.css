@@ -143,7 +143,7 @@ input:focus{
   display: inline-block;
   border: none;
   background-color: rgb(40, 55, 71);
-  padding: 5%;
+  padding: 10px;
   color: white;
   font-family: 'Hind', sans-serif;
 }
@@ -235,25 +235,29 @@ input:focus{
 
 /* ------------------------STYLING FOR THE INTEREST INPUT FIELD  ------------------------*/
 #G{
-  margin-top: 30%;
-  padding-left: 15%;
-  padding-right: 15%;
+  margin-top: 40%;
+  display: block;
+  padding-left: 10%;
+  padding-right: 10%;
+
 }
 
 #G h2, #H h2{
   color: rgb(40, 55, 71);
-  font-family: 'Abel', sans-serif;
+  font-family: 'Hind', sans-serif;
   font-size: 20px;
+  text-align: center;
 }
 
 #G input, #H input{
   border: none;
-  margin-top: 3%;
-  background-color: rgba(0,0,0,0.1);
-  font-family: 'Abel', sans-serif;
+  border-bottom: rgba(0,0,0,0.1) 1px solid;
+  margin-top: 10px;
+  font-family: 'Hind', sans-serif;
   color: rgb(40, 55, 71);
-  width: 100%;
-  padding: 2%;
+  display: block;
+  margin: auto;
+  width: 90%;
 }
 
 #G button, #H button, #D button{
@@ -261,10 +265,12 @@ input:focus{
   background-color: rgba(40, 55, 71,0.8);
   border: none;
   margin-top: 3%;
-  width: 100%;
-  padding: 2%;
-  font-family: 'Abel', sans-serif;
+  padding: 10px;
+  font-family: 'Hind', sans-serif;
   border-radius: 2px;
+  display: block;
+  margin: auto;
+  width: 90%;
 }
 
 
@@ -278,6 +284,7 @@ input:focus{
   font-family: 'Abel', sans-serif;
   font-style: italic;
   margin-top: 3%;
+  text-align: center;
 
 }
 
