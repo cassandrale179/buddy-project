@@ -11,21 +11,28 @@ angular.module('app.routes', ['ui.router'])
     controller: 'loginPageCtrl'
 })
 
+.state('register', {
+  name: 'Register',
+  url: '/registerPage',
+    templateUrl: 'templates/register.html',
+    controller: 'registerPageCtrl'
+})
+
+.state('forgot', {
+  name: 'Forgot',
+  url: '/forgotPage',
+    templateUrl: 'templates/forgot.html',
+    controller: 'forgotPageCtrl'
+})
+
 .state('profile',{
   name: 'Profile',
   url: '/profilePage',
     templateUrl: 'templates/profile.html',
     controller: 'profilePageCtrl'
 
-})
-
-.state('register', {
-  name: 'Register',
-  url: '/registerPage',
-    templateUrl: 'templates/register.html',
-    controller: 'registerPageCtrl'
 });
 
-$urlRouterProvider.otherwise('/registerPage');
+$urlRouterProvider.otherwise('/loginPage');
 
 });
