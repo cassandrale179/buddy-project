@@ -56,8 +56,8 @@ angular.module('app.controllers', [])
         .then(function(resolve)
         {
           console.log("registerPageCtrl: Registered!");
-          var database = firebase.database().ref();               //create a reference to database
-          var newChildRef = database.push();                      //create a new unique ID
+          var database = firebase.database().ref('users');               //create a reference to database
+          var newChildRef = database.push();                            //create a new unique ID
           newChildRef.set({
                email: $scope.txtEmail
              });
@@ -87,15 +87,37 @@ angular.module('app.controllers', [])
     };
 }])
 
-//------------------- - CONTROLLER FOR INPUTTING IN INTEREST PAGE --------------------
+//------------------- CONTROLLER FOR INPUTTING IN INTEREST PAGE --------------------
 .controller('interestPageCtrl', ['$scope', '$state',
   function($scope, $state){
+    firebase.auth().onAuthStateChanged(function(user){
+      if (user){
+        user.getToken().then(function(idToken){
+          console.log(idToken);
+        });
+      }
+    });
+
+    //DISPLAY CURRENT USER'S INFORMATION
+    var user = firebase.auth().currentUser;
+    //console.log('Get token of user: ' + user.getToken().id_token);
+    if (user !== null){
+      user.providerData.forEach(function (profile) {
+      console.log("Sign-in provider: " + profile.providerId);
+      console.log("Provider-specific UID: " + profile.uid);
+      console.log("Email: "+ profile.email);
+    });
+  }
+
+  //SEND 5 OBJECTS TO THE DATABASE WHEN THE USER CLICK SUBMIT
     $scope.CaptureInterest = function(){
-      var user = firebase.auth().currentUser;                     //capture current user
-      console.log(user);
-      var database = firebase.database().ref(user);
+      var database = firebase.database().ref('-KnUfCsabanmemHQS9QF');
       database.update({
-        interest2: $scope.i1
+        interest1: $scope.i1,
+        interest2: $scope.i2,
+        interest3: $scope.i3,
+        interest4: $scope.i4,
+        interest5: $scope.i5
       });
       $state.go('profile');
     };
