@@ -61,6 +61,11 @@ angular.module('app.controllers', [])
           newChildRef.set({
                email: $scope.txtEmail
              });
+
+          //EMAIL VERIFICATION
+          var user = firebase.auth().currentUser;         //email verification
+            user.sendEmailVerification().then(function() {
+          });
           $state.go('interest');
         })
 
