@@ -58,6 +58,9 @@ angular.module('app.controllers', [])
           console.log("registerPageCtrl: Registered!");
           var database = firebase.database().ref('users');               //create a reference to database
           var newChildRef = database.push();                            //create a new unique ID
+          var x = newChildRef.key;
+          alert(newChildRef);
+          alert(x);
           newChildRef.set({
                email: $scope.txtEmail
              });
@@ -100,7 +103,7 @@ angular.module('app.controllers', [])
 
     //DISPLAY CURRENT USER'S INFORMATION
     var user = firebase.auth().currentUser;
-    //console.log('Get token of user: ' + user.getToken().id_token);
+    console.log('Get token of user: ' + user.getToken().accessToken);
     if (user !== null){
       user.providerData.forEach(function (profile) {
       console.log("Sign-in provider: " + profile.providerId);
