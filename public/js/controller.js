@@ -37,6 +37,10 @@ angular.module('app.controllers', [])
           $scope.errorMessage = "The password is too weak";
           $state.go('login');
         }
+        if (errorCode == 'auth/email-already-in-use') {
+          $scope.errorMessage = "The email is already in use.";
+          $state.go('login');
+        }
         console.log(error);
       })
       .then(function(resolve)
@@ -47,7 +51,14 @@ angular.module('app.controllers', [])
         newChildRef.set({
           email: $scope.txtEmail
         });
-          //$state.go('profile');
+
+        var user = firebase.auth().currentUser;         //email verification
+        user.sendEmailVerification().then(function() {
+          // Email sent.
+        }, function(error) {
+          // An error happened.
+        });
+          $state.go('profile');
       });
     };
 }]);
