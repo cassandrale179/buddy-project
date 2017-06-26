@@ -12,6 +12,8 @@ input:focus{
   outline: none;
 }
 
+
+
 /*---------------------- STYLING FOR THE HEADER ---------------------- */
 #header{
   width: 100%;
@@ -45,6 +47,8 @@ input:focus{
 #navbar i{
   width: 25%;
   color: white;
+  display: block;
+  margin: auto;
 }
 
 #navbar a{
@@ -53,6 +57,11 @@ input:focus{
   padding-bottom: 4%;
 }
 
+#navbar a:hover{
+  text-decoration: none;
+}
+
+/* ----- STYLING FOR ERROR MESSAGE ON REGISTRATION PAGE --------- */
 #error{
   font-family: 'Hind', sans-serif;
   color: #C0392B;
@@ -154,25 +163,32 @@ input:focus{
   color: rgb(40,55,71);
 }
 
+#A2 a:hover{
+  text-decoration: underline;
+}
+
 
 
 /*------ STYLING THE PROFILE PAGE------- */
 #C{
   margin-top: 0;
   padding-top: 30%;
-  background-color: #85929E;
+  background: url('https://ak6.picdn.net/shutterstock/videos/9568256/thumb/1.jpg');
+  background-size: cover;
   position: fixed;
   width: 100%;
   height: 30%;
   z-index: -1;
 }
 
-
 #C img{
   width: 40%;
   border-radius: 100px;
   border: 10px white solid;
+  display: block;
+  margin: auto;
 }
+
 
 
 /*------------------------ STYLING FOR THE USER INFORMATION ------------------------ */
@@ -190,12 +206,20 @@ input:focus{
   width: 10%;
 }
 
-#C1 ul{
+#C2{
+  display: block;
+  width: 70%;
+  margin: auto;
+}
+
+#C2 button{
+  background: white;
+  border: none;
+  font-family: 'Hind', sans-serif;
   color: #626567;
-  font-family: 'Abel', sans-serif;
-  text-align: left;
-  padding-left: 25%;
-  margin-top: -3%;
+  border: 0.1px #D7DBDD solid;
+  border-radius: 3px;
+  margin-bottom: 3px;
 }
 
 
@@ -258,6 +282,7 @@ input:focus{
   display: block;
   margin: auto;
   width: 90%;
+  margin-bottom: 10px;
 }
 
 #G button, #H button, #D button{
@@ -271,6 +296,7 @@ input:focus{
   display: block;
   margin: auto;
   width: 90%;
+  margin-bottom: 10px;
 }
 
 
@@ -298,5 +324,10 @@ input:focus{
 
 #H h2{
   text-align: left;
+}
 
+#H button:hover{
+  background-color: white;
+  color: rgb(40, 55, 71);
+  border: 1px solid rgb(40, 55, 71);
 }
