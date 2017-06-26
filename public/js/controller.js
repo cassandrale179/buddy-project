@@ -14,12 +14,11 @@ angular.module('app.controllers', [])
       var auth = firebase.auth();
       auth.sendPasswordResetEmail($scope.txtEmail).then(function() {
         console.log("Password reset email sent!");
-
       }, function(error) {
-        console.log("An error happened!";
-      })
-
-    }
+        console.log(error);
+        console.log("An error happened!");
+      });
+    };
 }])
 
 .controller('settingsPageCtrl', ['$scope',
