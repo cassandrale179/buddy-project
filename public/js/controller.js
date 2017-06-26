@@ -9,22 +9,26 @@ angular.module('app.controllers', [])
 //--------------------  CONTROLLER FOR THE FOROT PASSWORD PAGE --------------------
 .controller('forgotPageCtrl', ['$scope', '$state',
   function($scope, $state){
+    $scope.errorMessage = "";
+    $scope.successMessage = "";
     $scope.ResetPassword = function()
-    {
+  {
       var auth = firebase.auth();
-      auth.sendPasswordResetEmail($scope.txtEmail).then(function() {
-        console.log("Password reset email sent!");
-      }, function(error) {
+      auth.sendPasswordResetEmail($scope.txtEmail)
+      .then(function(resolve) {
+        $scope.successMessage = "Password reset email sent!";
+        $state.go('forgot');
+      })
+      .catch(function(error) {
+        if (error.code == 'auth/user-not-found'){
+          $scope.errorMessage = "User does not exist in database";
+        }
         console.log(error);
-        console.log("An error happened!");
+        $state.go('forgot');
       });
     };
 }])
 
-.controller('settingsPageCtrl', ['$scope',
-  function ($scope){
-
-}])
 
 //--------------------  CONTROLLER FOR THE LOGIN & REGISTER PAGE --------------------
 .controller('loginPageCtrl', ['$scope', '$state',
@@ -106,13 +110,13 @@ angular.module('app.controllers', [])
 //------------------- CONTROLLER FOR INPUTTING IN INTEREST PAGE --------------------
 .controller('interestPageCtrl', ['$scope', '$state',
   function($scope, $state){
-    firebase.auth().onAuthStateChanged(function(user){
+    /*firebase.auth().onAuthStateChanged(function(user){
       if (user){
         user.getToken().then(function(idToken){
           console.log(idToken);
         });
       }
-    });
+    });*/
 
     //DISPLAY CURRENT USER'S INFORMATION
     var user = firebase.auth().currentUser;
@@ -138,4 +142,10 @@ angular.module('app.controllers', [])
       });
       $state.go('profile');
     };
+}])
+
+//--------------------  CONTROLLER FOR THE SETTINGS PAGE --------------------
+.controller('settingsPageCtrl', ['$scope',
+  function ($scope){
+
 }]);
