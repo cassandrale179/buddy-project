@@ -163,6 +163,10 @@ input:focus{
   color: rgb(40,55,71);
 }
 
+#A2 a:hover{
+  text-decoration: underline;
+}
+
 
 
 /*------ STYLING THE PROFILE PAGE------- */
