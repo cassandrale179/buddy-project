@@ -4,7 +4,7 @@ angular.module('app.controllers', [])
 .controller('profilePageCtrl', ['$scope',
   function ($scope){
 
-  }])
+}])
 
 //--------------------  CONTROLLER FOR THE FOROT PASSWORD PAGE --------------------
 .controller('forgotPageCtrl', ['$scope', '$state',
@@ -20,9 +20,12 @@ angular.module('app.controllers', [])
       })
 
     }
+}])
 
+.controller('settingsPageCtrl', ['$scope',
+  function ($scope){
 
-  }])
+}])
 
 //--------------------  CONTROLLER FOR THE LOGIN & REGISTER PAGE --------------------
 .controller('loginPageCtrl', ['$scope', '$state',
@@ -37,7 +40,7 @@ angular.module('app.controllers', [])
           console.log("loginPageCtrl: Logged in!");
           var user = firebase.auth().currentUser;
           console.log(user);
-          $state.go('interest');
+          $state.go('profile');
       })
 
       //CATCHING ERRORS HERE
@@ -71,7 +74,6 @@ angular.module('app.controllers', [])
           var database = firebase.database().ref('users');               //create a reference to database
           var newChildRef = database.push();                            //create a new unique ID
           var x = newChildRef.key;
-          alert(newChildRef);
           alert(x);
           newChildRef.set({
                email: $scope.txtEmail
@@ -126,8 +128,9 @@ angular.module('app.controllers', [])
 
   //SEND 5 OBJECTS TO THE DATABASE WHEN THE USER CLICK SUBMIT
     $scope.CaptureInterest = function(){
-      var database = firebase.database().ref('-KnUfCsabanmemHQS9QF');
+      var database = firebase.database().ref('users/-KnUfCsabanmemHQS9QF');
       database.update({
+
         interest1: $scope.i1,
         interest2: $scope.i2,
         interest3: $scope.i3,
