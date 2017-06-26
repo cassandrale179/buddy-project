@@ -7,9 +7,19 @@ angular.module('app.controllers', [])
 }])
 
 //--------------------  CONTROLLER FOR THE FOROT PASSWORD PAGE --------------------
-.controller('forgotPageCtrl', ['$scope',
-  function($scope){
+.controller('forgotPageCtrl', ['$scope', '$state',
+  function($scope, $state){
+    $scope.ResetPassword = function()
+    {
+      var auth = firebase.auth();
+      auth.sendPasswordResetEmail($scope.txtEmail).then(function() {
+        console.log("Password reset email sent!");
 
+      }, function(error) {
+        console.log("An error happened!";
+      })
+
+    }
 }])
 
 .controller('settingsPageCtrl', ['$scope',
