@@ -9,6 +9,47 @@ angular.module('app.controllers', [])
 //   // this.key =
 // })
 
+.factory("interestFactory", function() {
+  var username = "";
+  //Create new node and store id in uid
+  // var createNewUserId = function() {
+  //   var database = firebase.database().ref('users');               //create a reference to database
+  //   var newChildRef = database.push();                            //create a new unique ID
+  //   uid = newChildRef.key;
+  // }
+
+  //Return the uid
+  var setUsername = function(txtUsername) {
+    username = txtUsername;
+  }
+
+  var getUsername = function() {
+    return username;
+  }
+
+  //Add interest
+  var addInterest = function(i1, i2, i3, i4, i5, username) {
+    var ref = firebase.database().ref('users/' + username);
+    var interests = {
+      interest1: i1,
+      interest2: i2,
+      interest3: i3,
+      interest4: i4,
+      interest5: i5
+    };
+    ref.update(interests);
+  }
+  // var getInterests = function() {
+  //   return interests;
+  // }
+  return {
+    setUsername : setUsername,
+    addInterest: addInterest,
+    getUsername : getUsername
+    // getInterests : getInterests
+  }
+})
+
 //--------------------  CONTROLLER FOR THE PROFILE PAGE ---------------------------
 .controller('profilePageCtrl', ['$scope',
   function ($scope){
@@ -51,17 +92,22 @@ angular.module('app.controllers', [])
 ])
 
 //--------------------  CONTROLLER FOR THE LOGIN & REGISTER PAGE --------------------
-.controller('loginPageCtrl', ['$scope', '$state',
-  function ($scope, $state){
+.controller('loginPageCtrl', ['$scope', '$state', 'interestFactory',
+  function ($scope, $state, interestFactory){
+
     $scope.LogUser = function ()
   {
+      // console.log(interestFactory.getUid());
       $scope.errorMessage = "";
+      console.log(interestFactory.getUsername());
+
 
       //SIGN IN USER
       firebase.auth().signInWithEmailAndPassword($scope.txtEmail, $scope.txtPassword)
       .then(function(resolve){
           console.log("loginPageCtrl: Logged in!");
           var user = firebase.auth().currentUser;
+          interestFactory.setUsername($scope.txtUsername);
           console.log(user);
           $state.go('profile');
       })
@@ -94,13 +140,10 @@ angular.module('app.controllers', [])
         .then(function(resolve)
         {
           console.log("registerPageCtrl: Registered!");
-          var database = firebase.database().ref('users');               //create a reference to database
-          var newChildRef = database.push();                            //create a new unique ID
-          var x = newChildRef.key;
-          alert(x);
-          newChildRef.set({
-               email: $scope.txtEmail
-             });
+          interestFactory.setUsername($scope.txtUsername);
+          var username = interestFactory.getUsername();
+          console.log("Register page email: " + username);
+
 
           //EMAIL VERIFICATION
           var user = firebase.auth().currentUser;         //email verification
@@ -128,38 +171,36 @@ angular.module('app.controllers', [])
 }])
 
 //------------------- CONTROLLER FOR INPUTTING IN INTEREST PAGE --------------------
-.controller('interestPageCtrl', ['$scope', '$state',
-  function($scope, $state){
-    firebase.auth().onAuthStateChanged(function(user){
-      if (user){
-        user.getToken().then(function(idToken){
-          console.log(idToken);
-        });
-      }
-    });
+.controller('interestPageCtrl', ['$scope', '$state', 'interestFactory',
+  function($scope, $state, interestFactory){
+    //----------UNNECESSARY CODE -----------------
+    // firebase.auth().onAuthStateChanged(function(user){
+    //   if (user){
+    //     user.getToken().then(function(idToken){
+    //       console.log(idToken);
+    //     });
+    //   }
+    // });
 
     //DISPLAY CURRENT USER'S INFORMATION
-    var user = firebase.auth().currentUser;
-    console.log('Get token of user: ' + user.getToken().accessToken);
-    if (user !== null){
-      user.providerData.forEach(function (profile) {
-      console.log("Sign-in provider: " + profile.providerId);
-      console.log("Provider-specific UID: " + profile.uid);
-      console.log("Email: "+ profile.email);
-    });
-  }
+  //   var user = firebase.auth().currentUser;
+  //   console.log('Get token of user: ' + user.getToken().accessToken);
+  //   if (user !== null){
+  //     user.providerData.forEach(function (profile) {
+  //     console.log("Sign-in provider: " + profile.providerId);
+  //     console.log("Provider-specific UID: " + profile.uid);
+  //     console.log("Email: "+ profile.email);
+  //   });
+  // }
 
   //SEND 5 OBJECTS TO THE DATABASE WHEN THE USER CLICK SUBMIT
     $scope.CaptureInterest = function(){
-      var database = firebase.database().ref('users/-KnUfCsabanmemHQS9QF');
-      database.update({
 
-        interest1: $scope.i1,
-        interest2: $scope.i2,
-        interest3: $scope.i3,
-        interest4: $scope.i4,
-        interest5: $scope.i5
-      });
+      var username = interestFactory.getUsername();
+      console.log("Interest page username: " + username);
+
+      interestFactory.addInterest($scope.i1, $scope.i2, $scope.i3, $scope.i4, $scope.i5, username);
+      console.log("interest added!");
       $state.go('profile');
     };
 }]);
