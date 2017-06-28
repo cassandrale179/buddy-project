@@ -1,5 +1,14 @@
 angular.module('app.controllers', [])
 
+//Sample service
+// .service('sampleService', function() {
+//   //shared variable
+//   // var database = firebase.database().ref('users');               //create a reference to database
+//   // var newChildRef = database.push();                            //create a new unique ID
+//   // var x = newChildRef.key;
+//   // this.key =
+// })
+
 //--------------------  CONTROLLER FOR THE PROFILE PAGE ---------------------------
 .controller('profilePageCtrl', ['$scope',
   function ($scope){
@@ -21,10 +30,25 @@ angular.module('app.controllers', [])
     };
 }])
 
-.controller('settingsPageCtrl', ['$scope',
-  function ($scope){
+//-------------------  CONTROLLER FOR THE SETTINGS PAGE ------------------------
+.controller('settingsPageCtrl', ['$scope', '$state',
+  function ($scope, $state){
+    // $scope.ChangePassword = function() {
+    //   var user = firebase.auth().currentUser
 
-}])
+    $scope.LogOutUser = function()
+    {
+      var auth = firebase.auth();
+      auth.signOut().then(function() {
+        console.log("logged out!");
+        $state.go('login');
+      }, function(error){
+        console.log("An error happened!");
+      });
+    };
+  }
+
+])
 
 //--------------------  CONTROLLER FOR THE LOGIN & REGISTER PAGE --------------------
 .controller('loginPageCtrl', ['$scope', '$state',

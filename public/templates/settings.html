@@ -35,16 +35,16 @@
   <div id="H">
     <h2> CHANGE PASSWORD </h2><hr />
       <form>
-        <input type="password" placeholder="Current Password" />
-        <input type="password" placeholder="New Password"/>
-        <input type="password" placeholder="Retype Password"/>
+        <input type="password" ng-model="oldPassword" placeholder="Current Password" />
+        <input type="password" ng-model="newPassword" placeholder="New Password"/>
+        <input type="password" ng-model="newPassword" placeholder="Retype Password"/>
         <button> SUBMIT </button>
       </form>
     <br />
     <h2> LOGOUT</h2>
     <hr />
-    <button> REPORT A PROBLEM </button>
-    <button> LOGOUT </button>
+    <button> REPORT A PROBLEM</button>
+    <button ng-click="LogOutUser()"> LOGOUT </button>
   </div>
 </body>
 </html>
