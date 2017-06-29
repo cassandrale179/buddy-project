@@ -10,17 +10,14 @@
       <div id="error" ng-if="errorMessage != ''">{{errorMessage}}</div>
       <form>
         <div id="A1">
-          <input ng-model="txtUsername" type="text" id="name" name="name" placeholder="USERNAME" required />
-          <label for="email"></label>
-
-          <input ng-model="txtEmail" type="email" id="email" name="email" placeholder="EMAIL" required />
+          <input ng-model="txtEmail" type="email" id="email" name="email" placeholder="EMAIL" required/>
           <label for="password"></label>
-          <input ng-model="txtPassword" type="password" id="password" name="password" placeholder="PASSWORD" required />
+          <input ng-model="txtPassword" type="password" id="password" name="password" placeholder="PASSWORD" required/>
         </div>
         <div id="A2">
           <button ng-click="LogUser()">LOGIN</button>
-          <button ng-click="RegisterUser()">SIGNUP</button>
-          <p><a ui-sref="forgot">Forgot your password?</a></p>
+          <button ui-sref="register">SIGNUP</button>
+          <p><a ui-sref="forgot">Forgot Password?</a></p>
         </div>
       </form>
       </div>
