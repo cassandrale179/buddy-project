@@ -1,6 +1,6 @@
 angular.module('app.controllers', [])
 
-//--------------------  CONTROLLER FOR THE REGISTER PASSWORD PAGE --------------------
+//--------------------  CONTROLLER FOR THE REGISTER PAGE --------------------
 .controller('registerPageCtrl', ['$scope', '$state',
   function ($scope, $state){
     $scope.RegisterUser = function(){
@@ -16,7 +16,7 @@ angular.module('app.controllers', [])
           email: $scope.txtEmail
         };
         ref.child(user.uid).set(info);
-        $state.go('profile');
+        $state.go('interest');
       })
 
       //CATCHING ERROR HERE
@@ -41,7 +41,8 @@ angular.module('app.controllers', [])
 //------------------------------  CONTROLLER FOR THE LOGIN PAGE --------------------
 .controller('loginPageCtrl', ['$scope', '$state',
   function ($scope, $state){
-    $scope.LogUser = function (){
+    $scope.LogUser = function ()
+    {
       $scope.errorMessage = "";
 
       //SIGN IN USER
@@ -104,6 +105,37 @@ angular.module('app.controllers', [])
     var user = firebase.auth().currentUser;
     console.log("Current user's uid: " + user.uid);
 }])
+
+
+//--------------------  CONTROLLER FOR THE MATCH PAGE ---------------------------
+.controller('matchPageCtrl', ['$scope', '$state',
+  function ($scope, $state){
+    var user = firebase.auth().currentUser;
+    console.log("Current user's uid: " + user.uid);
+}])
+
+
+//--------------------  CONTROLLER FOR THE INTEREST PAGE ---------------------------
+.controller('interestPageCtrl', ['$scope', '$state',
+  function($scope, $state){
+    var user = firebase.auth().currentUser;
+    var ref = firebase.database().ref("users");
+    if (user !== null){
+      $scope.CaptureInterest = function()
+      {
+        var interests = {
+          interest1: $scope.i1,
+          interest2: $scope.i2,
+          interest3: $scope.i3,
+          interest4: $scope.i4,
+          interest5: $scope.i5
+        };
+        ref.child(user.uid).update(interests);
+        $state.go('match');
+      };
+    }
+  }
+])
 
 
 //-------------------  CONTROLLER FOR THE SETTINGS PAGE ------------------------

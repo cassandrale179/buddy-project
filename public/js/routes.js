@@ -33,19 +33,19 @@ angular.module('app.routes', ['ui.router'])
 
 })
 
+.state('match',{
+  name: 'Match',
+  url: '/matchPage',
+    templateUrl: 'templates/match.html',
+    controller: 'matchPageCtrl'
+})
+
 .state('interest',{
   name: 'Interest',
   url: '/interestPage',
     templateUrl: 'templates/interest.html',
     controller: 'interestPageCtrl'
 
-})
-
-.state('match',{
-  name: 'Match',
-  url: '/matchPage',
-    templateUrl: 'templates/match.html',
-    controller: 'matchPageCtrl'
 })
 
 .state('settings',{
