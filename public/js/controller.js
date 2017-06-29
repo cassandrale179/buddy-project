@@ -1,13 +1,5 @@
 angular.module('app.controllers', [])
 
-//Sample service
-// .service('sampleService', function() {
-//   //shared variable
-//   // var database = firebase.database().ref('users');               //create a reference to database
-//   // var newChildRef = database.push();                            //create a new unique ID
-//   // var x = newChildRef.key;
-//   // this.key =
-// })
 
 .factory("interestFactory", function() {
   var username = "";
@@ -59,24 +51,32 @@ angular.module('app.controllers', [])
 //--------------------  CONTROLLER FOR THE FOROT PASSWORD PAGE --------------------
 .controller('forgotPageCtrl', ['$scope', '$state',
   function($scope, $state){
+    $scope.errorMessage = "";
+    $scope.successMessage = "";
     $scope.ResetPassword = function()
-    {
+  {
       var auth = firebase.auth();
-      auth.sendPasswordResetEmail($scope.txtEmail).then(function() {
-        console.log("Password reset email sent!");
-      }, function(error) {
+      auth.sendPasswordResetEmail($scope.txtEmail)
+      .then(function(resolve) {
+        $scope.successMessage = "Password reset email sent!";
+        $state.go('forgot');
+      })
+      .catch(function(error) {
+        if (error.code == 'auth/user-not-found'){
+          $scope.errorMessage = "User does not exist in database";
+        }
         console.log(error);
-        console.log("An error happened!");
+        $state.go('forgot');
       });
     };
 }])
 
+
 //-------------------  CONTROLLER FOR THE SETTINGS PAGE ------------------------
 .controller('settingsPageCtrl', ['$scope', '$state',
   function ($scope, $state){
-    // $scope.ChangePassword = function() {
-    //   var user = firebase.auth().currentUser
-
+  
+    // FUNCTION TO LOG OUT USER 
     $scope.LogOutUser = function()
     {
       var auth = firebase.auth();
@@ -88,8 +88,8 @@ angular.module('app.controllers', [])
       });
     };
   }
-
 ])
+
 
 //--------------------  CONTROLLER FOR THE LOGIN & REGISTER PAGE --------------------
 .controller('loginPageCtrl', ['$scope', '$state', 'interestFactory',
@@ -173,25 +173,6 @@ angular.module('app.controllers', [])
 //------------------- CONTROLLER FOR INPUTTING IN INTEREST PAGE --------------------
 .controller('interestPageCtrl', ['$scope', '$state', 'interestFactory',
   function($scope, $state, interestFactory){
-    //----------UNNECESSARY CODE -----------------
-    // firebase.auth().onAuthStateChanged(function(user){
-    //   if (user){
-    //     user.getToken().then(function(idToken){
-    //       console.log(idToken);
-    //     });
-    //   }
-    // });
-
-    //DISPLAY CURRENT USER'S INFORMATION
-  //   var user = firebase.auth().currentUser;
-  //   console.log('Get token of user: ' + user.getToken().accessToken);
-  //   if (user !== null){
-  //     user.providerData.forEach(function (profile) {
-  //     console.log("Sign-in provider: " + profile.providerId);
-  //     console.log("Provider-specific UID: " + profile.uid);
-  //     console.log("Email: "+ profile.email);
-  //   });
-  // }
 
   //SEND 5 OBJECTS TO THE DATABASE WHEN THE USER CLICK SUBMIT
     $scope.CaptureInterest = function(){
@@ -203,4 +184,25 @@ angular.module('app.controllers', [])
       console.log("interest added!");
       $state.go('profile');
     };
+}])
+
+//--------------------  CONTROLLER FOR THE SETTINGS PAGE --------------------
+.controller('matchPageCtrl', ['$scope',
+  function ($scope){
+
+}])
+.controller('settingsPageCtrl', ['$scope',
+  function ($scope){
+
 }]);
+
+/* DISPLAY CURRENT USER'S INFORMATION 
+  var user = firebase.auth().currentUser;
+  console.log('Get token of user: ' + user.getToken().accessToken);
+  if (user !== null){
+    user.providerData.forEach(function (profile) {
+    console.log("Sign-in provider: " + profile.providerId);
+    console.log("Provider-specific UID: " + profile.uid);
+    console.log("Email: "+ profile.email);
+  });
+} */ 

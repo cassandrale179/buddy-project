@@ -17,11 +17,17 @@
 <!-- Link to Font Awesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-
+    <!-- LINK TO FIREBASE -->
+    <script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
+    <script src="https://cdn.firebase.com/js/client/1.0.18/firebase.js"></script>
+    <script src="https://cdn.firebase.com/libs/angularfire/0.8.0/angularfire.min.js"></script>
+    <script src="https://cdn.firebase.com/js/simple-login/1.6.2/firebase-simple-login.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+    <script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
 </head>
 <body>
 
-  <!-- ADDING IN NAVIGATION BAR -->
+  <!-- NAVIGATION BAR -->
   <div id="navbar" class="wrap">
     <a ui-sref="profile"><i class="fa fa-user-o fa-lg" aria-hidden="true"></i></a>
     <a ui-sref="match"><i class="fa fa-heart-o fa-lg" aria-hidden="true"></i></a>
@@ -29,22 +35,21 @@
     <a ui-sref="settings"><i class="fa fa-cog fa-lg" aria-hidden="true"></i></a>
   </div>
 
+  <!-- HEADER OF MATCH PAGE -->
   <div id="header">
-    <h1>SETTINGS</h1>
+    <h1> MATCHING </h1>
   </div>
-  <div id="H">
-    <h2> CHANGE PASSWORD </h2><hr />
-      <form>
-        <input type="password" ng-model="oldPassword" placeholder="Current Password" />
-        <input type="password" ng-model="newPassword" placeholder="New Password"/>
-        <input type="password" ng-model="newPassword" placeholder="Retype Password"/>
-        <button> SUBMIT </button>
-      </form>
-    <br />
-    <h2> LOGOUT</h2>
-    <hr />
-    <button> REPORT A PROBLEM</button>
-    <button ng-click="LogOutUser()"> LOGOUT </button>
+
+  <!-- CONTENT OF MATCH PAGE -->
+  <div id="D">
+    <p>Before you match, please click + add the bottom of the page to input 5 interests.</p>
+    <button> MATCH ME WITH A BUDDY!</button>
+  </div>
+  <div id="E">
+    <p>You have been matched with<br />
+    <b> HARRY POTTER!</b></p>
+    <img src="https://68.media.tumblr.com/b214f778dde1740e4f8f3e32b1181df8/tumblr_nqgzs7WV5P1tgh6zro3_400.png" />
+    <button> MESSAGE YOUR BUDDY NOW </button>
   </div>
 </body>
 </html>

@@ -70,6 +70,14 @@ input:focus{
   font-style: italic;
 }
 
+#success{
+  font-family: 'Hind', sans-serif;
+  color: #45B39D;
+  font-size: 12px;
+  text-align: center;
+  font-style: italic;
+}
+
 /* ----- STYLING FOR SIGN IN AND REGISTRATION PAGE --------- */
 #A{
   font-family: 'Hind', sans-serif;
@@ -157,7 +165,7 @@ input:focus{
   font-family: 'Hind', sans-serif;
 }
 
-#A2 button:hover{
+#A2 button:hover, #B2 button:hover{
   background-color: white;
   border: rgb(40,55,71) 1px solid;
   color: rgb(40,55,71);
@@ -167,6 +175,71 @@ input:focus{
   text-decoration: underline;
 }
 
+/* ----------------- STYLING FOR THE FORGOT PASSWORD -------------*/
+#B{
+  font-family: 'Hind', sans-serif;
+}
+
+#B1{
+  width: 100%;
+  height: 200px;
+  position: fixed;
+  background: url('https://static-1.ivooxcdn.com/audios/3/3/5/7/6921487517533_XXL.jpg');
+  background-size: cover;
+}
+
+#B2{
+  width: 100%;
+  top: 200px;
+  position: fixed;
+  padding-top: 20px;
+  color: #626567;
+}
+
+#B2 h1{
+  text-align: center;
+}
+
+#B2 p{
+  display: block;
+  width: 70%;
+  margin: auto;
+  color: #909497;
+}
+
+#B2 input{
+  width: 70%;
+  border: none;
+  display: block;
+  margin: auto;
+  border-bottom: 0.1px #85929E solid;
+  font-family: 'Hind', sans-serif;
+  margin-bottom: 20px;;
+}
+
+#B2 input::placeholder{
+  color: #909497;
+}
+
+#B2 button{
+  border: none;
+  display: block;
+  width: 70%;
+  margin: auto;
+  padding: 10px;
+  background-color: rgb(40, 55, 71);
+  color: white;
+  font-family: 'Hind', sans-serif;
+  font-size: 15px;
+}
+
+#B3{
+  height: 50px;
+  width: 100%;
+  background-color: rgb(40, 55, 71);
+  position: fixed;
+  bottom: 0;
+}
 
 
 /*------ STYLING THE PROFILE PAGE------- */
@@ -187,6 +260,7 @@ input:focus{
   border: 10px white solid;
   display: block;
   margin: auto;
+
 }
 
 

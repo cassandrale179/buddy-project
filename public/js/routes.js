@@ -34,6 +34,13 @@ angular.module('app.routes', ['ui.router'])
 
 })
 
+.state('match',{
+  name: 'Match',
+  url: '/matchPage',
+    templateUrl: 'templates/match.html',
+    controller: 'matchPageCtrl'
+})
+
 .state('settings',{
   name: 'Settings',
   url: '/settingsPage',
