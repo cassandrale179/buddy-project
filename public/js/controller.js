@@ -145,6 +145,10 @@ angular.module('app.controllers', [])
 }])
 
 //--------------------  CONTROLLER FOR THE SETTINGS PAGE --------------------
+.controller('matchPageCtrl', ['$scope',
+  function ($scope){
+
+}])
 .controller('settingsPageCtrl', ['$scope',
   function ($scope){
 
