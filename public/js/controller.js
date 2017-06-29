@@ -5,7 +5,9 @@ angular.module('app.controllers', [])
   function ($scope, $state){
     $scope.RegisterUser = function(){
 
-      //CREATE A NEW USER
+      $scope.errorMessage = "";
+
+      //------------CREATE A NEW USER------------
       firebase.auth().createUserWithEmailAndPassword($scope.txtEmail, $scope.txtPassword)
       .then(function(resolve){
         console.log("registerPageCtrl: Registered!");
@@ -19,7 +21,7 @@ angular.module('app.controllers', [])
         $state.go('interest');
       })
 
-      //CATCHING ERROR HERE
+      //------------CATCHING ERROR HERE------------
       .catch(function(error)
       {
         if (error.code == 'auth/weak-password') {
@@ -45,7 +47,7 @@ angular.module('app.controllers', [])
     {
       $scope.errorMessage = "";
 
-      //SIGN IN USER
+      //------------SIGN IN USER------------
       firebase.auth().signInWithEmailAndPassword($scope.txtEmail, $scope.txtPassword)
       .then(function(resolve){
           console.log("loginPageCtrl: Logged in!");
@@ -54,7 +56,7 @@ angular.module('app.controllers', [])
           $state.go('profile');
       })
 
-      //CATCH THE ERROR HERE
+      //------------CATCH THE ERROR HERE--------
       .catch(function(error){
         if (error.code == 'auth/wrong-password'){
           $scope.errorMessage = "Incorrect password or user don't have a password";
@@ -76,7 +78,7 @@ angular.module('app.controllers', [])
 ])
 
 
-//--------------------  CONTROLLER FOR THE FOROT PASSWORD PAGE --------------------
+//--------------------  CONTROLLER FOR THE FORGOT PASSWORD PAGE --------------------
 .controller('forgotPageCtrl', ['$scope', '$state',
   function($scope, $state){
     $scope.errorMessage = "";
@@ -102,16 +104,18 @@ angular.module('app.controllers', [])
 //--------------------  CONTROLLER FOR THE PROFILE PAGE ---------------------------
 .controller('profilePageCtrl', ['$scope',
   function ($scope, $state){
-    var user = firebase.auth().currentUser;
-    console.log("Current user's uid: " + user.uid);
+  var user = firebase.auth().currentUser;
+  var id = user.uid;
+  var ref = firebase.database().ref("users/" + id).once('value').then(function(snapshot){
+    var i1 = snapshot.val().interest1;
+    console.log(i1);
+  });
 }])
 
 
 //--------------------  CONTROLLER FOR THE MATCH PAGE ---------------------------
 .controller('matchPageCtrl', ['$scope', '$state',
   function ($scope, $state){
-    var user = firebase.auth().currentUser;
-    console.log("Current user's uid: " + user.uid);
 }])
 
 
@@ -136,7 +140,6 @@ angular.module('app.controllers', [])
     }
   }
 ])
-
 
 //-------------------  CONTROLLER FOR THE SETTINGS PAGE ------------------------
 .controller('settingsPageCtrl', ['$scope', '$state',
