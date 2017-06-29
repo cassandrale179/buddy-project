@@ -3,7 +3,38 @@ angular.module('app.controllers', [])
 //--------------------  CONTROLLER FOR THE REGISTER PASSWORD PAGE --------------------
 .controller('registerPageCtrl', ['$scope', '$state',
   function ($scope, $state){
+    $scope.RegisterUser = function(){
 
+      //CREATE A NEW USER
+      firebase.auth().createUserWithEmailAndPassword($scope.txtEmail, $scope.txtPassword)
+      .then(function(resolve){
+        console.log("registerPageCtrl: Registered!");
+        var ref = firebase.database().ref("users");
+        var user = firebase.auth().currentUser;
+        var info = {
+          name: $scope.txtName,
+          email: $scope.txtEmail
+        };
+        ref.child(user.uid).set(info);
+        $state.go('profile');
+      })
+
+      //CATCHING ERROR HERE
+      .catch(function(error)
+      {
+        if (error.code == 'auth/weak-password') {
+          $scope.errorMessage = "Password is weak.";
+        }
+        if (error.code == "auth/email-already-in-use"){
+          $scope.errorMessage = "Email is already used by another account";
+        }
+        if (error.code == 'auth/invalid-email'){
+          $scope.errorMessage = "Invalid email";
+        }
+        console.log(error);
+        $state.go('register');
+      });
+    };
   }
 ])
 
@@ -69,8 +100,9 @@ angular.module('app.controllers', [])
 
 //--------------------  CONTROLLER FOR THE PROFILE PAGE ---------------------------
 .controller('profilePageCtrl', ['$scope',
-  function ($scope){
-
+  function ($scope, $state){
+    var user = firebase.auth().currentUser;
+    console.log("Current user's uid: " + user.uid);
 }])
 
 

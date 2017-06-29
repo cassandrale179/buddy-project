@@ -10,7 +10,6 @@
       <div id="error" ng-if="errorMessage != ''">{{errorMessage}}</div>
       <form>
         <div id="A1">
-
           <input ng-model="txtEmail" type="email" id="email" name="email" placeholder="EMAIL" required/>
           <label for="password"></label>
           <input ng-model="txtPassword" type="password" id="password" name="password" placeholder="PASSWORD" required/>
@@ -18,7 +17,7 @@
         <div id="A2">
           <button ng-click="LogUser()">LOGIN</button>
           <button ui-sref="register">SIGNUP</button>
-          <p><a ui-sref="forgot">Forgot your password?</a></p>
+          <p><a ui-sref="forgot">Forgot Password?</a></p>
         </div>
       </form>
       </div>
