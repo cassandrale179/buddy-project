@@ -1,24 +1,28 @@
-<div ng-if="errorpopup != '' " class="eoko-popup-error-message">{{errorpopup}}</div>
+<!DOCTYPE html>
+<html>
+<body>
+  <div id="A">
+    <div id="A0">
+    </div>
+    <h1> BUDDY</h1>
+      <!-- LABEL FOR EMAIL, PASSWORD & LOGIN BUTTON -->
+    <div id="AA">
+      <div id="error" ng-if="errorMessage != ''">{{errorMessage}}</div>
+      <form>
+        <div id="A1">
+          <input ng-model="txtUsername" type="text" id="name" name="name" placeholder="USERNAME" required />
+          <label for="email"></label>
 
-<form style="text-align: center">
-
-    <!--email field-->
-    <label for="email"></label>
-    <input ng-model="txtEmail" type="email" id="email" name="email" placeholder="Email" required>
-
-    <!--name field-->
-    <label for="name"></label>
-    <input ng-model="txtName" type="text" id="name" name="name" placeholder="Name" required>
-
-
-
-    <!--password field-->
-    <label for="password"></label>
-    <input ng-model="txtPassword" ng-change="checkMatch()" type="password" id="password" name="password"
-           placeholder="Password" required>
-
-    <!--Register button-->
-    <button ng-click="RegisterUser()">Register</button><br>
-
-
-</form>
+          <input ng-model="txtEmail" type="email" id="email" name="email" placeholder="EMAIL" required />
+          <label for="password"></label>
+          <input ng-model="txtPassword" type="password" id="password" name="password" placeholder="PASSWORD" required />
+        </div>
+        <div id="A2">
+          <button ng-click="LogUser()">LOGIN</button>
+          <button ui-sref="register">SIGNUP</button>
+        </div>
+      </form>
+      </div>
+  </div>
+</body>
+</html>

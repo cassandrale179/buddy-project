@@ -11,6 +11,13 @@ angular.module('app.routes', ['ui.router'])
     controller: 'loginPageCtrl'
 })
 
+.state('register', {
+  name: 'Register',
+  url: '/registerPage',
+    templateUrl: 'templates/register.html',
+    controller: 'registerPageCtrl'
+})
+
 .state('forgot', {
   name: 'Forgot',
   url: '/forgotPage',
