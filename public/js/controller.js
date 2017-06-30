@@ -1,4 +1,4 @@
-angular.module('app.controllers', [])
+angular.module('app.controllers',[])
 
 //--------------------  CONTROLLER FOR THE REGISTER PAGE --------------------
 .controller('registerPageCtrl', ['$scope', '$state',
@@ -16,6 +16,13 @@ angular.module('app.controllers', [])
           email: $scope.txtEmail
         };
         ref.child(user.uid).set(info);
+        user.sendEmailVerification().then(function() { //Send email verification
+          console.log(user);
+            // Email sent.
+          }, function(error) {
+            // An error happened.
+          });
+
         $state.go('interest');
       })
 
@@ -141,6 +148,13 @@ angular.module('app.controllers', [])
 //-------------------  CONTROLLER FOR THE SETTINGS PAGE ------------------------
 .controller('settingsPageCtrl', ['$scope', '$state',
   function ($scope, $state){
+    var uploadImage = function() {
+      var uploader = document.getElementById('uploader');
+      var fileButton = document.getElementById('fileButton');
+
+
+    }
+
 
     // FUNCTION TO LOG OUT USER
     $scope.LogOutUser = function()
