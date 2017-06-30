@@ -102,14 +102,20 @@ angular.module('app.controllers', [])
 }])
 
 //--------------------  CONTROLLER FOR THE PROFILE PAGE ---------------------------
-.controller('profilePageCtrl', ['$scope',
+.controller('profilePageCtrl', ['$scope', '$state',
   function ($scope, $state){
   var user = firebase.auth().currentUser;
-  var id = user.uid;
-  var ref = firebase.database().ref("users/" + id).once('value').then(function(snapshot){
-    var i1 = snapshot.val().interest1;
-    console.log(i1);
-  });
+  if (user !== null){
+    var id = user.uid;
+    var ref = firebase.database().ref("users/" + id).once('value').then(function(snapshot){
+      $scope.i1 = snapshot.val().interest1;
+      $scope.i2 = snapshot.val().interest2;
+      $scope.i3 = snapshot.val().interest3;
+      $scope.i4 = snapshot.val().interest4;
+      $scope.i5 = snapshot.val().interest5;
+      $state.go('profile');
+    });
+  }
 }])
 
 
