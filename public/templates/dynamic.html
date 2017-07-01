@@ -14,6 +14,8 @@
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
+<!-- Link to Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- LINK TO FIREBASE -->
     <script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
@@ -25,37 +27,20 @@
 
 </head>
 <body>
-
-<!-- ADDING IN NAVIGATION BAR -->
- <div id="navbar" class="wrap">
-   <a ui-sref="profile"><i class="fa fa-user-o fa-lg" aria-hidden="true"></i></a>
-   <a ui-sref="match"><i class="fa fa-heart-o fa-lg" aria-hidden="true"></i></a>
-   <a ui-sref="dynamic"><i class="fa fa-plus fa-lg" aria-hidden="true"></i></a>
-   <a ui-sref="settings"><i class="fa fa-cog fa-lg" aria-hidden="true"></i></a>
- </div>
-
- <!-- HEADER PAGE OF THE APP -->
+  <div id="navbar" class="wrap">
+    <a ui-sref="profile"><i class="fa fa-user-o fa-lg" aria-hidden="true"></i></a>
+    <a ui-sref="match"><i class="fa fa-heart-o fa-lg" aria-hidden="true"></i></a>
+    <a ui-sref="dynamic"><i class="fa fa-plus fa-lg" aria-hidden="true"></i></a>
+    <a ui-sref="settings"><i class="fa fa-cog fa-lg" aria-hidden="true"></i></a>
+  </div>
 
   <div id="header">
-    <h1>PROFILE</h1>
+    <h1> MANAGE INTERESTS</h1>
   </div>
-  <div id="C">
-      <img src="img/default.png" /><br /><br />
-      <div id="C1">
-        <p><span><i class="fa fa-user-o" aria-hidden="true"></i>{{name}}</span> <br>
-        <span><i class="fa fa-star-o" aria-hidden="true"></i>INSTAGRAM </span><br />
-        <span><i class="fa fa-bars" aria-hidden="true"></i></span>INTERESTS:</p>
-        <div id="C2">
-          <button>{{i1}}</button>
-          <button>{{i2}}</button>
-          <button>{{i3}}</button>
-          <button>{{i4}}</button>
-          <button>{{i5}}</button>
-        </div>
-      </div>
+  <div id="I">
+    <ul>
+      <li ng-repeat="x in interestArr">{{x}}</li>
+    </ul>
   </div>
-  <p>
-    {{i1}}
-  </p>
 </body>
 </html>

@@ -54,6 +54,7 @@ input:focus{
   width: 25%;
   padding-top: 4%;
   padding-bottom: 4%;
+  text-decoration: none;
 }
 
 #navbar a:hover{
@@ -414,4 +415,10 @@ input:focus{
   background-color: white;
   color: rgb(40, 55, 71);
   border: 1px solid rgb(40, 55, 71);
+}
+
+/* ------ STYLING FOR THE DYNAMIC INTEREST PAGE  ------- */
+#I {
+  margin-top: 25%;
+
 }

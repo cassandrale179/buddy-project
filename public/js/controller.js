@@ -107,7 +107,9 @@ angular.module('app.controllers', [])
   var user = firebase.auth().currentUser;
   if (user !== null){
     var id = user.uid;
-    var ref = firebase.database().ref("users/" + id).once('value').then(function(snapshot){
+    var ref = firebase.database().ref("users/" + id);
+    ref.once('value').then(function(snapshot){
+      $scope.name = snapshot.val().name;
       $scope.i1 = snapshot.val().interest1;
       $scope.i2 = snapshot.val().interest2;
       $scope.i3 = snapshot.val().interest3;
@@ -146,6 +148,27 @@ angular.module('app.controllers', [])
     }
   }
 ])
+
+//---------------  CONTROLLER FOR THE SECOND INTEREST PAGE ----------------------
+.controller('dynamicPage', ['$scope', '$state',
+  function($scope, $state){
+    var user = firebase.auth().currentUser;
+    if (user !== null){
+      var ref = firebase.database().ref("users/" + user.uid);
+      ref.once("value").then(function(snapshot){
+        var i1 = snapshot.val().interest1;
+        var i2 = snapshot.val().interest2;
+        var i3 = snapshot.val().interest3;
+        var i4 = snapshot.val().interest4;
+        var i5 = snapshot.val().interest5;
+        $scope.interestArr = [i1, i2, i3, i4, i5];
+        console.log($scope.interestArr);
+        $state.go('dynamic');
+      });
+    }
+  }
+])
+
 
 //-------------------  CONTROLLER FOR THE SETTINGS PAGE ------------------------
 .controller('settingsPageCtrl', ['$scope', '$state',
