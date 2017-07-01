@@ -48,13 +48,6 @@ angular.module('app.routes', ['ui.router'])
 
 })
 
-.state('dynamic', {
-  name: 'Dynamic',
-  url: '/dynamicPage',
-    templateUrl: 'templates/dynamic.html',
-    controller: 'dynamicPage'
-})
-
 .state('settings',{
   name: 'Settings',
   url: '/settingsPage',

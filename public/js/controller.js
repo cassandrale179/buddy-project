@@ -132,52 +132,20 @@ angular.module('app.controllers', [])
   function($scope, $state){
     var user = firebase.auth().currentUser;
     var ref = firebase.database().ref("users");
-    if (user !== null){
-      $scope.CaptureInterest = function()
+    $scope.interestArr = [];
+    //if (user !== null){
+      $scope.AddMore = function(){
+        $scope.interestArr.push($scope.interest);
+        $state.go('interest'); 
+      };
+      /*$scope.CaptureInterest = function()
       {
-        var interests = {
-          interest1: $scope.i1,
-          interest2: $scope.i2,
-          interest3: $scope.i3,
-          interest4: $scope.i4,
-          interest5: $scope.i5
-        };
         ref.child(user.uid).update(interests);
         $state.go('match');
-      };
+      };*/
     }
-  }
+//  }
 ])
-
-//---------------  CONTROLLER FOR THE SECOND INTEREST PAGE ----------------------
-.controller('dynamicPage', ['$scope', '$state',
-  function($scope, $state){
-    var user = firebase.auth().currentUser;
-    $scope.interestArr = [];
-    if (user !== null){
-
-      //DISPLAY THEIR INTERESTS
-      var ref = firebase.database().ref("users/" + user.uid);
-      ref.once("value").then(function(snapshot){
-        var i1 = snapshot.val().interest1;
-        var i2 = snapshot.val().interest2;
-        var i3 = snapshot.val().interest3;
-        var i4 = snapshot.val().interest4;
-        var i5 = snapshot.val().interest5;
-        $scope.interestArr.push(i1);
-
-        //ADDING MORE BUTON
-        $scope.addInterest = function(){
-          $scope.interestArr.push($scope.interest);
-          console.log($scope.interest);
-        };
-
-        $state.go('dynamic');
-      });
-    }
-  }
-])
-
 
 //-------------------  CONTROLLER FOR THE SETTINGS PAGE ------------------------
 .controller('settingsPageCtrl', ['$scope', '$state',

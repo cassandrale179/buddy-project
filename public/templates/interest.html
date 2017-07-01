@@ -1,16 +1,30 @@
 <!DOCTYPE html>
 <body>
+  <!-- ADDING IN NAVIGATION BAR -->
+   <div id="navbar" class="wrap">
+     <a ui-sref="profile"><i class="fa fa-user-o fa-lg" aria-hidden="true"></i></a>
+     <a ui-sref="match"><i class="fa fa-heart-o fa-lg" aria-hidden="true"></i></a>
+     <a ui-sref="interest"><i class="fa fa-plus fa-lg" aria-hidden="true"></i></a>
+     <a ui-sref="settings"><i class="fa fa-cog fa-lg" aria-hidden="true"></i></a>
+   </div>
+
+  <!-- HEADER -->
   <div id="header">
-    <h1>INTERESTS</h1>
+    <h1>MY INTERESTS</h1>
   </div>
+
+  <!-- BODY OF INTEREST PAGE -->
   <div id="G">
-    <h2> INPUT 5 INTERESTS TO BE MATCH </h2>
+    <h2> INPUT AT LEAST 3 INTERESTS TO BE MATCH </h2>
+    <ul id="G1">
+      <li ng-repeat="x in interestArr">
+        <h3 class="a">{{x}}</h3>
+        <span ng-click="Remove($i)">X</span>
+      </li>
+    </ul>
     <form>
-      <input ng-model="i1" type="text" placeholder="Interest 1" required /><br />
-      <input ng-model="i2" type="text" placeholder="Interest 2" required /><br />
-      <input ng-model="i3" type="text" placeholder="Interest 3" required /><br />
-      <input ng-model="i4" type="text" placeholder="Interest 4" required /><br />
-      <input ng-model="i5" type="text" placeholder="Interest 5" required /><br />
+      <input ng-model="interest" type="text" placeholder="Add Interest" /><br />
+      <button ng-click="AddMore()"> ADD+</button>
       <button ng-click="CaptureInterest()"> SUBMIT </button>
       <p>Please input interest without space, capital letters or symbols (e.g "gameofthrones", not "game of thrones")</p>
     </form>
