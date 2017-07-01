@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<div id="B">
+  <div id="B1">
+  </div>
+  <div id="B2">
+    <h1> FORGOT PASSWORD?</h1>
+    <div id="error" ng-if="errorMessage != ''">{{errorMessage}}</div>
+    <div id="success" ng-if="successMessage != ''">{{successMessage}}</div>
+    <p>Don't worry. We'll help you reset it. Just input your email down below! </p><br />
+    <input type="email" ng-model="txtEmail" placeholder="EMAIL" />
+    <button ng-click="ResetPassword()">RESET PASSWORD</button>
+  </div>
+  <div id="B3">
+  </div>
+</div>
