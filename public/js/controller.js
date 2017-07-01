@@ -1,3 +1,4 @@
+
 angular.module('app.controllers',[])
 
 //--------------------  CONTROLLER FOR THE REGISTER PAGE --------------------
@@ -137,14 +138,22 @@ angular.module('app.controllers',[])
 //--------------------  CONTROLLER FOR THE INTEREST PAGE ---------------------------
 .controller('interestPageCtrl', ['$scope', '$state',
   function($scope, $state){
+    var count = 0;
     var user = firebase.auth().currentUser;
     var ref = firebase.database().ref("users");
+    var refInterest = firebase.database().ref("interest");
     $scope.interestArr = [];
     //if (user !== null){
-      $scope.AddMore = function(){
+      $scope.AddMore = function()
+      {
+        count++;
         $scope.interestArr.push($scope.interest);
-        $state.go('interest'); 
+        console.log(count);
       };
+    console.log('Length outside of function: ' + count);
+
+
+
       /*$scope.CaptureInterest = function()
       {
         ref.child(user.uid).update(interests);
