@@ -1,0 +1,417 @@
+@import url('https://fonts.googleapis.com/css?family=Dosis');
+@import url('https://fonts.googleapis.com/css?family=Abel|Droid+Sans|Hind|Quicksand');
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+body{
+  margin: 0;
+  height: 100%;
+  width: 100%;
+}
+
+input:focus{
+  outline: none;
+}
+
+
+/*---------------------- STYLING FOR THE HEADER ---------------------- */
+#header{
+  width: 100%;
+  top: 0;
+  position: fixed;
+  color: white;
+  font-family: 'Hind', serif;
+  text-transform: uppercase;
+  font-size: 30px;
+  background-color:  rgb(40, 55, 71);
+  box-shadow: 0px 0px 8px 2px rgba(0,0,0,0.3);
+}
+
+#header h1{
+  text-align: center;
+  font-size: 25px;
+}
+
+/* ------ STYLING FOR THE BOTTOM NAVIGATION BAR -------- */
+#navbar{
+  position: fixed;
+  bottom: 0;
+  background-color: rgb(33, 47, 60);
+}
+
+.wrap{
+  display: flex;
+  width: 100%;
+}
+
+#navbar i{
+  width: 25%;
+  color: white;
+  display: block;
+  margin: auto;
+}
+
+#navbar a{
+  width: 25%;
+  padding-top: 4%;
+  padding-bottom: 4%;
+}
+
+#navbar a:hover{
+  text-decoration: none;
+}
+
+/* ----- STYLING FOR ERROR MESSAGE ON REGISTRATION PAGE --------- */
+#error{
+  font-family: 'Hind', sans-serif;
+  color: #C0392B;
+  font-size: 12px;
+  text-align: center;
+  font-style: italic;
+}
+
+#success{
+  font-family: 'Hind', sans-serif;
+  color: #45B39D;
+  font-size: 12px;
+  text-align: center;
+  font-style: italic;
+}
+
+/* ----- STYLING FOR SIGN IN AND REGISTRATION PAGE --------- */
+#A{
+  font-family: 'Hind', sans-serif;
+}
+
+
+#A input{
+  width: 70%;
+  border: none;
+  display: block;
+  margin: auto;
+  border-bottom: 0.1px #85929E solid;
+  font-family: 'Hind', sans-serif;
+  margin-bottom: 20px;
+}
+
+#A p{
+  font-size: 13px;
+  color: #909497;
+  text-align: center;
+}
+
+#A a{
+  color: #283747;
+  font-size: 15px;
+  text-decoration: none;
+}
+
+#A h1{
+  background: #34495E;
+  width: 60%;
+  left: 20%;
+  color: white;
+  text-align: center;
+  top: 40%;
+  position: fixed;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 50px;
+  border: 3px solid white;
+}
+
+#A0{
+  background: url('https://static-1.ivooxcdn.com/audios/3/3/5/7/6921487517533_XXL.jpg');
+  background-size: cover;
+  height: 50%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  background-position: 0 -40px;
+}
+
+#btn{
+  background-color: rgb(40,55,71);
+  color: white;
+  font-family: 'Hind', sans-serif;
+  text-transform: uppercase;
+  border: none;
+  display: block;
+  margin: auto;
+  padding: 3%;
+}
+
+
+#AA{
+  position: absolute;
+  bottom: 30px;
+  width: 100%;
+  background-color: white;
+}
+
+#A2{
+  width: 70%;
+  display: block;
+  margin: auto;
+}
+
+#A2 button{
+  width: 49%;
+  display: inline-block;
+  border: none;
+  background-color: rgb(40, 55, 71);
+  padding: 10px;
+  color: white;
+  font-family: 'Hind', sans-serif;
+}
+
+#A2 button:hover, #A3 button:hover, #B2 button:hover{
+  background-color: white;
+  border: rgb(40,55,71) 1px solid;
+  color: rgb(40,55,71);
+}
+
+#A2 a:hover{
+  text-decoration: underline;
+}
+
+#A3 button{
+  width: 70%;
+  display: block;
+  border: none;
+  background-color: rgb(40, 55, 71);
+  padding: 10px;
+  color: white;
+  font-family: 'Hind', sans-serif;
+  margin: auto;
+}
+
+/* ----------------- STYLING FOR THE FORGOT PASSWORD -------------*/
+#B{
+  font-family: 'Hind', sans-serif;
+}
+
+#B1{
+  width: 100%;
+  height: 200px;
+  position: fixed;
+  background: url('https://static-1.ivooxcdn.com/audios/3/3/5/7/6921487517533_XXL.jpg');
+  background-size: cover;
+}
+
+#B2{
+  width: 100%;
+  top: 200px;
+  position: fixed;
+  padding-top: 20px;
+  color: #626567;
+}
+
+#B2 h1{
+  text-align: center;
+}
+
+#B2 p{
+  display: block;
+  width: 70%;
+  margin: auto;
+  color: #909497;
+}
+
+#B2 input{
+  width: 70%;
+  border: none;
+  display: block;
+  margin: auto;
+  border-bottom: 0.1px #85929E solid;
+  font-family: 'Hind', sans-serif;
+  margin-bottom: 20px;;
+}
+
+#B2 input::placeholder{
+  color: #909497;
+}
+
+#B2 button{
+  border: none;
+  display: block;
+  width: 70%;
+  margin: auto;
+  padding: 10px;
+  background-color: rgb(40, 55, 71);
+  color: white;
+  font-family: 'Hind', sans-serif;
+  font-size: 15px;
+}
+
+#B3{
+  height: 50px;
+  width: 100%;
+  background-color: rgb(40, 55, 71);
+  position: fixed;
+  bottom: 0;
+}
+
+
+/*------ STYLING THE PROFILE PAGE------- */
+#C{
+  margin-top: 0;
+  padding-top: 30%;
+  background: url('https://ak6.picdn.net/shutterstock/videos/9568256/thumb/1.jpg');
+  background-size: cover;
+  position: fixed;
+  width: 100%;
+  height: 30%;
+  z-index: -1;
+}
+
+#C img{
+  width: 40%;
+  border-radius: 100px;
+  border: 10px white solid;
+  display: block;
+  margin: auto;
+
+}
+
+
+
+/*------------------------ STYLING FOR THE USER INFORMATION ------------------------ */
+#C1 p{
+  font-family: 'Abel', sans-serif;
+  font-size: 15px;
+  text-align: left;
+  padding-left: 15%;
+  padding-right: 10%;
+  color: #626567;
+  line-height: 30px;
+}
+
+#C1 i{
+  width: 10%;
+}
+
+#C2{
+  display: block;
+  width: 70%;
+  margin: auto;
+}
+
+#C2 button{
+  background: white;
+  border: none;
+  font-family: 'Hind', sans-serif;
+  color: #626567;
+  border: 0.1px #D7DBDD solid;
+  border-radius: 3px;
+  margin-bottom: 3px;
+}
+
+
+/*  ------------------------STYLING FOR THE MATCHING PAGE ------------------------*/
+#D{
+  margin-top: 25%;
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+#D p, #E p{
+  font-family: 'Abel', sans-serif;
+  color: #626567;
+}
+
+/*THIS DIV WILL APPEAR WHEN A MATCH IS SUCCESSFUL */
+#E{
+  padding: 10%;
+}
+
+#E img{
+  width: 40%;
+  border-radius: 100px;
+}
+
+#E button{
+  margin-top: 10%;
+  background-color: white;
+  border: none;
+  color: #626567;
+  font-family: 'Abel', sans-serif;
+  padding: 5%;
+  border: #85929E 1px solid;
+  border-radius: 5px;
+}
+
+
+/* ------------------------STYLING FOR THE INTEREST INPUT FIELD  ------------------------*/
+#G{
+  margin-top: 40%;
+  display: block;
+  padding-left: 10%;
+  padding-right: 10%;
+
+}
+
+#G h2, #H h2{
+  color: rgb(40, 55, 71);
+  font-family: 'Hind', sans-serif;
+  font-size: 20px;
+  text-align: center;
+}
+
+#G input, #H input{
+  border: none;
+  border-bottom: rgba(0,0,0,0.1) 1px solid;
+  margin-top: 10px;
+  font-family: 'Hind', sans-serif;
+  color: rgb(40, 55, 71);
+  display: block;
+  margin: auto;
+  width: 90%;
+  margin-bottom: 10px;
+}
+
+#G button, #H button, #D button{
+  color: white;
+  background-color: rgba(40, 55, 71,0.8);
+  border: none;
+  margin-top: 3%;
+  padding: 10px;
+  font-family: 'Hind', sans-serif;
+  border-radius: 2px;
+  display: block;
+  margin: auto;
+  width: 90%;
+  margin-bottom: 10px;
+}
+
+
+#G input::placeholder, #H input::placeholder{
+  color: rgba(40, 55, 71,0.3);
+}
+
+#G p{
+  color: rgb(40, 55, 71);
+  font-size: 12px;
+  font-family: 'Abel', sans-serif;
+  font-style: italic;
+  margin-top: 3%;
+  text-align: center;
+
+}
+
+
+/* ------ STYLING FOR THE SETTINGS FIELD  ------- */
+#H{
+  margin-top: 25%;
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+#H h2{
+  text-align: left;
+}
+
+#H button:hover{
+  background-color: white;
+  color: rgb(40, 55, 71);
+  border: 1px solid rgb(40, 55, 71);
+}
