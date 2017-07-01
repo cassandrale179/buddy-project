@@ -54,6 +54,7 @@ input:focus{
   width: 25%;
   padding-top: 4%;
   padding-bottom: 4%;
+  text-decoration: none;
 }
 
 #navbar a:hover{
@@ -90,20 +91,31 @@ input:focus{
   margin: auto;
   border-bottom: 0.1px #85929E solid;
   font-family: 'Hind', sans-serif;
-  margin-bottom: 20px;
+  font-size: 2.3em;
+  margin-bottom: 1em;
+}
+
+#A input::placeholder{
+  color: #D7DBDD;
 }
 
 #A p{
-  font-size: 13px;
+  font-size: 1.5em;
   color: #909497;
   text-align: center;
+  line-height: 1em;
 }
 
 #A a{
   color: #283747;
-  font-size: 15px;
+  font-size: 1.2em;
   text-decoration: none;
 }
+
+#A a:hover{
+  text-decoration: underline;
+}
+
 
 #A h1{
   background: #34495E;
@@ -111,18 +123,19 @@ input:focus{
   left: 20%;
   color: white;
   text-align: center;
-  top: 40%;
+  top: 35%;
   position: fixed;
   padding-top: 10px;
   padding-bottom: 10px;
   border-radius: 50px;
   border: 3px solid white;
+  font-size: 5em;
 }
 
 #A0{
   background: url('https://static-1.ivooxcdn.com/audios/3/3/5/7/6921487517533_XXL.jpg');
   background-size: cover;
-  height: 50%;
+  height: 45%;
   width: 100%;
   position: fixed;
   top: 0;
@@ -143,25 +156,25 @@ input:focus{
 
 #AA{
   position: absolute;
-  bottom: 30px;
   width: 100%;
-  background-color: white;
+  bottom: 50px;
 }
 
-#A2{
+#A2, #A3{
   width: 70%;
   display: block;
   margin: auto;
 }
 
-#A2 button{
-  width: 49%;
-  display: inline-block;
+#A2 button, #A3 button{
   border: none;
   background-color: rgb(40, 55, 71);
   padding: 10px;
   color: white;
   font-family: 'Hind', sans-serif;
+  font-size: 2.5em;
+  width: 100%;
+  margin-top: 0.5em;
 }
 
 #A2 button:hover, #A3 button:hover, #B2 button:hover{
@@ -170,11 +183,7 @@ input:focus{
   color: rgb(40,55,71);
 }
 
-#A2 a:hover{
-  text-decoration: underline;
-}
-
-#A3 button{
+/*#A3 button{
   width: 70%;
   display: block;
   border: none;
@@ -183,7 +192,7 @@ input:focus{
   color: white;
   font-family: 'Hind', sans-serif;
   margin: auto;
-}
+}*/
 
 /* ----------------- STYLING FOR THE FORGOT PASSWORD -------------*/
 #B{
@@ -357,6 +366,35 @@ input:focus{
   text-align: center;
 }
 
+.a{
+  color:  #626567;
+  font-family: 'Abel', sans-serif;
+  font-size: 15px;
+  font-weight: lighter;
+}
+
+.b{
+  color: rgb(40, 55, 71);
+  display: block;
+  float: right;
+  font-weight: lighter;
+  font-family: 'Abel', sans-serif;
+}
+
+#G li{
+  color:  #626567;
+}
+
+#G p{
+  color: rgb(40, 55, 71);
+  font-size: 12px;
+  font-family: 'Abel', sans-serif;
+  font-style: italic;
+  margin-top: 3%;
+  text-align: center;
+
+}
+
 #G input, #H input{
   border: none;
   border-bottom: rgba(0,0,0,0.1) 1px solid;
@@ -379,7 +417,6 @@ input:focus{
   border-radius: 2px;
   display: block;
   margin: auto;
-  width: 90%;
   margin-bottom: 10px;
 }
 
@@ -388,16 +425,10 @@ input:focus{
   color: rgba(40, 55, 71,0.3);
 }
 
-#G p{
-  color: rgb(40, 55, 71);
-  font-size: 12px;
-  font-family: 'Abel', sans-serif;
-  font-style: italic;
-  margin-top: 3%;
-  text-align: center;
-
+#G button{
+  display: inline-block;
+  width: 49%;
 }
-
 
 /* ------ STYLING FOR THE SETTINGS FIELD  ------- */
 #H{
@@ -414,4 +445,10 @@ input:focus{
   background-color: white;
   color: rgb(40, 55, 71);
   border: 1px solid rgb(40, 55, 71);
+}
+
+/* ------ STYLING FOR THE DYNAMIC INTEREST PAGE  ------- */
+#I {
+  margin-top: 25%;
+
 }

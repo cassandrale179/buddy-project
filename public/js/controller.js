@@ -114,7 +114,9 @@ angular.module('app.controllers',[])
   var user = firebase.auth().currentUser;
   if (user !== null){
     var id = user.uid;
-    var ref = firebase.database().ref("users/" + id).once('value').then(function(snapshot){
+    var ref = firebase.database().ref("users/" + id);
+    ref.once('value').then(function(snapshot){
+      $scope.name = snapshot.val().name;
       $scope.i1 = snapshot.val().interest1;
       $scope.i2 = snapshot.val().interest2;
       $scope.i3 = snapshot.val().interest3;
@@ -137,21 +139,19 @@ angular.module('app.controllers',[])
   function($scope, $state){
     var user = firebase.auth().currentUser;
     var ref = firebase.database().ref("users");
-    if (user !== null){
-      $scope.CaptureInterest = function()
+    $scope.interestArr = [];
+    //if (user !== null){
+      $scope.AddMore = function(){
+        $scope.interestArr.push($scope.interest);
+        $state.go('interest'); 
+      };
+      /*$scope.CaptureInterest = function()
       {
-        var interests = {
-          interest1: $scope.i1,
-          interest2: $scope.i2,
-          interest3: $scope.i3,
-          interest4: $scope.i4,
-          interest5: $scope.i5
-        };
         ref.child(user.uid).update(interests);
         $state.go('match');
-      };
+      };*/
     }
-  }
+//  }
 ])
 
 //-------------------  CONTROLLER FOR THE SETTINGS PAGE ------------------------
