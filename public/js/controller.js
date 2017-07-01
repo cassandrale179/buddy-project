@@ -153,7 +153,10 @@ angular.module('app.controllers', [])
 .controller('dynamicPage', ['$scope', '$state',
   function($scope, $state){
     var user = firebase.auth().currentUser;
+    $scope.interestArr = [];
     if (user !== null){
+
+      //DISPLAY THEIR INTERESTS
       var ref = firebase.database().ref("users/" + user.uid);
       ref.once("value").then(function(snapshot){
         var i1 = snapshot.val().interest1;
@@ -161,8 +164,14 @@ angular.module('app.controllers', [])
         var i3 = snapshot.val().interest3;
         var i4 = snapshot.val().interest4;
         var i5 = snapshot.val().interest5;
-        $scope.interestArr = [i1, i2, i3, i4, i5];
-        console.log($scope.interestArr);
+        $scope.interestArr.push(i1);
+
+        //ADDING MORE BUTON
+        $scope.addInterest = function(){
+          $scope.interestArr.push($scope.interest);
+          console.log($scope.interest);
+        };
+
         $state.go('dynamic');
       });
     }
