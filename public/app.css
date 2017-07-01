@@ -314,10 +314,10 @@ p{
 /* ------------------------STYLING FOR THE INTEREST INPUT FIELD  ------------------------*/
 #G{
   margin-top: 40%;
+  margin-bottom: 40%;
   display: block;
   padding-left: 10%;
   padding-right: 10%;
-
 }
 
 .a{
@@ -349,6 +349,7 @@ p{
 #G button{
   display: inline-block;
   width: 49%;
+  font-size: 2em;
 }
 
 /* ------ STYLING FOR THE SETTINGS FIELD  ------- */
