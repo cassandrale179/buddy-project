@@ -1,6 +1,12 @@
 
 angular.module('app.controllers',[])
 
+.service('sharedProperty', ['$scope', '$state',
+  function($scope, $state){
+
+  }
+])
+
 //--------------------  CONTROLLER FOR THE REGISTER PAGE --------------------
 .controller('registerPageCtrl', ['$scope', '$state',
   function ($scope, $state){
@@ -150,7 +156,11 @@ angular.module('app.controllers',[])
         $scope.interestArr.push($scope.interest);
         console.log(count);
       };
-    console.log('Length outside of function: ' + count);
+
+      $scope.Remove = function(x){
+         $scope.interestArr.splice(x, 1);
+         count--;
+      };
 
 
 
@@ -170,8 +180,7 @@ angular.module('app.controllers',[])
       var uploader = document.getElementById('uploader');
       var fileButton = document.getElementById('fileButton');
 
-
-    }
+    };
 
 
     // FUNCTION TO LOG OUT USER
