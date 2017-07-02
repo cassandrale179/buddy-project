@@ -155,7 +155,10 @@ angular.module('app.controllers',[])
 
       //WHEN USER ADD AN INTEREST
       $scope.AddMore = function(){
-        if (!$scope.interest){return;}                                  //if nothing is added
+        if (!$scope.interest){
+          $scope.errorMessage = "Please input an interest";
+          return;
+        }                                  //if nothing is added
         if ($scope.interestArr.indexOf($scope.interest) == -1){         //if interest doesn't exist
           $scope.interestArr.push($scope.interest);
           count++;
@@ -193,18 +196,16 @@ angular.module('app.controllers',[])
 .controller('settingsPageCtrl', ['$scope', '$state',
   function ($scope, $state){
 
-    $scope.updatePassword = function() {
+    $scope.resetPassword = function() {
       var providedPassword = $scope.oldPassword;
       //Reauthenticate user
-      firebase.auth().currentUser.reauthenticate(firebase.auth.EmailAuthProvider.credential(firebase.auth().currentUser.email, providedPassword));
+      firebase.auth().currentUser.reauthenticate(
+        firebase.auth.EmailAuthProvider.credential(firebase.auth().currentUser.email, providedPassword));
       //Update new providedPassword
       if ($scope.newPassword1===$scope.newPassword2){
         firebase.auth().currentUser.updatePassword($scope.newPassword1);
         console.log($scope.newPassword1);
         console.log("Password reset!");
-      }
-      else{
-        console.log("Password doesn't match!");
       }
 
     };

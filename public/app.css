@@ -37,11 +37,11 @@ p{
   width: 100%;
   top: 0;
   position: fixed;
-  color: white;
-  font-family: 'Hind', serif;
-  text-transform: uppercase;
   background-color:  rgb(40, 55, 71);
   box-shadow: 0px 0px 16px 4px rgba(0,0,0,0.3);
+  text-transform: uppercase;
+  color: white;
+  font-family: 'Hind', serif;
   font-size: 1.5em;
 }
 
@@ -103,7 +103,7 @@ p{
 }
 
 
-#A input, #B input, #G input{
+#A input, #B input, #G input, #H input{
   width: 70%;
   border: none;
   display: block;
@@ -166,7 +166,7 @@ p{
   margin: auto;
 }
 
-#A button, #B button, #G button{
+#A button, #B button, #G button, #H button{
   border: none;
   background-color: rgb(40, 55, 71);
   padding: 10px;
@@ -359,20 +359,20 @@ p{
 
 /* ------ STYLING FOR THE SETTINGS FIELD  ------- */
 #H{
-  margin-top: 25%;
-  padding-left: 10%;
-  padding-right: 10%;
+  margin-top: 30%;
 }
 
-#H h2{
-  text-align: left;
+#H input{
+  font-size: 2em;
 }
 
-#H button:hover{
-  background-color: white;
-  color: rgb(40, 55, 71);
-  border: 1px solid rgb(40, 55, 71);
+#H button{
+  width: 70%;
+  display: block;
+  margin: auto;
+  margin-bottom: 0.3em;
 }
+
 
 /* ------ STYLING FOR THE DYNAMIC INTEREST PAGE  ------- */
 #I {
