@@ -148,10 +148,7 @@ angular.module('app.controllers',[])
     var id = user.uid;
     var ref = firebase.database().ref("users/"+id);
     var refInterest = firebase.database().ref("interest");
-    var jsonObject = {
-      //1: gameofthrones
-      //2: breakingbad
-    };
+    var jsonObject = {};
     $scope.errorMessage = "";
     $scope.interestArr = [];
 
@@ -208,19 +205,27 @@ angular.module('app.controllers',[])
 //-------------------  CONTROLLER FOR THE SETTINGS PAGE ------------------------
 .controller('settingsPageCtrl', ['$scope', '$state',
   function ($scope, $state){
-
+    $scope.successMessage = "";
     $scope.resetPassword = function() {
       var providedPassword = $scope.oldPassword;
+
       //Reauthenticate user
       firebase.auth().currentUser.reauthenticate(
-        firebase.auth.EmailAuthProvider.credential(firebase.auth().currentUser.email, providedPassword));
-      //Update new providedPassword
-      if ($scope.newPassword1===$scope.newPassword2){
-        firebase.auth().currentUser.updatePassword($scope.newPassword1);
-        console.log($scope.newPassword1);
-        console.log("Password reset!");
-      }
-
+        firebase.auth.EmailAuthProvider.credential(firebase.auth().currentUser.email, providedPassword)
+      )
+        .then(function(resolve){
+          if ($scope.newPassword1===$scope.newPassword2){
+            firebase.auth().currentUser.updatePassword($scope.newPassword1);
+            $scope.successMessage = "Password reset!";
+          }
+          console.log('Successfully reauthenticated');
+        })
+        .catch(function(error){
+          if (error.code == 'auth/wrong-password'){
+            $scope.errorMessage = "Incorrect password";
+          }
+        });
+        $state.go('settings');
     };
 
 
