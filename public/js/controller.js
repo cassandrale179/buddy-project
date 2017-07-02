@@ -24,7 +24,7 @@ angular.module('app.controllers',[])
           name: $scope.txtName,
           email: $scope.txtEmail
         };
-        ref.child(user.uid).set(info);
+        ref.child(user.uid+"/userProfile").set(info);
         user.sendEmailVerification().then(function() { //Send email verification
           console.log(user);
             // Email sent.
@@ -146,11 +146,13 @@ angular.module('app.controllers',[])
   function($scope, $state){
     var count = 0;
     var user = firebase.auth().currentUser;
-    var ref = firebase.database().ref("users");
+    var id = user.uid;
+    var ref = firebase.database().ref("users/"+id);
     var refInterest = firebase.database().ref("interest");
     var jsonObject = {};
     $scope.errorMessage = "";
     $scope.interestArr = [];
+
     //if (user !== null){
 
       //WHEN USER ADD AN INTEREST
@@ -180,12 +182,29 @@ angular.module('app.controllers',[])
       $scope.CaptureInterest = function(){
         console.log('Final count: ' + count);
         console.log($scope.interestArr);
+        var interestArr = $scope.interestArr;
+        console.log("interestArr: ");
+        console.log(interestArr);
         for (var i = 0; i < count; i++){
           jsonObject[i] = $scope.interestArr[i];
         }
         console.log(jsonObject);
         //ref.child(user.uid).update(interests);
         refInterest.update(jsonObject);
+        //Concantenate all interests
+        interestStr = "";
+        for (var k = 0; k<interestArr.length;k++)
+        {
+          interestStr+=interestArr[k];
+          //Add comma
+          if (k!=interestArr.length-1){
+            interestStr+=",";
+          }
+        }
+        var interestRegexStr = {
+          interest: interestStr
+        };
+        ref.update(interestRegexStr);
         $state.go('match');
       };
     }
