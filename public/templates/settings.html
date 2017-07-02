@@ -36,9 +36,9 @@
     <h2> CHANGE PASSWORD </h2><hr />
       <form>
         <input type="password" ng-model="oldPassword" placeholder="Current Password" />
-        <input type="password" ng-model="newPassword" placeholder="New Password"/>
-        <input type="password" ng-model="newPassword" placeholder="Retype Password"/>
-        <button> SUBMIT </button>
+        <input type="password" ng-model="newPassword1" placeholder="New Password"/>
+        <input type="password" ng-model="newPassword2" placeholder="Retype Password"/>
+        <button ng-click="updatePassword()"> SUBMIT </button>
       </form>
     <br />
     <h2> LOGOUT</h2>
