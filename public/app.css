@@ -93,6 +93,7 @@ li{
   color: white;
   font-family: 'Hind', serif;
   font-size: 1.5em;
+  height: 12%;
 }
 
 #header h1{
@@ -221,8 +222,54 @@ li{
 
 
 /* -------------------------------------- STYLING FOR THE USER PROFILE PAGE ----------------------------------------- */
-#C{
+#C1{
+  z-index: -1;
+  position: absolute;
+  background-color: rgb(40, 55, 71);
+  background-size: cover;
+  height: 50%;
+  width: 100%;
+  box-shadow: 0px 0px 16px 4px rgba(0,0,0,0.3);
 }
+
+#C1 img{
+  display: block;
+  margin: auto;
+  border-radius: 50px;
+  width: 30%;
+  margin-top: 25%;
+}
+
+#C1 h3{
+  text-transform: uppercase;
+  color: white;
+  text-align: center;
+  font-size: 2.7em;
+}
+
+#C2{
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  z-index: -1;
+  margin-bottom: 100px;
+}
+#C2 hr{
+  width: 70%;
+}
+#C2 h2{
+  padding-top: 5%;
+  padding-left: 15%;
+  text-align: left;
+  margin-bottom: 0.5em;
+}
+
+#C2 li{
+  padding-left: 15%;
+  margin-bottom: 0.2em;
+}
+
+
 
 
 /* ------------------------------ STYLING FOR THE MATCHING PAGE -------------------------------------------------- */

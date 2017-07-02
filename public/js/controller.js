@@ -123,6 +123,8 @@ angular.module('app.controllers',[])
     var id = user.uid;
     var ref = firebase.database().ref("users/" + id);
     ref.once('value').then(function(snapshot){
+      $scope.name = snapshot.val().name;
+      $scope.age = snapshot.val().age;
       var interestStr = snapshot.val().interest;
       $scope.interestArr = interestStr.split(",");
       $state.go('profile');
@@ -146,7 +148,6 @@ angular.module('app.controllers',[])
     var id = user.uid;
     var refUserId = firebase.database().ref("users/"+id);
     var refInterest = firebase.database().ref("interest");
-
     $scope.errorMessage = "";
     $scope.interestArr = [];
 
@@ -158,14 +159,14 @@ angular.module('app.controllers',[])
       {
         //WHEN USER ADD AN INTEREST
         $scope.AddMore = function(){
-          if (!$scope.interest){
+          if (!$scope.interest){                                           //if nothing is added
             $scope.errorMessage = "Please input an interest";
-            return;}                                                      //if nothing is added
-          if ($scope.interestArr.indexOf($scope.interest) == -1){         //if interest doesn't exist
+            return;}                                                     
+          if ($scope.interestArr.indexOf($scope.interest) == -1){          //if interest doesn't exist
             $scope.interestArr.push($scope.interest);
           }
           else{
-            $scope.errorMessage = "You already added this interest";
+            $scope.errorMessage = "You already added this interest";        //if there is duplicate 
           }
         };
 
@@ -223,19 +224,27 @@ angular.module('app.controllers',[])
 //-------------------  CONTROLLER FOR THE SETTINGS PAGE ------------------------
 .controller('settingsPageCtrl', ['$scope', '$state',
   function ($scope, $state){
-
+    $scope.successMessage = "";
     $scope.resetPassword = function() {
       var providedPassword = $scope.oldPassword;
+
       //Reauthenticate user
       firebase.auth().currentUser.reauthenticate(
-        firebase.auth.EmailAuthProvider.credential(firebase.auth().currentUser.email, providedPassword));
-      //Update new providedPassword
-      if ($scope.newPassword1===$scope.newPassword2){
-        firebase.auth().currentUser.updatePassword($scope.newPassword1);
-        console.log($scope.newPassword1);
-        console.log("Password reset!");
-      }
-
+        firebase.auth.EmailAuthProvider.credential(firebase.auth().currentUser.email, providedPassword)
+      )
+        .then(function(resolve){
+          if ($scope.newPassword1===$scope.newPassword2){
+            firebase.auth().currentUser.updatePassword($scope.newPassword1);
+            $scope.successMessage = "Password reset!";
+          }
+          console.log('Successfully reauthenticated');
+        })
+        .catch(function(error){
+          if (error.code == 'auth/wrong-password'){
+            $scope.errorMessage = "Incorrect password";
+          }
+        });
+        $state.go('settings');
     };
 
 
