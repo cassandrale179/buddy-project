@@ -71,8 +71,8 @@ p{
 
 #navbar a{
   width: 25%;
-  padding-top: 10%;
-  padding-bottom: 10%;
+  padding-top: 7%;
+  padding-bottom: 7%;
   text-decoration: none;
 }
 
@@ -350,6 +350,11 @@ p{
   display: inline-block;
   width: 49%;
   font-size: 2em;
+}
+
+#G span{
+  float: right;
+  color:  #C0392B;
 }
 
 /* ------ STYLING FOR THE SETTINGS FIELD  ------- */
