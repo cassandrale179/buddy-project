@@ -144,12 +144,9 @@ angular.module('app.controllers',[])
     //CREATE SOME VARIABLES
     var user = firebase.auth().currentUser;
     var id = user.uid;
-    var ref = firebase.database().ref("users/"+id);
+    var refUserId = firebase.database().ref("users/"+id);
     var refInterest = firebase.database().ref("interest");
-    var jsonObject = {
-      //1: gameofthrones
-      //2: breakingbad
-    };
+
     $scope.errorMessage = "";
     $scope.interestArr = [];
 
@@ -180,19 +177,39 @@ angular.module('app.controllers',[])
 
         //WHEN USER SUBMIT THEIR INTERESTS
         $scope.CaptureInterest = function(){
-          for (var i = count; i < $scope.interestArr.length + count; i++){
-            jsonObject[i] = $scope.interestArr[i - count];
+          //Get list of interests
+          var interestTable = snapshot.val();
+          var interestValues = Object.values(interestTable);
+          console.log("Interest values: " + interestValues);
+          var interestObject = {
+            //1: gameofthrones
+            //2: breakingbad
+          };
+          //i: index of interestObject
+          //n: index of element in $scope.interestArr
+          var i = count;
+          for (var n = 0; n < $scope.interestArr.length; n++){
+            if (interestValues.indexOf($scope.interestArr[n])===-1)
+            {
+              interestObject[i]=$scope.interestArr[n];
+              i++;
+            }
           }
-          refInterest.update(jsonObject);
+
+          refInterest.update(interestObject);
 
           //CONCATENATE ALL OBJECTS INTO A STRING
-          ref.once('value', function(snapshot){
+          refUserId.once('value', function(snapshot){
             var obj = snapshot.val();
             var interestStr = obj.interest;
+            if (!obj.Interest)
+            {
+              interestStr="";
+            }
             for (var k = 0; k< $scope.interestArr.length; k++){
               interestStr+=$scope.interestArr[k] + ',';
             }
-            ref.update({interest: interestStr});
+            refUserId.update({interest: interestStr});
             console.log(interestStr);
           });
 
