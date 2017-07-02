@@ -28,20 +28,70 @@ h3{
 
 p{
   font-family: 'Abel', serif;
-  font-size: 1.5em;
+  font-size: 1.7em;
   color: #909497;
   text-align: center;
 }
+
+button{
+  border: none;
+  background-color: rgb(40, 55, 71);
+  padding: 10px;
+  color: white;
+  font-family: 'Hind', sans-serif;
+  font-size: 2.5em;
+  width: 70%;
+  margin-top: 0.5em;
+  display: block;
+  margin: auto;
+}
+
+button:hover{
+  background-color: white;
+  border: rgb(40,55,71) 1px solid;
+  color: rgb(40,55,71);
+}
+
+input{
+  width: 70%;
+  border: none;
+  display: block;
+  margin: auto;
+  border-bottom: 0.1px #85929E solid;
+  font-family: 'Hind', sans-serif;
+  font-size: 2.3em;
+  margin-bottom: 1em;
+}
+
+input::placeholder{
+  color: #D7DBDD;
+}
+
+a{
+  color: #283747;
+  font-size: 1.2em;
+  text-decoration: none;
+}
+
+a:hover{
+  text-decoration: underline;
+}
+
+li{
+  color: #626567;
+}
+
+
 /*----------------------------------------------- STYLING FOR THE HEADER ------------------------------------------ */
 #header{
   width: 100%;
   top: 0;
   position: fixed;
-  color: white;
-  font-family: 'Hind', serif;
-  text-transform: uppercase;
   background-color:  rgb(40, 55, 71);
   box-shadow: 0px 0px 16px 4px rgba(0,0,0,0.3);
+  text-transform: uppercase;
+  color: white;
+  font-family: 'Hind', serif;
   font-size: 1.5em;
 }
 
@@ -81,67 +131,24 @@ p{
 }
 
 /* ----------------------------------- STYLING FOR ERROR MESSAGE ON REGISTRATION PAGE ----------------------------- */
-#error{
+#error, #success{
   font-family: 'Hind', sans-serif;
-  color: #C0392B;
   font-size: 1.5em;
   text-align: center;
   font-style: italic;
 }
 
+#error{
+  color: #C0392B;
+}
+
 #success{
-  font-family: 'Hind', sans-serif;
   color: #45B39D;
-  font-size: 1.5em;
-  text-align: center;
-  font-style: italic;
 }
 
 /* ------------------------------ STYLING FOR SIGN IN AND REGISTRATION PAGE ------------------------------------- */
 #A, #B{
   font-family: 'Hind', sans-serif;
-}
-
-
-#A input, #B input, #G input{
-  width: 70%;
-  border: none;
-  display: block;
-  margin: auto;
-  border-bottom: 0.1px #85929E solid;
-  font-family: 'Hind', sans-serif;
-  font-size: 2.3em;
-  margin-bottom: 1em;
-}
-
-#A input::placeholder, #B input::placeholder{
-  color: #D7DBDD;
-}
-
-#A a{
-  color: #283747;
-  font-size: 1.2em;
-  text-decoration: none;
-}
-
-#A a:hover{
-  text-decoration: underline;
-}
-
-
-#A h1{
-  background: #34495E;
-  width: 60%;
-  left: 20%;
-  color: white;
-  text-align: center;
-  top: 35%;
-  position: fixed;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  border-radius: 50px;
-  border: 3px solid white;
-  font-size: 5em;
 }
 
 #A0{
@@ -160,30 +167,25 @@ p{
   bottom: 30px;
 }
 
-#A2, #A3, #B2{
-  width: 70%;
-  display: block;
-  margin: auto;
-}
 
-#A button, #B button, #G button{
-  border: none;
-  background-color: rgb(40, 55, 71);
-  padding: 10px;
+#A h1{
+  background: #34495E;
+  width: 60%;
+  left: 20%;
   color: white;
-  font-family: 'Hind', sans-serif;
-  font-size: 2.5em;
-  width: 100%;
-  margin-top: 0.5em;
+  text-align: center;
+  top: 35%;
+  position: fixed;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 50px;
+  border: 3px solid white;
+  font-size: 5em;
 }
 
-#A button:hover, #B button:hover{
-  background-color: white;
-  border: rgb(40,55,71) 1px solid;
-  color: rgb(40,55,71);
-}
 
-/* ----------------- STYLING FOR THE FORGOT PASSWORD -------------*/
+
+/* ---------------------------------- STYLING FOR THE FORGOT PASSWORD PAGE ----------------------------------------- */
 #B1{
   width: 100%;
   height: 30%;
@@ -200,18 +202,6 @@ p{
   color: #626567;
 }
 
-#B2 button{
-  width: 70%;
-  display: block;
-  margin: auto;
-}
-
-#B2 p{
-  display: block;
-  width: 70%;
-  margin: auto;
-  color: #909497;
-}
 
 #B3{
   height: 20%;
@@ -221,8 +211,16 @@ p{
   bottom: 0;
 }
 
+#B p{
+  display: block;
+  width: 70%;
+  margin: auto;
+  font-size: 2em;
+}
 
-/*------ STYLING THE PROFILE PAGE------- */
+
+
+/* -------------------------------------- STYLING FOR THE USER PROFILE PAGE ----------------------------------------- */
 #C{
   margin-top: 0;
   padding-top: 30%;
@@ -245,39 +243,8 @@ p{
 
 
 
-/*------------------------ STYLING FOR THE USER INFORMATION ------------------------ */
-#C1 p{
-  font-family: 'Abel', sans-serif;
-  font-size: 15px;
-  text-align: left;
-  padding-left: 15%;
-  padding-right: 10%;
-  color: #626567;
-  line-height: 30px;
-}
 
-#C1 i{
-  width: 10%;
-}
-
-#C2{
-  display: block;
-  width: 70%;
-  margin: auto;
-}
-
-#C2 button{
-  background: white;
-  border: none;
-  font-family: 'Hind', sans-serif;
-  color: #626567;
-  border: 0.1px #D7DBDD solid;
-  border-radius: 3px;
-  margin-bottom: 3px;
-}
-
-
-/*  ------------------------STYLING FOR THE MATCHING PAGE ------------------------*/
+/* ------------------------------ STYLING FOR THE MATCHING PAGE -------------------------------------------------- */
 #D{
   margin-top: 25%;
   padding-left: 10%;
@@ -311,39 +278,16 @@ p{
 }
 
 
-/* ------------------------STYLING FOR THE INTEREST INPUT FIELD  ------------------------*/
+/* -------------------------------------STYLING FOR THE INTEREST INPUT FIELD  ---------------------------------------*/
 #G{
   margin-top: 40%;
   margin-bottom: 40%;
-  display: block;
   padding-left: 10%;
   padding-right: 10%;
 }
 
-.a{
-  color:  #626567;
-}
-
-.b{
-  color: rgb(40, 55, 71);
-  display: block;
-  float: right;
-  font-weight: lighter;
-  font-family: 'Abel', sans-serif;
-}
-
-#G li{
-  color: #626567;
-}
-
-
 #G input{
   width: 100%;
-}
-
-
-#G input::placeholder, #H input::placeholder{
-  color: rgba(40, 55, 71,0.3);
 }
 
 #G button{
@@ -357,25 +301,16 @@ p{
   color:  #C0392B;
 }
 
-/* ------ STYLING FOR THE SETTINGS FIELD  ------- */
+/* -------------------------------------- STYLING FOR THE SETTINGS FIELD  ------------------------------------------- */
 #H{
-  margin-top: 25%;
-  padding-left: 10%;
-  padding-right: 10%;
+  margin-top: 30%;
 }
 
-#H h2{
-  text-align: left;
+#H input{
+  font-size: 2em;
 }
 
-#H button:hover{
-  background-color: white;
-  color: rgb(40, 55, 71);
-  border: 1px solid rgb(40, 55, 71);
-}
-
-/* ------ STYLING FOR THE DYNAMIC INTEREST PAGE  ------- */
-#I {
-  margin-top: 25%;
-
+#H button{
+  margin-bottom: 0.3em;
+  font-size: 2em;
 }
