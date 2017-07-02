@@ -24,7 +24,7 @@ angular.module('app.controllers',[])
           name: $scope.txtName,
           email: $scope.txtEmail
         };
-        ref.child(user.uid+"/userProfile").set(info);
+        ref.child(user.uid).set(info);
         user.sendEmailVerification().then(function() { //Send email verification
           console.log(user);
             // Email sent.
@@ -144,71 +144,64 @@ angular.module('app.controllers',[])
 //--------------------  CONTROLLER FOR THE INTEREST PAGE ---------------------------
 .controller('interestPageCtrl', ['$scope', '$state',
   function($scope, $state){
-    var count = 0;
+
+    //CREATE SOME VARIABLES
     var user = firebase.auth().currentUser;
     var id = user.uid;
     var ref = firebase.database().ref("users/"+id);
     var refInterest = firebase.database().ref("interest");
-    var jsonObject = {};
+    var jsonObject = {
+      //1: gameofthrones
+      //2: breakingbad
+    };
     $scope.errorMessage = "";
     $scope.interestArr = [];
 
-    //if (user !== null){
-
-      //WHEN USER ADD AN INTEREST
-      $scope.AddMore = function(){
-        if (!$scope.interest){
-          $scope.errorMessage = "Please input an interest";
-          return;
-        }                                  //if nothing is added
-        if ($scope.interestArr.indexOf($scope.interest) == -1){         //if interest doesn't exist
-          $scope.interestArr.push($scope.interest);
-          count++;
-        }
-        else{
-          $scope.errorMessage = "You already added this interest";
-        }
-        console.log('Total interests: ' + count);
-      };
-
-      //WHEN USER REMOVES AN INTEREST
-      $scope.Remove = function(x){
-         $scope.interestArr.splice(x, 1);
-         count--;
-        console.log('Total interests: ' + count);
-      };
-
-      //WHEN USER SUBMIT THEIR INTERESTS
-      $scope.CaptureInterest = function(){
-        console.log('Final count: ' + count);
-        console.log($scope.interestArr);
-        var interestArr = $scope.interestArr;
-        console.log("interestArr: ");
-        console.log(interestArr);
-        for (var i = 0; i < count; i++){
-          jsonObject[i] = $scope.interestArr[i];
-        }
-        console.log(jsonObject);
-        //ref.child(user.uid).update(interests);
-        refInterest.update(jsonObject);
-        //Concantenate all interests
-        interestStr = "";
-        for (var k = 0; k<interestArr.length;k++)
-        {
-          interestStr+=interestArr[k];
-          //Add comma
-          if (k!=interestArr.length-1){
-            interestStr+=",";
+    //COUNTING THE NUMBER OF CHILD IN DATABASE
+    refInterest.once('value', function(snapshot)
+  {
+      var count = snapshot.numChildren();
+      if (user !== null)
+      {
+        //WHEN USER ADD AN INTEREST
+        $scope.AddMore = function(){
+          if (!$scope.interest){
+            $scope.errorMessage = "Please input an interest";
+            return;}                                                      //if nothing is added
+          if ($scope.interestArr.indexOf($scope.interest) == -1){         //if interest doesn't exist
+            $scope.interestArr.push($scope.interest);
           }
-        }
-        var interestRegexStr = {
-          interest: interestStr
+          else{
+            $scope.errorMessage = "You already added this interest";
+          }
         };
-        ref.update(interestRegexStr);
-        $state.go('match');
-      };
-    }
-//  }
+
+        //WHEN USER REMOVES AN INTEREST
+        $scope.Remove = function(x){
+           $scope.interestArr.splice(x, 1);
+          console.log('Total interests: ' + count);
+        };
+
+        //WHEN USER SUBMIT THEIR INTERESTS
+        $scope.CaptureInterest = function(){
+          alert('Count: ' + count);
+          for (var i = count; i < $scope.interestArr.length + count; i++){
+            jsonObject[i] = $scope.interestArr[i - count];
+          }
+          refInterest.update(jsonObject);
+
+          //CONCATENATE ALL OBJECTS INTO A STRING
+          var interestStr = "";
+          for (var k = 0; k< $scope.interestArr.length; k++){
+            interestStr+=$scope.interestArr[k] + ',';
+          }
+
+          ref.update({interest: interestStr});
+          $state.go('match');
+        };
+      }
+    });
+  }
 ])
 
 //-------------------  CONTROLLER FOR THE SETTINGS PAGE ------------------------
