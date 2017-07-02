@@ -180,19 +180,22 @@ angular.module('app.controllers',[])
 
         //WHEN USER SUBMIT THEIR INTERESTS
         $scope.CaptureInterest = function(){
-          alert('Count: ' + count);
           for (var i = count; i < $scope.interestArr.length + count; i++){
             jsonObject[i] = $scope.interestArr[i - count];
           }
           refInterest.update(jsonObject);
 
           //CONCATENATE ALL OBJECTS INTO A STRING
-          var interestStr = "";
-          for (var k = 0; k< $scope.interestArr.length; k++){
-            interestStr+=$scope.interestArr[k] + ',';
-          }
+          ref.once('value', function(snapshot){
+            var obj = snapshot.val();
+            var interestStr = obj.interest;
+            for (var k = 0; k< $scope.interestArr.length; k++){
+              interestStr+=$scope.interestArr[k] + ',';
+            }
+            ref.update({interest: interestStr});
+            console.log(interestStr);
+          });
 
-          ref.update({interest: interestStr});
           $state.go('match');
         };
       }
