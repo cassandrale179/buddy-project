@@ -148,27 +148,43 @@ angular.module('app.controllers',[])
     var user = firebase.auth().currentUser;
     var ref = firebase.database().ref("users");
     var refInterest = firebase.database().ref("interest");
+    var jsonObject = {};
+    $scope.errorMessage = "";
     $scope.interestArr = [];
     //if (user !== null){
-      $scope.AddMore = function()
-      {
-        count++;
-        $scope.interestArr.push($scope.interest);
-        console.log(count);
+
+      //WHEN USER ADD AN INTEREST
+      $scope.AddMore = function(){
+        if (!$scope.interest){return;}                                  //if nothing is added
+        if ($scope.interestArr.indexOf($scope.interest) == -1){         //if interest doesn't exist
+          $scope.interestArr.push($scope.interest);
+          count++;
+        }
+        else{
+          $scope.errorMessage = "You already added this interest";
+        }
+        console.log('Total interests: ' + count);
       };
 
+      //WHEN USER REMOVES AN INTEREST
       $scope.Remove = function(x){
          $scope.interestArr.splice(x, 1);
          count--;
+        console.log('Total interests: ' + count);
       };
 
-
-
-      /*$scope.CaptureInterest = function()
-      {
-        ref.child(user.uid).update(interests);
+      //WHEN USER SUBMIT THEIR INTERESTS
+      $scope.CaptureInterest = function(){
+        console.log('Final count: ' + count);
+        console.log($scope.interestArr);
+        for (var i = 0; i < count; i++){
+          jsonObject[i] = $scope.interestArr[i];
+        }
+        console.log(jsonObject);
+        //ref.child(user.uid).update(interests);
+        refInterest.update(jsonObject);
         $state.go('match');
-      };*/
+      };
     }
 //  }
 ])

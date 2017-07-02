@@ -17,6 +17,7 @@
   <div id="G">
     <h2> INPUT AT LEAST 3 INTERESTS TO BE MATCH </h2>
     <ul id="G1">
+      <div id="error" ng-if="errorMessage != ''">{{errorMessage}}</div>
       <li ng-repeat="x in interestArr">
         <h3 class="a">{{x}}
         <span ng-click="Remove($index)">X</span></h3>
