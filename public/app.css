@@ -222,26 +222,7 @@ li{
 
 /* -------------------------------------- STYLING FOR THE USER PROFILE PAGE ----------------------------------------- */
 #C{
-  margin-top: 0;
-  padding-top: 30%;
-  background: url('https://ak6.picdn.net/shutterstock/videos/9568256/thumb/1.jpg');
-  background-size: cover;
-  position: fixed;
-  width: 100%;
-  height: 30%;
-  z-index: -1;
 }
-
-#C img{
-  width: 40%;
-  border-radius: 100px;
-  border: 10px white solid;
-  display: block;
-  margin: auto;
-
-}
-
-
 
 
 /* ------------------------------ STYLING FOR THE MATCHING PAGE -------------------------------------------------- */
