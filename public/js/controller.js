@@ -123,6 +123,8 @@ angular.module('app.controllers',[])
     var id = user.uid;
     var ref = firebase.database().ref("users/" + id);
     ref.once('value').then(function(snapshot){
+      $scope.name = snapshot.val().name;
+      $scope.age = snapshot.val().age;
       var interestStr = snapshot.val().interest;
       $scope.interestArr = interestStr.split(",");
       $state.go('profile');
