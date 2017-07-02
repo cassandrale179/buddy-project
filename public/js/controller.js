@@ -123,12 +123,8 @@ angular.module('app.controllers',[])
     var id = user.uid;
     var ref = firebase.database().ref("users/" + id);
     ref.once('value').then(function(snapshot){
-      $scope.name = snapshot.val().name;
-      $scope.i1 = snapshot.val().interest1;
-      $scope.i2 = snapshot.val().interest2;
-      $scope.i3 = snapshot.val().interest3;
-      $scope.i4 = snapshot.val().interest4;
-      $scope.i5 = snapshot.val().interest5;
+      var interestStr = snapshot.val().interest;
+      $scope.interestArr = interestStr.split(",");
       $state.go('profile');
     });
   }
