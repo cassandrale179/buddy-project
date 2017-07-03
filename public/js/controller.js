@@ -16,7 +16,8 @@ angular.module('app.controllers',['ngStorage'])
         var user = firebase.auth().currentUser;
         var info = {
           name: $scope.txtName,
-          email: $scope.txtEmail
+          email: $scope.txtEmail,
+          age: $scope.txtAge
         };
         ref.child(user.uid).set(info);
         user.sendEmailVerification().then(function() { //Send email verification
@@ -126,20 +127,22 @@ angular.module('app.controllers',['ngStorage'])
 }])
 
 //--------------------  CONTROLLER FOR THE PROFILE PAGE ---------------------------
-.controller('profilePageCtrl', ['$scope', '$state', '$localStorage', '$sessionStorage',
-  function ($scope, $state, $localStorage, $sessionStorage){
-    var user = firebase.auth().currentUser;
-    if (user !== null){
-      var id = user.uid;
-      var ref = firebase.database().ref("users/" + id);
-      ref.once('value').then(function(snapshot){
-        $scope.name = snapshot.val().name;
-        $scope.age = snapshot.val().age;
-        var interestStr = snapshot.val().interest;
-        $scope.interestArr = interestStr.split(",");
-        $state.go('profile');
-      });
-    }
+
+.controller('profilePageCtrl', ['$scope', '$state',
+  function ($scope, $state){
+  var user = firebase.auth().currentUser;
+  if (user !== null){
+    var id = user.uid;
+    var ref = firebase.database().ref("users/" + id);
+    ref.once('value').then(function(snapshot){
+      $scope.name = snapshot.val().name;
+      $scope.age = snapshot.val().age;
+      var interestStr = snapshot.val().interest;
+      $scope.interestArr = interestStr.split(",");
+      $scope.interestArr.splice(-1);
+      $state.go('profile');
+    });
+  }
 }])
 
 
@@ -159,7 +162,12 @@ angular.module('app.controllers',['ngStorage'])
     var refUserId = firebase.database().ref("users/"+id);
     var refInterest = firebase.database().ref("interest");
     $scope.errorMessage = "";
-    $scope.interestArr = [];
+
+    refUserId.once('value', function(snapshot){
+      var interestStr = snapshot.val().interest;
+      $scope.interestArr = interestStr.split(",");
+      $scope.interestArr.splice(-1);
+    });
 
     //COUNTING THE NUMBER OF CHILD IN DATABASE
     refInterest.once('value', function(snapshot)
@@ -169,14 +177,21 @@ angular.module('app.controllers',['ngStorage'])
       {
         //WHEN USER ADD AN INTEREST
         $scope.AddMore = function(){
-          if (!$scope.interest){                                           //if nothing is added
+
+          //REMOVE ALL CAPITAL LETTERS AND SPACES
+          $scope.interest = $scope.interest.toLowerCase();
+          $scope.interest = $scope.interest.replace(/\s/g, '');
+
+          //ONLY ADDING IF THE INTEREST IS NOT A DUPLICATE
+          if (!$scope.interest){
             $scope.errorMessage = "Please input an interest";
             return;}
-          if ($scope.interestArr.indexOf($scope.interest) == -1){          //if interest doesn't exist
+          if ($scope.interestArr.indexOf($scope.interest) == -1){
             $scope.interestArr.push($scope.interest);
+            $scope.interest = null;
           }
           else{
-            $scope.errorMessage = "You already added this interest";        //if there is duplicate
+            $scope.errorMessage = "You already added this interest";
           }
 
         };
