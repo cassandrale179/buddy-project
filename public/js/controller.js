@@ -280,7 +280,7 @@ angular.module('app.controllers',['ngStorage'])
       var auth = firebase.auth();
       auth.signOut().then(function() {
         console.log("logged out!");
-
+        $localStorage.$reset();
         $state.go('login');
       }, function(error){
         console.log("An error happened!");
