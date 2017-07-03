@@ -83,7 +83,7 @@ li{
 }
 
 
-/*----------------------------------------------- STYLING FOR THE HEADER ------------------------------------------ */
+/*-------------------------------------- STYLING FOR THE HEADER --------------------------------------- */
 #header{
   width: 100%;
   top: 0;
@@ -101,7 +101,7 @@ li{
   text-align: center;
 }
 
-/* ------------------------------------ STYLING FOR THE BOTTOM NAVIGATION BAR -------------------------------------- */
+/* ---------------------------- STYLING FOR THE BOTTOM NAVIGATION BAR ---------------------------------- */
 #navbar{
   position: fixed;
   bottom: 0;
@@ -132,7 +132,7 @@ li{
   text-decoration: none;
 }
 
-/* ----------------------------------- STYLING FOR ERROR MESSAGE ON REGISTRATION PAGE ----------------------------- */
+/* ----------------------------- STYLING FOR ERROR MESSAGE ON REGISTRATION PAGE -------------------------- */
 #error, #success{
   font-family: 'Hind', sans-serif;
   font-size: 1.5em;
@@ -148,7 +148,7 @@ li{
   color: #45B39D;
 }
 
-/* ------------------------------ STYLING FOR SIGN IN AND REGISTRATION PAGE ------------------------------------- */
+/* ----------------------------- STYLING FOR SIGN IN AND REGISTRATION PAGE -------------------------------- */
 #A, #B{
   font-family: 'Hind', sans-serif;
 }
@@ -283,29 +283,24 @@ li{
 
 
 
-/* ------------------------------ STYLING FOR THE MATCHING PAGE -------------------------------------------------- */
+/* ------------------------------ STYLING FOR THE MATCHING PAGE ----------------------------------------- */
 #D{
-  margin-top: 25%;
-  padding-left: 10%;
-  padding-right: 10%;
+  margin-top: 30%;
 }
 
-#D p, #E p{
-  font-family: 'Abel', sans-serif;
-  color: #626567;
-}
 
-/*THIS DIV WILL APPEAR WHEN A MATCH IS SUCCESSFUL */
-#E{
-  padding: 10%;
-}
-
-#E img{
+#D img{
   width: 40%;
-  border-radius: 100px;
+  border-radius: 10px;
+  display: block;
+  margin: auto;
+  margin-bottom: 10%;
 }
 
-#E button{
+#D p{
+  font-size: 2.5em;
+}
+.match{
   margin-top: 10%;
   background-color: white;
   border: none;
@@ -314,6 +309,14 @@ li{
   padding: 5%;
   border: #85929E 1px solid;
   border-radius: 5px;
+}
+
+#D button{
+  font-size: 2.5em;
+}
+
+#D b{
+  color: rgb(40, 55, 71) ;
 }
 
 
