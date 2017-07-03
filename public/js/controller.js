@@ -150,19 +150,24 @@ angular.module('app.controllers',[])
     refInterest.once('value', function(snapshot)
   {
       var count = snapshot.numChildren();
-      var userInterest = snapshot.interest();
       if (user !== null)
       {
         //WHEN USER ADD AN INTEREST
         $scope.AddMore = function(){
-          if (!$scope.interest){                                           //if nothing is added
+
+          //REMOVE ALL CAPITAL LETTERS AND SPACES
+          $scope.interest = $scope.interest.toLowerCase();
+          $scope.interest = $scope.interest.replace(/\s/g, '');
+
+          //ONLY ADDING IF THE INTEREST IS NOT A DUPLICATE
+          if (!$scope.interest){
             $scope.errorMessage = "Please input an interest";
-            return;}                                                     
-          if ($scope.interestArr.indexOf($scope.interest) == -1){          //if interest doesn't exist
+            return;}
+          if ($scope.interestArr.indexOf($scope.interest) == -1){
             $scope.interestArr.push($scope.interest);
           }
           else{
-            $scope.errorMessage = "You already added this interest";        //if there is duplicate 
+            $scope.errorMessage = "You already added this interest";
           }
         };
 
