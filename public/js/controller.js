@@ -122,6 +122,7 @@ angular.module('app.controllers',[])
       $scope.age = snapshot.val().age;
       var interestStr = snapshot.val().interest;
       $scope.interestArr = interestStr.split(",");
+      $scope.interestArr.splice(-1);
       $state.go('profile');
     });
   }
@@ -144,7 +145,12 @@ angular.module('app.controllers',[])
     var refUserId = firebase.database().ref("users/"+id);
     var refInterest = firebase.database().ref("interest");
     $scope.errorMessage = "";
-    $scope.interestArr = [];
+
+    refUserId.once('value', function(snapshot){
+      var interestStr = snapshot.val().interest;
+      $scope.interestArr = interestStr.split(",");
+      $scope.interestArr.splice(-1);
+    });
 
     //COUNTING THE NUMBER OF CHILD IN DATABASE
     refInterest.once('value', function(snapshot)
@@ -165,6 +171,7 @@ angular.module('app.controllers',[])
             return;}
           if ($scope.interestArr.indexOf($scope.interest) == -1){
             $scope.interestArr.push($scope.interest);
+            $scope.interest = null;
           }
           else{
             $scope.errorMessage = "You already added this interest";
