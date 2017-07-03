@@ -1,5 +1,5 @@
 
-angular.module('app.controllers',[])
+angular.module('app.controllers',['ngStorage'])
 
 //--------------------  CONTROLLER FOR THE REGISTER PAGE --------------------
 .controller('registerPageCtrl', ['$scope', '$state',
@@ -50,41 +50,57 @@ angular.module('app.controllers',[])
 ])
 
 //------------------------------  CONTROLLER FOR THE LOGIN PAGE --------------------
-.controller('loginPageCtrl', ['$scope', '$state',
-  function ($scope, $state){
-    $scope.LogUser = function ()
-    {
-      $scope.errorMessage = "";
+.controller('loginPageCtrl', ['$scope', '$state', '$localStorage', '$sessionStorage',
+    function($scope, $state, $localStorage, $sessionStorage){
 
-      //------------SIGN IN USER------------
-      firebase.auth().signInWithEmailAndPassword($scope.txtEmail, $scope.txtPassword)
-      .then(function(resolve){
-          console.log("loginPageCtrl: Logged in!");
-          var user = firebase.auth().currentUser;
-          console.log(user);
-          $state.go('profile');
-      })
+      $scope.LogUser = function() {
+        $scope.errorMessage = "";
+        var saveUserInfo = function() {
+          $localStorage.email = $scope.txtEmail;
+          $localStorage.password = $scope.txtPassword;
+        };
+          // No user is signed in.
+          // if ($localStorage.email && $localStorage.password)
+          // {
+          //   firebase.auth().signInWithEmailAndPassword($localStorage.email && $localStorage.password);
+          //   $state.go('profile');
+          // }
+          if ($localStorage.email && $localStorage.password)
+          {
+            firebase.auth().signInWithEmailAndPassword($localStorage.email, $localStorage.password);
+            $state.go('profile');
+          }
+          else{
 
-      //------------CATCH THE ERROR HERE--------
-      .catch(function(error){
-        if (error.code == 'auth/wrong-password'){
-          $scope.errorMessage = "Incorrect password or user don't have a password";
+          firebase.auth().signInWithEmailAndPassword($scope.txtEmail, $scope.txtPassword)
+          .then(function(resolve){
+              console.log("loginPageCtrl: Logged in!");
+              saveUserInfo();
+              console.log("Email: " + $localStorage.email);
+              console.log("password: " + $localStorage.password);
+              $state.go('profile');
+          })
+
+          //------------CATCH THE ERROR HERE--------
+          .catch(function(error){
+            if (error.code == 'auth/wrong-password'){
+              $scope.errorMessage = "Incorrect password or user don't have a password";
+            }
+            if (error.code == 'auth/user-not-found'){
+              $scope.errorMessage = "User does not exist in database";
+            }
+            if (error.code == 'auth/user-disabled'){
+              $scope.errorMessage = "This account has been disabled";
+            }
+            if (error.code == 'auth/invalid-email'){
+              $scope.errorMessage = "Email is not valid.";
+            }
+            console.log(error);
+            $state.go('login');
+          });
         }
-        if (error.code == 'auth/user-not-found'){
-          $scope.errorMessage = "User does not exist in database";
-        }
-        if (error.code == 'auth/user-disabled'){
-          $scope.errorMessage = "This account has been disabled";
-        }
-        if (error.code == 'auth/invalid-email'){
-          $scope.errorMessage = "Email is not valid.";
-        }
-        console.log(error);
-        $state.go('login');
-      });
-    };
-  }
-])
+        };
+      }])
 
 
 //--------------------  CONTROLLER FOR THE FORGOT PASSWORD PAGE --------------------
@@ -111,6 +127,7 @@ angular.module('app.controllers',[])
 }])
 
 //--------------------  CONTROLLER FOR THE PROFILE PAGE ---------------------------
+
 .controller('profilePageCtrl', ['$scope', '$state',
   function ($scope, $state){
   var user = firebase.auth().currentUser;
@@ -176,6 +193,7 @@ angular.module('app.controllers',[])
           else{
             $scope.errorMessage = "You already added this interest";
           }
+
         };
 
         //WHEN USER REMOVES AN INTEREST
@@ -262,6 +280,7 @@ angular.module('app.controllers',[])
       var auth = firebase.auth();
       auth.signOut().then(function() {
         console.log("logged out!");
+
         $state.go('login');
       }, function(error){
         console.log("An error happened!");
