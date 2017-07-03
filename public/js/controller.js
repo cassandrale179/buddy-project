@@ -53,25 +53,23 @@ angular.module('app.controllers',['ngStorage'])
 .controller('loginPageCtrl', ['$scope', '$state', '$localStorage', '$sessionStorage',
     function($scope, $state, $localStorage, $sessionStorage){
 
+      //LOGGING USER IN
       $scope.LogUser = function() {
         $scope.errorMessage = "";
         var saveUserInfo = function() {
           $localStorage.email = $scope.txtEmail;
           $localStorage.password = $scope.txtPassword;
         };
-          // No user is signed in.
-          // if ($localStorage.email && $localStorage.password)
-          // {
-          //   firebase.auth().signInWithEmailAndPassword($localStorage.email && $localStorage.password);
-          //   $state.go('profile');
-          // }
+
+          //IF LOCAL STORAGE ALREADY EXIST, THEN LOGIN AUTOMATICALLY
           if ($localStorage.email && $localStorage.password)
           {
             firebase.auth().signInWithEmailAndPassword($localStorage.email, $localStorage.password);
             $state.go('profile');
           }
-          else{
 
+          //ELSE FORCE THE USER TO SIGN IN WITH PASSWORD AND EMAIL 
+          else{
           firebase.auth().signInWithEmailAndPassword($scope.txtEmail, $scope.txtPassword)
           .then(function(resolve){
               console.log("loginPageCtrl: Logged in!");
