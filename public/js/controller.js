@@ -1,12 +1,6 @@
 
 angular.module('app.controllers',[])
 
-.service('sharedProperty', ['$scope', '$state',
-  function($scope, $state){
-
-  }
-])
-
 //--------------------  CONTROLLER FOR THE REGISTER PAGE --------------------
 .controller('registerPageCtrl', ['$scope', '$state',
   function ($scope, $state){
@@ -22,7 +16,8 @@ angular.module('app.controllers',[])
         var user = firebase.auth().currentUser;
         var info = {
           name: $scope.txtName,
-          email: $scope.txtEmail
+          email: $scope.txtEmail,
+          age: $scope.txtAge
         };
         ref.child(user.uid).set(info);
         user.sendEmailVerification().then(function() { //Send email verification
@@ -155,6 +150,7 @@ angular.module('app.controllers',[])
     refInterest.once('value', function(snapshot)
   {
       var count = snapshot.numChildren();
+      var userInterest = snapshot.interest();
       if (user !== null)
       {
         //WHEN USER ADD AN INTEREST
