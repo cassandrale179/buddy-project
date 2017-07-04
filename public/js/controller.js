@@ -68,7 +68,7 @@ angular.module('app.controllers',['ngStorage'])
             $state.go('profile');
           }
 
-          //ELSE FORCE THE USER TO SIGN IN WITH PASSWORD AND EMAIL 
+          //ELSE FORCE THE USER TO SIGN IN WITH PASSWORD AND EMAIL
           else{
           firebase.auth().signInWithEmailAndPassword($scope.txtEmail, $scope.txtPassword)
           .then(function(resolve){
@@ -147,6 +147,31 @@ angular.module('app.controllers',['ngStorage'])
 //--------------------  CONTROLLER FOR THE MATCH PAGE ---------------------------
 .controller('matchPageCtrl', ['$scope', '$state',
   function ($scope, $state){
+
+    //COMPARE AGAINST THE MAIN USER'S INTEREST
+    var myInterest = ["doodle", "gameofthrones"];
+
+    //GET OTHER USER'S INTEREST
+    var refUser = firebase.database().ref("users");
+    refUser.once('value', function(snapshot){
+      var table = snapshot.val();
+      for (var user in table)
+      {
+        var interest = table[user].interest;
+        var otherInterest = interest.split(",");
+        otherInterest.splice(-1);
+        console.log(user + ": " + interest);
+
+        //FILTER FUNCTION TO RETURN DUPLICATE INDEX
+        var count = 0;
+        for (var i = 0; i < myInterest.length; i++){
+          for (var j = 0; j < otherInterest.length; j++){
+            if (myInterest[i] == otherInterest[j]) count++;
+          }
+        }
+        console.log('User count: ' + count);
+      }
+    });
 }])
 
 
@@ -278,7 +303,7 @@ angular.module('app.controllers',['ngStorage'])
       var auth = firebase.auth();
       auth.signOut().then(function() {
         console.log("logged out!");
-        $localStorage.$reset();
+
         $state.go('login');
       }, function(error){
         console.log("An error happened!");
