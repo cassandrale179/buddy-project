@@ -17,7 +17,8 @@ angular.module('app.controllers',['ngStorage'])
         var info = {
           name: $scope.txtName,
           email: $scope.txtEmail,
-          age: $scope.txtAge
+          age: $scope.txtAge,
+          interest: ""
         };
         ref.child(user.uid).set(info);
         user.sendEmailVerification().then(function() { //Send email verification
@@ -186,10 +187,14 @@ angular.module('app.controllers',['ngStorage'])
     var refInterest = firebase.database().ref("interest");
     $scope.errorMessage = "";
 
+    //GET THE CURRENT USER INTEREST
     refUserId.once('value', function(snapshot){
       var interestStr = snapshot.val().interest;
-      $scope.interestArr = interestStr.split(",");
-      $scope.interestArr.splice(-1);
+      if (interestStr === null) $scope.interestArr = {};
+      else{
+        $scope.interestArr = interestStr.split(",");
+        $scope.interestArr.splice(-1);
+      }
     });
 
     //COUNTING THE NUMBER OF CHILD IN DATABASE
