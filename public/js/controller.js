@@ -52,6 +52,18 @@ angular.module('app.controllers',['ngStorage'])
 //------------------------------  CONTROLLER FOR THE LOGIN PAGE --------------------
 .controller('loginPageCtrl', ['$scope', '$state', '$localStorage', '$sessionStorage',
     function($scope, $state, $localStorage, $sessionStorage){
+      //Redirect page if user already logged in
+      $scope.init = function() {
+        //IF LOCAL STORAGE ALREADY EXIST, THEN LOGIN AUTOMATICALLY
+        if ($localStorage.email && $localStorage.password)
+        {
+          firebase.auth().signInWithEmailAndPassword($localStorage.email, $localStorage.password);
+          // Debug
+          // console.log("Local storage email: "+ $localStorage.email);
+          // console.log("local Storage password: " + $localStorage.password);
+          $state.go('profile');
+        }
+      };
 
       //LOGGING USER IN
       $scope.LogUser = function() {
@@ -271,8 +283,8 @@ angular.module('app.controllers',['ngStorage'])
 ])
 
 //-------------------  CONTROLLER FOR THE SETTINGS PAGE ------------------------
-.controller('settingsPageCtrl', ['$scope', '$state',
-  function ($scope, $state){
+.controller('settingsPageCtrl', ['$scope', '$state', '$localStorage',
+  function ($scope, $state, $localStorage){
     $scope.successMessage = "";
     $scope.resetPassword = function() {
       var providedPassword = $scope.oldPassword;
@@ -303,7 +315,8 @@ angular.module('app.controllers',['ngStorage'])
       var auth = firebase.auth();
       auth.signOut().then(function() {
         console.log("logged out!");
-
+        $localStorage.email=null;
+        $localStorage.password=null;
         $state.go('login');
       }, function(error){
         console.log("An error happened!");

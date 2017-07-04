@@ -14,7 +14,7 @@
           <label for="password"></label>
           <input ng-model="txtPassword" type="password" id="password" name="password" placeholder="PASSWORD" required/>
         </div>
-        <div id="A2">
+        <div id="A2" data-ng-init="init()">
           <button ng-click="LogUser()">LOGIN</button>
           <p>Don't have an account? <a ui-sref="register">REGISTER!</a> <br />
           Forgot Password? Click <a ui-sref="forgot">HERE. </a></p>
