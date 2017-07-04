@@ -150,6 +150,8 @@ app.directive('customOnChange', function() {
 .controller('profilePageCtrl', ['$scope', '$state',
   function ($scope, $state){
   var user = firebase.auth().currentUser;
+
+  //DECLARING SOME VARIABLES
   if (user !== null){
     var id = user.uid;
     var ref = firebase.database().ref("users/" + id);
@@ -163,6 +165,7 @@ app.directive('customOnChange', function() {
     }
   });
 
+    //THIS ALLOW THE USER TO UPLOAD THEIR PROFILE PIC
     $scope.uploadFile = function(event){
       var file = event.target.files[0];
       storageRef.put(file).then(function(snapshot){
@@ -174,13 +177,8 @@ app.directive('customOnChange', function() {
       });
       });
     };
-    //------Example of downloading file from Firebase storage----------
-    // var avatarRef = storage.ref('Avatars/Aaron-Avatar.jpg');
-    // avatarRef.getDownloadURL().then(function(url)
-    // {
-    //   var profilePic = document.getElementById("profilePic");
-    //   profilePic.src = url;
-    // });
+
+    // DISPLAY THE USER INTEREST
     ref.once('value').then(function(snapshot){
       $scope.name = snapshot.val().name;
       $scope.age = snapshot.val().age;
@@ -243,6 +241,12 @@ app.directive('customOnChange', function() {
         var buddyRef = firebase.database().ref("users/" + buddyID);
         buddyRef.once('value', function(snapshot){
           $scope.BuddyName = snapshot.val().name;
+          var buddyProfilePic = document.getElementById("buddyProfilePic");
+          var storageRef = firebase.storage().ref("Avatars/"+buddyID+"/avatar.jpg");
+          storageRef.getDownloadURL().then(function(url)
+        {
+          buddyProfilePic.src=url;
+        });
           $state.go('match');
         });
     });
