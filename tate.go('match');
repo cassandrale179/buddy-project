@@ -1,0 +1,917 @@
+[33mcommit f8f9d5a05efd834ff68b6715fa32f3a48be882c4[m
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Tue Jul 4 10:38:50 2017 -0400
+
+    Display your buddy's profile pic
+
+[33mcommit c92b459afba0b6f0bce54b039a22870754ff2725[m
+Merge: 9c54547 cd799bd
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Tue Jul 4 10:19:11 2017 -0400
+
+    Merge pull request #50 from cassandrale179/Minh
+    
+    Successfully match to a person
+
+[33mcommit cd799bd6769f53919954914547311316dbfeb4cf[m
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Tue Jul 4 10:18:41 2017 -0400
+
+    Successfully match to a person
+
+[33mcommit 9c54547b0a75b485009b2524c2263cbbddecdaeb[m
+Merge: 5ff59d5 7a07071
+Author: Tri Le <michaelle7312@gmail.com>
+Date:   Tue Jul 4 08:44:14 2017 -0400
+
+    Merge pull request #49 from cassandrale179/avatar
+    
+    Finished uploading profile pic
+
+[33mcommit 7a07071a275d8e559240d720500a283097cb2d3a[m
+Author: lenguyentri1999 <michaelle7312@gmail.com>
+Date:   Tue Jul 4 08:43:27 2017 -0400
+
+    Finished uploading profile pic
+
+[33mcommit 5ff59d5b1773fd322087055059dbf99c12cbf8a9[m
+Merge: f1ed3fb 46895d5
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Tue Jul 4 08:06:51 2017 -0400
+
+    Merge pull request #48 from cassandrale179/Minh
+    
+    add in current user interest in match controller
+
+[33mcommit 46895d592bc1d2b8daf5467132640603677dd5ae[m
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Tue Jul 4 08:06:15 2017 -0400
+
+    Get current user interest
+
+[33mcommit f1ed3fb3a4b06e187a1920fde14df5dd91769f7a[m
+Merge: a0e661a c0620a4
+Author: Tri Le <michaelle7312@gmail.com>
+Date:   Tue Jul 4 07:44:37 2017 -0400
+
+    Merge pull request #47 from cassandrale179/redirectPage
+    
+    Finished redirecting page
+
+[33mcommit c0620a4654e67ed9916237d5436b2159b1c1103a[m
+Author: lenguyentri1999 <michaelle7312@gmail.com>
+Date:   Tue Jul 4 07:43:53 2017 -0400
+
+    Finished redirecting page
+
+[33mcommit 49c8b1264254ed1687b1d37e655777cb59980998[m
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Mon Jul 3 21:20:12 2017 -0400
+
+    fix interest bug
+
+[33mcommit a0e661a0839c29ae0a88c6a3895bb99185c62a73[m
+Merge: 8ac43ff a34baf5
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Mon Jul 3 20:58:40 2017 -0400
+
+    Merge pull request #46 from cassandrale179/Minh
+    
+    backbone of matching function
+
+[33mcommit a34baf57808021b01ecdf7eae8892d82df23bca2[m
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Mon Jul 3 20:54:33 2017 -0400
+
+    backbone of matching function
+
+[33mcommit 8ac43ff86bf32eff7d65df85c9733efafe0ad0f9[m
+Merge: c20bc0f 49e0b1c
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Mon Jul 3 19:46:00 2017 -0400
+
+    Merge pull request #45 from cassandrale179/Minh
+    
+    Just add some comment
+
+[33mcommit 49e0b1ce599644d2493bfe73413d4e747de2caaf[m
+Merge: 3c9de72 c20bc0f
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Mon Jul 3 19:02:12 2017 -0400
+
+    Merge branch 'master' of https://github.com/cassandrale179/buddy-project into Minh
+
+[33mcommit 3c9de72bc6458794c811a20f3e369a189b3901a9[m
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Mon Jul 3 18:54:47 2017 -0400
+
+    just some comment
+
+[33mcommit c20bc0f89627bb58ff6ad54ad3ffa253fa6142f2[m
+Merge: 04102fe 1034870
+Author: Tri Le <michaelle7312@gmail.com>
+Date:   Mon Jul 3 18:53:49 2017 -0400
+
+    Merge pull request #44 from cassandrale179/resetLocalStorage
+    
+    Reset local storage
+
+[33mcommit 10348700bcd67f0f171c9741f443c7f8cea30ab1[m
+Author: lenguyentri1999 <michaelle7312@gmail.com>
+Date:   Mon Jul 3 18:53:20 2017 -0400
+
+    Reset local storage
+
+[33mcommit 04102feaf9db56422d3ba837a79666066e3e1372[m
+Merge: 3974075 c06606f
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Mon Jul 3 16:11:18 2017 -0400
+
+    Merge pull request #43 from cassandrale179/Minh
+    
+    Restyle matching page
+
+[33mcommit c06606fd032fc713949098ca707c913c1692f1d1[m
+Merge: e99eb9c 3974075
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Mon Jul 3 15:57:01 2017 -0400
+
+    Merge branch 'master' of https://github.com/cassandrale179/buddy-project into Minh
+
+[33mcommit 397407505a979f27cdd8e57ee553cfcee3bc79f6[m
+Merge: c66952c e001219
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Mon Jul 3 15:55:23 2017 -0400
+
+    Merge pull request #42 from cassandrale179/userSession
+    
+    User session
+
+[33mcommit e001219d430e77b245fdc22f3a949ab1b79beea4[m
+Merge: c6243ef c66952c
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Mon Jul 3 15:55:05 2017 -0400
+
+    Merge branch 'master' into userSession
+
+[33mcommit c6243ef8323ad854922880c4a8ca2e56e2356a5d[m
+Author: lenguyentri1999 <michaelle7312@gmail.com>
+Date:   Mon Jul 3 15:52:16 2017 -0400
+
+    User session
+
+[33mcommit e99eb9c13f72b2ed3e4a67725e2b47ce823169ea[m
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Mon Jul 3 14:20:40 2017 -0400
+
+    Restyle match page
+
+[33mcommit c66952c3e89f56f7af748e32d25d91ea61f58fca[m
+Merge: cf35b9f ba33b4c
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Mon Jul 3 14:01:15 2017 -0400
+
+    Merge pull request #41 from cassandrale179/Minh
+    
+    Display interest on interest page
+
+[33mcommit ba33b4cbeeb4217b8434e086e7c0e7d4917ccc67[m
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Mon Jul 3 14:00:34 2017 -0400
+
+    fix some bug
+
+[33mcommit 12e3629497213f2159699c36aedf1f67bd78c573[m
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Mon Jul 3 13:27:18 2017 -0400
+
+    Lowercase and no spaces
+
+[33mcommit e7c09391760dba3d8f20888c937e0ce6f666e242[m
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Sun Jul 2 23:07:57 2017 -0400
+
+    Styling The Register Page
+
+[33mcommit cf35b9f18a8072155e590257f7d6a7bd6e0ceef2[m
+Merge: 4a12d86 8b56b71
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Sun Jul 2 17:53:50 2017 -0400
+
+    Merge pull request #40 from cassandrale179/Minh
+    
+    profile page rehab
+
+[33mcommit 8b56b717c82c5bf27727ae3dacb23e5013db984a[m
+Merge: 0a7b5c8 4a12d86
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Sun Jul 2 17:53:41 2017 -0400
+
+    Merge branch 'master' into Minh
+
+[33mcommit 0a7b5c892a98c867c355ec8956d7bd93afe5b5c2[m
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Sun Jul 2 17:49:24 2017 -0400
+
+    i think i did this wrong :(
+
+[33mcommit d77506b848e85c873fab297d999017264f69bb3e[m
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Sun Jul 2 17:27:33 2017 -0400
+
+    Finish restyling profile page
+
+[33mcommit 4a12d8654ad4c70c2480c0554d5dd1e4a1a6836d[m
+Merge: dd663b6 26413fa
+Author: Tri Le <michaelle7312@gmail.com>
+Date:   Sun Jul 2 16:46:05 2017 -0400
+
+    Merge pull request #39 from cassandrale179/profilePage
+    
+    Check whether interest already exists in database
+
+[33mcommit 26413fa800155dd13bc9ba6890e11240e44688bd[m
+Author: lenguyentri1999 <michaelle7312@gmail.com>
+Date:   Sun Jul 2 16:36:40 2017 -0400
+
+    Check whether interest already exists in database
+
+[33mcommit dd663b69dadf82a2eade7c4309ef5cb537bcf4f0[m
+Merge: 0563045 27a215a
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Sun Jul 2 16:04:03 2017 -0400
+
+    Merge pull request #38 from cassandrale179/Minh
+    
+    CSS redone
+
+[33mcommit 27a215a5f29b44378cd20579b7bca6319560c3cf[m
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Sun Jul 2 16:03:32 2017 -0400
+
+    Latest version
+
+[33mcommit 30d398cf71f422211458d507ba3e497bc75357d8[m
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Sun Jul 2 15:32:20 2017 -0400
+
+    Concatenate everything into user's string
+
+[33mcommit 0563045105da386272d81e88d4a23a63af5c98d4[m
+Merge: 7216136 db4a46b
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Sun Jul 2 14:33:39 2017 -0400
+
+    Merge pull request #36 from cassandrale179/profilePage
+    
+    Displayed interest on profile page
+
+[33mcommit 721613682db00c811f72c9a0e7908c89d5f0762e[m
+Merge: 645c432 60d06d6
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Sun Jul 2 14:33:30 2017 -0400
+
+    Merge pull request #37 from cassandrale179/Minh
+    
+    Read and write to interest database dynamically
+
+[33mcommit 60d06d6b51691a2bdb1aa14de47f265b2f4f2225[m
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Sun Jul 2 14:26:29 2017 -0400
+
+    Successfully added to interest database
+
+[33mcommit db4a46b6e18ffae1206990c8d2ee64919cd7d1e1[m
+Author: lenguyentri1999 <michaelle7312@gmail.com>
+Date:   Sun Jul 2 14:09:36 2017 -0400
+
+    Displayed interest on profile page
+
+[33mcommit 711a5f257fdf585b76390fb6a1687f985a3ab01d[m
+Merge: 5fd0436 645c432
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Sun Jul 2 11:51:07 2017 -0400
+
+    Merge remote-tracking branch 'refs/remotes/origin/master' into Minh
+
+[33mcommit 645c4323343051c918166d5abba9f2164275c969[m
+Merge: 002a6e5 3162f7e
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Sun Jul 2 11:49:51 2017 -0400
+
+    Merge pull request #34 from cassandrale179/profile
+    
+    Add regex string to be matched
+
+[33mcommit 002a6e55032f3f5c7aee4d1cbcf977fdb938ff32[m
+Merge: cd9d250 5fd0436
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Sun Jul 2 11:49:19 2017 -0400
+
+    Merge pull request #35 from cassandrale179/Minh
+    
+    Remove unecessary CSS code
+
+[33mcommit 3162f7e4da2d38c060f145bf37b763d71e3c4221[m
+Author: lenguyentri1999 <michaelle7312@gmail.com>
+Date:   Sun Jul 2 11:48:01 2017 -0400
+
+    Add regex string to be matched
+
+[33mcommit 5fd0436e08755a9c0cc2adb84a6a16b05fb468d1[m
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Sun Jul 2 11:30:36 2017 -0400
+
+    Remove unecessary code
+
+[33mcommit 116f9ddb364cec988eb55a6fff76455fe17dd120[m
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Sun Jul 2 11:07:01 2017 -0400
+
+    Fix settings page styling
+
+[33mcommit e4206a57fdbd15717f009c7c537ac00c4b4f7b6c[m
+Merge: f1826d4 cd9d250
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Sun Jul 2 10:17:12 2017 -0400
+
+    Merge remote-tracking branch 'refs/remotes/origin/master' into Minh
+
+[33mcommit cd9d2508100fb20da5d27a9860a24bb094c84de0[m
+Merge: c848dd3 fa3d056
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Sun Jul 2 10:13:02 2017 -0400
+
+    Merge pull request #32 from cassandrale179/changePassword
+    
+    Change password
+
+[33mcommit c848dd31ed53774f84da98dbd37fe11c3a1c574f[m
+Merge: 97ffe63 f1826d4
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Sun Jul 2 10:12:46 2017 -0400
+
+    Merge pull request #33 from cassandrale179/Minh
+    
+    sending data to firebase dynamically
+
+[33mcommit f1826d457d4d1924e5d1dec198eb812c96f58f65[m
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Sun Jul 2 10:09:26 2017 -0400
+
+    succesfully send multiple data to firebase
+
+[33mcommit 6b24a23b1c410b186c2de2b9aeb316fc8941b822[m
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Sun Jul 2 08:48:19 2017 -0400
+
+    Remove interest
+
+[33mcommit 97ffe63678d025cc76e15f9717adecdd9cfcc49c[m
+Merge: de98164 39f105e
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Sat Jul 1 19:24:36 2017 -0400
+
+    Merge pull request #31 from cassandrale179/Minh
+    
+    Update final CSS for testing
+
+[33mcommit 39f105e176e91c2cf3df84ee30fbbb4d311ab110[m
+Merge: a4d19a0 de98164
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Sat Jul 1 19:24:30 2017 -0400
+
+    Merge branch 'master' into Minh
+
+[33mcommit a4d19a046edcec6dc65075d91157f5a6f9f52477[m
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Sat Jul 1 19:23:31 2017 -0400
+
+    Update final CSS for testing
+
+[33mcommit fa3d056803530785189c5cafa496a699de3a5f4d[m
+Author: lenguyentri1999 <michaelle7312@gmail.com>
+Date:   Sat Jul 1 19:20:43 2017 -0400
+
+    Change password
+
+[33mcommit de98164e7117ecaafb7517a198264bb8df1ab1d0[m
+Merge: 50758c1 b91e661
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Sat Jul 1 18:01:59 2017 -0400
+
+    Merge pull request #28 from cassandrale179/mobileApp
+    
+    Mobile app
+
+[33mcommit 50758c1805090af5e7bdf544594f601f6913f0f0[m
+Merge: 31726b4 92ed004
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Sat Jul 1 18:01:48 2017 -0400
+
+    Merge pull request #30 from cassandrale179/Minh
+    
+    Clean CSS code
+
+[33mcommit 92ed00471fb0bbddf74886c8450c1fb6dde78c51[m
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Sat Jul 1 17:38:20 2017 -0400
+
+    Clean CSS code
+
+[33mcommit 31726b464054bb1b65dd9ac21c87004c209317fb[m
+Merge: 2bf25a0 368c195
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Sat Jul 1 15:57:38 2017 -0400
+
+    Merge pull request #29 from cassandrale179/Minh
+    
+    Update stylesheet for mobile view
+
+[33mcommit 368c19585c7c5b71d65fb6c239b3c127690ce026[m
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Sat Jul 1 15:55:54 2017 -0400
+
+    Update stylesheet
+
+[33mcommit b91e661edca567bd2f5ccde143bc3cc19541a204[m
+Author: lenguyentri1999 <michaelle7312@gmail.com>
+Date:   Sat Jul 1 09:48:16 2017 -0400
+
+    Mobile App
+
+[33mcommit 91bc05973be2c3f4716baa9c6c9fa86f9724bbff[m
+Merge: f1f0e31 2bf25a0
+Author: lenguyentri1999 <michaelle7312@gmail.com>
+Date:   Sat Jul 1 09:45:27 2017 -0400
+
+    Merge remote-tracking branch 'refs/remotes/origin/master' into mobileApp
+
+[33mcommit e65df1cb89b94031833ade395089233c8f4592ad[m
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Sat Jul 1 08:07:03 2017 -0400
+
+    backend for dynamic list
+
+[33mcommit 78ea534252e7ac848b2ec58323b2359e9473cea9[m
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Fri Jun 30 23:49:05 2017 -0400
+
+    finally know what ng-repeat is
+
+[33mcommit 73b4a64e2763b6b5439619fd4c8645694cffd49e[m
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Thu Jun 29 22:45:09 2017 -0400
+
+    concept deisgn folder
+
+[33mcommit 2bf25a0fbacbb9c12586f16eba4516bb3b8a717a[m
+Merge: 6055492 f1f0e31
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Thu Jun 29 22:22:00 2017 -0400
+
+    Merge pull request #26 from cassandrale179/emailVerification
+    
+    Email verification
+
+[33mcommit 60554928d856946bf1ee7446c36ed0f4224b906d[m
+Merge: 569bba7 1e76869
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Thu Jun 29 22:21:49 2017 -0400
+
+    Merge pull request #27 from cassandrale179/Minh
+    
+    Interest Controller
+
+[33mcommit 1e76869f8b6f49fb0c075dba0b976845148b7b99[m
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Thu Jun 29 22:21:06 2017 -0400
+
+    Finish up interest controller
+
+[33mcommit f1f0e311da7753ab769e7853cb42f13c00f230c6[m
+Author: lenguyentri1999 <michaelle7312@gmail.com>
+Date:   Thu Jun 29 20:04:20 2017 -0400
+
+    Email verification
+
+[33mcommit 1ff8565d8a8d55593cbfb7b012314916fb0d1bd7[m
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Thu Jun 29 19:55:05 2017 -0400
+
+    reading from database
+
+[33mcommit 569bba7a88f46f545d243df7b5c9c39b05c5c192[m
+Merge: 6616493 ba9323e
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Thu Jun 29 14:18:27 2017 -0400
+
+    Merge pull request #25 from cassandrale179/Minh
+    
+    Finish interest page for 5 fixed interest
+
+[33mcommit ba9323e7415c35862c0b55489abb095662fbad61[m
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Thu Jun 29 14:06:12 2017 -0400
+
+    Finish interest page for 5 fixed interest
+
+[33mcommit 6616493f99d9259691ba08927096a26babc10c07[m
+Merge: bd1232c c35c7c2
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Wed Jun 28 23:36:29 2017 -0400
+
+    Merge pull request #24 from cassandrale179/Minh
+    
+    Rewrie reigster page
+
+[33mcommit c35c7c2965920a6f3a86ad081745c96536ade09c[m
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Wed Jun 28 23:36:00 2017 -0400
+
+    Rewrite register page!
+
+[33mcommit 15eb612f22c248383358e22e6bd27c7ecdbbbdc9[m
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Wed Jun 28 22:52:30 2017 -0400
+
+    unfuck the messy controller.js
+
+[33mcommit f2b4b46bb90f681df95b1a3285ef96861cd5c354[m
+Merge: 7e97dd2 a85654b
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Wed Jun 28 22:30:03 2017 -0400
+
+    Merge remote-tracking branch 'origin/Minh' into Minh
+    
+    # Conflicts:
+    #       public/js/controller.js
+
+[33mcommit 7e97dd254271c4be2300eaef8f33f05da19148b4[m
+Merge: 0aae351 bb2a79c
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Wed Jun 28 22:27:48 2017 -0400
+
+    Username test
+
+[33mcommit a85654b34c0af33685da2cb8a3280fb0be500200[m
+Merge: 69adf5f bd1232c
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Wed Jun 28 22:26:20 2017 -0400
+
+    Merge pull request #23 from cassandrale179/master
+    
+    Merge pull request #22 from cassandrale179/Minh
+
+[33mcommit bd1232c18393fad09638e77f75aa48b4d5c42595[m
+Merge: bb2a79c 69adf5f
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Wed Jun 28 22:22:12 2017 -0400
+
+    Merge pull request #22 from cassandrale179/Minh
+    
+    Add in match page
+
+[33mcommit 69adf5face348d4fe0d44b1de47a959b06b38bbe[m
+Merge: 0aae351 bb2a79c
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Wed Jun 28 22:22:02 2017 -0400
+
+    Merge branch 'master' into Minh
+
+[33mcommit 0aae351cbdb4d01f0a46135e2b634114daad3263[m
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Wed Jun 28 22:15:36 2017 -0400
+
+    Add in match page
+
+[33mcommit bb2a79c632d4b276c54da71ca3acd9cd7db20491[m
+Merge: 808f5c6 ce57f10
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Wed Jun 28 19:58:24 2017 -0400
+
+    Merge pull request #21 from cassandrale179/serviceExperiment
+    
+    Using factory to share data across controllers
+
+[33mcommit ce57f100181d026ddc6a297d6c9dbedbc186a2d4[m
+Author: lenguyentri1999 <michaelle7312@gmail.com>
+Date:   Wed Jun 28 19:48:13 2017 -0400
+
+    Using factory to share data across controllers
+
+[33mcommit 808f5c635d3dd9670ff2778a8c1c585d178df33e[m
+Merge: a3b21b6 7b30086
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Wed Jun 28 11:04:14 2017 -0400
+
+    Merge pull request #20 from cassandrale179/log-out-feature
+    
+    Log out feature
+
+[33mcommit 7b30086fa69a3080eefe912f4e3d56896ea2ed92[m
+Author: lenguyentri1999 <michaelle7312@gmail.com>
+Date:   Wed Jun 28 09:14:20 2017 -0400
+
+    Log out feature
+
+[33mcommit bd8075f70817cd2583696d74076ca7ca7d0be344[m
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Sun Jun 25 23:00:13 2017 -0400
+
+    Finish up forgot password page
+
+[33mcommit bb4374fbed44c494b932ad06308db2509314c8fa[m
+Merge: 1638a29 a3b21b6
+Author: lenguyentri1999 <michaelle7312@gmail.com>
+Date:   Sun Jun 25 20:45:35 2017 -0400
+
+    Merge remote-tracking branch 'refs/remotes/origin/master' into log-out-feature
+
+[33mcommit a3b21b6054ff9f7e5d349ef8e943655b5587b065[m
+Merge: cf2dabd 56d113b
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Sun Jun 25 20:41:51 2017 -0400
+
+    Merge pull request #19 from cassandrale179/Minh
+    
+    Fix some bugs
+
+[33mcommit 56d113ba8c29e2b1d3c66de451992064d5088455[m
+Merge: 39b9dd7 cf2dabd
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Sun Jun 25 20:39:05 2017 -0400
+
+    Merge remote-tracking branch 'refs/remotes/origin/master' into Minh
+
+[33mcommit 39b9dd7cc5d1fcd2411a5f0cc056fb91eaa8c275[m
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Sun Jun 25 20:35:26 2017 -0400
+
+    Fix some small bugs
+
+[33mcommit cf2dabd7cc188797cb618487c990097b3189aebd[m
+Merge: 1638a29 1554bf7
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Sun Jun 25 20:27:50 2017 -0400
+
+    Merge pull request #18 from cassandrale179/Minh
+    
+    Add in settings page and restyle profile page
+
+[33mcommit 1554bf7f360741e056d4857ceaaa3685f550b89b[m
+Merge: 2b763db 1638a29
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Sun Jun 25 20:27:42 2017 -0400
+
+    Merge branch 'master' into Minh
+
+[33mcommit 2b763db8127866dbf2f2cfda7d41a331485b588a[m
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Sun Jun 25 20:25:12 2017 -0400
+
+    Add in settings page and restyle profile page
+
+[33mcommit 1638a297f9f2feb3e0eb8289ec486151967024e0[m
+Merge: e0cef1a 126bada
+Author: Tri Le <michaelle7312@gmail.com>
+Date:   Sun Jun 25 14:55:17 2017 -0400
+
+    Merge pull request #17 from cassandrale179/Tri
+    
+    Forgot password
+
+[33mcommit 126badada1568766bbd575aac48f122009a0c8dc[m
+Author: lenguyentri1999 <michaelle7312@gmail.com>
+Date:   Sun Jun 25 14:54:33 2017 -0400
+
+    Finished forgot password
+
+[33mcommit df1c0be0674b2dfbcf10c63e1b06857985ca9c49[m
+Author: lenguyentri1999 <michaelle7312@gmail.com>
+Date:   Sun Jun 25 14:35:01 2017 -0400
+
+    Forgot password
+
+[33mcommit e0cef1a4dc3dc4c0368e3c61c59c3ba853d18da9[m
+Merge: 007edfd 9386902
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Sun Jun 25 13:30:27 2017 -0400
+
+    Merge pull request #16 from cassandrale179/Minh
+    
+    Get key of childref
+
+[33mcommit 9386902d0281eb81e41e41846aa09c8d179226d9[m
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Sun Jun 25 13:29:44 2017 -0400
+
+    Get key of childref
+
+[33mcommit 007edfd5a145bb674e521893e179a3335afc249f[m
+Merge: d7e2704 c5981e2
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Sun Jun 25 11:44:57 2017 -0400
+
+    Merge pull request #15 from cassandrale179/Minh
+    
+    Minh
+
+[33mcommit c5981e245f4fb324dc51bfa4fa7dc5319ea9ded3[m
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Sun Jun 25 11:44:28 2017 -0400
+
+    Add 5 interests to database
+
+[33mcommit 3ae27c739f75633fc7c96c83bf9c5f4919106492[m
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Sun Jun 25 00:17:27 2017 -0400
+
+    Send email verification to user
+
+[33mcommit d7e27041c4567d5bd8505ff7ad8ec7996dd41a2d[m
+Merge: b45353a 8f2d54c
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Sun Jun 25 00:07:51 2017 -0400
+
+    Merge pull request #13 from cassandrale179/Minh
+    
+    Darn it, error catching is after the then function!!!
+
+[33mcommit 8f2d54ca0bf42293b79a0badec53cac54693079d[m
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Sun Jun 25 00:04:16 2017 -0400
+
+    Darn it, error catching is after the then function!!!
+
+[33mcommit b45353aac27e68579c4156b2c3e3998cba730dc1[m
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Sat Jun 24 18:48:35 2017 -0400
+
+    Update README.md
+
+[33mcommit eae81f0b0c51a421bb037592b5291636501cfe68[m
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Sat Jun 24 18:48:19 2017 -0400
+
+    Update README.md
+
+[33mcommit 6efbe29fe302d7cb23c276006b0589e82a917d75[m
+Merge: 9044507 28d015a
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Sat Jun 24 18:20:41 2017 -0400
+
+    Merge pull request #10 from cassandrale179/Minh
+    
+    Update data within firebase
+
+[33mcommit 28d015a8b5151212511d00b94a9686dd9220b03b[m
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Sat Jun 24 18:19:44 2017 -0400
+
+    Update data within firebase
+
+[33mcommit 904450705493b563b7ae0ab5cb82fec780eb84f0[m
+Merge: e6572b8 abfe864
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Fri Jun 23 23:35:27 2017 -0400
+
+    Merge pull request #8 from cassandrale179/Minh
+    
+    Catch firebase error
+
+[33mcommit abfe864afcdd839e299493103fd4c1ccd9278f9c[m
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Fri Jun 23 23:34:05 2017 -0400
+
+    Catch firebase error
+    
+    Display firebase error to user
+
+[33mcommit 24d7d905df56025c2aef44b325dd528c6cf89ec7[m
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Fri Jun 23 20:57:11 2017 -0400
+
+    First commit in my brand new branch!
+
+[33mcommit e6572b81a5b7fba4e94006e3c2fa386b082e93d5[m
+Merge: c2a4ae7 bc656dd
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Fri Jun 23 20:29:50 2017 -0400
+
+    Merge pull request #7 from lenguyentri1999/master
+    
+    Writing to realtime database
+
+[33mcommit c2a4ae73a0de1e5f6abd7d5d30fdb69ecbdbf33a[m
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Fri Jun 23 20:28:47 2017 -0400
+
+    Add in forgot password page
+
+[33mcommit bc656ddcc8b4e5997e4d9ef222259eebfe057783[m
+Author: lenguyentri1999 <michaelle7312@gmail.com>
+Date:   Fri Jun 23 20:27:58 2017 -0400
+
+    Writing to realtime database
+
+[33mcommit 2a4a12326c1095fe236b813747f1ab74001cc2d3[m
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Fri Jun 23 19:55:20 2017 -0400
+
+    Update stylesheet
+
+[33mcommit f7b5ade778db1125d1ee3708907decd19ce0380c[m
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Fri Jun 23 19:54:07 2017 -0400
+
+    Remove syntax error
+
+[33mcommit f3b77acc8597693fbcca36aac06b32f396b2d5ed[m
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Fri Jun 23 19:52:48 2017 -0400
+
+    Clean up folder
+
+[33mcommit 241d1f0d28aad54d0e4dd2bf93184277785bf98f[m
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Fri Jun 23 19:51:08 2017 -0400
+
+    Put back login page
+
+[33mcommit ddb5f2e39ad4a0b148d4b87813230ece3dd1d064[m
+Merge: 6ddb4a1 188e9b2
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Fri Jun 23 19:48:19 2017 -0400
+
+    Temporary remove login page due to merge conflict
+
+[33mcommit 6ddb4a1904474648ceb8a82c39ac5b43fd10010c[m
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Fri Jun 23 19:45:39 2017 -0400
+
+    Finish styling login page
+
+[33mcommit d95d21331fd7d58ba1b845eab5dc02405bc04792[m
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Fri Jun 23 15:29:50 2017 -0400
+
+    Nothing much. Just commit to pull
+
+[33mcommit 188e9b2f046853e572a8235fe48727e0002c6b90[m
+Merge: 88f362f d05df02
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Fri Jun 23 14:52:00 2017 -0400
+
+    Merge pull request #4 from lenguyentri1999/master
+    
+    Finished register page
+
+[33mcommit d05df02bd9e0a30f924b24cbfac0b0b085472560[m
+Merge: 960f6ef 88f362f
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Fri Jun 23 14:51:36 2017 -0400
+
+    Merge branch 'master' into master
+
+[33mcommit 960f6ef2484260f24cd847f82bc9016e26a2fa63[m
+Author: lenguyentri1999 <michaelle7312@gmail.com>
+Date:   Fri Jun 23 14:39:28 2017 -0400
+
+    Finished register page
+
+[33mcommit 88f362fb41d1b8fc4a4b1d9029cd0ad366c4014e[m
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Fri Jun 23 14:32:02 2017 -0400
+
+    not sure what happen but my old change was revert
+
+[33mcommit d96922a5701cdf9e41a0c1d7e9cfd2a8c3350750[m
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Fri Jun 23 14:26:55 2017 -0400
+
+    Change name to profile page
+
+[33mcommit f0293f2e93e1e8cdda07b0ccbc435e6d6ec56fe1[m
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Fri Jun 23 14:02:23 2017 -0400
+
+    Add files via upload
+
+[33mcommit bf09cb2f43e21a775047dc2f747749560a76f89b[m
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Fri Jun 23 13:42:30 2017 -0400
+
+    Add in skeleton for login
+
+[33mcommit 020aad9961ed5650fa8c4ef1199a2c5dd38150c8[m
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Fri Jun 23 13:40:50 2017 -0400
+
+    Add files via upload
+
+[33mcommit 75a1dd5e7849c2a88122f686cfd0349122cd395d[m
+Author: Minh Le <lenguyetminh1998@gmail.com>
+Date:   Fri Jun 23 13:40:16 2017 -0400
+
+    Initial commit
