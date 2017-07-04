@@ -246,8 +246,8 @@ li{
 #C1 img{
   display: block;
   margin: auto;
-  border-radius: 50px;
-  width: 30%;
+  border-radius: 20px;
+  max-width: 30%;
   margin-top: 25%;
 }
 
