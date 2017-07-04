@@ -147,7 +147,6 @@ app.directive('customOnChange', function() {
 }])
 
 //--------------------  CONTROLLER FOR THE PROFILE PAGE ---------------------------
-
 .controller('profilePageCtrl', ['$scope', '$state',
   function ($scope, $state){
   var user = firebase.auth().currentUser;
@@ -197,39 +196,57 @@ app.directive('customOnChange', function() {
 //--------------------  CONTROLLER FOR THE MATCH PAGE ---------------------------
 .controller('matchPageCtrl', ['$scope', '$state',
   function ($scope, $state){
+    $scope.MatchMe = function(){
 
-    //CREATE SOME VARIABLES AND GET MY INTEREST
-    var currentUser = firebase.auth().currentUser;
-    var refUser = firebase.database().ref("users");
-    var refCurrentUserId = firebase.database().ref("users/" + currentUser.uid);
-    refCurrentUserId.once('value').then(function(snapshot){
-      var interestStr = snapshot.val().interest;
-      $scope.myInterest = interestStr.split(",");
-      $scope.myInterest.splice(-1);
-    });
+      //CREATE SOME VARIABLES AND GET MY INTEREST
+      var currentUser = firebase.auth().currentUser;
+      var refUser = firebase.database().ref("users");
+      var refCurrentUserId = firebase.database().ref("users/" + currentUser.uid);
+      refCurrentUserId.once('value').then(function(snapshot){
+        var interestStr = snapshot.val().interest;
+        $scope.myInterest = interestStr.split(",");
+        $scope.myInterest.splice(-1);
+      });
 
-
-    //GET EVERYONE'S INTEREST
-    refUser.once('value', function(snapshot){
-    console.log("This is the current user's interest: " + $scope.myInterest);
-    var table = snapshot.val();
-      for (var user in table)
+      //GET EVERYONE'S INTEREST, AND IGNORE MY INTEREST
+      refUser.once('value', function(snapshot)
       {
-        var interest = table[user].interest;
-        var otherInterest = interest.split(",");
-        otherInterest.splice(-1);
-        console.log(user + ": " + interest);
+      var UserList = [/*[uid, count]*/];
+      console.log("This is the current user's interest: " + $scope.myInterest);
+      var table = snapshot.val();
+        for (var user in table)
+        {
+          if (user == currentUser.uid) delete table.user;
+          else{
+            var interest = table[user].interest;
+            var otherInterest = interest.split(",");
+            otherInterest.splice(-1);
 
-        //FILTER FUNCTION TO RETURN DUPLICATE INDEX
-        var count = 0;
-        for (var i = 0; i < $scope.myInterest.length; i++){
-          for (var j = 0; j < otherInterest.length; j++){
-            if ($scope.myInterest[i] == otherInterest[j]) count++;
+            //FILTER FUNCTION TO COUNT COMMON INTEREST
+            var count = 0;
+            for (var i = 0; i < $scope.myInterest.length; i++){
+              for (var j = 0; j < otherInterest.length; j++){
+                if ($scope.myInterest[i] == otherInterest[j]) count++;
+              }
+            }
+            UserList.push([user, count]);
           }
         }
-        console.log('User count: ' + count);
-      }
+
+        //SORTING THE USER LIST TO FIND PERSON WITH MOST COMMON INTEREST
+        UserList.sort(function(a,b){
+          return b[1] - a[1];
+        });
+
+        //DISPLAY THE MATCHED USER ONTO THE SCREEN
+        var buddyID = UserList[0][0];
+        var buddyRef = firebase.database().ref("users/" + buddyID);
+        buddyRef.once('value', function(snapshot){
+          $scope.BuddyName = snapshot.val().name;
+          $state.go('match');
+        });
     });
+  };
 }])
 
 
