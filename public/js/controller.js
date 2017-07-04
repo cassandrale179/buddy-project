@@ -17,14 +17,13 @@ angular.module('app.controllers',['ngStorage'])
         var info = {
           name: $scope.txtName,
           email: $scope.txtEmail,
-          age: $scope.txtAge
+          age: $scope.txtAge,
+          interest: ""
         };
         ref.child(user.uid).set(info);
-        user.sendEmailVerification().then(function() { //Send email verification
+        user.sendEmailVerification().then(function() {
           console.log(user);
-            // Email sent.
           }, function(error) {
-            // An error happened.
           });
 
         $state.go('interest');
@@ -71,6 +70,7 @@ angular.module('app.controllers',['ngStorage'])
         var saveUserInfo = function() {
           $localStorage.email = $scope.txtEmail;
           $localStorage.password = $scope.txtPassword;
+
         };
 
           //IF LOCAL STORAGE ALREADY EXIST, THEN LOGIN AUTOMATICALLY
@@ -160,13 +160,21 @@ angular.module('app.controllers',['ngStorage'])
 .controller('matchPageCtrl', ['$scope', '$state',
   function ($scope, $state){
 
-    //COMPARE AGAINST THE MAIN USER'S INTEREST
-    var myInterest = ["doodle", "gameofthrones"];
-
-    //GET OTHER USER'S INTEREST
+    //CREATE SOME VARIABLES AND GET MY INTEREST
+    var currentUser = firebase.auth().currentUser;
     var refUser = firebase.database().ref("users");
+    var refCurrentUserId = firebase.database().ref("users/" + currentUser.uid);
+    refCurrentUserId.once('value').then(function(snapshot){
+      var interestStr = snapshot.val().interest;
+      $scope.myInterest = interestStr.split(",");
+      $scope.myInterest.splice(-1);
+    });
+
+
+    //GET EVERYONE'S INTEREST
     refUser.once('value', function(snapshot){
-      var table = snapshot.val();
+    console.log("This is the current user's interest: " + $scope.myInterest);
+    var table = snapshot.val();
       for (var user in table)
       {
         var interest = table[user].interest;
@@ -176,9 +184,9 @@ angular.module('app.controllers',['ngStorage'])
 
         //FILTER FUNCTION TO RETURN DUPLICATE INDEX
         var count = 0;
-        for (var i = 0; i < myInterest.length; i++){
+        for (var i = 0; i < $scope.myInterest.length; i++){
           for (var j = 0; j < otherInterest.length; j++){
-            if (myInterest[i] == otherInterest[j]) count++;
+            if ($scope.myInterest[i] == otherInterest[j]) count++;
           }
         }
         console.log('User count: ' + count);
@@ -198,10 +206,14 @@ angular.module('app.controllers',['ngStorage'])
     var refInterest = firebase.database().ref("interest");
     $scope.errorMessage = "";
 
+    //GET THE CURRENT USER INTEREST
     refUserId.once('value', function(snapshot){
       var interestStr = snapshot.val().interest;
-      $scope.interestArr = interestStr.split(",");
-      $scope.interestArr.splice(-1);
+      if (interestStr === null) $scope.interestArr = {};
+      else{
+        $scope.interestArr = interestStr.split(",");
+        $scope.interestArr.splice(-1);
+      }
     });
 
     //COUNTING THE NUMBER OF CHILD IN DATABASE
@@ -233,7 +245,7 @@ angular.module('app.controllers',['ngStorage'])
 
         //WHEN USER REMOVES AN INTEREST
         $scope.Remove = function(x){
-           $scope.interestArr.splice(x, 1);
+          $scope.interestArr.splice(x, 1);
           console.log('Total interests: ' + count);
         };
 
