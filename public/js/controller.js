@@ -1,5 +1,15 @@
 
-angular.module('app.controllers',['ngStorage'])
+var app = angular.module('app.controllers',['ngStorage']);
+//Handle file input
+app.directive('customOnChange', function() {
+  return {
+    restrict: 'A',
+    link: function (scope, element, attrs) {
+      var onChangeHandler = scope.$eval(attrs.customOnChange);
+      element.bind('change', onChangeHandler);
+    }
+  };
+})
 
 //--------------------  CONTROLLER FOR THE REGISTER PAGE --------------------
 .controller('registerPageCtrl', ['$scope', '$state',
@@ -144,6 +154,34 @@ angular.module('app.controllers',['ngStorage'])
   if (user !== null){
     var id = user.uid;
     var ref = firebase.database().ref("users/" + id);
+    var storageRef = firebase.storage().ref("Avatars/"+id+"/avatar.jpg");
+    var profilePic = document.getElementById("profilePic");
+    storageRef.getDownloadURL().then(function(url)
+  {
+    if(url)
+    {
+      profilePic.src=url;
+    }
+  });
+
+    $scope.uploadFile = function(event){
+      var file = event.target.files[0];
+      storageRef.put(file).then(function(snapshot){
+        console.log("File uploaded!");
+
+        storageRef.getDownloadURL().then(function(url)
+      {
+        profilePic.src = url;
+      });
+      });
+    };
+    //------Example of downloading file from Firebase storage----------
+    // var avatarRef = storage.ref('Avatars/Aaron-Avatar.jpg');
+    // avatarRef.getDownloadURL().then(function(url)
+    // {
+    //   var profilePic = document.getElementById("profilePic");
+    //   profilePic.src = url;
+    // });
     ref.once('value').then(function(snapshot){
       $scope.name = snapshot.val().name;
       $scope.age = snapshot.val().age;
