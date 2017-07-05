@@ -27,14 +27,13 @@ app.directive('customOnChange', function() {
         var info = {
           name: $scope.txtName,
           email: $scope.txtEmail,
-          age: $scope.txtAge
+          age: $scope.txtAge,
+          interest: ""
         };
         ref.child(user.uid).set(info);
-        user.sendEmailVerification().then(function() { //Send email verification
+        user.sendEmailVerification().then(function() {
           console.log(user);
-            // Email sent.
           }, function(error) {
-            // An error happened.
           });
 
         $state.go('interest');
@@ -62,6 +61,18 @@ app.directive('customOnChange', function() {
 //------------------------------  CONTROLLER FOR THE LOGIN PAGE --------------------
 .controller('loginPageCtrl', ['$scope', '$state', '$localStorage', '$sessionStorage',
     function($scope, $state, $localStorage, $sessionStorage){
+      //Redirect page if user already logged in
+      $scope.init = function() {
+        //IF LOCAL STORAGE ALREADY EXIST, THEN LOGIN AUTOMATICALLY
+        if ($localStorage.email && $localStorage.password)
+        {
+          firebase.auth().signInWithEmailAndPassword($localStorage.email, $localStorage.password);
+          // Debug
+          // console.log("Local storage email: "+ $localStorage.email);
+          // console.log("local Storage password: " + $localStorage.password);
+          $state.go('profile');
+        }
+      };
 
       //LOGGING USER IN
       $scope.LogUser = function() {
@@ -69,6 +80,7 @@ app.directive('customOnChange', function() {
         var saveUserInfo = function() {
           $localStorage.email = $scope.txtEmail;
           $localStorage.password = $scope.txtPassword;
+
         };
 
           //IF LOCAL STORAGE ALREADY EXIST, THEN LOGIN AUTOMATICALLY
@@ -135,10 +147,11 @@ app.directive('customOnChange', function() {
 }])
 
 //--------------------  CONTROLLER FOR THE PROFILE PAGE ---------------------------
-
 .controller('profilePageCtrl', ['$scope', '$state',
   function ($scope, $state){
   var user = firebase.auth().currentUser;
+
+  //DECLARING SOME VARIABLES
   if (user !== null){
     var id = user.uid;
     var ref = firebase.database().ref("users/" + id);
@@ -152,6 +165,7 @@ app.directive('customOnChange', function() {
     }
   });
 
+    //THIS ALLOW THE USER TO UPLOAD THEIR PROFILE PIC
     $scope.uploadFile = function(event){
       var file = event.target.files[0];
       storageRef.put(file).then(function(snapshot){
@@ -163,13 +177,8 @@ app.directive('customOnChange', function() {
       });
       });
     };
-    //------Example of downloading file from Firebase storage----------
-    // var avatarRef = storage.ref('Avatars/Aaron-Avatar.jpg');
-    // avatarRef.getDownloadURL().then(function(url)
-    // {
-    //   var profilePic = document.getElementById("profilePic");
-    //   profilePic.src = url;
-    // });
+
+    // DISPLAY THE USER INTEREST
     ref.once('value').then(function(snapshot){
       $scope.name = snapshot.val().name;
       $scope.age = snapshot.val().age;
@@ -185,31 +194,63 @@ app.directive('customOnChange', function() {
 //--------------------  CONTROLLER FOR THE MATCH PAGE ---------------------------
 .controller('matchPageCtrl', ['$scope', '$state',
   function ($scope, $state){
+    $scope.MatchMe = function(){
 
-    //COMPARE AGAINST THE MAIN USER'S INTEREST
-    var myInterest = ["doodle", "gameofthrones"];
+      //CREATE SOME VARIABLES AND GET MY INTEREST
+      var currentUser = firebase.auth().currentUser;
+      var refUser = firebase.database().ref("users");
+      var refCurrentUserId = firebase.database().ref("users/" + currentUser.uid);
+      refCurrentUserId.once('value').then(function(snapshot){
+        var interestStr = snapshot.val().interest;
+        $scope.myInterest = interestStr.split(",");
+        $scope.myInterest.splice(-1);
+      });
 
-    //GET OTHER USER'S INTEREST
-    var refUser = firebase.database().ref("users");
-    refUser.once('value', function(snapshot){
-      var table = snapshot.val();
-      for (var user in table)
+      //GET EVERYONE'S INTEREST, AND IGNORE MY INTEREST
+      refUser.once('value', function(snapshot)
       {
-        var interest = table[user].interest;
-        var otherInterest = interest.split(",");
-        otherInterest.splice(-1);
-        console.log(user + ": " + interest);
+      var UserList = [/*[uid, count]*/];
+      console.log("This is the current user's interest: " + $scope.myInterest);
+      var table = snapshot.val();
+        for (var user in table)
+        {
+          if (user == currentUser.uid) delete table.user;
+          else{
+            var interest = table[user].interest;
+            var otherInterest = interest.split(",");
+            otherInterest.splice(-1);
 
-        //FILTER FUNCTION TO RETURN DUPLICATE INDEX
-        var count = 0;
-        for (var i = 0; i < myInterest.length; i++){
-          for (var j = 0; j < otherInterest.length; j++){
-            if (myInterest[i] == otherInterest[j]) count++;
+            //FILTER FUNCTION TO COUNT COMMON INTEREST
+            var count = 0;
+            for (var i = 0; i < $scope.myInterest.length; i++){
+              for (var j = 0; j < otherInterest.length; j++){
+                if ($scope.myInterest[i] == otherInterest[j]) count++;
+              }
+            }
+            UserList.push([user, count]);
           }
         }
-        console.log('User count: ' + count);
-      }
+
+        //SORTING THE USER LIST TO FIND PERSON WITH MOST COMMON INTEREST
+        UserList.sort(function(a,b){
+          return b[1] - a[1];
+        });
+
+        //DISPLAY THE MATCHED USER ONTO THE SCREEN
+        var buddyID = UserList[0][0];
+        var buddyRef = firebase.database().ref("users/" + buddyID);
+        buddyRef.once('value', function(snapshot){
+          $scope.BuddyName = snapshot.val().name;
+          var buddyProfilePic = document.getElementById("buddyProfilePic");
+          var storageRef = firebase.storage().ref("Avatars/"+buddyID+"/avatar.jpg");
+          storageRef.getDownloadURL().then(function(url)
+        {
+          buddyProfilePic.src=url;
+        });
+          $state.go('match');
+        });
     });
+  };
 }])
 
 
@@ -224,10 +265,14 @@ app.directive('customOnChange', function() {
     var refInterest = firebase.database().ref("interest");
     $scope.errorMessage = "";
 
+    //GET THE CURRENT USER INTEREST
     refUserId.once('value', function(snapshot){
       var interestStr = snapshot.val().interest;
-      $scope.interestArr = interestStr.split(",");
-      $scope.interestArr.splice(-1);
+      if (interestStr === null) $scope.interestArr = {};
+      else{
+        $scope.interestArr = interestStr.split(",");
+        $scope.interestArr.splice(-1);
+      }
     });
 
     //COUNTING THE NUMBER OF CHILD IN DATABASE
@@ -259,7 +304,7 @@ app.directive('customOnChange', function() {
 
         //WHEN USER REMOVES AN INTEREST
         $scope.Remove = function(x){
-           $scope.interestArr.splice(x, 1);
+          $scope.interestArr.splice(x, 1);
           console.log('Total interests: ' + count);
         };
 
@@ -309,8 +354,8 @@ app.directive('customOnChange', function() {
 ])
 
 //-------------------  CONTROLLER FOR THE SETTINGS PAGE ------------------------
-.controller('settingsPageCtrl', ['$scope', '$state',
-  function ($scope, $state){
+.controller('settingsPageCtrl', ['$scope', '$state', '$localStorage',
+  function ($scope, $state, $localStorage){
     $scope.successMessage = "";
     $scope.resetPassword = function() {
       var providedPassword = $scope.oldPassword;
@@ -341,7 +386,8 @@ app.directive('customOnChange', function() {
       var auth = firebase.auth();
       auth.signOut().then(function() {
         console.log("logged out!");
-
+        $localStorage.email=null;
+        $localStorage.password=null;
         $state.go('login');
       }, function(error){
         console.log("An error happened!");
