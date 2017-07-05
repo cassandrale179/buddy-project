@@ -67,9 +67,6 @@ app.directive('customOnChange', function() {
         if ($localStorage.email && $localStorage.password)
         {
           firebase.auth().signInWithEmailAndPassword($localStorage.email, $localStorage.password);
-          // Debug
-          // console.log("Local storage email: "+ $localStorage.email);
-          // console.log("local Storage password: " + $localStorage.password);
           $state.go('profile');
         }
       };
@@ -231,13 +228,21 @@ app.directive('customOnChange', function() {
           }
         }
 
-        //SORTING THE USER LIST TO FIND PERSON WITH MOST COMMON INTEREST
+        //SORTING THE USER LIST AND RETURN YOUR MATCHED BUDDY
         UserList.sort(function(a,b){
           return b[1] - a[1];
         });
+        var buddyID = UserList[0][0];
+
+        //PUSHING THE ID TO THE MATCH TABLE
+        var refMatch = firebase.database().ref("match/" + currentUser.uid);
+        refMatch.once('value', function(snapshot){
+          var count = snapshot.numChildren();
+          refMatch.update({count:buddyID});
+        });
+
 
         //DISPLAY THE MATCHED USER ONTO THE SCREEN
-        var buddyID = UserList[0][0];
         var buddyRef = firebase.database().ref("users/" + buddyID);
         buddyRef.once('value', function(snapshot){
           $scope.BuddyName = snapshot.val().name;
@@ -262,7 +267,7 @@ app.directive('customOnChange', function() {
     var user = firebase.auth().currentUser;
     var id = user.uid;
     var refUserId = firebase.database().ref("users/"+id);
-    var refInterest = firebase.database().ref("interest");
+    var refInterest = firebase.database().ref("interests");
     $scope.errorMessage = "";
 
     //GET THE CURRENT USER INTEREST
@@ -275,10 +280,9 @@ app.directive('customOnChange', function() {
       }
     });
 
-    //COUNTING THE NUMBER OF CHILD IN DATABASE
+
     refInterest.once('value', function(snapshot)
   {
-      var count = snapshot.numChildren();
       if (user !== null)
       {
         //WHEN USER ADD AN INTEREST
@@ -310,33 +314,22 @@ app.directive('customOnChange', function() {
 
         //WHEN USER SUBMIT THEIR INTERESTS
         $scope.CaptureInterest = function(){
-          //Get list of interests
+
+          //ADD THEIR INTEREST TO THE INTERESTS TABLE
           var interestTable = snapshot.val();
-          var interestValues = Object.values(interestTable);
-          console.log("Interest values: " + interestValues);
-          var interestObject = {
-            //1: gameofthrones
-            //2: breakingbad
-          };
-          //i: index of interestObject
-          //n: index of element in $scope.interestArr
-          var i = count;
-          for (var n = 0; n < $scope.interestArr.length; n++){
-            if (interestValues.indexOf($scope.interestArr[n])===-1)
-            {
-              interestObject[i]=$scope.interestArr[n];
-              i++;
-            }
+          for (var i = 0; i < $scope.interestArr.length; i++){
+            var info = {
+              count: 0,
+              match: 0
+            };
+            refInterest.child($scope.interestArr[i]).set(info);
           }
 
-          refInterest.update(interestObject);
-
-          //CONCATENATE ALL OBJECTS INTO A STRING
+          //ADD THEIR INTEREST AS A STRING IN THE USER TABLE
           refUserId.once('value', function(snapshot){
             var obj = snapshot.val();
             var interestStr = obj.interest;
-            if (!obj.Interest)
-            {
+            if (!obj.Interest){
               interestStr="";
             }
             for (var k = 0; k< $scope.interestArr.length; k++){
