@@ -238,7 +238,7 @@ li{
   position: absolute;
   background-color: rgb(40, 55, 71);
   background-size: cover;
-  height: 50%;
+  height: 55%;
   width: 100%;
   box-shadow: 0px 0px 16px 4px rgba(0,0,0,0.3);
 }
@@ -246,9 +246,12 @@ li{
 #C1 img{
   display: block;
   margin: auto;
+  object-fit: cover;
+  width: 50%;
+  height: 50%;
+  margin-top: 15%;
   border-radius: 20px;
-  max-width: 30%;
-  margin-top: 25%;
+  box-shadow: 0px 0px 16px 4px rgba(0,0,0,0.3);
 }
 
 #C1 h3{
@@ -258,9 +261,33 @@ li{
   font-size: 2.7em;
 }
 
+#C1 input[type="file"]{
+  opacity: 0;
+  position: absolute;
+	z-index: -1;
+  overflow: hidden;
+  width: 0.1px;
+	height: 0.1px;
+}
+
+#C1 label{
+  font-family: 'Hind', sans-serif;
+  font-size: 1.5em;
+  display: block;
+  text-align: center;
+  margin-left: 25%;
+  margin-right: 25%;
+  color: white;
+}
+
+#C1 i{
+  margin-left: 10px;
+}
+
+
 #C2{
   position: absolute;
-  top: 50%;
+  top: 55%;
   width: 100%;
   z-index: -1;
   margin-bottom: 100px;

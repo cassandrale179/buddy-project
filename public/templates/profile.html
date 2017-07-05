@@ -13,10 +13,10 @@
   <div id="C">
       <div id="C1">
         <img id="profilePic" src="img/default.png" /><br />
-        <input type="file" custom-on-change="uploadFile" />
+        <label for="file">Edit <i class="fa fa-pencil" aria-hidden="true"></i></label>
+        <input type="file" name="file" id="file" custom-on-change="uploadFile" />
         <h3>{{name}} | Age: {{age}}</h3>
       </div>
-
       <div id="C2">
         <h2> INTEREST </h2>
         <hr />
