@@ -236,9 +236,11 @@ app.directive('customOnChange', function() {
 
         //PUSHING THE ID TO THE MATCH TABLE
         var refMatch = firebase.database().ref("match/" + currentUser.uid);
+        var matchObject = {};
         refMatch.once('value', function(snapshot){
           var count = snapshot.numChildren();
-          refMatch.update({count:buddyID});
+          matchObject[count] = buddyID;
+          refMatch.update(matchObject);
         });
 
 
