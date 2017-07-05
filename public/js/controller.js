@@ -147,8 +147,12 @@ app.directive('customOnChange', function() {
 }])
 
 //--------------------  CONTROLLER FOR THE PROFILE PAGE ---------------------------
-.controller('profilePageCtrl', ['$scope', '$state',
-  function ($scope, $state){
+.controller('profilePageCtrl', ['$scope', '$state', '$localStorage',
+  function ($scope, $state, $localStorage){
+  if (!user)
+  {
+    firebase.auth().signInWithEmailAndPassword($localStorage.email, $localStorage.password);
+  }
   var user = firebase.auth().currentUser;
 
   //DECLARING SOME VARIABLES
