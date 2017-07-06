@@ -17,12 +17,14 @@
 
   <!-- CONTENT OF MATCH PAGE -->
   <div id="D">
-    <button ng-show="numberofMatches < 0" ng-click="MatchMe()"> MATCH ME</button>
-    <div ng-show="numberofMatches">
+    <button ng-show="buddy == null" ng-click="MatchMe()"> MATCH ME</button>
+    <div ng-show="buddy.size() > 0">
       <p>You have been matched with<br />
       <b>{{BuddyName}}</b></p>
       <img id="buddyProfilePic"/>
-      <button class="match"> MESSAGE YOUR BUDDY NOW </button>
+      <button class="match"> MESSAGE YOUR BUDDY </button>
+      <p>Your common interests are: <br />
+        <b> butterbeer, books</b></p>
     </div>
   </div>
 </body>
