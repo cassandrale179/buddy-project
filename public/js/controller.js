@@ -1,4 +1,3 @@
-
 var app = angular.module('app.controllers',['ngStorage']);
 //Handle file input
 app.directive('customOnChange', function() {
@@ -191,10 +190,40 @@ app.directive('customOnChange', function() {
 //--------------------  CONTROLLER FOR THE MATCH PAGE ---------------------------
 .controller('matchPageCtrl', ['$scope', '$state',
   function ($scope, $state){
+
+    var currentUser = firebase.auth().currentUser;
+    var matchTable = firebase.database().ref("match");
+    matchTable.once('value', function(snapshot){
+      var matchObject = snapshot.val();
+      if (snapshot.hasChild(currentUser.uid)){
+        var userNode = firebase.database().ref("match/" + currentUser.uid);
+        userNode.once('value', function(snap){
+          var userNodeObject = snap.val();
+          $scope.numberofMatches = snap.numChildren();
+          var buddyID = userNodeObject[$scope.numberofMatches - 1];
+          var buddyRef = firebase.database().ref("users/" + buddyID);
+
+          //TAKEN A SNAPSHOT OF THE BUDDY'S ID AND DISPLAY THEIR NAME AND PICTURE
+          buddyRef.once('value', function(buddySnap){
+            var buddyNodeObject = buddySnap.val();
+            $scope.BuddyName = buddySnap.val().name;
+            var buddyProfilePic = document.getElementById("buddyProfilePic");
+            var storageRef = firebase.storage().ref("Avatars/"+buddyID+"/avatar.jpg");
+            storageRef.getDownloadURL().then(function(url){
+              buddyProfilePic.src=url;
+            });
+            $state.go('match');
+          });
+        });
+      }
+
+    });
+
+
+    //IF THE USER HASN'T BEEN MATCHED YET
     $scope.MatchMe = function(){
 
       //CREATE SOME VARIABLES AND GET MY INTEREST
-      var currentUser = firebase.auth().currentUser;
       var refUser = firebase.database().ref("users");
       var refCurrentUserId = firebase.database().ref("users/" + currentUser.uid);
       refCurrentUserId.once('value').then(function(snapshot){
