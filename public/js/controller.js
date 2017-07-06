@@ -198,49 +198,33 @@ app.directive('customOnChange', function() {
     //CHECK IF USER ALREADY HAS A CURRENT BUDDY
     if (currentUser !== null){
       var userRef = firebase.database().ref("users/" + currentUser.uid);
-      var matchRef = firebase.database().ref("match/" + currentUser.uid);
-      userRef.once('value', function(snapshot){
+      userRef.once('value', function(snapshot)
+      {
         $scope.buddy = snapshot.val().buddy;
-        console.log($scope.buddy);
-      });
-    }
 
-
-    /*TAKE A SNAPSHOT OF THE MATCH TABLE
-    matchTable.once('value', function(snapshot)
-  {
-      var matchObject = snapshot.val();
-      console.log(matchObject);
-
-      //IF USER ID EXIST IN THE MATCH TABLE, QUERY IT
-      if (snapshot.hasChild(currentUser.uid)){
-        var userNode = firebase.database().ref("match/" + currentUser.uid);
-        userNode.once('value', function(snap){
-          var userNodeObject = snap.val();
-          $scope.numBuddies = snap.numChildren();
-
-          //GET THE BUDDY ID FROM THE CURRENT USER OBJECT
-          firebase.database().ref("users/" + currentUser.uid).once('value', function(snap){
-            var buddyID = snap.val().buddy;
-            var buddyRef = firebase.database().ref("users/" + buddyID);
-            console.log('This is their buddy: ' + buddyID);
-
-            //DISPLAY THE NAME, AND PROFILE PICTURE OF THEIR BUDDY
-            buddyRef.once('value', function(buddySnap)
-            {
-              var buddyNodeObject = buddySnap.val();
-              $scope.BuddyName = buddySnap.val().name;
-              var buddyProfilePic = document.getElementById("buddyProfilePic");
-              var storageRef = firebase.storage().ref("Avatars/"+buddyID+"/avatar.jpg");
-              storageRef.getDownloadURL().then(function(url){
-                buddyProfilePic.src=url;
-              });
-              $state.go('match');
-            });
+        //TAKE A SNAPSHOT OF BUDDY AND DISPLAY HIS/HER INFORMATION
+        var buddyRef = firebase.database().ref("users/" + $scope.buddy);
+        buddyRef.once('value', function(buddySnap)
+        {
+          var buddyNodeObject = buddySnap.val();
+          $scope.BuddyName = buddySnap.val().name;
+          var buddyProfilePic = document.getElementById("buddyProfilePic");
+          var storageRef = firebase.storage().ref("Avatars/"+$scope.buddy+"/avatar.jpg");
+          storageRef.getDownloadURL().then(function(url){
+            buddyProfilePic.src=url;
           });
+          $state.go('match');
         });
-      }
-    }); */
+
+        //TAKE A SNAPSHOT OF THE MATCH TABLE TO DISPLAY COMMON INTEREST
+        var matchRef = firebase.database().ref("match/" + currentUser.uid + "/" + $scope.buddy);
+        matchRef.once('value', function(matchSnap){
+          $scope.commonInterest = matchSnap.val();
+          $state.go('match');
+        });
+      });
+
+    }
 
     //IF THE USER HASN'T BEEN MATCHED YET, AND THEY CLICK MATCH ME
     $scope.MatchMe = function(){
