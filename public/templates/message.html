@@ -13,6 +13,20 @@
    <!-- HEADER OF MESSAGE PAGE -->
    <div id="header">
      <h1> MESSAGE </h1>
+     <ul>
+       <li ng-repeat="message in messages">
+         {{message.text}}
+       </li>
+     </ul>
+     <form>
+       <p>
+         <input type="text" ng-model="newmessage.text" />
+       </p>
+       <button ng-click="insert(newmessage)">Submit</button>
+     </form>
+
+
+
    </div>
 
 </body>

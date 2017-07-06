@@ -1,4 +1,4 @@
-var app = angular.module('app.controllers',['ngStorage']);
+var app = angular.module('app.controllers',['ngStorage', 'firebase']);
 //Handle file input
 app.directive('customOnChange', function() {
   return {
@@ -7,6 +7,24 @@ app.directive('customOnChange', function() {
       var onChangeHandler = scope.$eval(attrs.customOnChange);
       element.bind('change', onChangeHandler);
     }
+  };
+})
+
+.factory('Message', '$firebaseArray', function($firebaseArray) {
+  var ref = firebase.database().ref().child('messages');
+  var messages = $firebaseArray(ref);
+  var Message =
+  {
+    all: messages,
+    create: function(message) {
+      return messages.$add(message);
+    }
+    // get: function(messageId) {
+    //   return ref.child('messageId').$asObject();
+    // },
+    // delete: function(message) {
+    //   return message.$remove(message);
+    // }
   };
 })
 
@@ -145,49 +163,50 @@ app.directive('customOnChange', function() {
 //--------------------  CONTROLLER FOR THE PROFILE PAGE ---------------------------
 .controller('profilePageCtrl', ['$scope', '$state', '$localStorage',
   function ($scope, $state, $localStorage){
-  if (!user)
-  {
-    firebase.auth().signInWithEmailAndPassword($localStorage.email, $localStorage.password);
-  }
-  var user = firebase.auth().currentUser;
+  firebase.auth().signInWithEmailAndPassword($localStorage.email, $localStorage.password)
+  .then(function(){
+    var user = firebase.auth().currentUser;
 
-  //DECLARING SOME VARIABLES
-  if (user !== null){
-    var id = user.uid;
-    var ref = firebase.database().ref("users/" + id);
-    var storageRef = firebase.storage().ref("Avatars/"+id+"/avatar.jpg");
-    var profilePic = document.getElementById("profilePic");
-    storageRef.getDownloadURL().then(function(url)
-  {
-    if(url)
+    //DECLARING SOME VARIABLES
+    if (user !== null){
+      var id = user.uid;
+      var ref = firebase.database().ref("users/" + id);
+      var storageRef = firebase.storage().ref("Avatars/"+id+"/avatar.jpg");
+      var profilePic = document.getElementById("profilePic");
+      storageRef.getDownloadURL().then(function(url)
     {
-      profilePic.src=url;
-    }
-  });
-
-    //THIS ALLOW THE USER TO UPLOAD THEIR PROFILE PIC
-    $scope.uploadFile = function(event){
-      var file = event.target.files[0];
-      storageRef.put(file).then(function(snapshot){
-        console.log("File uploaded!");
-
-        storageRef.getDownloadURL().then(function(url)
+      if(url)
       {
-        profilePic.src = url;
-      });
-      });
-    };
-
-    // DISPLAY THE USER INTEREST
-    ref.once('value').then(function(snapshot){
-      $scope.name = snapshot.val().name;
-      $scope.age = snapshot.val().age;
-      var interestStr = snapshot.val().interest;
-      $scope.interestArr = interestStr.split(",");
-      $scope.interestArr.splice(-1);
-      $state.go('profile');
+        profilePic.src=url;
+      }
     });
-  }
+
+      //THIS ALLOW THE USER TO UPLOAD THEIR PROFILE PIC
+      $scope.uploadFile = function(event){
+        var file = event.target.files[0];
+        storageRef.put(file).then(function(snapshot){
+          console.log("File uploaded!");
+
+          storageRef.getDownloadURL().then(function(url)
+        {
+          profilePic.src = url;
+        });
+        });
+      };
+
+      // DISPLAY THE USER INTEREST
+      ref.once('value').then(function(snapshot){
+        $scope.name = snapshot.val().name;
+        $scope.age = snapshot.val().age;
+        var interestStr = snapshot.val().interest;
+        $scope.interestArr = interestStr.split(",");
+        $scope.interestArr.splice(-1);
+        $state.go('profile');
+      });
+    }
+    });
+
+
 }])
 
 
@@ -425,6 +444,10 @@ app.directive('customOnChange', function() {
   }
 ])
 
-.controller('messagePageCtrl', ['$scope', '$state',
-  function ($scope, $state){
+.controller('messagePageCtrl', ['$scope', '$state', 'Message',
+  function ($scope, $state, Message){
+    // $scope.messages = Message.all;
+    // $scope.insert = function(message) {
+    //   Message.create(message);
+    // };
 }]);
