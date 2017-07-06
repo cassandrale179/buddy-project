@@ -53,6 +53,13 @@ angular.module('app.routes', ['ui.router'])
   url: '/settingsPage',
     templateUrl: 'templates/settings.html',
     controller: 'settingsPageCtrl'
+})
+
+.state('message',{
+  name: 'Message',
+  url: '/messagePage',
+    templateUrl: 'templates/message.html',
+    controller: 'messagePageCtrl'
 });
 
 $urlRouterProvider.otherwise('/loginPage');

@@ -308,6 +308,7 @@ app.directive('customOnChange', function() {
       else{
         $scope.interestArr = interestStr.split(",");
         $scope.interestArr.splice(-1);
+        $state.go('interest');
       }
     });
 
@@ -418,4 +419,8 @@ app.directive('customOnChange', function() {
       });
     };
   }
-]);
+])
+
+.controller('messagePageCtrl', ['$scope', '$state',
+  function ($scope, $state){
+}]);
