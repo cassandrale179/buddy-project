@@ -60,6 +60,20 @@ angular.module('app.routes', ['ui.router'])
   url: '/messagePage',
     templateUrl: 'templates/message.html',
     controller: 'messagePageCtrl'
+})
+
+.state('resources',{
+  name: 'Resources',
+  url: '/resourcesPage',
+    templateUrl: 'templates/resources.html',
+    controller: 'resourcesPageCtrl'
+})
+
+.state('hotlines',{
+  name: 'Hotlines',
+  url: '/hotlinesPage',
+    templateUrl: 'templates/resources/hotlines.html',
+    controller: 'hotlinesPageCtrl'
 });
 
 $urlRouterProvider.otherwise('/loginPage');
