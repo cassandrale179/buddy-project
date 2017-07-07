@@ -429,6 +429,7 @@ app.directive('customOnChange', function() {
 app.factory('Message', ['$firebaseArray',
   function($firebaseArray) {
   var ref = firebase.database().ref().child('messages');
+
   var convo = $firebaseArray(ref);
 
   var Message = {
@@ -437,9 +438,9 @@ app.factory('Message', ['$firebaseArray',
 
       return convo.$add(msg);
     },
-    // delete: function (message) {
-    //   return messages.$remove(message);
-    // },
+    delete: function (message) {
+      return convo.$remove(message);
+    }
     // get: function (messageId){
     //   return $firebaseArray(ref.child('messages').child(messageId)).$asObject();
     // }
@@ -451,6 +452,16 @@ app.factory('Message', ['$firebaseArray',
 .controller('messagePageCtrl', ['$scope', '$state', 'Message',
   function ($scope, $state, Message){
     var user = firebase.auth().currentUser;
+    var userRef = firebase.database().ref("match/" + user.uid);
+    userRef.once("value", function(snapshot){
+      var userMatches = snapshot.val();
+      console.log(userMatches);
+    });
+
+    // $scope.messageObj = {
+    //   user_id_one: user.uid,
+    //   text:
+    // };
     $scope.convo = Message.all;
 
     $scope.insert = function(message) {
