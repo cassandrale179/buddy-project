@@ -28,7 +28,8 @@ app.directive('customOnChange', function() {
           name: $scope.txtName,
           email: $scope.txtEmail,
           age: $scope.txtAge,
-          interest: ""
+          interest: "",
+          buddy: ""
         };
         ref.child(user.uid).set(info);
         user.sendEmailVerification().then(function() {
@@ -197,36 +198,41 @@ app.directive('customOnChange', function() {
 .controller('matchPageCtrl', ['$scope', '$state',
   function ($scope, $state){
 
+    //GLOBAL VARIABLES TO BE USED
     var currentUser = firebase.auth().currentUser;
-    var matchTable = firebase.database().ref("match");
-    matchTable.once('value', function(snapshot){
-      var matchObject = snapshot.val();
-      if (snapshot.hasChild(currentUser.uid)){
-        var userNode = firebase.database().ref("match/" + currentUser.uid);
-        userNode.once('value', function(snap){
-          var userNodeObject = snap.val();
-          $scope.numberofMatches = snap.numChildren();
-          var buddyID = userNodeObject[$scope.numberofMatches - 1];
-          var buddyRef = firebase.database().ref("users/" + buddyID);
 
-          //TAKEN A SNAPSHOT OF THE BUDDY'S ID AND DISPLAY THEIR NAME AND PICTURE
-          buddyRef.once('value', function(buddySnap){
-            var buddyNodeObject = buddySnap.val();
-            $scope.BuddyName = buddySnap.val().name;
-            var buddyProfilePic = document.getElementById("buddyProfilePic");
-            var storageRef = firebase.storage().ref("Avatars/"+buddyID+"/avatar.jpg");
-            storageRef.getDownloadURL().then(function(url){
-              buddyProfilePic.src=url;
-            });
-            $state.go('match');
+    //CHECK IF USER ALREADY HAS A CURRENT BUDDY
+    if (currentUser !== null){
+      var userRef = firebase.database().ref("users/" + currentUser.uid);
+      userRef.once('value', function(snapshot)
+      {
+        $scope.buddy = snapshot.val().buddy;
+
+        //TAKE A SNAPSHOT OF BUDDY AND DISPLAY HIS/HER INFORMATION
+        var buddyRef = firebase.database().ref("users/" + $scope.buddy);
+        buddyRef.once('value', function(buddySnap)
+        {
+          var buddyNodeObject = buddySnap.val();
+          $scope.BuddyName = buddySnap.val().name;
+          var buddyProfilePic = document.getElementById("buddyProfilePic");
+          var storageRef = firebase.storage().ref("Avatars/"+$scope.buddy+"/avatar.jpg");
+          storageRef.getDownloadURL().then(function(url){
+            buddyProfilePic.src=url;
           });
+          $state.go('match');
         });
-      }
 
-    });
+        //TAKE A SNAPSHOT OF THE MATCH TABLE TO DISPLAY COMMON INTEREST
+        var matchRef = firebase.database().ref("match/" + currentUser.uid + "/" + $scope.buddy);
+        matchRef.once('value', function(matchSnap){
+          $scope.commonInterest = matchSnap.val();
+          $state.go('match');
+        });
+      });
 
+    }
 
-    //IF THE USER HASN'T BEEN MATCHED YET
+    //IF THE USER HASN'T BEEN MATCHED YET, AND THEY CLICK MATCH ME
     $scope.MatchMe = function(){
 
       //CREATE SOME VARIABLES AND GET MY INTEREST
@@ -244,8 +250,7 @@ app.directive('customOnChange', function() {
       var UserList = [/*[uid, count]*/];
       console.log("This is the current user's interest: " + $scope.myInterest);
       var table = snapshot.val();
-        for (var user in table)
-        {
+        for (var user in table){
           if (user == currentUser.uid) delete table.user;
           else{
             var interest = table[user].interest;
@@ -253,42 +258,36 @@ app.directive('customOnChange', function() {
             otherInterest.splice(-1);
 
             //FILTER FUNCTION TO COUNT COMMON INTEREST
-            var count = 0;
+            $scope.commonInterest = [];
             for (var i = 0; i < $scope.myInterest.length; i++){
               for (var j = 0; j < otherInterest.length; j++){
-                if ($scope.myInterest[i] == otherInterest[j]) count++;
+                if ($scope.myInterest[i] == otherInterest[j]){
+                  $scope.commonInterest.push($scope.myInterest[i]);
+                }
               }
             }
-            UserList.push([user, count]);
+            UserList.push([user, $scope.commonInterest]);
           }
         }
 
-        //SORTING THE USER LIST AND RETURN YOUR MATCHED BUDDY
+        //SORTING THE USER LIST AND RETURN YOUR MATCHED BUDDY AND THE COMMON INTEREST
         UserList.sort(function(a,b){
-          return b[1] - a[1];
+          return b[1].length - a[1].length;
         });
         var buddyID = UserList[0][0];
+        var commonInterest = UserList[0][1];
+        console.log("This is the buddy's ID: " + buddyID);
+        console.log("This is the common interest: " + commonInterest);
 
-        //PUSHING THE ID TO THE MATCH TABLE
+        //STORE THE MOST RECENT MATCH UNDER THE USER TABLE
+        refCurrentUserId.update({buddy: buddyID});
+
+        //PUSHING THE ID AND THE COMMON INTERESTS TO THE MATCH TABLE
         var refMatch = firebase.database().ref("match/" + currentUser.uid);
-        var matchObject = {};
         refMatch.once('value', function(snapshot){
-          var count = snapshot.numChildren();
-          matchObject[count] = buddyID;
+          var matchObject = {};
+          matchObject[buddyID] = commonInterest;
           refMatch.update(matchObject);
-        });
-
-
-        //DISPLAY THE MATCHED USER ONTO THE SCREEN
-        var buddyRef = firebase.database().ref("users/" + buddyID);
-        buddyRef.once('value', function(snapshot){
-          $scope.BuddyName = snapshot.val().name;
-          var buddyProfilePic = document.getElementById("buddyProfilePic");
-          var storageRef = firebase.storage().ref("Avatars/"+buddyID+"/avatar.jpg");
-          storageRef.getDownloadURL().then(function(url)
-        {
-          buddyProfilePic.src=url;
-        });
           $state.go('match');
         });
     });
@@ -347,7 +346,6 @@ app.directive('customOnChange', function() {
         //WHEN USER REMOVES AN INTEREST
         $scope.Remove = function(x){
           $scope.interestArr.splice(x, 1);
-          console.log('Total interests: ' + count);
         };
 
         //WHEN USER SUBMIT THEIR INTERESTS
