@@ -426,18 +426,21 @@ app.directive('customOnChange', function() {
 ]);
 app.factory('Message', ['$firebaseArray',
   function($firebaseArray) {
-  var ref = firebase.database().ref().child('messages');
-
+  var ref = firebase.database().ref('messages').push();
   var convo = $firebaseArray(ref);
+  //Returns the randomly generated conversation ID
+  var convoId = ref.key;
 
   var Message = {
     all: convo,
     create: function (msg) {
-
       return convo.$add(msg);
     },
     delete: function (message) {
       return convo.$remove(message);
+    },
+    returnConvoId: function() {
+      return convoId;
     }
     // get: function (messageId){
     //   return $firebaseArray(ref.child('messages').child(messageId)).$asObject();
@@ -447,20 +450,27 @@ app.factory('Message', ['$firebaseArray',
   return Message;
 }])
 
-.controller('messagePageCtrl', ['$scope', '$state', 'Message',
-  function ($scope, $state, Message){
-    var user = firebase.auth().currentUser;
-    var userRef = firebase.database().ref("match/" + user.uid);
-    userRef.once("value", function(snapshot){
-      var userMatches = snapshot.val();
-      console.log(userMatches);
+.controller('messagePageCtrl', ['$scope', '$state', 'Message', '$firebaseArray',
+  function ($scope, $state, Message, $firebaseArray){
+    var user1 = firebase.auth().currentUser;
+    var uid1 = user1.uid;
+    var userMatchRef = firebase.database().ref('match/'+uid1);
+    userMatchRef.once("value", function(snapshot){
+      var userMatch = snapshot.val();
+      var uid2 = "FVBa8AGjW0TlvINHY8yPPL2MoXP2";
+      var conversation = {
+        convoId: Message.returnConvoId()
+      };
+      firstMatch.push(conversation);
+      console.log("Convo id inside scope:"+ convoId);
     });
 
-    // $scope.messageObj = {
-    //   user_id_one: user.uid,
-    //   text:
-    // };
+    var convoId = Message.returnConvoId();
+    console.log("convo id ouside scope:" + convoId);
+
+
     $scope.convo = Message.all;
+    console.log(Message.all);
 
     $scope.insert = function(message) {
       Message.create(message);
