@@ -10,23 +10,6 @@ app.directive('customOnChange', function() {
   };
 })
 
-.factory('Message', '$firebaseArray', function($firebaseArray) {
-  var ref = firebase.database().ref().child('messages');
-  var messages = $firebaseArray(ref);
-  var Message =
-  {
-    all: messages,
-    create: function(message) {
-      return messages.$add(message);
-    }
-    // get: function(messageId) {
-    //   return ref.child('messageId').$asObject();
-    // },
-    // delete: function(message) {
-    //   return message.$remove(message);
-    // }
-  };
-})
 
 //--------------------  CONTROLLER FOR THE REGISTER PAGE --------------------
 .controller('registerPageCtrl', ['$scope', '$state',
@@ -442,12 +425,35 @@ app.directive('customOnChange', function() {
       });
     };
   }
-])
+]);
+app.factory('Message', ['$firebaseArray',
+  function($firebaseArray) {
+  var ref = firebase.database().ref().child('messages');
+  var convo = $firebaseArray(ref);
+
+  var Message = {
+    all: convo,
+    create: function (msg) {
+
+      return convo.$add(msg);
+    },
+    // delete: function (message) {
+    //   return messages.$remove(message);
+    // },
+    // get: function (messageId){
+    //   return $firebaseArray(ref.child('messages').child(messageId)).$asObject();
+    // }
+
+  };
+  return Message;
+}])
 
 .controller('messagePageCtrl', ['$scope', '$state', 'Message',
   function ($scope, $state, Message){
-    // $scope.messages = Message.all;
-    // $scope.insert = function(message) {
-    //   Message.create(message);
-    // };
+    var user = firebase.auth().currentUser;
+    $scope.convo = Message.all;
+
+    $scope.insert = function(message) {
+      Message.create(message);
+    };
 }]);
