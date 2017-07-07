@@ -1,31 +1,4 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="myApp">
-<head>
-
-    <title>Buddy</title>
-    <!-- LINK TO BOOTSTRAP STUFF -->
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-<!-- Optional theme -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
-<!-- Link to Font Awesome -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-    <!-- LINK TO FIREBASE -->
-    <script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
-    <script src="https://cdn.firebase.com/js/client/1.0.18/firebase.js"></script>
-    <script src="https://cdn.firebase.com/libs/angularfire/0.8.0/angularfire.min.js"></script>
-    <script src="https://cdn.firebase.com/js/simple-login/1.6.2/firebase-simple-login.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
-    <script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
-
-</head>
 <body>
 
   <!-- ADDING IN NAVIGATION BAR -->
@@ -43,14 +16,10 @@
 
   <!-- CONTENT OF MATCH PAGE -->
   <div id="D">
-    <p>Before you match, please click + add the bottom of the page to input 5 interests.</p>
-    <button> MATCH ME WITH A BUDDY!</button>
-  </div>
-  <div id="E">
+    <button ng-click="MatchMe()"> MATCH ME</button>
     <p>You have been matched with<br />
-    <b> HARRY POTTER!</b></p>
-    <img src="https://68.media.tumblr.com/b214f778dde1740e4f8f3e32b1181df8/tumblr_nqgzs7WV5P1tgh6zro3_400.png" />
-    <button> MESSAGE YOUR BUDDY NOW </button>
+    <b>{{BuddyName}}</b></p>
+    <img id="buddyProfilePic"/>
+    <button class="match"> MESSAGE YOUR BUDDY NOW </button>
   </div>
 </body>
-</html>
