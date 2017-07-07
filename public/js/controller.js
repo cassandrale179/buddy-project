@@ -190,7 +190,7 @@ app.directive('customOnChange', function() {
 
 //--------------------  CONTROLLER FOR THE MATCH PAGE ---------------------------
 .controller('matchPageCtrl', ['$scope', '$state',
-  function ($scope, $state){
+  function matchFunction($scope, $state){
 
     //GLOBAL VARIABLES TO BE USED
     var currentUser = firebase.auth().currentUser;
@@ -287,8 +287,10 @@ app.directive('customOnChange', function() {
         refMatch.once('value', function(snapshot){
           var matchObject = {};
           matchObject[buddyID] = commonInterest;
-          refMatch.update(matchObject);
-          $state.go('match');
+          refMatch.update(matchObject).then(function(resolve){
+            $scope.exist = true;
+            $state.go('match');
+          });
         });
     });
   };
@@ -427,5 +429,31 @@ app.directive('customOnChange', function() {
 
 //-------------------  CONTROLLER FOR THE MATCHING PAGE ------------------------
 .controller('messagePageCtrl', ['$scope', '$state',
+  function ($scope, $state){
+}])
+
+
+//-------------------  CONTROLLER FOR THE RESOURCES PAGE ------------------------
+.controller('resourcesPageCtrl', ['$scope', '$state',
+  function ($scope, $state){
+}])
+
+.controller('hotlinesPageCtrl', ['$scope', '$state',
+  function ($scope, $state){
+}])
+
+.controller('alternativesPageCtrl', ['$scope', '$state',
+  function ($scope, $state){
+}])
+
+.controller('anxietyPageCtrl', ['$scope', '$state',
+  function ($scope, $state){
+}])
+
+.controller('triggerPageCtrl', ['$scope', '$state',
+  function ($scope, $state){
+}])
+
+.controller('websitePageCtrl', ['$scope', '$state',
   function ($scope, $state){
 }]);
