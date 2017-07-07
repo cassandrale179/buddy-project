@@ -1,4 +1,4 @@
-var app = angular.module('app.controllers',['ngStorage']);
+var app = angular.module('app.controllers',['ngStorage', 'firebase']);
 //Handle file input
 app.directive('customOnChange', function() {
   return {
@@ -9,6 +9,7 @@ app.directive('customOnChange', function() {
     }
   };
 })
+
 
 //--------------------  CONTROLLER FOR THE REGISTER PAGE --------------------
 .controller('registerPageCtrl', ['$scope', '$state',
@@ -146,49 +147,50 @@ app.directive('customOnChange', function() {
 //--------------------  CONTROLLER FOR THE PROFILE PAGE ---------------------------
 .controller('profilePageCtrl', ['$scope', '$state', '$localStorage',
   function ($scope, $state, $localStorage){
-  if (!user)
-  {
-    firebase.auth().signInWithEmailAndPassword($localStorage.email, $localStorage.password);
-  }
-  var user = firebase.auth().currentUser;
+  firebase.auth().signInWithEmailAndPassword($localStorage.email, $localStorage.password)
+  .then(function(){
+    var user = firebase.auth().currentUser;
 
-  //DECLARING SOME VARIABLES
-  if (user !== null){
-    var id = user.uid;
-    var ref = firebase.database().ref("users/" + id);
-    var storageRef = firebase.storage().ref("Avatars/"+id+"/avatar.jpg");
-    var profilePic = document.getElementById("profilePic");
-    storageRef.getDownloadURL().then(function(url)
-  {
-    if(url)
+    //DECLARING SOME VARIABLES
+    if (user !== null){
+      var id = user.uid;
+      var ref = firebase.database().ref("users/" + id);
+      var storageRef = firebase.storage().ref("Avatars/"+id+"/avatar.jpg");
+      var profilePic = document.getElementById("profilePic");
+      storageRef.getDownloadURL().then(function(url)
     {
-      profilePic.src=url;
-    }
-  });
-
-    //THIS ALLOW THE USER TO UPLOAD THEIR PROFILE PIC
-    $scope.uploadFile = function(event){
-      var file = event.target.files[0];
-      storageRef.put(file).then(function(snapshot){
-        console.log("File uploaded!");
-
-        storageRef.getDownloadURL().then(function(url)
+      if(url)
       {
-        profilePic.src = url;
-      });
-      });
-    };
-
-    // DISPLAY THE USER INTEREST
-    ref.once('value').then(function(snapshot){
-      $scope.name = snapshot.val().name;
-      $scope.age = snapshot.val().age;
-      var interestStr = snapshot.val().interest;
-      $scope.interestArr = interestStr.split(",");
-      $scope.interestArr.splice(-1);
-      $state.go('profile');
+        profilePic.src=url;
+      }
     });
-  }
+
+      //THIS ALLOW THE USER TO UPLOAD THEIR PROFILE PIC
+      $scope.uploadFile = function(event){
+        var file = event.target.files[0];
+        storageRef.put(file).then(function(snapshot){
+          console.log("File uploaded!");
+
+          storageRef.getDownloadURL().then(function(url)
+        {
+          profilePic.src = url;
+        });
+        });
+      };
+
+      // DISPLAY THE USER INTEREST
+      ref.once('value').then(function(snapshot){
+        $scope.name = snapshot.val().name;
+        $scope.age = snapshot.val().age;
+        var interestStr = snapshot.val().interest;
+        $scope.interestArr = interestStr.split(",");
+        $scope.interestArr.splice(-1);
+        $state.go('profile');
+      });
+    }
+    });
+
+
 }])
 
 
@@ -429,12 +431,59 @@ app.directive('customOnChange', function() {
       });
     };
   }
-])
+]);
+app.factory('Message', ['$firebaseArray',
+  function($firebaseArray) {
+  var ref = firebase.database().ref('messages').push();
+  var convo = $firebaseArray(ref);
+  //Returns the randomly generated conversation ID
+  var convoId = ref.key;
 
-//-------------------  CONTROLLER FOR THE MATCHING PAGE ------------------------
-.controller('messagePageCtrl', ['$scope', '$state',
-  function ($scope, $state){
+  var Message = {
+    all: convo,
+    create: function (msg) {
+      return convo.$add(msg);
+    },
+    delete: function (message) {
+      return convo.$remove(message);
+    },
+    returnConvoId: function() {
+      return convoId;
+    }
+    // get: function (messageId){
+    //   return $firebaseArray(ref.child('messages').child(messageId)).$asObject();
+    // }
+
+
+  };
+  return Message;
 }])
+
+.controller('messagePageCtrl', ['$scope', '$state', 'Message', '$firebaseArray',
+  function ($scope, $state, Message, $firebaseArray){
+    var user1 = firebase.auth().currentUser;
+    var uid1 = user1.uid;
+    var userMatchRef = firebase.database().ref('match/'+uid1);
+    userMatchRef.once("value", function(snapshot){
+      var userMatch = snapshot.val();
+      var uid2 = "FVBa8AGjW0TlvINHY8yPPL2MoXP2";
+      var conversation = {
+        convoId: Message.returnConvoId()
+      };
+      firstMatch.push(conversation);
+      console.log("Convo id inside scope:"+ convoId);
+    });
+
+    var convoId = Message.returnConvoId();
+    console.log("convo id ouside scope:" + convoId);
+
+
+    $scope.convo = Message.all;
+    console.log(Message.all);
+
+    $scope.insert = function(message) {
+      Message.create(message);
+    };
 
 
 //-------------------  CONTROLLER FOR THE RESOURCES PAGE ------------------------
