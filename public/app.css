@@ -317,11 +317,12 @@ li{
 
 
 #D img{
-  width: 40%;
-  border-radius: 10px;
   display: block;
   margin: auto;
-  margin-bottom: 10%;
+  object-fit: cover;
+  width: 50%;
+  height: 50%;
+  border-radius: 20px;
 }
 
 #D p{
