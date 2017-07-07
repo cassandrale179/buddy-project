@@ -205,29 +205,35 @@ app.directive('customOnChange', function() {
       userRef.once('value', function(snapshot)
       {
         $scope.buddy = snapshot.val().buddy;
+        if ($scope.buddy === ""){
+          $scope.exist = false;
+          $state.go('match');
+        }
 
         //TAKE A SNAPSHOT OF BUDDY AND DISPLAY HIS/HER INFORMATION
-        var buddyRef = firebase.database().ref("users/" + $scope.buddy);
-        buddyRef.once('value', function(buddySnap)
-        {
-          var buddyNodeObject = buddySnap.val();
-          $scope.BuddyName = buddySnap.val().name;
-          var buddyProfilePic = document.getElementById("buddyProfilePic");
-          var storageRef = firebase.storage().ref("Avatars/"+$scope.buddy+"/avatar.jpg");
-          storageRef.getDownloadURL().then(function(url){
-            buddyProfilePic.src=url;
+        if ($scope.buddy !== ""){
+          $scope.exist = true;
+          var buddyRef = firebase.database().ref("users/" + $scope.buddy);
+          buddyRef.once('value', function(buddySnap)
+          {
+            var buddyNodeObject = buddySnap.val();
+            $scope.BuddyName = buddySnap.val().name;
+            var buddyProfilePic = document.getElementById("buddyProfilePic");
+            var storageRef = firebase.storage().ref("Avatars/"+$scope.buddy+"/avatar.jpg");
+            storageRef.getDownloadURL().then(function(url){
+              buddyProfilePic.src=url;
+            });
+            $state.go('match');
           });
-          $state.go('match');
-        });
 
-        //TAKE A SNAPSHOT OF THE MATCH TABLE TO DISPLAY COMMON INTEREST
-        var matchRef = firebase.database().ref("match/" + currentUser.uid + "/" + $scope.buddy);
-        matchRef.once('value', function(matchSnap){
-          $scope.commonInterest = matchSnap.val();
-          $state.go('match');
-        });
+          //TAKE A SNAPSHOT OF THE MATCH TABLE TO DISPLAY COMMON INTEREST
+          var matchRef = firebase.database().ref("match/" + currentUser.uid + "/" + $scope.buddy);
+          matchRef.once('value', function(matchSnap){
+            $scope.commonInterest = matchSnap.val();
+            $state.go('match');
+          });
+        }
       });
-
     }
 
     //IF THE USER HASN'T BEEN MATCHED YET, AND THEY CLICK MATCH ME
