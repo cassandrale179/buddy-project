@@ -95,6 +95,7 @@ li{
   font-family: 'Hind', serif;
   font-size: 1.5em;
   height: 12%;
+  z-index: 3;
 }
 
 #header h1{
@@ -106,6 +107,7 @@ li{
   position: fixed;
   bottom: 0;
   background-color: rgb(33, 47, 60);
+  z-index: 3;
 }
 
 .wrap{
@@ -313,6 +315,9 @@ li{
 /* ------------------------------ STYLING FOR THE MATCHING PAGE ----------------------------------------- */
 #D{
   margin-top: 30%;
+  position: relative;
+
+  margin-bottom: 30%;
 }
 
 
