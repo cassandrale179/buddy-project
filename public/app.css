@@ -95,6 +95,7 @@ li{
   font-family: 'Hind', serif;
   font-size: 1.5em;
   height: 12%;
+  z-index: 3;
 }
 
 #header h1{
@@ -106,6 +107,7 @@ li{
   position: fixed;
   bottom: 0;
   background-color: rgb(33, 47, 60);
+  z-index: 3;
 }
 
 .wrap{
@@ -313,15 +315,17 @@ li{
 /* ------------------------------ STYLING FOR THE MATCHING PAGE ----------------------------------------- */
 #D{
   margin-top: 30%;
+  position: relative;
+  margin-bottom: 30%;
 }
 
 
 #D img{
   display: block;
   margin: auto;
-  object-fit: cover;
-  width: 50%;
-  height: 50%;
+  object-fit: cover !important;
+  width: 450px;
+  height: 450px;
   border-radius: 20px;
 }
 
@@ -383,4 +387,64 @@ li{
 #H button{
   margin-bottom: 0.3em;
   font-size: 2em;
+}
+
+/* ------------------------------- STYLING FOR THE RESOURCES ------------------------------- */
+#I{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background: rgb(40, 55, 71);
+  color: white;
+  font-family: 'Hind', sans-serif;
+}
+
+
+#I1 button{
+  margin-top: 5%;
+  margin-right: 5%;
+  float: right;
+  width: auto;
+  margin-bottom: 10%:
+}
+
+#I2{
+  border: 2px rgb(40, 55, 71) solid;
+  margin-top: 10%;
+}
+
+#I2 h1{
+  display: block;
+  font-size: 4.5em;
+  text-align: center;
+  margin-top: 15%;
+}
+
+#I2 button{
+  background-color: white;
+  color: rgb(40, 55, 71);
+  margin-bottom: 1em;
+}
+
+#I2 i{
+  text-align: right;
+}
+
+#content{
+  padding-left: 10%;
+  padding-right: 10%;
+  font-size: 2em;
+  margin-top: 30%;
+  font-family: 'Hind', sans-serif;
+}
+
+#content h4{
+  font-size: 2em;
+  margin-bottom: 0em;
+}
+
+#content ul{
+  font-size: 1.7em;
+  text-align: left;
 }
