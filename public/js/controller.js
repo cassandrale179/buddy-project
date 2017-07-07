@@ -63,14 +63,14 @@ app.directive('customOnChange', function() {
 .controller('loginPageCtrl', ['$scope', '$state', '$localStorage', '$sessionStorage',
     function($scope, $state, $localStorage, $sessionStorage){
       //Redirect page if user already logged in
-      $scope.init = function() {
-        //IF LOCAL STORAGE ALREADY EXIST, THEN LOGIN AUTOMATICALLY
-        if ($localStorage.email && $localStorage.password)
-        {
-          firebase.auth().signInWithEmailAndPassword($localStorage.email, $localStorage.password);
-          $state.go('profile');
-        }
-      };
+      // $scope.init = function() {
+      //   //IF LOCAL STORAGE ALREADY EXIST, THEN LOGIN AUTOMATICALLY
+      //   if ($localStorage.email && $localStorage.password)
+      //   {
+      //     firebase.auth().signInWithEmailAndPassword($localStorage.email, $localStorage.password);
+      //     $state.go('profile');
+      //   }
+      // };
 
       //LOGGING USER IN
       $scope.LogUser = function() {
@@ -147,12 +147,14 @@ app.directive('customOnChange', function() {
 //--------------------  CONTROLLER FOR THE PROFILE PAGE ---------------------------
 .controller('profilePageCtrl', ['$scope', '$state', '$localStorage',
   function ($scope, $state, $localStorage){
-  firebase.auth().signInWithEmailAndPassword($localStorage.email, $localStorage.password)
-  .then(function(){
     var user = firebase.auth().currentUser;
+    // if (user===null){
+    //   firebase.auth().signInWithEmailAndPassword($localStorage.email, $localStorage.password);
+    // }
 
     //DECLARING SOME VARIABLES
     if (user !== null){
+
       var id = user.uid;
       var ref = firebase.database().ref("users/" + id);
       var storageRef = firebase.storage().ref("Avatars/"+id+"/avatar.jpg");
@@ -170,11 +172,11 @@ app.directive('customOnChange', function() {
         var file = event.target.files[0];
         storageRef.put(file).then(function(snapshot){
           console.log("File uploaded!");
-
+  });
           storageRef.getDownloadURL().then(function(url)
         {
           profilePic.src = url;
-        });
+
         });
       };
 
@@ -188,7 +190,6 @@ app.directive('customOnChange', function() {
         $state.go('profile');
       });
     }
-    });
 
 
 }])
@@ -484,7 +485,7 @@ app.factory('Message', ['$firebaseArray',
     $scope.insert = function(message) {
       Message.create(message);
     };
-
+}
 
 //-------------------  CONTROLLER FOR THE RESOURCES PAGE ------------------------
 .controller('resourcesPageCtrl', ['$scope', '$state',
