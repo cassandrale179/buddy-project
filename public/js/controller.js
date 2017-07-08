@@ -149,7 +149,6 @@ app.directive('customOnChange', function() {
       });
     }
 
-
     //DECLARING SOME VARIABLES
     if (user !== null){
 
@@ -180,10 +179,12 @@ app.directive('customOnChange', function() {
 
       };
 
-      // DISPLAY THE USER INTEREST
+      // DISPLAY THE USER INTEREST AND BIO 
       ref.once('value').then(function(snapshot){
         $scope.name = snapshot.val().name;
         $scope.age = snapshot.val().age;
+        $scope.gender = snapshot.val().gender;
+        $scope.description = snapshot.val().description;
         var interestStr = snapshot.val().interest;
         $scope.interestArr = interestStr.split(",");
         $scope.interestArr.splice(-1);

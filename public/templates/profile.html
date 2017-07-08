@@ -40,29 +40,24 @@
     </div>
       <!-- ___________ THIS DIV WILL BE TO SEARCH SOME PEOPLE UP  ___________ -->
       <div id="C2A" ng-show="show==2">
-        <textarea placeholder="write something here..."></textarea>
-        <button> Send text message </button>
       </div>
 
       <!-- ___________ THIS DIV WILL BE THE LIST OF YOUR MATCHES  ___________ -->
       <div id="C2B" ng-show="show==3">
-        <h2> LIST OF YOUR MATCHES </h2>
-        <hr width="70%" />
+        <h2> YOUR MATCHES </h2>
+        <li ng-repeat="friends in friendsList">{{friends}}</li>
       </div>
 
   <!-- ______________________ THIS DIV WILL BE THE BIO OF THE PERSON _______________________________ -->
     <div id="C3" ng-show="show==1">
       <h2> PROFILE </h2>
-      <hr width="70%" />
       <p>
         <b><i class="fa fa-caret-right" aria-hidden="true"></i> Name: </b> {{name}} <br />
         <b><i class="fa fa-caret-right" aria-hidden="true"></i> Age: </b> {{age}}   <br />
-        <b><i class="fa fa-caret-right" aria-hidden="true"></i> Gender: </b> Female  <br />
-        <b><i class="fa fa-caret-right" aria-hidden="true"></i> Description:</b><br />
-         Click on the edit icon at the top of profile page to edit your bio.
+        <b><i class="fa fa-caret-right" aria-hidden="true"></i> Gender: </b> {{gender}}  <br />
+        <b><i class="fa fa-caret-right" aria-hidden="true"></i> Bio: </b> {{description}}
       </p>
       <h2> INTEREST </h2>
-      <hr width="70%" />
       <li ng-repeat="i in interestArr">{{i}}</li>
     </div>
   </div>
