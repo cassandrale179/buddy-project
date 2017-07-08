@@ -443,7 +443,7 @@ app.controller('registerPageCtrl', ['$scope', '$state',
   }
 ]);
 
-//-------------------  CONTROLLER FOR THE MESSAGE AGE ------------------------
+//----------------------------  FACTORY FOR THE MESSAGE PAGE -----------------------------------
 app.factory('Message', ['$firebaseArray',
   function($firebaseArray) {
   var messageRef = firebase.database().ref('messages');
@@ -484,7 +484,6 @@ app.factory('Message', ['$firebaseArray',
       //CREATE A CONVO ID UNDER THE MESSAGE TABLE
       convoRef = messageRef.child(convoId);
       convo = $firebaseArray(convoRef);
-      console.log("convo: " + convo);
       var conversation = {
         convoId: convoId //convoID: XOsksjdsjdad
       };
@@ -493,7 +492,6 @@ app.factory('Message', ['$firebaseArray',
       matchRef1.update(conversation);
       matchRef2.update(conversation);
       console.log("Convo id:"+ convoId);
-      console.log(Message.all);
       return convo;
     },
 
@@ -515,10 +513,18 @@ app.factory('Message', ['$firebaseArray',
   return Message;
 }]);
 
-app.controller('messagePageCtrl', ['$scope', '$state', 'Message', '$firebaseArray',
-  function ($scope, $state, Message, $firebaseArray){
-      var uid1 = firebase.auth().currentUser.uid;
-      console.log('uid1:' + uid1);
+//----------------------------  CONTROLLER FOR THE MESSAGE PAGE -----------------------------------
+app.controller('messagePageCtrl', ['$scope', '$state', 'Message', '$firebaseArray', '$localStorage',
+  function ($scope, $state, Message, $firebaseArray, $localStorage){
+
+    //IF USER IS NULL, SIGN THEM BACK IN AND GET THEIR UID
+      var user = firebase.auth().currentUser;
+      if (user===null){
+        firebase.auth().signInWithEmailAndPassword($localStorage.email, $localStorage.password).then(function(){
+          $state.reload();
+        });
+      }
+      var uid1 = user.uid;
 
       //Root reference
       var rootRef = firebase.database().ref();
@@ -528,7 +534,6 @@ app.controller('messagePageCtrl', ['$scope', '$state', 'Message', '$firebaseArra
         //Get ID of the user's buddy
         var userDatabase = snapshot.child("users/" + uid1).val();
         var uid2 = userDatabase.buddy;
-        console.log("ID of the user's buddy: "+ uid2);
         Message.setUid(uid1, uid2);
 
         //Check ID of the 2 people in conversation
@@ -543,7 +548,23 @@ app.controller('messagePageCtrl', ['$scope', '$state', 'Message', '$firebaseArra
         //OUTPUT THE MESSAGE IN CONVO SCOPE ARRAY
         var matchDatabase = snapshot.child("match/" + uid1 + "/" + uid2).val();
         $scope.convo = Message.getConvoId(matchDatabase, uid1, uid2);
-        console.log($scope.convo);
+
+        /*--------- HOW TO LOOP THROUGH FIREBASE ARRAY ----------------
+        $scope.convo.$loaded()
+        .then(function(){
+          angular.forEach($scope.convo, function(message){
+            if (message.sender == uid1) $scope.myStyle = {color: 'red'};
+            if (message.sender == uid2) $scope.myStyle = {color: 'blue'};
+          });
+        });*/
+
+
+        $scope.setColor = function(message){
+          if (message.sender == uid1) return { color: "red"};
+          if (message.sender == uid2) return { color: "blue"};
+        };
+
+
 
 
         //SET THE INSERT FUNCTION FROM VIEW TO CREATE FUNCTION
@@ -565,12 +586,11 @@ app.controller('messagePageCtrl', ['$scope', '$state', 'Message', '$firebaseArra
           Message.create(message);
 
           };
-
       });
 }])
 
 
-
+//-------------------  CONTROLLER FOR OTHER PEOPLE PROFILE PAGE ------------------------
 .controller('otherPageCtrl', ['$scope', '$state', '$localStorage',
   function ($scope, $state, $localStorage){
     var currentUser = firebase.auth().currentUser;
