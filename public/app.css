@@ -12,6 +12,14 @@ input:focus{
   outline: none;
 }
 
+button:focus{
+  outline: none;
+}
+
+textarea:focus{
+  outline: none;
+}
+
 
 h2{
   font-family: 'Hind', serif;
@@ -22,14 +30,15 @@ h2{
 
 h3{
   font-family: 'Hind', serif;
-  font-size: 2em;
+  font-size: 2em !important;
   line-height: 1em;
   font-weight: lighter;
 }
 
+
 p{
   font-family: 'Abel', serif;
-  font-size: 1.7em;
+  font-size: 2em;
   color: #909497;
   text-align: center;
 }
@@ -233,94 +242,167 @@ li{
 }
 
 
-
 /* ---------------------------------- STYLING FOR THE USER PROFILE PAGE ------------------------------------ */
-#C1{
-  z-index: -1;
+
+#C, #I{
   position: absolute;
-  background-color: rgb(40, 55, 71);
-  background-size: cover;
-  height: 55%;
   width: 100%;
+  height: 100%;
   box-shadow: 0px 0px 16px 4px rgba(0,0,0,0.3);
+  overflow: auto;
 }
 
-#C1 img{
-  display: block;
-  margin: auto;
-  object-fit: cover;
-  width: 50%;
-  height: 50%;
-  margin-top: 15%;
-  border-radius: 20px;
-  box-shadow: 0px 0px 16px 4px rgba(0,0,0,0.3);
-}
-
-#C1 h3{
-  text-transform: uppercase;
-  color: white;
-  text-align: center;
-  font-size: 2.7em;
-}
-
-#C1 input[type="file"]{
-  opacity: 0;
+#one, #two{
+  background: none;
+  width: auto;
   position: absolute;
-	z-index: -1;
-  overflow: hidden;
-  width: 0.1px;
-	height: 0.1px;
+  padding: 40px;
 }
 
-#C1 label{
-  font-family: 'Hind', sans-serif;
-  font-size: 1.5em;
-  display: block;
-  text-align: center;
-  margin-left: 25%;
-  margin-right: 25%;
+#two{
+  right: 5px;
+}
+
+#C0 button:hover{
+  border: none;
   color: white;
 }
 
-#C1 i{
-  margin-left: 10px;
-}
 
-
-#C2{
-  position: absolute;
-  top: 55%;
-  width: 100%;
-  z-index: -1;
-  margin-bottom: 100px;
-}
-#C2 hr{
-  width: 70%;
-}
-#C2 h2{
-  padding-top: 5%;
-  padding-left: 15%;
+#C h2{
   text-align: left;
+  margin-left: 15%;
   margin-bottom: 0.5em;
 }
 
-#C2 li{
-  padding-left: 15%;
-  margin-bottom: 0.2em;
+
+#C1, #I1{
+  padding-top: 70px;
+  padding-bottom: 70px;
+  background-color: #283747;
+}
+
+#C1 img, #I1 img{
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+  margin: auto;
+}
+
+#C2{
+  display: flex;
+  width: 100%;
+}
+
+#C2 button{
+  padding-top: 5%;
+  padding-bottom: 5%;
+  background: #F2F3F4;
+  width: 25%:
+}
+
+#C2 button:hover{
+  border: #E5E7E9;
+  background-color: #E5E7E9;
 }
 
 
+#C2 i{
+  color: #34495E;
+}
+
+#C3 p, #I3 p{
+  font-size: 2em;
+  margin-left: 15%;
+  margin-right: 10%;
+  text-align: left;
+  color: black;
+  margin-top: 0.5em;
+}
+
+
+#C3, #I3{
+  font-size: 1.8em;
+  margin-bottom: 25%;
+}
+
+#C3 li, #I3 li{
+  margin-left: 15%;
+  font-size: 2.0em;
+  font-family: 'Hind', sans-serif;
+}
+
+#C5{
+  padding-top: 10%;
+}
+
+#C5 textarea{
+  border: none;
+  display: block;
+  margin: auto;
+  font-size: 2.5em;
+  font-family: 'Hind', sans-serif;
+  width: 70%;
+  background-color: #F8F9F9;
+  margin-bottom: 1em;
+  height: 300px;
+  padding-left: 20px;
+}
+
+/* ------------------------------ STYLING FOR THE EDIT BIO & RESOURCES PAGE ----------------------------------------- */
+#D, #E{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background: rgb(40, 55, 71);
+  color: white;
+  font-family: 'Hind', sans-serif;
+  z-index: 2;
+}
+
+
+#E1 button{
+  margin-top: 5%;
+  margin-right: 5%;
+  float: right;
+  width: auto;
+  margin-bottom: 10%:
+}
+
+#E2{
+  border: 2px rgb(40, 55, 71) solid;
+  margin-top: 10%;
+}
+
+#E2 h1{
+  display: block;
+  font-size: 4.5em;
+  text-align: center;
+  margin-top: 15%;
+}
+
+#E2 button{
+  background-color: white;
+  color: rgb(40, 55, 71);
+  margin-bottom: 1em;
+}
+
+#E2 i{
+  text-align: right;
+}
 
 
 /* ------------------------------ STYLING FOR THE MATCHING PAGE ----------------------------------------- */
-#D{
+#F{
   margin-top: 30%;
   position: relative;
   margin-bottom: 30%;
 }
 
 
-#D img{
+#F img{
   display: block;
   margin: auto;
   object-fit: cover !important;
@@ -329,7 +411,7 @@ li{
   border-radius: 20px;
 }
 
-#D p{
+#F p{
   font-size: 2.5em;
 }
 .match{
@@ -343,11 +425,11 @@ li{
   border-radius: 5px;
 }
 
-#D button{
+#F button{
   font-size: 2.5em;
 }
 
-#D b{
+#F b{
   color: rgb(40, 55, 71) ;
 }
 
@@ -389,48 +471,21 @@ li{
   font-size: 2em;
 }
 
-/* ------------------------------- STYLING FOR THE RESOURCES ------------------------------- */
-#I{
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background: rgb(40, 55, 71);
-  color: white;
-  font-family: 'Hind', sans-serif;
-}
 
-
+/*---------------------------- STYLING FOR OTHER PEOPLE BIO PAGE (E.G HOTLINE) -------------------- */
 #I1 button{
-  margin-top: 5%;
-  margin-right: 5%;
-  float: right;
-  width: auto;
-  margin-bottom: 10%:
+  border: 1px white solid;
+  width: 30%;
+  font-size: 2em;
+  margin-top: 1em;
 }
 
-#I2{
-  border: 2px rgb(40, 55, 71) solid;
-  margin-top: 10%;
-}
 
-#I2 h1{
-  display: block;
-  font-size: 4.5em;
-  text-align: center;
-  margin-top: 15%;
-}
 
-#I2 button{
-  background-color: white;
-  color: rgb(40, 55, 71);
-  margin-bottom: 1em;
-}
 
-#I2 i{
-  text-align: right;
-}
 
+
+/*---------------------------- STYLING FOR THE RESOURCES PAGE (E.G HOTLINE) -------------------- */
 #content{
   padding-left: 10%;
   padding-right: 10%;

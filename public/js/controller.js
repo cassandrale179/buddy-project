@@ -73,6 +73,7 @@ app.controller('registerPageCtrl', ['$scope', '$state',
         }
       };
 
+
       //LOGGING USER IN
       $scope.LogUser = function() {
         $scope.errorMessage = "";
@@ -149,6 +150,9 @@ app.controller('registerPageCtrl', ['$scope', '$state',
 .controller('profilePageCtrl', ['$scope', '$state', '$localStorage',
   function ($scope, $state, $localStorage){
 
+    $scope.show = 1;
+
+    //SIGN USER IN AUTOMATICALLY WITH EMAIL AND PASSWORD ON PROFILE PAGE
     var user = firebase.auth().currentUser;
     if (user===null){
       firebase.auth().signInWithEmailAndPassword($localStorage.email, $localStorage.password).then(function(){
@@ -156,21 +160,16 @@ app.controller('registerPageCtrl', ['$scope', '$state',
       });
     }
 
-
     //DECLARING SOME VARIABLES
-    if (user !== null){
-
+    if (user !== null)
+  {
       var id = user.uid;
       var ref = firebase.database().ref("users/" + id);
       var storageRef = firebase.storage().ref("Avatars/"+id+"/avatar.jpg");
       var profilePic = document.getElementById("profilePic");
-      storageRef.getDownloadURL().then(function(url)
-    {
-      if(url)
-      {
-        profilePic.src=url;
-      }
-    });
+      storageRef.getDownloadURL().then(function(url){
+        if(url){profilePic.src=url;}
+      });
 
       //THIS ALLOW THE USER TO UPLOAD THEIR PROFILE PIC
       $scope.uploadFile = function(event){
@@ -187,16 +186,19 @@ app.controller('registerPageCtrl', ['$scope', '$state',
 
       };
 
-      // DISPLAY THE USER INTEREST
+      // DISPLAY THE USER INTEREST AND BIO
       ref.once('value').then(function(snapshot){
         $scope.name = snapshot.val().name;
         $scope.age = snapshot.val().age;
+        $scope.gender = snapshot.val().gender;
+        $scope.description = snapshot.val().description;
         var interestStr = snapshot.val().interest;
         $scope.interestArr = interestStr.split(",");
         $scope.interestArr.splice(-1);
         $state.go('profile');
       });
-    }
+
+  }
 
 
 }])
@@ -440,6 +442,8 @@ app.controller('registerPageCtrl', ['$scope', '$state',
     };
   }
 ]);
+
+//-------------------  CONTROLLER FOR THE MESSAGE AGE ------------------------
 app.factory('Message', ['$firebaseArray',
   function($firebaseArray) {
   var messageRef = firebase.database().ref('messages');
@@ -545,16 +549,41 @@ app.controller('messagePageCtrl', ['$scope', '$state', 'Message', '$firebaseArra
 
           };
 
-
-
-
-      // });
       });
-
-
-
-
 }])
+
+
+
+.controller('otherPageCtrl', ['$scope', '$state', '$localStorage',
+  function ($scope, $state, $localStorage){
+    var currentUser = firebase.auth().currentUser;
+    if (currentUser===null){
+      firebase.auth().signInWithEmailAndPassword($localStorage.email, $localStorage.password).then(function(){
+        $state.reload();
+      });
+    }
+
+    var userRef = firebase.database().ref("users/" + currentUser.uid);
+    userRef.once('value', function(snapshot){
+      var buddyID = snapshot.val().buddy;
+      var buddyRef = firebase.database().ref("users/" + buddyID);
+      buddyRef.once('value', function(buddySnap){
+        $scope.buddyName = buddySnap.val().name;
+        $scope.buddyAge = buddySnap.val().age;
+        $scope.buddyGender = buddySnap.val().gender;
+        $scope.buddyDescription = buddySnap.val().description;
+        $scope.buddyArr = buddySnap.val().interest.split(",");
+        $scope.buddyArr.splice(-1);
+        var buddyProfilePic = document.getElementById("buddyProfilePic");
+        var storageRef = firebase.storage().ref("Avatars/"+buddyID+"/avatar.jpg");
+        storageRef.getDownloadURL().then(function(url){
+          buddyProfilePic.src=url;
+        });
+        $state.go('other');
+      });
+    });
+
+ }])
 
 //-------------------  CONTROLLER FOR THE RESOURCES PAGE ------------------------
 .controller('resourcesPageCtrl', ['$scope', '$state',
@@ -562,21 +591,5 @@ app.controller('messagePageCtrl', ['$scope', '$state', 'Message', '$firebaseArra
 }])
 
 .controller('hotlinesPageCtrl', ['$scope', '$state',
-  function ($scope, $state){
-}])
-
-.controller('alternativesPageCtrl', ['$scope', '$state',
-  function ($scope, $state){
-}])
-//
-.controller('anxietyPageCtrl', ['$scope', '$state',
-  function ($scope, $state){
-}])
-
-.controller('triggerPageCtrl', ['$scope', '$state',
-  function ($scope, $state){
-}])
-
-.controller('websitePageCtrl', ['$scope', '$state',
   function ($scope, $state){
 }]);

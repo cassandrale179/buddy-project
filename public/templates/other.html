@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<!-- _________________________ ADDING IN NAVIGATION BAR AT THE BOTTOM  ________________________ -->
+ <div id="navbar" class="wrap">
+   <a ui-sref="profile"><i class="fa fa-home fa-lg" aria-hidden="true"></i></a>
+   <a ui-sref="interest"><i class="fa fa-tag fa-lg" aria-hidden="true"></i></a>
+   <a ui-sref="match"><i class="fa fa-plus fa-lg" aria-hidden="true"></i></a>
+   <a ui-sref="message"><i class="fa fa-commenting fa-lg" aria-hidden="true"></i></a>
+   <a ui-sref="settings"><i class="fa fa-cog fa-lg" aria-hidden="true"></i></a>
+ </div>
+
+
+<body>
+  <div id="I">
+    <!-- ________________NAV BAR TO RESOURCES PAGE AND EDIT PROFILE _________-->
+    <div id="I0">
+      <button id="one" ui-sref="resources"><i class="fa fa-align-justify" aria-hidden="true"></i></button>
+    </div>
+
+    <div id="I1">
+      <img id="buddyProfilePic" src="img/default.png" /><br />
+      <button ui-sref="message"> MESSAGE </button>
+    </div>
+
+    <!-- ______________________ THIS DIV WILL BE THE BIO OF OTHER _______________________________ -->
+      <div id="I3">
+        <h2> PROFILE </h2>
+        <hr width="70%" />
+        <p>
+          <b><i class="fa fa-caret-right" aria-hidden="true"></i> Name: </b> {{buddyName}} <br />
+          <b><i class="fa fa-caret-right" aria-hidden="true"></i> Age: </b> {{buddyAge}}   <br />
+          <b><i class="fa fa-caret-right" aria-hidden="true"></i> Gender: </b> {{buddyGender}}  <br />
+          <b><i class="fa fa-caret-right" aria-hidden="true"></i> Bio: </b>{{buddyDescription}}
+        </p>
+        <h2> INTEREST </h2>
+        <hr width="70%" />
+        <li ng-repeat="i in buddyArr">{{i}}</li>
+      </div>
+    </div>
+</body>
