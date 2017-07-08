@@ -65,7 +65,7 @@ angular.module('app.routes', ['ui.router'])
 .state('resources',{
   name: 'Resources',
   url: '/resourcesPage',
-    templateUrl: 'templates/resources.html',
+    templateUrl: 'templates/resources/resources.html',
     controller: 'resourcesPageCtrl'
 })
 

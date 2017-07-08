@@ -2,57 +2,55 @@
 <body>
 
 <!-- ANNOTATION OF SHOW
-0: THE TOGGLE BAR
-1: HOME PAGE
-2: MESSAGE
+0: THE TOGGLE BAR (RESOURCES PAGE)
+1: HOME PAGE (BIO, INTERESTS)
+2: SEARCH BAR
 3: FRIENDLIST
+4: EDIT PROFILE PIC + BIO
 -->
 
-<!-- ADDING IN NAVIGATION BAR -->
+<!-- _________________________ ADDING IN NAVIGATION BAR AT THE BOTTOM  ________________________ -->
  <div id="navbar" class="wrap">
    <a ui-sref="profile" ng-click="show=1"><i class="fa fa-home fa-lg" aria-hidden="true"></i></a>
    <a ui-sref="interest"><i class="fa fa-tag fa-lg" aria-hidden="true"></i></a>
    <a ui-sref="match"><i class="fa fa-plus fa-lg" aria-hidden="true"></i></a>
-   <a ui-sref="message"><i class="fa fa-comments fa-lg" aria-hidden="true"></i></a>
+   <a ui-sref="message"><i class="fa fa-commenting fa-lg" aria-hidden="true"></i></a>
    <a ui-sref="settings"><i class="fa fa-cog fa-lg" aria-hidden="true"></i></a>
  </div>
 
- <!--  _____________ THIS IS THE RESOURCES PAGE ________________ -->
- <div id="I" ng-show="show==0">
-   <div id="I1">
-     <button ng-click="show=1"> X </button><br />
-   </div>
-   <div id="I2">
-     <h1> Resources </h1>
-     <button ui-sref="hotlines">Hotlines</button>
-     <button>Self Harm Alternatives </button>
-     <button>Anxiety</button>
-     <button>Triggers in Movies</button>
-     <button>Helpful Websites</button>
-   </div>
- </div>
 
- <!--  ___________________________ THIS IS THE PROFILE PAGE________________ -->
+<!--  _____________________________________ THIS IS THE PROFILE PAGE______________________________________ -->
   <div id="C">
 
-    <!-- NAV BAR TO RESOURCES PAGE AND EDIT PROFILE -->
+    <!-- ________________NAV BAR TO RESOURCES PAGE AND EDIT PROFILE _________-->
     <div id="C0">
       <button id="one" ng-click="show=0"><i class="fa fa-align-justify" aria-hidden="true"></i></button>
-      <button id="two"><i class="fa fa-wrench" aria-hidden="true"></i></button>
+      <button id="two" ng-click="show=4"><i class="fa fa-wrench" aria-hidden="true"></i></button>
     </div>
 
-    <!-- PROFILE PICTURE -->
+    <!-- __________________________PROFILE PICTURE __________________________-->
     <div id="C1">
       <img id="profilePic" src="img/default.png" /><br />
     </div>
 
-    <!-- THIS IS THE NAVIGATION BAR TO MESSAGE PEOPLE AND SEE THEIR BUDDIES LIST -->
+    <!-- ___________________NAV BAR TO SEARCH PEOPLE AND SEE YOUR BUDDIES LIST _______________ -->
     <div id="C2">
-      <button ng-click="show=2"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i> </button>
+      <button ng-click="show=2"><i class="fa fa-search fa-lg" aria-hidden="true"></i> </button>
       <button ng-click="show=3"><i class="fa fa-address-book fa-lg" aria-hidden="true"></i> </button>
     </div>
+      <!-- ___________ THIS DIV WILL BE TO SEARCH SOME PEOPLE UP  ___________ -->
+      <div id="C2A" ng-show="show==2">
+        <textarea placeholder="write something here..."></textarea>
+        <button> Send text message </button>
+      </div>
 
-    <!-- ___________ THIS DIV WILL BE THE BIO OF THE PERSON ___________ -->
+      <!-- ___________ THIS DIV WILL BE THE LIST OF YOUR MATCHES  ___________ -->
+      <div id="C2B" ng-show="show==3">
+        <h2> LIST OF YOUR MATCHES </h2>
+        <hr width="70%" />
+      </div>
+
+  <!-- ______________________ THIS DIV WILL BE THE BIO OF THE PERSON _______________________________ -->
     <div id="C3" ng-show="show==1">
       <h2> PROFILE </h2>
       <hr width="70%" />
@@ -60,39 +58,35 @@
         <b><i class="fa fa-caret-right" aria-hidden="true"></i> Name: </b> {{name}} <br />
         <b><i class="fa fa-caret-right" aria-hidden="true"></i> Age: </b> {{age}}   <br />
         <b><i class="fa fa-caret-right" aria-hidden="true"></i> Gender: </b> Female  <br />
-        <b><i class="fa fa-caret-right" aria-hidden="true"></i> Description:</b>
-         A half-blood witch. And a registered Animagus who attended Hogwarts School of Witchcraft and Wizardry from 1947-1954.
+        <b><i class="fa fa-caret-right" aria-hidden="true"></i> Description:</b><br />
+         Click on the edit icon at the top of profile page to edit your bio.
       </p>
       <h2> INTEREST </h2>
       <hr width="70%" />
       <li ng-repeat="i in interestArr">{{i}}</li>
     </div>
-
-
-    <!-- ___________ THIS DIV WILL BE THE LIST OF  ___________ -->
-    <div id="C5" ng-show="show==2">
-      <textarea placeholder="write something here..."></textarea>
-      <button> Send text message </button>
-    </div>
-
-    <!-- ___________ THIS DIV WILL BE THE LIST OF  ___________ -->
-    <div id="C6" ng-show="show==3">
-      <h2> LIST OF YOUR MATCHES </h2>
-      <hr width="70%" />
-    </div>
   </div>
+
+
+
+<!-- __________________________THIS IS THE EDIT BIO PAGE  __________________________-->
+  <div id="D" ng-show="show==4">
+    <button> Upload Profile Picture </button>
+  </div>
+
+
+<!--   __________________________ THIS IS THE RESOURCES PAGE ______________________ -->
+<div id="E" ng-show="show==0">
+  <div id="E1">
+    <button ng-click="show=1"> X </button><br />
+  </div>
+  <div id="E2">
+    <h1> Resources </h1>
+    <button ui-sref="hotlines">Hotlines</button>
+    <button>Self Harm Alternatives </button>
+    <button>Anxiety</button>
+    <button>Triggers in Movies</button>
+    <button>Helpful Websites</button>
+  </div>
+</div>
 </body>
-
-
-<!--
-  <div id="C1">
-    <img id="profilePic" src="img/default.png" /><br />
-    <label for="file">Edit <i class="fa fa-pencil" aria-hidden="true"></i></label>
-    <input type="file" name="file" id="file" custom-on-change="uploadFile" />
-    <h3>{{name}} | Age: {{age}}</h3>
-  </div>
-  <div id="C2">
-    <h2> INTEREST </h2>
-    <hr />
-    <h3><li ng-repeat="i in interestArr">{{i}}</li></h3>
-  </div> -->
