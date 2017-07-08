@@ -10,9 +10,58 @@
    <a ui-sref="settings"><i class="fa fa-cog fa-lg" aria-hidden="true"></i></a>
  </div> -->
 
+
  <!-- HEADER PAGE OF THE APP -->
   <div id="C">
-    <img id="profilePic" src="img/default.png" /><br />
+    <div id="nav">
+      <button id="one"><i class="fa fa-align-justify" aria-hidden="true"></i></button>
+      <button id="two"><i class="fa fa-wrench" aria-hidden="true"></i></button>
+    </div>
+    <div id="C1">
+      <img id="profilePic" src="img/default.png" /><br />
+    </div>
+
+    <div id="C2">
+      <button ng-click="show=1"><i class="fa fa-home fa-lg" aria-hidden="true"></i> </button>
+      <button ng-click="show=2"><i class="fa fa-tag fa-lg" aria-hidden="true"></i> </button>
+      <button ng-click="show=3"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i> </button>
+      <button ng-click="show=4"><i class="fa fa-address-book fa-lg" aria-hidden="true"></i> </button>
+    </div>
+
+    <!-- ___________ THIS DIV WILL BE THE BIO OF THE PERSON ___________ -->
+    <div id="C3" ng-show="show==1">
+      <h2> PROFILE </h2>
+      <hr width="70%" />
+      <p>
+        <b><i class="fa fa-caret-right" aria-hidden="true"></i> Name: </b> {{name}} <br />
+        <b><i class="fa fa-caret-right" aria-hidden="true"></i> Age: </b> {{age}}   <br />
+        <b><i class="fa fa-caret-right" aria-hidden="true"></i> Gender: </b> Female  <br />
+        <b><i class="fa fa-caret-right" aria-hidden="true"></i> Description:</b>
+         A half-blood witch. And a registered Animagus who attended Hogwarts School of Witchcraft and Wizardry from 1947-1954.
+      </p>
+    </div>
+
+    <!-- ___________ THIS DIV WILL BE THE LIST OF INTEREST OF A PERSON ___________ -->
+    <div id="C4" ng-show="show==2">
+      <h2> INTEREST </h2>
+      <hr width="70%" />
+      <li ng-repeat="i in interestArr">{{i}}</li>
+    </div>
+
+    <!-- ___________ THIS DIV WILL BE THE LIST OF  ___________ -->
+    <div id="C5" ng-show="show==3">
+      <textarea placeholder="write something here..."></textarea>
+      <button> Send text message </button>
+    </div>
+
+    <!-- ___________ THIS DIV WILL BE THE LIST OF  ___________ -->
+    <div id="C6" ng-show="show==4">
+      <h2> LIST OF YOUR MATCHES </h2>
+      <hr width="70%" />
+    </div>
+
+
+
   </div>
 </body>
 

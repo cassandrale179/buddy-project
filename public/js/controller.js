@@ -485,7 +485,7 @@ app.factory('Message', ['$firebaseArray',
       Message.create(message);
     };
 
-
+}])
 //-------------------  CONTROLLER FOR THE RESOURCES PAGE ------------------------
 .controller('resourcesPageCtrl', ['$scope', '$state',
   function ($scope, $state){
