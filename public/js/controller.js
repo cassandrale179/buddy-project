@@ -468,29 +468,39 @@ app.factory('Message', ['$firebaseArray',
 
 .controller('messagePageCtrl', ['$scope', '$state', 'Message', '$firebaseArray',
   function ($scope, $state, Message, $firebaseArray){
-    var user1 = firebase.auth().currentUser;
-    var uid1 = user1.uid;
-    var userMatchRef = firebase.database().ref('match/'+uid1);
-    userMatchRef.once("value", function(snapshot){
-      var userMatch = snapshot.val();
-      var uid2 = "FVBa8AGjW0TlvINHY8yPPL2MoXP2";
-      var conversation = {
-        convoId: Message.returnConvoId()
-      };
-      firstMatch.push(conversation);
-      console.log("Convo id inside scope:"+ convoId);
-    });
+      var user1 = firebase.auth().currentUser;
+      var ref = firebase.database().ref('users/'+user1.uid);
+      ref.once("value", function(snapshot){
+        var userObject = snapshot.val();
+        console.log("ID of the user's buddy: "+ userObject.buddy);
+        Message.setUid(user1.uid, userObject.buddy);
+        //Get ID for the 2 people in the conversation
+        console.log("uid1: " + Message.returnUid1());
+        console.log("uid2: " + Message.returnUid2());
+        var uid1 = Message.returnUid1();
+        var uid2 = Message.returnUid2();
+        var userMatchRef1 = firebase.database().ref('match/'+uid1+"/"+uid2);
+        var userMatchRef2 = firebase.database().ref('match/'+uid2+"/"+uid1);
 
-    var convoId = Message.returnConvoId();
-    console.log("convo id ouside scope:" + convoId);
+        // userMatchRef.once("value", function(snapshot){
+        //   var userMatch = snapshot.val();
+          var convoId = Message.returnConvoId();
+          var conversation = {
+            convoId: convoId
+          };
+          userMatchRef1.update(conversation);
+          userMatchRef2.update(conversation);
+          console.log("Convo id:"+ convoId);
+        // });
+      });
 
+      $scope.convo = Message.all;
+      console.log(Message.all);
 
-    $scope.convo = Message.all;
-    console.log(Message.all);
+      $scope.insert = function(message) {
+        Message.create(message);
+        };
 
-    $scope.insert = function(message) {
-      Message.create(message);
-    };
 }])
 
 //-------------------  CONTROLLER FOR THE RESOURCES PAGE ------------------------
