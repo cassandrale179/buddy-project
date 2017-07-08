@@ -243,6 +243,7 @@ li{
 
 
 /* ---------------------------------- STYLING FOR THE USER PROFILE PAGE ------------------------------------ */
+
 #C{
   position: absolute;
   width: 100%;
@@ -262,9 +263,9 @@ li{
   right: 5px;
 }
 
-#nav button:hover{
+#C0 button:hover{
   border: none;
-  color: white; 
+  color: white;
 }
 
 
@@ -320,14 +321,18 @@ li{
   color: #34495E;
 }
 
-#C4 li{
+#C3{
+  margin-bottom: 25%;
+}
+
+#C3 li{
   margin-left: 15%;
-  font-size: 2.5em;
+  font-size: 2.0em;
   font-family: 'Hind', sans-serif;
 }
 
 #C5{
-  padding-top: 20%;
+  padding-top: 10%;
 }
 
 #C5 textarea{
@@ -431,6 +436,7 @@ li{
   background: rgb(40, 55, 71);
   color: white;
   font-family: 'Hind', sans-serif;
+  z-index: 2;
 }
 
 

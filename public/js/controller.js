@@ -62,15 +62,6 @@ app.directive('customOnChange', function() {
 //------------------------------  CONTROLLER FOR THE LOGIN PAGE --------------------
 .controller('loginPageCtrl', ['$scope', '$state', '$localStorage', '$sessionStorage',
     function($scope, $state, $localStorage, $sessionStorage){
-      //Redirect page if user already logged in
-      $scope.init = function() {
-        //IF LOCAL STORAGE ALREADY EXIST, THEN LOGIN AUTOMATICALLY
-        if ($localStorage.email && $localStorage.password)
-        {
-          firebase.auth().signInWithEmailAndPassword($localStorage.email, $localStorage.password);
-          $state.go('profile');
-        }
-      };
 
       //LOGGING USER IN
       $scope.LogUser = function() {
@@ -147,12 +138,21 @@ app.directive('customOnChange', function() {
 //--------------------  CONTROLLER FOR THE PROFILE PAGE ---------------------------
 .controller('profilePageCtrl', ['$scope', '$state', '$localStorage',
   function ($scope, $state, $localStorage){
-  firebase.auth().signInWithEmailAndPassword($localStorage.email, $localStorage.password)
-  .then(function(){
+
+    $scope.show = 1;
+    //SIGN USER IN AUTOMATICALLY WITH EMAIL AND PASSWORD ON PROFILE PAGE
+
     var user = firebase.auth().currentUser;
+    if (user===null){
+      firebase.auth().signInWithEmailAndPassword($localStorage.email, $localStorage.password).then(function(){
+        $state.reload();
+      });
+    }
+
 
     //DECLARING SOME VARIABLES
     if (user !== null){
+
       var id = user.uid;
       var ref = firebase.database().ref("users/" + id);
       var storageRef = firebase.storage().ref("Avatars/"+id+"/avatar.jpg");
@@ -168,14 +168,16 @@ app.directive('customOnChange', function() {
       //THIS ALLOW THE USER TO UPLOAD THEIR PROFILE PIC
       $scope.uploadFile = function(event){
         var file = event.target.files[0];
+
         storageRef.put(file).then(function(snapshot){
           console.log("File uploaded!");
-
           storageRef.getDownloadURL().then(function(url)
-        {
-          profilePic.src = url;
+          {
+            profilePic.src = url;
+
+          });
         });
-        });
+
       };
 
       // DISPLAY THE USER INTEREST
@@ -188,7 +190,6 @@ app.directive('customOnChange', function() {
         $state.go('profile');
       });
     }
-    });
 
 
 }])
@@ -432,6 +433,8 @@ app.directive('customOnChange', function() {
     };
   }
 ]);
+
+//-------------------  CONTROLLER FOR THE mESSAGE AGE ------------------------
 app.factory('Message', ['$firebaseArray',
   function($firebaseArray) {
   var ref = firebase.database().ref('messages').push();
