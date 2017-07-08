@@ -24,7 +24,7 @@
 
     <!-- ________________NAV BAR TO RESOURCES PAGE AND EDIT PROFILE _________-->
     <div id="C0">
-      <button id="one" ng-click="show=0"><i class="fa fa-align-justify" aria-hidden="true"></i></button>
+      <button id="one" ui-sref="resources"><i class="fa fa-align-justify" aria-hidden="true"></i></button>
       <button id="two" ng-click="show=4"><i class="fa fa-wrench" aria-hidden="true"></i></button>
     </div>
 
@@ -71,22 +71,6 @@
 
 <!-- __________________________THIS IS THE EDIT BIO PAGE  __________________________-->
   <div id="D" ng-show="show==4">
-    <button> Upload Profile Picture </button>
+    <button> Upload Profile Picture</button>
   </div>
-
-
-<!--   __________________________ THIS IS THE RESOURCES PAGE ______________________ -->
-<div id="E" ng-show="show==0">
-  <div id="E1">
-    <button ng-click="show=1"> X </button><br />
-  </div>
-  <div id="E2">
-    <h1> Resources </h1>
-    <button ui-sref="hotlines">Hotlines</button>
-    <button>Self Harm Alternatives </button>
-    <button>Anxiety</button>
-    <button>Triggers in Movies</button>
-    <button>Helpful Websites</button>
-  </div>
-</div>
 </body>

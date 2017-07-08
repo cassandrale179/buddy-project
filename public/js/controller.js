@@ -140,8 +140,8 @@ app.directive('customOnChange', function() {
   function ($scope, $state, $localStorage){
 
     $scope.show = 1;
-    //SIGN USER IN AUTOMATICALLY WITH EMAIL AND PASSWORD ON PROFILE PAGE
 
+    //SIGN USER IN AUTOMATICALLY WITH EMAIL AND PASSWORD ON PROFILE PAGE
     var user = firebase.auth().currentUser;
     if (user===null){
       firebase.auth().signInWithEmailAndPassword($localStorage.email, $localStorage.password).then(function(){
@@ -434,7 +434,7 @@ app.directive('customOnChange', function() {
   }
 ]);
 
-//-------------------  CONTROLLER FOR THE mESSAGE AGE ------------------------
+//-------------------  CONTROLLER FOR THE MESSAGE AGE ------------------------
 app.factory('Message', ['$firebaseArray',
   function($firebaseArray) {
   var ref = firebase.database().ref('messages').push();
@@ -489,27 +489,42 @@ app.factory('Message', ['$firebaseArray',
     };
 
 }])
+
+.controller('otherPageCtrl', ['$scope', '$state', '$localStorage',
+  function ($scope, $state, $localStorage){
+    var currentUser = firebase.auth().currentUser;
+    if (currentUser===null){
+      firebase.auth().signInWithEmailAndPassword($localStorage.email, $localStorage.password).then(function(){
+        $state.reload();
+      });
+    }
+
+    var userRef = firebase.database().ref("users/" + currentUser.uid);
+    userRef.once('value', function(snapshot){
+      var buddyID = snapshot.val().buddy;
+      var buddyRef = firebase.database().ref("users/" + buddyID);
+      buddyRef.once('value', function(buddySnap){
+        $scope.buddyName = buddySnap.val().name;
+        $scope.buddyAge = buddySnap.val().age;
+        $scope.buddyGender = buddySnap.val().gender;
+        $scope.buddyDescription = buddySnap.val().description;
+        $scope.buddyArr = buddySnap.val().interest.split(",");
+        $scope.buddyArr.splice(-1);
+        var buddyProfilePic = document.getElementById("buddyProfilePic");
+        var storageRef = firebase.storage().ref("Avatars/"+buddyID+"/avatar.jpg");
+        storageRef.getDownloadURL().then(function(url){
+          buddyProfilePic.src=url;
+        });
+        $state.go('other');
+      });
+    });
+}])
+
 //-------------------  CONTROLLER FOR THE RESOURCES PAGE ------------------------
 .controller('resourcesPageCtrl', ['$scope', '$state',
   function ($scope, $state){
 }])
 
 .controller('hotlinesPageCtrl', ['$scope', '$state',
-  function ($scope, $state){
-}])
-
-.controller('alternativesPageCtrl', ['$scope', '$state',
-  function ($scope, $state){
-}])
-
-.controller('anxietyPageCtrl', ['$scope', '$state',
-  function ($scope, $state){
-}])
-
-.controller('triggerPageCtrl', ['$scope', '$state',
-  function ($scope, $state){
-}])
-
-.controller('websitePageCtrl', ['$scope', '$state',
   function ($scope, $state){
 }]);

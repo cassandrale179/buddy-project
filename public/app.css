@@ -244,7 +244,7 @@ li{
 
 /* ---------------------------------- STYLING FOR THE USER PROFILE PAGE ------------------------------------ */
 
-#C{
+#C, #I{
   position: absolute;
   width: 100%;
   height: 100%;
@@ -275,23 +275,14 @@ li{
   margin-bottom: 0.5em;
 }
 
-#C3 p{
-  font-size: 2.5em;
-  margin-left: 15%;
-  margin-right: 10%;
-  text-align: left;
-  color: black;
-  margin-top: 0.5em;
-}
 
-
-#C1{
+#C1, #I1{
   padding-top: 70px;
   padding-bottom: 70px;
   background-color: #283747;
 }
 
-#C1 img{
+#C1 img, #I1 img{
   width: 200px;
   height: 200px;
   object-fit: cover;
@@ -321,13 +312,22 @@ li{
   color: #34495E;
 }
 
+#C3 p, #I3 p{
+  font-size: 2.5em;
+  margin-left: 15%;
+  margin-right: 10%;
+  text-align: left;
+  color: black;
+  margin-top: 0.5em;
+}
 
-#C3{
+
+#C3, #I3{
   font-size: 1.5em;
   margin-bottom: 25%;
 }
 
-#C3 li{
+#C3 li, #I3 li{
   margin-left: 15%;
   font-size: 2.0em;
   font-family: 'Hind', sans-serif;
@@ -470,6 +470,20 @@ li{
   margin-bottom: 0.3em;
   font-size: 2em;
 }
+
+
+/*---------------------------- STYLING FOR OTHER PEOPLE BIO PAGE (E.G HOTLINE) -------------------- */
+#I1 button{
+  border: 1px white solid;
+  width: 30%;
+  font-size: 2em;
+  margin-top: 1em;
+}
+
+
+
+
+
 
 /*---------------------------- STYLING FOR THE RESOURCES PAGE (E.G HOTLINE) -------------------- */
 #content{
