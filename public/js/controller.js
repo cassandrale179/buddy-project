@@ -8,11 +8,12 @@ app.directive('customOnChange', function() {
       element.bind('change', onChangeHandler);
     }
   };
-})
+});
+
 
 
 //--------------------  CONTROLLER FOR THE REGISTER PAGE --------------------
-.controller('registerPageCtrl', ['$scope', '$state',
+app.controller('registerPageCtrl', ['$scope', '$state',
   function ($scope, $state){
     $scope.RegisterUser = function(){
 
@@ -63,14 +64,14 @@ app.directive('customOnChange', function() {
 .controller('loginPageCtrl', ['$scope', '$state', '$localStorage', '$sessionStorage',
     function($scope, $state, $localStorage, $sessionStorage){
       //Redirect page if user already logged in
-      // $scope.init = function() {
-      //   //IF LOCAL STORAGE ALREADY EXIST, THEN LOGIN AUTOMATICALLY
-      //   if ($localStorage.email && $localStorage.password)
-      //   {
-      //     firebase.auth().signInWithEmailAndPassword($localStorage.email, $localStorage.password);
-      //     $state.go('profile');
-      //   }
-      // };
+      $scope.init = function() {
+        //IF LOCAL STORAGE ALREADY EXIST, THEN LOGIN AUTOMATICALLY
+        if ($localStorage.email && $localStorage.password)
+        {
+          firebase.auth().signInWithEmailAndPassword($localStorage.email, $localStorage.password);
+          $state.go('profile');
+        }
+      };
 
       //LOGGING USER IN
       $scope.LogUser = function() {
@@ -441,65 +442,117 @@ app.directive('customOnChange', function() {
 ]);
 app.factory('Message', ['$firebaseArray',
   function($firebaseArray) {
-  var ref = firebase.database().ref('messages').push();
-  var convo = $firebaseArray(ref);
-  //Returns the randomly generated conversation ID
-  var convoId = ref.key;
+  var messageRef = firebase.database().ref('messages');
+  // var convo = $firebaseArray(convoRef);
+  var convo;
+  var matchRef;
+  var convoRef;
+  var convoId;
+  var uid1;
+  var uid2;
+
 
   var Message = {
-    all: convo,
     create: function (msg) {
       return convo.$add(msg);
     },
-    delete: function (message) {
-      return convo.$remove(message);
+    delete: function (msg) {
+      return convo.$remove(msg);
     },
-    returnConvoId: function() {
-      return convoId;
+    getConvoId: function(database, userId1, userId2) {
+      matchRef1 = firebase.database().ref('match/'+userId1 + "/" + userId2);
+      matchRef2 = firebase.database().ref('match/'+userId2+"/" + userId1);
+
+      console.log("Current database convoID:" + database.convoId);
+      //If current convo ID exists, set convoId to be database.convoId
+      //Else create new convoId
+      if (database.convoId)
+      {
+        convoId = database.convoId;
+      }
+      else{
+        messageRef.push();
+        convoId = messageRef.key;
+      }
+      //Create conversation
+      convoRef = messageRef.child(convoId);
+      convo = $firebaseArray(convoRef);
+      console.log("convo: " + convo);
+      var conversation = {
+        convoId: convoId
+      };
+      matchRef1.update(conversation);
+      matchRef2.update(conversation);
+      console.log("Convo id:"+ convoId);
+      console.log(Message.all);
+      return convo;
+    },
+    // all: convo,
+    returnConvoId: convoId,
+    // function() {
+    //   return convoId;
+    // },
+    //Set user id for the conversation
+    setUid: function(userId1, userId2){
+      uid1 = userId1;
+      uid2 = userId2;
+    },
+    returnUid1: function() {
+      return uid1;
+    },
+    returnUid2: function() {
+      return uid2;
     }
     // get: function (messageId){
     //   return $firebaseArray(ref.child('messages').child(messageId)).$asObject();
     // }
 
-
   };
   return Message;
-}])
+}]);
 
-.controller('messagePageCtrl', ['$scope', '$state', 'Message', '$firebaseArray',
+app.controller('messagePageCtrl', ['$scope', '$state', 'Message', '$firebaseArray',
   function ($scope, $state, Message, $firebaseArray){
       var user1 = firebase.auth().currentUser;
-      var ref = firebase.database().ref('users/'+user1.uid);
-      ref.once("value", function(snapshot){
-        var userObject = snapshot.val();
-        console.log("ID of the user's buddy: "+ userObject.buddy);
-        Message.setUid(user1.uid, userObject.buddy);
-        //Get ID for the 2 people in the conversation
+      var uid1 = user1.uid;
+      console.log('uid1:' + uid1);
+      //Root reference
+      var rootRef = firebase.database().ref();
+      rootRef.once("value", function(snapshot){
+        //Get ID of the user's buddy
+        var userDatabase = snapshot.child("users/" + uid1).val();
+        var uid2 = userDatabase.buddy;
+        console.log("ID of the user's buddy: "+ uid2);
+        Message.setUid(uid1, uid2);
+        //Check ID of the 2 people in conversation
+        console.log("now log the 2 IDs of the two people in a chat");
         console.log("uid1: " + Message.returnUid1());
         console.log("uid2: " + Message.returnUid2());
-        var uid1 = Message.returnUid1();
-        var uid2 = Message.returnUid2();
+        //Get reference to both user's match table
         var userMatchRef1 = firebase.database().ref('match/'+uid1+"/"+uid2);
         var userMatchRef2 = firebase.database().ref('match/'+uid2+"/"+uid1);
+        //Get the conversation ID
+        var matchDatabase = snapshot.child("match/" + uid1 + "/" + uid2).val();
+        // Message.getConvoId(matchDatabase, uid1, uid2);
+        // var convoId = Message.returnConvoId();
+        // console.log("Conversation ID: " + convoId);
+        // $state.go('message');
+        $scope.convo = Message.getConvoId(matchDatabase, uid1, uid2);
+        console.log($scope.convo);
 
-        // userMatchRef.once("value", function(snapshot){
-        //   var userMatch = snapshot.val();
-          var convoId = Message.returnConvoId();
-          var conversation = {
-            convoId: convoId
+        $scope.insert = function(message) {
+          Message.create(message);
+
           };
-          userMatchRef1.update(conversation);
-          userMatchRef2.update(conversation);
-          console.log("Convo id:"+ convoId);
-        // });
+
+
+
+
+      // });
       });
 
-      $scope.convo = Message.all;
-      console.log(Message.all);
 
-      $scope.insert = function(message) {
-        Message.create(message);
-        };
+
 
 }])
 
@@ -515,7 +568,7 @@ app.factory('Message', ['$firebaseArray',
 .controller('alternativesPageCtrl', ['$scope', '$state',
   function ($scope, $state){
 }])
-
+//
 .controller('anxietyPageCtrl', ['$scope', '$state',
   function ($scope, $state){
 }])
