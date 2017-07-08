@@ -19,7 +19,14 @@
      <ul>
        <li ng-style="setColor(message)" ng-repeat="message in convo">
          {{message.text}}
+        <div style="color: black">
+            {{message.formattedTime}}
+        </div>
+
+
        </li>
+
+
      </ul>
      <form>
        <p>

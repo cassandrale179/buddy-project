@@ -569,6 +569,18 @@ app.controller('messagePageCtrl', ['$scope', '$state', 'Message', '$firebaseArra
 
         //SET THE INSERT FUNCTION FROM VIEW TO CREATE FUNCTION
         $scope.insert = function(message) {
+          //get Time stamp
+          var dateTime = Date.now();
+          var timestamp = Math.floor(dateTime/1000);
+          var date = new Date(timestamp*1000);
+          var hours = date.getHours();
+          var minutes = "0" + date.getMinutes();
+          var formattedTime = hours + ":" + minutes.substr(-2);
+          $scope.newmessage.formattedTime = formattedTime;
+          $scope.newmessage.timestamp = timestamp;
+          // var hours = date.getHours();
+          // var minutes = date.getMinutes();
+          // $scope.newmessage.timestamp = timestamp;
           $scope.newmessage.sender = uid1;
           $scope.newmessage.receiver = uid2;
           Message.create(message);
