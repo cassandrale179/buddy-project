@@ -456,47 +456,51 @@ app.factory('Message', ['$firebaseArray',
   var uid2;
 
 
-  var Message = {
+  var Message =
+  {
     create: function (msg) {
       return convo.$add(msg);
     },
     delete: function (msg) {
       return convo.$remove(msg);
     },
+
+    //
     getConvoId: function(database, userId1, userId2) {
-      matchRef1 = firebase.database().ref('match/'+userId1 + "/" + userId2);
-      matchRef2 = firebase.database().ref('match/'+userId2+"/" + userId1);
+      matchRef1 = firebase.database().ref('match/'+ userId1 + "/" + userId2);
+      matchRef2 = firebase.database().ref('match/'+ userId2+ "/" + userId1);
 
       console.log("Current database convoID:" + database.convoId);
-      //If current convo ID exists, set convoId to be database.convoId
-      //Else create new convoId
-      if (database.convoId)
-      {
+
+      //IF CONVO ID EXIST, OUTPUT IT. ELSE CREATE NEW ONE
+      if (database.convoId){
         convoId = database.convoId;
       }
       else{
         messageRef.push();
         convoId = messageRef.key;
       }
-      //Create conversation
+
+      //CREATE A CONVO ID UNDER THE MESSAGE TABLE
       convoRef = messageRef.child(convoId);
       convo = $firebaseArray(convoRef);
       console.log("convo: " + convo);
       var conversation = {
-        convoId: convoId
+        convoId: convoId //convoID: XOsksjdsjdad
       };
+
+      //PUT THESE CONVO ID UNDER BOTH USER MATCH TABLE
       matchRef1.update(conversation);
       matchRef2.update(conversation);
       console.log("Convo id:"+ convoId);
       console.log(Message.all);
       return convo;
     },
-    // all: convo,
+
+    //RETURN THE CONVO ID
     returnConvoId: convoId,
-    // function() {
-    //   return convoId;
-    // },
-    //Set user id for the conversation
+
+    //SET THE USER ID FOR BOTH PARTICIPANTS
     setUid: function(userId1, userId2){
       uid1 = userId1;
       uid2 = userId2;
@@ -507,44 +511,45 @@ app.factory('Message', ['$firebaseArray',
     returnUid2: function() {
       return uid2;
     }
-    // get: function (messageId){
-    //   return $firebaseArray(ref.child('messages').child(messageId)).$asObject();
-    // }
-
   };
   return Message;
 }]);
 
 app.controller('messagePageCtrl', ['$scope', '$state', 'Message', '$firebaseArray',
   function ($scope, $state, Message, $firebaseArray){
-      var user1 = firebase.auth().currentUser;
-      var uid1 = user1.uid;
+      var uid1 = firebase.auth().currentUser.uid;
       console.log('uid1:' + uid1);
+
       //Root reference
       var rootRef = firebase.database().ref();
-      rootRef.once("value", function(snapshot){
+      rootRef.once("value", function(snapshot)
+      {
+
         //Get ID of the user's buddy
         var userDatabase = snapshot.child("users/" + uid1).val();
         var uid2 = userDatabase.buddy;
         console.log("ID of the user's buddy: "+ uid2);
         Message.setUid(uid1, uid2);
+
         //Check ID of the 2 people in conversation
         console.log("now log the 2 IDs of the two people in a chat");
         console.log("uid1: " + Message.returnUid1());
         console.log("uid2: " + Message.returnUid2());
+
         //Get reference to both user's match table
         var userMatchRef1 = firebase.database().ref('match/'+uid1+"/"+uid2);
         var userMatchRef2 = firebase.database().ref('match/'+uid2+"/"+uid1);
-        //Get the conversation ID
+
+        //OUTPUT THE MESSAGE IN CONVO SCOPE ARRAY
         var matchDatabase = snapshot.child("match/" + uid1 + "/" + uid2).val();
-        // Message.getConvoId(matchDatabase, uid1, uid2);
-        // var convoId = Message.returnConvoId();
-        // console.log("Conversation ID: " + convoId);
-        // $state.go('message');
         $scope.convo = Message.getConvoId(matchDatabase, uid1, uid2);
         console.log($scope.convo);
 
+
+        //SET THE INSERT FUNCTION FROM VIEW TO CREATE FUNCTION
         $scope.insert = function(message) {
+          $scope.newmessage.sender = uid1;
+          $scope.newmessage.receiver = uid2;  
           Message.create(message);
 
           };
