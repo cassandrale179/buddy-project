@@ -150,19 +150,15 @@ app.directive('customOnChange', function() {
     }
 
     //DECLARING SOME VARIABLES
-    if (user !== null){
-
+    if (user !== null)
+  {
       var id = user.uid;
       var ref = firebase.database().ref("users/" + id);
       var storageRef = firebase.storage().ref("Avatars/"+id+"/avatar.jpg");
       var profilePic = document.getElementById("profilePic");
-      storageRef.getDownloadURL().then(function(url)
-    {
-      if(url)
-      {
-        profilePic.src=url;
-      }
-    });
+      storageRef.getDownloadURL().then(function(url){
+        if(url){profilePic.src=url;}
+      });
 
       //THIS ALLOW THE USER TO UPLOAD THEIR PROFILE PIC
       $scope.uploadFile = function(event){
@@ -179,7 +175,7 @@ app.directive('customOnChange', function() {
 
       };
 
-      // DISPLAY THE USER INTEREST AND BIO 
+      // DISPLAY THE USER INTEREST AND BIO
       ref.once('value').then(function(snapshot){
         $scope.name = snapshot.val().name;
         $scope.age = snapshot.val().age;
@@ -190,7 +186,8 @@ app.directive('customOnChange', function() {
         $scope.interestArr.splice(-1);
         $state.go('profile');
       });
-    }
+
+  }
 
 
 }])
