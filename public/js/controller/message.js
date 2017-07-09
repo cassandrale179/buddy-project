@@ -153,6 +153,7 @@ app.controller('messagePageCtrl', ['$scope', '$state', 'Message', '$firebaseArra
 
           //CREATE THE OBJECT MESSAGE
           Message.create(message);
+          $scope.newmessage.text = "";
         };
     });
 }]);
