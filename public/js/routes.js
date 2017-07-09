@@ -76,6 +76,13 @@ angular.module('app.routes', ['ui.router'])
     controller: 'listPageCtrl'
 })
 
+.state('search', {
+  name: 'Search',
+  url: '/searchPage',
+    templateUrl: 'templates/search.html',
+    controller: 'searchPageCtrl'
+})
+
 
 .state('resources',{
   name: 'Resources',

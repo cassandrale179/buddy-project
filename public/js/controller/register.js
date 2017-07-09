@@ -15,6 +15,8 @@ app.controller('registerPageCtrl', ['$scope', '$state',
           name: $scope.txtName,
           email: $scope.txtEmail,
           age: $scope.txtAge,
+          gender: "NA",
+          description: "NA",
           interest: "",
           buddy: ""
         };

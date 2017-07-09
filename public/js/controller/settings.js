@@ -1,6 +1,3 @@
-
-
-//-------------------  CONTROLLER FOR THE SETTINGS PAGE ------------------------
 app.controller('settingsPageCtrl', ['$scope', '$state', '$localStorage',
   function ($scope, $state, $localStorage){
     $scope.successMessage = "";
