@@ -11,11 +11,11 @@
 
 <!-- _________________________ ADDING IN NAVIGATION BAR AT THE BOTTOM  ________________________ -->
  <div id="navbar" class="wrap">
-   <a ui-sref="profile" ng-click="show=1"><i class="fa fa-home fa-lg" aria-hidden="true"></i></a>
+   <a ui-sref="profile" ng-click="show=1"><i class="fa fa-user fa-lg" aria-hidden="true"></i></a>
+   <a ui-sref="search"><i class="fa fa-globe fa-lg" aria-hidden="true"></i></a>
+   <a ui-sref="match"><i class="fa fa-star fa-lg" aria-hidden="true"></i></a>
    <a ui-sref="interest"><i class="fa fa-tag fa-lg" aria-hidden="true"></i></a>
-   <a ui-sref="match"><i class="fa fa-plus fa-lg" aria-hidden="true"></i></a>
    <a ui-sref="message"><i class="fa fa-commenting fa-lg" aria-hidden="true"></i></a>
-   <a ui-sref="settings"><i class="fa fa-cog fa-lg" aria-hidden="true"></i></a>
  </div>
 
 
@@ -24,8 +24,8 @@
 
     <!-- ________________NAV BAR TO RESOURCES PAGE AND EDIT PROFILE _________-->
     <div id="C0">
-      <button id="one" ui-sref="resources"><i class="fa fa-align-justify" aria-hidden="true"></i></button>
-      <button id="two" ng-click="show=4"><i class="fa fa-wrench" aria-hidden="true"></i></button>
+      <button id="one" ui-sref="resources"><i class="fa fa-navicon" aria-hidden="true"></i></button>
+      <button id="two" ng-click="show=4"><i class="fa fa-cog" aria-hidden="true"></i></button>
     </div>
 
     <!-- __________________________PROFILE PICTURE __________________________-->
@@ -35,8 +35,8 @@
 
     <!-- ___________________NAV BAR TO SEARCH PEOPLE AND SEE YOUR BUDDIES LIST _______________ -->
     <div id="C2">
-      <button ng-click="show=2"><i class="fa fa-search fa-lg" aria-hidden="true"></i> </button>
-      <button ng-click="show=3"><i class="fa fa-address-book fa-lg" aria-hidden="true"></i> </button>
+      <button ng-click="show=2"><i class="fa fa-address-book fa-lg" aria-hidden="true"></i> </button>
+      <button ng-click="show=3"><i class="fa fa-heart fa-lg" aria-hidden="true"></i> </button>
     </div>
       <!-- ___________ THIS DIV WILL BE TO SEARCH SOME PEOPLE UP  ___________ -->
       <div id="C2A" ng-show="show==2">
@@ -51,14 +51,16 @@
   <!-- ______________________ THIS DIV WILL BE THE BIO OF THE PERSON _______________________________ -->
     <div id="C3" ng-show="show==1">
       <h2> PROFILE </h2>
-      <p>
+      <h5>
         <b><i class="fa fa-caret-right" aria-hidden="true"></i> Name: </b> {{name}} <br />
         <b><i class="fa fa-caret-right" aria-hidden="true"></i> Age: </b> {{age}}   <br />
         <b><i class="fa fa-caret-right" aria-hidden="true"></i> Gender: </b> {{gender}}  <br />
         <b><i class="fa fa-caret-right" aria-hidden="true"></i> Bio: </b> {{description}}
-      </p>
+      </h5>
       <h2> INTEREST </h2>
-      <li ng-repeat="i in interestArr">{{i}}</li>
+      <div id="C3A">
+        <h5 ng-repeat="i in interestArr"><i class="fa fa-caret-right" aria-hidden="true"></i>{{i}}</h5>
+      </div>
     </div>
   </div>
 

@@ -277,7 +277,7 @@ li{
 
 
 #C1, #I1{
-  padding-top: 70px;
+  padding-top: 100px;
   padding-bottom: 70px;
   background-color: #283747;
 }
@@ -312,25 +312,21 @@ li{
   color: #34495E;
 }
 
-#C3 p, #I3 p{
-  font-size: 2em;
+#C3 h5{
+  font-family: 'Abel', sans-serif;
+  font-size: 2.5em;
   margin-left: 15%;
   margin-right: 10%;
   text-align: left;
   color: black;
-  margin-top: 0.5em;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  font-weight: lighter;
 }
 
 
 #C3, #I3{
-  font-size: 1.8em;
   margin-bottom: 25%;
-}
-
-#C3 li, #I3 li{
-  margin-left: 15%;
-  font-size: 2.0em;
-  font-family: 'Hind', sans-serif;
 }
 
 #C5{
