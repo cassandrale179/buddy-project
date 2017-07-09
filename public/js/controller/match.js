@@ -53,6 +53,10 @@ app.controller('matchPageCtrl', ['$scope', '$state',
         $scope.myInterest.splice(-1);
       });
 
+      //CREATE A MATCH TAB;E
+      var refMatch = firebase.database().ref("match/" + currentUser.uid);
+
+
       //GET EVERYONE'S INTEREST, AND IGNORE MY INTEREST
       refUser.once('value', function(snapshot)
       {
@@ -94,22 +98,12 @@ app.controller('matchPageCtrl', ['$scope', '$state',
         refCurrentUserId.update({buddy: buddyID});
 
         //PUSHING THE ID, NAME AND THE COMMON INTERESTS TO THE MATCH TABLE
-        var refMatch = firebase.database().ref("match/" + currentUser.uid);
-        //Push the name
-        var refMatchBuddyId = refMatch.child(buddyID);
-        var buddyName = table.buddyID.name;
-        var buddyNameObj = {
-          name: buddyName
-        };
-        refMatchBuddyId.update(buddyNameObj);
+
         //Push the common interest
         refMatch.once('value', function(snapshot){
           var matchObject = {};
 
           matchObject[buddyID] = commonInterest;
-
-
-
 
           refMatch.update(matchObject).then(function(resolve){
             $scope.exist = true;
