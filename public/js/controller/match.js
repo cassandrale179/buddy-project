@@ -53,8 +53,7 @@ app.controller('matchPageCtrl', ['$scope', '$state',
         $scope.myInterest.splice(-1);
       });
 
-      //CREATE A MATCH TABLE
-      var refMatch = firebase.database().ref("match/" + currentUser.uid);
+
 
 
       //GET EVERYONE'S INTEREST, AND IGNORE MY INTEREST
@@ -98,14 +97,22 @@ app.controller('matchPageCtrl', ['$scope', '$state',
         //STORE THE MOST RECENT MATCH UNDER THE USER TABLE (BUDDY: YFxbY6C074eUIegNTyKVvnBvOzz2)
         refCurrentUserId.update({buddy: buddyID});
 
-        //PUSH THE MATCH OBJECT UNDER THE COMMON NODE OF MATCH TABLE
+        //STORE THE MOST RECENT MATCH UNDER THE OTHER USER'S TABLE
+        var refMatch = firebase.database().ref("match/" + currentUser.uid + "/" + buddyID);
+        var refMatchOther = firebase.database().ref('match/'+buddyID + "/" + currentUser.uid);
+
+
+
+        //PUSH THE MATCH OBJECT UNDER THE COMMON NODE OF MATCH TABLE (FOR BOTH USERS)
         var commonNode = firebase.database().ref("match/" + currentUser.uid + "/" + buddyID + "/" + "common");
-        commonNode.once('value', function(snapshot){
+        var otherCommonNode = firebase.database().ref("match/" + buddyID + "/" + currentUser.uid+"/common");
           commonNode.update(commonInterest).then(function(resolve){
+            //COMMON INTEREST FOR THE 2nd USER
+            otherCommonNode.update(commonInterest);
             $scope.exist = true;
             $state.go('match');
           });
-        });
+
     });
   };
 }]);
