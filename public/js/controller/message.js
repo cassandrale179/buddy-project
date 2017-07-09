@@ -28,13 +28,13 @@ app.factory('Message', ['$firebaseArray',
       console.log("Current database convoID:" + database.convoId);
 
       //IF CONVO ID EXIST, OUTPUT IT. ELSE CREATE NEW ONE
-      if (database.convoId!==null){
+      if (database.convoId!==undefined){
         convoId = database.convoId;
         console.log("Already has a convo Id" + convoId);
       }
       else{
-        messageRef.push();
-        convoId = messageRef.key;
+        var newRef = messageRef.push();
+        convoId = newRef.key;
         console.log("These guys don't have a convoID, so now their convo ID is: " + convoId);
       }
 
@@ -154,6 +154,7 @@ app.controller('messagePageCtrl', ['$scope', '$state', 'Message', '$firebaseArra
 
           //CREATE THE OBJECT MESSAGE
           Message.create(message);
+          $scope.newmessage.text = "";
         };
     });
 }]);

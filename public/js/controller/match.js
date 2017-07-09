@@ -32,7 +32,7 @@ app.controller('matchPageCtrl', ['$scope', '$state',
           });
 
           //TAKE A SNAPSHOT OF THE MATCH TABLE TO DISPLAY COMMON INTEREST
-          var matchRef = firebase.database().ref("match/" + currentUser.uid + "/" + $scope.buddy);
+          var matchRef = firebase.database().ref("match/" + currentUser.uid + "/" + $scope.buddy + "/" + "common");
           matchRef.once('value', function(matchSnap){
             $scope.commonInterest = matchSnap.val();
             $state.go('match');
@@ -53,19 +53,20 @@ app.controller('matchPageCtrl', ['$scope', '$state',
         $scope.myInterest.splice(-1);
       });
 
-      //CREATE A MATCH TAB;E
+      //CREATE A MATCH TABLE
       var refMatch = firebase.database().ref("match/" + currentUser.uid);
 
 
       //GET EVERYONE'S INTEREST, AND IGNORE MY INTEREST
       refUser.once('value', function(snapshot)
-      {
+    {
       var UserList = [/*[uid, count]*/];
       console.log("This is the current user's interest: " + $scope.myInterest);
       //Create a list of all users except for the current user
       var table = snapshot.val();
         for (var user in table){
-          //Delete current user from table
+
+          //FIND THE CURRENT USER ID AND DELETE THEM FROM LIST OF POTENTIAL MATCHES
           if (user == currentUser.uid) delete table.user;
           else{
             var interest = table[user].interest;
@@ -94,18 +95,13 @@ app.controller('matchPageCtrl', ['$scope', '$state',
         console.log("This is the buddy's ID: " + buddyID);
         console.log("This is the common interest: " + commonInterest);
 
-        //STORE THE MOST RECENT MATCH UNDER THE USER TABLE
+        //STORE THE MOST RECENT MATCH UNDER THE USER TABLE (BUDDY: YFxbY6C074eUIegNTyKVvnBvOzz2)
         refCurrentUserId.update({buddy: buddyID});
 
-        //PUSHING THE ID, NAME AND THE COMMON INTERESTS TO THE MATCH TABLE
-
-        //Push the common interest
-        refMatch.once('value', function(snapshot){
-          var matchObject = {};
-
-          matchObject[buddyID] = commonInterest;
-
-          refMatch.update(matchObject).then(function(resolve){
+        //PUSH THE MATCH OBJECT UNDER THE COMMON NODE OF MATCH TABLE
+        var commonNode = firebase.database().ref("match/" + currentUser.uid + "/" + buddyID + "/" + "common");
+        commonNode.once('value', function(snapshot){
+          commonNode.update(commonInterest).then(function(resolve){
             $scope.exist = true;
             $state.go('match');
           });
