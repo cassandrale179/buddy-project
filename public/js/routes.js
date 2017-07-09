@@ -62,10 +62,18 @@ angular.module('app.routes', ['ui.router'])
     controller: 'messagePageCtrl'
 })
 
+.state('other',{
+  name: 'Other',
+  url: '/otherPage',
+    templateUrl: 'templates/other.html',
+    controller: 'otherPageCtrl'
+})
+
+
 .state('resources',{
   name: 'Resources',
   url: '/resourcesPage',
-    templateUrl: 'templates/resources.html',
+    templateUrl: 'templates/resources/resources.html',
     controller: 'resourcesPageCtrl'
 })
 

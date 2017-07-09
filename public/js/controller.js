@@ -8,11 +8,12 @@ app.directive('customOnChange', function() {
       element.bind('change', onChangeHandler);
     }
   };
-})
+});
+
 
 
 //--------------------  CONTROLLER FOR THE REGISTER PAGE --------------------
-.controller('registerPageCtrl', ['$scope', '$state',
+app.controller('registerPageCtrl', ['$scope', '$state',
   function ($scope, $state){
     $scope.RegisterUser = function(){
 
@@ -63,14 +64,15 @@ app.directive('customOnChange', function() {
 .controller('loginPageCtrl', ['$scope', '$state', '$localStorage', '$sessionStorage',
     function($scope, $state, $localStorage, $sessionStorage){
       //Redirect page if user already logged in
-      // $scope.init = function() {
-      //   //IF LOCAL STORAGE ALREADY EXIST, THEN LOGIN AUTOMATICALLY
-      //   if ($localStorage.email && $localStorage.password)
-      //   {
-      //     firebase.auth().signInWithEmailAndPassword($localStorage.email, $localStorage.password);
-      //     $state.go('profile');
-      //   }
-      // };
+      $scope.init = function() {
+        //IF LOCAL STORAGE ALREADY EXIST, THEN LOGIN AUTOMATICALLY
+        if ($localStorage.email && $localStorage.password)
+        {
+          firebase.auth().signInWithEmailAndPassword($localStorage.email, $localStorage.password);
+          $state.go('profile');
+        }
+      };
+
 
       //LOGGING USER IN
       $scope.LogUser = function() {
@@ -148,6 +150,9 @@ app.directive('customOnChange', function() {
 .controller('profilePageCtrl', ['$scope', '$state', '$localStorage',
   function ($scope, $state, $localStorage){
 
+    $scope.show = 1;
+
+    //SIGN USER IN AUTOMATICALLY WITH EMAIL AND PASSWORD ON PROFILE PAGE
     var user = firebase.auth().currentUser;
     if (user===null){
       firebase.auth().signInWithEmailAndPassword($localStorage.email, $localStorage.password).then(function(){
@@ -155,21 +160,16 @@ app.directive('customOnChange', function() {
       });
     }
 
-
     //DECLARING SOME VARIABLES
-    if (user !== null){
-
+    if (user !== null)
+  {
       var id = user.uid;
       var ref = firebase.database().ref("users/" + id);
       var storageRef = firebase.storage().ref("Avatars/"+id+"/avatar.jpg");
       var profilePic = document.getElementById("profilePic");
-      storageRef.getDownloadURL().then(function(url)
-    {
-      if(url)
-      {
-        profilePic.src=url;
-      }
-    });
+      storageRef.getDownloadURL().then(function(url){
+        if(url){profilePic.src=url;}
+      });
 
       //THIS ALLOW THE USER TO UPLOAD THEIR PROFILE PIC
       $scope.uploadFile = function(event){
@@ -186,16 +186,19 @@ app.directive('customOnChange', function() {
 
       };
 
-      // DISPLAY THE USER INTEREST
+      // DISPLAY THE USER INTEREST AND BIO
       ref.once('value').then(function(snapshot){
         $scope.name = snapshot.val().name;
         $scope.age = snapshot.val().age;
+        $scope.gender = snapshot.val().gender;
+        $scope.description = snapshot.val().description;
         var interestStr = snapshot.val().interest;
         $scope.interestArr = interestStr.split(",");
         $scope.interestArr.splice(-1);
         $state.go('profile');
       });
-    }
+
+  }
 
 
 }])
@@ -439,59 +442,185 @@ app.directive('customOnChange', function() {
     };
   }
 ]);
+
+//----------------------------  FACTORY FOR THE MESSAGE PAGE -----------------------------------
 app.factory('Message', ['$firebaseArray',
   function($firebaseArray) {
-  var ref = firebase.database().ref('messages').push();
-  var convo = $firebaseArray(ref);
-  //Returns the randomly generated conversation ID
-  var convoId = ref.key;
+  var messageRef = firebase.database().ref('messages');
+  // var convo = $firebaseArray(convoRef);
+  var convo;
+  var matchRef;
+  var convoRef;
+  var convoId;
+  var uid1;
+  var uid2;
 
-  var Message = {
-    all: convo,
+
+  var Message =
+  {
     create: function (msg) {
       return convo.$add(msg);
     },
-    delete: function (message) {
-      return convo.$remove(message);
+    delete: function (msg) {
+      return convo.$remove(msg);
     },
-    returnConvoId: function() {
-      return convoId;
+
+    //
+    getConvoId: function(database, userId1, userId2) {
+      matchRef1 = firebase.database().ref('match/'+ userId1 + "/" + userId2);
+      matchRef2 = firebase.database().ref('match/'+ userId2+ "/" + userId1);
+
+      console.log("Current database convoID:" + database.convoId);
+
+      //IF CONVO ID EXIST, OUTPUT IT. ELSE CREATE NEW ONE
+      if (database.convoId){
+        convoId = database.convoId;
+      }
+      else{
+        messageRef.push();
+        convoId = messageRef.key;
+      }
+
+      //CREATE A CONVO ID UNDER THE MESSAGE TABLE
+      convoRef = messageRef.child(convoId);
+      convo = $firebaseArray(convoRef);
+      var conversation = {
+        convoId: convoId //convoID: XOsksjdsjdad
+      };
+
+      //PUT THESE CONVO ID UNDER BOTH USER MATCH TABLE
+      matchRef1.update(conversation);
+      matchRef2.update(conversation);
+      console.log("Convo id:"+ convoId);
+      return convo;
+    },
+
+    //RETURN THE CONVO ID
+    returnConvoId: convoId,
+
+    //SET THE USER ID FOR BOTH PARTICIPANTS
+    setUid: function(userId1, userId2){
+      uid1 = userId1;
+      uid2 = userId2;
+    },
+    returnUid1: function() {
+      return uid1;
+    },
+    returnUid2: function() {
+      return uid2;
     }
-    // get: function (messageId){
-    //   return $firebaseArray(ref.child('messages').child(messageId)).$asObject();
-    // }
-
-
   };
   return Message;
+}]);
+
+//----------------------------  CONTROLLER FOR THE MESSAGE PAGE -----------------------------------
+app.controller('messagePageCtrl', ['$scope', '$state', 'Message', '$firebaseArray', '$localStorage',
+  function ($scope, $state, Message, $firebaseArray, $localStorage){
+
+    //IF USER IS NULL, SIGN THEM BACK IN AND GET THEIR UID
+      var user = firebase.auth().currentUser;
+      if (user===null){
+        firebase.auth().signInWithEmailAndPassword($localStorage.email, $localStorage.password).then(function(){
+          $state.reload();
+        });
+      }
+      var uid1 = user.uid;
+
+      //Root reference
+      var rootRef = firebase.database().ref();
+      rootRef.once("value", function(snapshot)
+      {
+
+        //Get ID of the user's buddy
+        var userDatabase = snapshot.child("users/" + uid1).val();
+        var uid2 = userDatabase.buddy;
+        Message.setUid(uid1, uid2);
+
+        //Check ID of the 2 people in conversation
+        console.log("now log the 2 IDs of the two people in a chat");
+        console.log("uid1: " + Message.returnUid1());
+        console.log("uid2: " + Message.returnUid2());
+
+        //Get reference to both user's match table
+        var userMatchRef1 = firebase.database().ref('match/'+uid1+"/"+uid2);
+        var userMatchRef2 = firebase.database().ref('match/'+uid2+"/"+uid1);
+
+        //OUTPUT THE MESSAGE IN CONVO SCOPE ARRAY
+        var matchDatabase = snapshot.child("match/" + uid1 + "/" + uid2).val();
+        $scope.convo = Message.getConvoId(matchDatabase, uid1, uid2);
+
+        /*--------- HOW TO LOOP THROUGH FIREBASE ARRAY ----------------
+        $scope.convo.$loaded()
+        .then(function(){
+          angular.forEach($scope.convo, function(message){
+            if (message.sender == uid1) $scope.myStyle = {color: 'red'};
+            if (message.sender == uid2) $scope.myStyle = {color: 'blue'};
+          });
+        });*/
+
+
+        $scope.setColor = function(message){
+          if (message.sender == uid1) return { color: "red"};
+          if (message.sender == uid2) return { color: "blue"};
+        };
+
+
+
+
+        //SET THE INSERT FUNCTION FROM VIEW TO CREATE FUNCTION
+        $scope.insert = function(message) {
+          //get Time stamp
+          var dateTime = Date.now();
+          var timestamp = Math.floor(dateTime/1000);
+          var date = new Date(timestamp*1000);
+          var hours = date.getHours();
+          var minutes = "0" + date.getMinutes();
+          var formattedTime = hours + ":" + minutes.substr(-2);
+          $scope.newmessage.formattedTime = formattedTime;
+          $scope.newmessage.timestamp = timestamp;
+          // var hours = date.getHours();
+          // var minutes = date.getMinutes();
+          // $scope.newmessage.timestamp = timestamp;
+          $scope.newmessage.sender = uid1;
+          $scope.newmessage.receiver = uid2;
+          Message.create(message);
+
+          };
+      });
 }])
 
-.controller('messagePageCtrl', ['$scope', '$state', 'Message', '$firebaseArray',
-  function ($scope, $state, Message, $firebaseArray){
-    var user1 = firebase.auth().currentUser;
-    var uid1 = user1.uid;
-    var userMatchRef = firebase.database().ref('match/'+uid1);
-    userMatchRef.once("value", function(snapshot){
-      var userMatch = snapshot.val();
-      var uid2 = "FVBa8AGjW0TlvINHY8yPPL2MoXP2";
-      var conversation = {
-        convoId: Message.returnConvoId()
-      };
-      firstMatch.push(conversation);
-      console.log("Convo id inside scope:"+ convoId);
+
+//-------------------  CONTROLLER FOR OTHER PEOPLE PROFILE PAGE ------------------------
+.controller('otherPageCtrl', ['$scope', '$state', '$localStorage',
+  function ($scope, $state, $localStorage){
+    var currentUser = firebase.auth().currentUser;
+    if (currentUser===null){
+      firebase.auth().signInWithEmailAndPassword($localStorage.email, $localStorage.password).then(function(){
+        $state.reload();
+      });
+    }
+
+    var userRef = firebase.database().ref("users/" + currentUser.uid);
+    userRef.once('value', function(snapshot){
+      var buddyID = snapshot.val().buddy;
+      var buddyRef = firebase.database().ref("users/" + buddyID);
+      buddyRef.once('value', function(buddySnap){
+        $scope.buddyName = buddySnap.val().name;
+        $scope.buddyAge = buddySnap.val().age;
+        $scope.buddyGender = buddySnap.val().gender;
+        $scope.buddyDescription = buddySnap.val().description;
+        $scope.buddyArr = buddySnap.val().interest.split(",");
+        $scope.buddyArr.splice(-1);
+        var buddyProfilePic = document.getElementById("buddyProfilePic");
+        var storageRef = firebase.storage().ref("Avatars/"+buddyID+"/avatar.jpg");
+        storageRef.getDownloadURL().then(function(url){
+          buddyProfilePic.src=url;
+        });
+        $state.go('other');
+      });
     });
 
-    var convoId = Message.returnConvoId();
-    console.log("convo id ouside scope:" + convoId);
-
-
-    $scope.convo = Message.all;
-    console.log(Message.all);
-
-    $scope.insert = function(message) {
-      Message.create(message);
-    };
-}])
+ }])
 
 //-------------------  CONTROLLER FOR THE RESOURCES PAGE ------------------------
 .controller('resourcesPageCtrl', ['$scope', '$state',
@@ -499,21 +628,5 @@ app.factory('Message', ['$firebaseArray',
 }])
 
 .controller('hotlinesPageCtrl', ['$scope', '$state',
-  function ($scope, $state){
-}])
-
-.controller('alternativesPageCtrl', ['$scope', '$state',
-  function ($scope, $state){
-}])
-
-.controller('anxietyPageCtrl', ['$scope', '$state',
-  function ($scope, $state){
-}])
-
-.controller('triggerPageCtrl', ['$scope', '$state',
-  function ($scope, $state){
-}])
-
-.controller('websitePageCtrl', ['$scope', '$state',
   function ($scope, $state){
 }]);

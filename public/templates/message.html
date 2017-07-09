@@ -2,31 +2,39 @@
 <body>
 
   <!-- ADDING IN NAVIGATION BAR -->
-   <div id="navbar" class="wrap">
-     <a ui-sref="profile"><i class="fa fa-user-o fa-lg" aria-hidden="true"></i></a>
-     <a ui-sref="match"><i class="fa fa-heart-o fa-lg" aria-hidden="true"></i></a>
-     <a ui-sref="interest"><i class="fa fa-plus fa-lg" aria-hidden="true"></i></a>
-     <a ui-sref="message"><i class="fa fa-comments fa-lg" aria-hidden="true"></i></a>
-     <a ui-sref="settings"><i class="fa fa-cog fa-lg" aria-hidden="true"></i></a>
-   </div>
+  <div id="navbar" class="wrap">
+    <a ui-sref="profile" ng-click="show=1"><i class="fa fa-home fa-lg" aria-hidden="true"></i></a>
+    <a ui-sref="interest"><i class="fa fa-tag fa-lg" aria-hidden="true"></i></a>
+    <a ui-sref="match"><i class="fa fa-plus fa-lg" aria-hidden="true"></i></a>
+    <a ui-sref="message"><i class="fa fa-commenting fa-lg" aria-hidden="true"></i></a>
+    <a ui-sref="settings"><i class="fa fa-cog fa-lg" aria-hidden="true"></i></a>
+  </div>
 
    <!-- HEADER OF MESSAGE PAGE -->
    <div id="header">
      <h1> MESSAGE </h1>
+   </div>
+
+   <div id="J">
      <ul>
-       <li ng-repeat="message in convo">
+       <li ng-style="setColor(message)" ng-repeat="message in convo">
          {{message.text}}
+        <div style="color: black">
+            {{message.formattedTime}}
+        </div>
+
+
        </li>
+
+
      </ul>
      <form>
        <p>
          <input type="text" ng-model="newmessage.text" />
+         <p ng-model="newmessage.sender"></p>
+         <p ng-model="newmessage.receiver"></p>
        </p>
        <button ng-click="insert(newmessage)">Submit</button>
      </form>
-
-
-
    </div>
-
 </body>
