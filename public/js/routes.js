@@ -69,6 +69,13 @@ angular.module('app.routes', ['ui.router'])
     controller: 'otherPageCtrl'
 })
 
+.state('list',{
+  name: 'List',
+  url: '/listPage',
+    templateUrl: 'templates/list.html',
+    controller: 'listPageCtrl'
+})
+
 
 .state('resources',{
   name: 'Resources',
