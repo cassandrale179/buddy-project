@@ -58,8 +58,10 @@ app.controller('matchPageCtrl', ['$scope', '$state',
       {
       var UserList = [/*[uid, count]*/];
       console.log("This is the current user's interest: " + $scope.myInterest);
+      //Create a list of all users except for the current user
       var table = snapshot.val();
         for (var user in table){
+          //Delete current user from table
           if (user == currentUser.uid) delete table.user;
           else{
             var interest = table[user].interest;
@@ -91,11 +93,24 @@ app.controller('matchPageCtrl', ['$scope', '$state',
         //STORE THE MOST RECENT MATCH UNDER THE USER TABLE
         refCurrentUserId.update({buddy: buddyID});
 
-        //PUSHING THE ID AND THE COMMON INTERESTS TO THE MATCH TABLE
+        //PUSHING THE ID, NAME AND THE COMMON INTERESTS TO THE MATCH TABLE
         var refMatch = firebase.database().ref("match/" + currentUser.uid);
+        //Push the name
+        var refMatchBuddyId = refMatch.child(buddyID);
+        var buddyName = table.buddyID.name;
+        var buddyNameObj = {
+          name: buddyName
+        };
+        refMatchBuddyId.update(buddyNameObj);
+        //Push the common interest
         refMatch.once('value', function(snapshot){
           var matchObject = {};
+
           matchObject[buddyID] = commonInterest;
+
+
+
+
           refMatch.update(matchObject).then(function(resolve){
             $scope.exist = true;
             $state.go('match');

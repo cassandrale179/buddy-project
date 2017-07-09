@@ -55,6 +55,13 @@ angular.module('app.routes', ['ui.router'])
     controller: 'settingsPageCtrl'
 })
 
+.state('messageList', {
+  name:'MessageList',
+  url: '/messageList',
+  templateUrl: 'templates/messageList.html',
+  controller: 'messageListCtrl'
+})
+
 .state('message',{
   name: 'Message',
   url: '/messagePage',
