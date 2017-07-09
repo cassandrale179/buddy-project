@@ -517,7 +517,7 @@ app.factory('Message', ['$firebaseArray',
 app.controller('messagePageCtrl', ['$scope', '$state', 'Message', '$firebaseArray', '$localStorage',
   function ($scope, $state, Message, $firebaseArray, $localStorage){
 
-    //IF USER IS NULL, SIGN THEM BACK IN AND GET THEIR UID
+    //-----IF USER IS NULL, SIGN THEM BACK IN AND GET THEIR UID-----
       var user = firebase.auth().currentUser;
       if (user===null){
         firebase.auth().signInWithEmailAndPassword($localStorage.email, $localStorage.password).then(function(){
@@ -526,22 +526,22 @@ app.controller('messagePageCtrl', ['$scope', '$state', 'Message', '$firebaseArra
       }
       var uid1 = user.uid;
 
-      //Root reference
+      //-----ROOT REFERENCE-----
       var rootRef = firebase.database().ref();
       rootRef.once("value", function(snapshot)
       {
 
-        //Get ID of the user's buddy
+        //GET ID OF THE USER'S BUDDY
         var userDatabase = snapshot.child("users/" + uid1).val();
         var uid2 = userDatabase.buddy;
         Message.setUid(uid1, uid2);
 
-        //Check ID of the 2 people in conversation
+        //CHECK THE ID OF THE TWO PEOPLE IN THE CONVERSATION
         console.log("now log the 2 IDs of the two people in a chat");
         console.log("uid1: " + Message.returnUid1());
         console.log("uid2: " + Message.returnUid2());
 
-        //Get reference to both user's match table
+        //GET REFERENCE TO BOTH USER MATCH TABLE TO STORE CONVO ID
         var userMatchRef1 = firebase.database().ref('match/'+uid1+"/"+uid2);
         var userMatchRef2 = firebase.database().ref('match/'+uid2+"/"+uid1);
 
@@ -549,32 +549,55 @@ app.controller('messagePageCtrl', ['$scope', '$state', 'Message', '$firebaseArra
         var matchDatabase = snapshot.child("match/" + uid1 + "/" + uid2).val();
         $scope.convo = Message.getConvoId(matchDatabase, uid1, uid2);
 
-        /*--------- HOW TO LOOP THROUGH FIREBASE ARRAY ----------------
-        $scope.convo.$loaded()
-        .then(function(){
-          angular.forEach($scope.convo, function(message){
-            if (message.sender == uid1) $scope.myStyle = {color: 'red'};
-            if (message.sender == uid2) $scope.myStyle = {color: 'blue'};
-          });
-        });*/
-
-
+        //----- CHANGE COLOR OF THE TEXT DEPENDING ON THE ID OF THE PERSON -----
         $scope.setColor = function(message){
-          if (message.sender == uid1) return { color: "red"};
-          if (message.sender == uid2) return { color: "blue"};
+          var style1 = {
+            "margin-right": "5%",
+            "margin-left": "25%",
+            "text-align": "right",
+            "padding-right": "5%",
+            "background-color": "#34495E",
+            "color": "white",
+            "margin-top": "20px",
+          };
+
+          var style2 = {
+            "margin-right": "25%",
+            "margin-left": "5%",
+            "text-align": "left",
+            "padding-left": "5%",
+            "background-color": "white",
+            "color": "#34495E",
+            "margin-top": "20px"
+          };
+
+
+          if (message.sender == uid1) return style1;
+          if (message.sender == uid2) return style2;
         };
 
+        //----- WHEN USER CLICK INSERT, THEIR UID AND TIME OF MESSAGE ARE TAKEN -----
+        $scope.insert = function(message)
+        {
 
+          //GET THE TIMESTAMP OF THE TEXT
+          var dateTime = Date.now();
+          var timestamp = Math.floor(dateTime/1000);
+          var date = new Date(timestamp*1000);
+          var hours = date.getHours();
+          var minutes = "0" + date.getMinutes();
+          var formattedTime = hours + ":" + minutes.substr(-2);
+          $scope.newmessage.formattedTime = formattedTime;
+          $scope.newmessage.timestamp = timestamp;
 
-
-        //SET THE INSERT FUNCTION FROM VIEW TO CREATE FUNCTION
-        $scope.insert = function(message) {
+          //GET THE SENDER AND RECEIVER UID
           $scope.newmessage.sender = uid1;
           $scope.newmessage.receiver = uid2;
-          Message.create(message);
 
-          };
-      });
+          //CREATE THE OBJECT MESSAGE
+          Message.create(message);
+        };
+    });
 }])
 
 
