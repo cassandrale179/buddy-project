@@ -8,6 +8,7 @@ app.controller('listPageCtrl', ['$scope', '$state', '$firebaseArray', '$localSto
      });
    }
    else{
+    $scope.imgSrc = "https://firebasestorage.googleapis.com/v0/b/buddy-be3d7.appspot.com/o/Avatars%2FODOYM3uPvBgkClDq9a1p0dsh1r52%2Favatar.jpg?alt=media&token=dc079964-b972-41eb-895c-dbb6716c00e8";
      var uid1 = currentUser.uid;
      //Store conversation to get last text
      var convoArrayRef;
@@ -24,25 +25,33 @@ app.controller('listPageCtrl', ['$scope', '$state', '$firebaseArray', '$localSto
        var matchDatabase = snapshot.child('match').val();
        var convoDatabase = snapshot.child('messages').val();
        var convoId;
-       var promises = [];
+       var uidArray = [];
 
        $scope.userMatchesArray.$loaded()
-         .then(function() {
-           angular.forEach($scope.userMatchesArray, function(match){
-             //$id is ID of other person
-            var uid = match.$id;
-            match.name=userDatabase[uid].name;
-            //Get convo ID
-            match.convoId = matchDatabase[uid1][uid].convoId;
-            match.lastText = matchDatabase[uid1][uid].lastText;
-            console.log("This chat's convo ID is: " + match.convoId);
+         .then(function(){
+           angular.forEach($scope.userMatchesArray, function(match)
+           {
+               //$id is ID of other person
+              var uid = match.$id;
+              uidArray.push(uid);
+              match.name=userDatabase[uid].name;
+              //Get convo ID
+              match.convoId = matchDatabase[uid1][uid].convoId;
+              match.lastText = matchDatabase[uid1][uid].lastText;
+              console.log("This chat's convo ID is: " + match.convoId);
 
-            });
 
+        });
+    
+
+          $state.go('list');
+            console.log(uidArray);
 
            });
 
-         });
+
+        });
+
 
 
          //Store ID of the 2nd person in the Message object

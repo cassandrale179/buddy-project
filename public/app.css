@@ -147,7 +147,7 @@ li{
   color: white;
   display: block;
   margin: auto;
-  font-size: 2.5em;
+  font-size: 2.5em !important;
 }
 
 #navbar a{
@@ -591,4 +591,46 @@ li{
   margin-left: 15%;
   font-size: 2.5em;
   font-family: 'Hind', sans-serif;
+}
+
+/* ---------------------------------------- STYLING FOR THE LIST PAGE ------------------------------ */
+#L{
+  margin-top: 40%;
+  margin-bottom: 30%;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+
+}
+
+#L img{
+  margin-top: 0.5em;
+  width: 150px;
+
+}
+
+#Lflex{
+  display: flex;
+  width: 130%;
+}
+
+#L1{
+  font-size: 2.5em;
+  font-family: 'Hind', sans-serif;
+}
+
+#L2{
+  width: 30%;
+}
+
+
+#L2, #L3, #L4{
+  margin-left: 15%;
+  margin-right: 0%;
+}
+
+
+
+#L4{
+  color: #B3B6B7;
 }
