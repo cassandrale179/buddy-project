@@ -89,14 +89,15 @@ app.controller('messagePageCtrl', ['$scope', '$state', 'Message', '$firebaseArra
       {
 
         //GET ID OF THE USER'S BUDDY
-        var userDatabase = snapshot.child("users/" + uid1).val();
-        var uid2 = userDatabase.buddy;
-        Message.setUid(uid1, uid2);
+        // var userDatabase = snapshot.child("users/" + uid1).val();
+        // var uid2 = userDatabase.buddy;
+        // Message.setUid(uid1, uid2);
 
         //CHECK THE ID OF THE TWO PEOPLE IN THE CONVERSATION
         console.log("now log the 2 IDs of the two people in a chat");
         console.log("uid1: " + Message.returnUid1());
         console.log("uid2: " + Message.returnUid2());
+        var uid2 = Message.returnUid2();
 
         //GET REFERENCE TO BOTH USER MATCH TABLE TO STORE CONVO ID
         var userMatchRef1 = firebase.database().ref('match/'+uid1+"/"+uid2);
@@ -153,6 +154,9 @@ app.controller('messagePageCtrl', ['$scope', '$state', 'Message', '$firebaseArra
 
           //CREATE THE OBJECT MESSAGE
           Message.create(message);
+          userMatchRef1.update({lastText: message.text});
+          userMatchRef2.update({lastText: message.text});
+
           $scope.newmessage.text = "";
         };
     });

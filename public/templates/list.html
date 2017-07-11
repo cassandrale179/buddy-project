@@ -5,9 +5,12 @@
   <div>
     Your matches
   </div>
-  <li ng-repeat="match in userMatchesArray">
-    {{match.$id}}
-    <br />
-  </li>
+  <div ng-repeat="match in userMatchesArray" ng-click="storeInfo(match.$id)">
+    {{match.name}}:
+    <div>
+      {{match.lastText}}
+    </div>
+
+  </div>
 </body>
 </html>
