@@ -1,8 +1,14 @@
 app.controller('matchPageCtrl', ['$scope', '$state',
   function matchFunction($scope, $state){
 
+
     //GLOBAL VARIABLES TO BE USED
     var currentUser = firebase.auth().currentUser;
+    var matched = false;
+    if (!currentUser){
+      firebase.auth().signInWithEmailAndPassword($localStorage.email, $localStorage.password);
+      $state.reload();
+    }
 
     //CHECK IF USER ALREADY HAS A CURRENT BUDDY
     if (currentUser !== null){
@@ -17,7 +23,7 @@ app.controller('matchPageCtrl', ['$scope', '$state',
 
         //TAKE A SNAPSHOT OF BUDDY AND DISPLAY HIS/HER INFORMATION
         if ($scope.buddy !== ""){
-          $scope.exist = true;
+          // $scope.exist = true;
           var buddyRef = firebase.database().ref("users/" + $scope.buddy);
           buddyRef.once('value', function(buddySnap)
           {
@@ -40,6 +46,7 @@ app.controller('matchPageCtrl', ['$scope', '$state',
         }
       });
     }
+
 
     //IF THE USER HASN'T BEEN MATCHED YET, AND THEY CLICK MATCH ME
     $scope.MatchMe = function(){
@@ -110,6 +117,7 @@ app.controller('matchPageCtrl', ['$scope', '$state',
             //COMMON INTEREST FOR THE 2nd USER
             otherCommonNode.update(commonInterest);
             $scope.exist = true;
+            matched = true;
             $state.go('match');
           });
 
