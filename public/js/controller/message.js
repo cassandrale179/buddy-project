@@ -154,6 +154,9 @@ app.controller('messagePageCtrl', ['$scope', '$state', 'Message', '$firebaseArra
 
           //CREATE THE OBJECT MESSAGE
           Message.create(message);
+          userMatchRef1.update({lastText: message.text});
+          userMatchRef2.update({lastText: message.text});
+
           $scope.newmessage.text = "";
         };
     });
