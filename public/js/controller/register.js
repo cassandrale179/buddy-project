@@ -1,6 +1,6 @@
 //--------------------  CONTROLLER FOR THE REGISTER PAGE --------------------
-app.controller('registerPageCtrl', ['$scope', '$state',
-  function ($scope, $state){
+app.controller('registerPageCtrl', ['$scope', '$state', '$localStorage',
+  function ($scope, $state, $localStorage){
     $scope.RegisterUser = function(){
 
       $scope.errorMessage = "";
@@ -20,6 +20,8 @@ app.controller('registerPageCtrl', ['$scope', '$state',
           interest: "",
           buddy: ""
         };
+        $localStorage.email = $scope.txtEmail;
+        $localStorage.password = $scope.txtPassword;
         ref.child(user.uid).set(info);
         user.sendEmailVerification().then(function() {
           console.log(user);
