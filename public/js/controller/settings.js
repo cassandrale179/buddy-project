@@ -1,6 +1,5 @@
 app.controller('settingsPageCtrl', ['$scope', '$state', '$localStorage',
   function ($scope, $state, $localStorage){
-    $scope.successMessage = "";
     $scope.resetPassword = function() {
       var providedPassword = $scope.oldPassword;
 
@@ -11,7 +10,9 @@ app.controller('settingsPageCtrl', ['$scope', '$state', '$localStorage',
         .then(function(resolve){
           if ($scope.newPassword1===$scope.newPassword2){
             firebase.auth().currentUser.updatePassword($scope.newPassword1);
+            $localStorage.password = $scope.newPassword1;
             $scope.successMessage = "Password reset!";
+            $state.go('settings');
           }
           console.log('Successfully reauthenticated');
         })
