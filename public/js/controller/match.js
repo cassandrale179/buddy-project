@@ -4,7 +4,6 @@ app.controller('matchPageCtrl', ['$scope', '$state', '$localStorage',
 
     //GLOBAL VARIABLES TO BE USED
     var currentUser = firebase.auth().currentUser;
-    var matched = false;
     if (!currentUser){
       firebase.auth().signInWithEmailAndPassword($localStorage.email, $localStorage.password);
     }

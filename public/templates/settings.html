@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <body>
 
-  <div id="H">
+  <div id="H" >
     <div id="H1"><button ui-sref="profile">X</button></div>
     <h2> CHANGE PASSWORD </h2>
-    <div id="success" ng-if="successMessage != ''">{{successMessage}}</div>
+    <div id="success" ng-show="successMessage">{{successMessage}}</div>
     <div id="error" ng-if="errorMessage != ''">{{errorMessage}}</div>
       <form>
         <input type="password" ng-model="oldPassword" placeholder="Current Password" />
