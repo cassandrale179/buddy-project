@@ -53,25 +53,15 @@
   <!-- ______________________ THIS DIV WILL BE THE BIO OF THE PERSON _______________________________ -->
     <div id="C3" ng-show="show==1">
       <h2> PROFILE </h2>
-      <h5>
+      <h5 style="font-size: 2.5em">
         <b><i class="fa fa-caret-right" aria-hidden="true"></i> Name: </b> {{name}} <br />
         <b><i class="fa fa-caret-right" aria-hidden="true"></i> Age: </b> {{age}}   <br />
-        <b ><i class="fa fa-caret-right" aria-hidden="true"></i> Bio: </b> <div editable-text="description" onaftersave="updateBio($data)">
-          {{description || ""}}
-        </div>
+        <b><i class="fa fa-caret-right" aria-hidden="true"></i> Interest: </b><br />
+        <b ><i class="fa fa-caret-right" aria-hidden="true"></i> Bio: </b>
       </h5>
-      <h2> INTEREST </h2>
-      <div id="C3A">
-        <h5 ng-repeat="i in interestArr"><i class="fa fa-caret-right" aria-hidden="true"></i> {{i}}</h5>
+      <div id="C4" style="margin-left: 15%" class="resize" editable-text="description" onaftersave="updateBio($data)">
+        {{description || ""}}
       </div>
     </div>
-  </div>
-
-
-
-<!-- __________________________THIS IS THE EDIT BIO PAGE  __________________________-->
-  <div id="D" ng-show="show==4">
-    <button> Upload Profile Picture</button>
-    <input type="file" name="file" custom-on-change="uploadFile" />
   </div>
 </body>
