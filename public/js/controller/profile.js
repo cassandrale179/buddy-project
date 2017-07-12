@@ -1,3 +1,6 @@
+app.run(function(editableOptions) {
+  editableOptions.theme = 'bs3'; // bootstrap3 theme. Can be also 'bs2', 'default'
+});
 app.controller('profilePageCtrl', ['$scope', '$state', '$localStorage',
   function ($scope, $state, $localStorage){
 
@@ -15,6 +18,7 @@ app.controller('profilePageCtrl', ['$scope', '$state', '$localStorage',
     if (user !== null)
   {
       var id = user.uid;
+      var userRef = firebase.database().ref('users/'+id);
       var ref = firebase.database().ref("users/" + id);
       var storageRef = firebase.storage().ref("Avatars/"+id+"/avatar.jpg");
       var profilePic = document.getElementById("profilePic");
@@ -31,6 +35,7 @@ app.controller('profilePageCtrl', ['$scope', '$state', '$localStorage',
           storageRef.getDownloadURL().then(function(url)
           {
             profilePic.src = url;
+            userRef.update({pictureUrl: url});
 
           });
         });
@@ -41,13 +46,16 @@ app.controller('profilePageCtrl', ['$scope', '$state', '$localStorage',
       ref.once('value').then(function(snapshot){
         $scope.name = snapshot.val().name;
         $scope.age = snapshot.val().age;
-        $scope.gender = snapshot.val().gender;
+        // $scope.gender = snapshot.val().gender;
         $scope.description = snapshot.val().description;
         var interestStr = snapshot.val().interest;
         $scope.interestArr = interestStr.split(",");
         $scope.interestArr.splice(-1);
         $state.go('profile');
       });
+      $scope.updateBio = function($data) {
+        ref.update({description: $data});
+      };
 
   }
 }]);
