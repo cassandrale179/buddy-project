@@ -31,6 +31,8 @@
     <!-- __________________________PROFILE PICTURE __________________________-->
     <div id="C1">
       <img id="profilePic" src="img/default.png" /><br />
+      <label for="file">Edit <i class="fa fa-pencil" aria-hidden="true"></i></label>
+      <input type="file" name="file" id="file" custom-on-change="uploadFile" />
     </div>
 
     <!-- ___________________NAV BAR TO SEARCH PEOPLE AND SEE YOUR BUDDIES LIST _______________ -->
@@ -70,6 +72,6 @@
 <!-- __________________________THIS IS THE EDIT BIO PAGE  __________________________-->
   <div id="D" ng-show="show==4">
     <button> Upload Profile Picture</button>
-    <input type="file" name="file" id="file" custom-on-change="uploadFile" />
+    <input type="file" name="file" custom-on-change="uploadFile" />
   </div>
 </body>

@@ -12,9 +12,6 @@
 <body>
   <div id="I">
     <!-- ________________NAV BAR TO RESOURCES PAGE AND EDIT PROFILE _________-->
-    <div id="I0">
-      <button id="one" ui-sref="resources"><i class="fa fa-align-justify" aria-hidden="true"></i></button>
-    </div>
 
     <div id="I1">
       <img id="buddyProfilePic" src="img/default.png" /><br />
@@ -22,18 +19,17 @@
     </div>
 
     <!-- ______________________ THIS DIV WILL BE THE BIO OF OTHER _______________________________ -->
-      <div id="I3">
+      <div id="C3">
         <h2> PROFILE </h2>
-        <hr width="70%" />
-        <p>
+        <h5>
           <b><i class="fa fa-caret-right" aria-hidden="true"></i> Name: </b> {{buddyName}} <br />
           <b><i class="fa fa-caret-right" aria-hidden="true"></i> Age: </b> {{buddyAge}}   <br />
-          <b><i class="fa fa-caret-right" aria-hidden="true"></i> Gender: </b> {{buddyGender}}  <br />
           <b><i class="fa fa-caret-right" aria-hidden="true"></i> Bio: </b>{{buddyDescription}}
-        </p>
+        </h5>
         <h2> INTEREST </h2>
-        <hr width="70%" />
-        <li ng-repeat="i in buddyArr">{{i}}</li>
+        <div id="C3A">
+          <h5 ng-repeat="i in buddyArr"><i class="fa fa-caret-right" aria-hidden="true"></i> {{i}}</h5>
+        </div>
       </div>
     </div>
 </body>

@@ -1,10 +1,17 @@
 //--------------------  CONTROLLER FOR THE INTEREST PAGE ---------------------------
-app.controller('interestPageCtrl', ['$scope', '$state',
-  function($scope, $state){
+app.controller('interestPageCtrl', ['$scope', '$state', '$localStorage',
+  function($scope, $state, $localStorage){
 
     //CREATE SOME VARIABLES
     var user = firebase.auth().currentUser;
-    var id = user.uid;
+    if (!user){
+      firebase.auth().signInWithEmailAndPassword($localStorage.email, $localStorage.password);
+    }
+
+    console.log($localStorage.email);
+    console.log($localStorage.password);
+
+    var id = user.uid; 
     var refUserId = firebase.database().ref("users/"+id);
     var refInterest = firebase.database().ref("interests");
     $scope.errorMessage = "";
@@ -78,9 +85,9 @@ app.controller('interestPageCtrl', ['$scope', '$state',
             console.log(interestStr);
           });
 
-          $state.go('match');
+          $state.go('prematch');
         };
       }
     });
   }
-]); 
+]);

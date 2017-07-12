@@ -14,16 +14,15 @@
   <div id="header">
     <h1> MATCHING </h1>
   </div>
-  <div>
 
-  </div>
-
-
-  <!-- CONTENT OF MATCH PAGE -->
   <div id="F">
-    <button ng-click="MatchMe()"> MATCH ME</button>
-    <div>
-      <p>You have been matched with <br /><a ui-sref="other"> SOMEONE!</a></p>
-    </div>
+    <p>You have been matched with <br />
+    <b>{{BuddyName}}!</b></p>
+    <img ui-sref="other" id="buddyProfilePic"/>
+     <button class="match" ui-sref="list">MESSAGE YOUR BUDDY</button>
+     <p>Your common interests are: <br />
+       <b ng-repeat="x in commonInterest">{{x}}, </b></p>
   </div>
+
+
 </body>

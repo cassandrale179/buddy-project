@@ -306,7 +306,28 @@ li{
   object-fit: cover;
   display: block;
   margin: auto;
+  box-shadow: 0px 0px 16px 4px rgba(0,0,0,0.3);
 }
+
+#C1 input[type="file"]{
+  opacity: 0;
+  position: absolute;
+	z-index: -1;
+  overflow: hidden;
+  width: 0.1px;
+	height: 0.1px;
+}
+
+#C1 label{
+  font-family: 'Hind', sans-serif;
+  font-size: 1.5em;
+  display: block;
+  text-align: center;
+  margin-left: 25%;
+  margin-right: 25%;
+  color: white;
+}
+
 
 #C2{
   display: flex;
@@ -427,6 +448,8 @@ li{
 
 #F p{
   font-size: 2.5em;
+  margin-left: 15%;
+  margin-right: 15%;
 }
 .match{
   margin-top: 10%;
@@ -652,8 +675,32 @@ li{
   margin-right: 0%;
 }
 
-
-
 #L4{
   color: #B3B6B7;
+}
+
+/* ---------------------------------------- STYLING FOR THE LIST PAGE ------------------------------ */
+#M{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  /*background: url('http://blog.connectingthreads.com/wp-content/uploads/2016/04/Stars-and-Stripes-Sketch.jpg');*/
+  /*background: url('https://s-media-cache-ak0.pinimg.com/originals/2f/b3/4f/2fb34fe6b9f6e8bb856f2f5c4721a22f.gif');*/
+  /*background: url('https://s-media-cache-ak0.pinimg.com/originals/74/e6/f4/74e6f423a013bb8decb7deea1b2dfa3f.png');*/
+  background: url('http://static.tumblr.com/13269df65d1d82c3938aa82717413b3f/qx7gnto/9rroi1lyf/tumblr_static_eglnm4oqtegc0o00c0wks4wcc.jpg');
+  background-repeat: no-repeat;
+  background-position: center -30px;
+
+
+}
+
+#M1{
+  position: relative;
+  top: 55%;
+  transform: translateY(-45%);
+}
+
+#M button{
+  background: rgba(40,55,71,0.9);
+  font-size: 5em;
 }
