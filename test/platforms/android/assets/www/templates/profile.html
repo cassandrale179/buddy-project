@@ -1,26 +1,66 @@
 <!DOCTYPE html>
 <body>
 
-<!-- ADDING IN NAVIGATION BAR -->
+<!-- ANNOTATION OF SHOW
+0: THE TOGGLE BAR (RESOURCES PAGE)
+1: HOME PAGE (BIO, INTERESTS)
+2: SEARCH BAR
+3: FRIENDLIST
+4: EDIT PROFILE PIC + BIO
+-->
+
+<!-- _________________________ ADDING IN NAVIGATION BAR AT THE BOTTOM  ________________________ -->
  <div id="navbar" class="wrap">
-   <a ui-sref="profile"><i class="fa fa-user-o fa-lg" aria-hidden="true"></i></a>
-   <a ui-sref="match"><i class="fa fa-heart-o fa-lg" aria-hidden="true"></i></a>
-   <a ui-sref="interest"><i class="fa fa-plus fa-lg" aria-hidden="true"></i></a>
-   <a ui-sref="settings"><i class="fa fa-cog fa-lg" aria-hidden="true"></i></a>
+   <a ui-sref="profile" ng-click="show=1"><i class="fa fa-user fa-lg" aria-hidden="true"></i></a>
+   <a ui-sref="search"><i class="fa fa-globe fa-lg" aria-hidden="true"></i></a>
+   <a ui-sref="match"><i class="fa fa-star fa-lg" aria-hidden="true"></i></a>
+   <a ui-sref="interest"><i class="fa fa-tag fa-lg" aria-hidden="true"></i></a>
+   <a ui-sref="list"><i class="fa fa-commenting fa-lg" aria-hidden="true"></i></a>
  </div>
 
- <!-- HEADER PAGE OF THE APP -->
+
+<!--  _____________________________________ THIS IS THE PROFILE PAGE______________________________________ -->
   <div id="C">
-      <div id="C1">
-        <img id="profilePic" src="img/default.png" /><br />
-        <input type="file" custom-on-change="uploadFile" />
-        <h3>{{name}} | Age: {{age}}</h3>
+
+    <!-- ________________NAV BAR TO RESOURCES PAGE AND EDIT PROFILE _________-->
+    <div id="C0">
+      <button id="one" ui-sref="resources"><i class="fa fa-navicon" aria-hidden="true"></i></button>
+      <button id="two" ui-sref="settings"><i class="fa fa-cog" aria-hidden="true"></i></button>
+    </div>
+
+    <!-- __________________________PROFILE PICTURE __________________________-->
+    <div id="C1">
+      <img id="profilePic" src="img/default.png" /><br />
+      <label for="file">Edit <i class="fa fa-pencil" aria-hidden="true"></i></label>
+      <input type="file" name="file" id="file" custom-on-change="uploadFile" />
+    </div>
+
+    <!-- ___________________NAV BAR TO SEARCH PEOPLE AND SEE YOUR BUDDIES LIST _______________ -->
+    <div id="C2">
+      <button ng-click="show=2"><i class="fa fa-address-book fa-lg" aria-hidden="true"></i> </button>
+      <button ng-click="show=3"><i class="fa fa-heart fa-lg" aria-hidden="true"></i> </button>
+    </div>
+      <!-- ___________ THIS DIV WILL BE TO SEARCH SOME PEOPLE UP  ___________ -->
+      <div id="C2A" ng-show="show==2">
       </div>
 
-      <div id="C2">
-        <h2> INTEREST </h2>
-        <hr />
-        <h3><li ng-repeat="i in interestArr">{{i}}</li></h3>
+      <!-- ___________ THIS DIV WILL BE THE LIST OF YOUR MATCHES  ___________ -->
+      <div id="C2B" ng-show="show==3">
+        <h2> YOUR MATCHES </h2>
+        <li ng-repeat="friends in friendsList">{{friends}}</li>
       </div>
+
+  <!-- ______________________ THIS DIV WILL BE THE BIO OF THE PERSON _______________________________ -->
+    <div id="C3" ng-show="show==1">
+      <h2> PROFILE </h2>
+      <h5 style="font-size: 2.5em">
+        <b><i class="fa fa-caret-right" aria-hidden="true"></i> Name: </b> {{name}} <br />
+        <b><i class="fa fa-caret-right" aria-hidden="true"></i> Age: </b> {{age}}   <br />
+        <b ><i class="fa fa-caret-right" aria-hidden="true"></i> Bio: </b>
+      </h5>
+      <div id="C4" class="resize" editable-text="description" onaftersave="updateBio($data)">
+        {{description || ""}}
+      </div>
+    </div>
   </div>
 </body>

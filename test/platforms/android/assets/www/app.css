@@ -12,6 +12,14 @@ input:focus{
   outline: none;
 }
 
+button:focus{
+  outline: none;
+}
+
+textarea:focus{
+  outline: none;
+}
+
 
 h2{
   font-family: 'Hind', serif;
@@ -22,14 +30,15 @@ h2{
 
 h3{
   font-family: 'Hind', serif;
-  font-size: 2em;
+  font-size: 2em !important;
   line-height: 1em;
   font-weight: lighter;
 }
 
+
 p{
   font-family: 'Abel', serif;
-  font-size: 1.7em;
+  font-size: 2em;
   color: #909497;
   text-align: center;
 }
@@ -82,6 +91,24 @@ li{
   color: #626567;
 }
 
+/*---------------------------- STYLING FOR THE RESOURCES PAGE (E.G HOTLINE) -------------------- */
+#content{
+  padding-left: 10%;
+  padding-right: 10%;
+  font-size: 2em;
+  margin-top: 30%;
+  font-family: 'Hind', sans-serif;
+}
+
+#content h4{
+  font-size: 2em;
+  margin-bottom: 0em;
+}
+
+#content ul{
+  font-size: 1.7em;
+  text-align: left;
+}
 
 /*-------------------------------------- STYLING FOR THE HEADER --------------------------------------- */
 #header{
@@ -95,6 +122,7 @@ li{
   font-family: 'Hind', serif;
   font-size: 1.5em;
   height: 12%;
+  z-index: 3;
 }
 
 #header h1{
@@ -106,6 +134,7 @@ li{
   position: fixed;
   bottom: 0;
   background-color: rgb(33, 47, 60);
+  z-index: 3;
 }
 
 .wrap{
@@ -114,15 +143,15 @@ li{
 }
 
 #navbar i{
-  width: 25%;
+  width: 20%;
   color: white;
   display: block;
   margin: auto;
-  font-size: 2.5em;
+  font-size: 2.5em !important;
 }
 
 #navbar a{
-  width: 25%;
+  width: 20%;
   padding-top: 7%;
   padding-bottom: 7%;
   text-decoration: none;
@@ -231,74 +260,182 @@ li{
 }
 
 
-
 /* ---------------------------------- STYLING FOR THE USER PROFILE PAGE ------------------------------------ */
-#C1{
-  z-index: -1;
+
+#C, #I{
+  position: relative;
+  overflow: auto;
+}
+
+#one, #two{
+  background: none;
+  width: auto;
   position: absolute;
-  background-color: rgb(40, 55, 71);
-  background-size: cover;
-  height: 50%;
-  width: 100%;
-  box-shadow: 0px 0px 16px 4px rgba(0,0,0,0.3);
+  padding: 40px;
 }
 
-#C1 img{
-  display: block;
-  margin: auto;
-  border-radius: 20px;
-  max-width: 30%;
-  margin-top: 25%;
+#two{
+  right: 5px;
 }
 
-#C1 h3{
-  text-transform: uppercase;
+#C0 button:hover{
+  border: none;
   color: white;
-  text-align: center;
-  font-size: 2.7em;
 }
 
-#C2{
-  position: absolute;
-  top: 50%;
-  width: 100%;
-  z-index: -1;
-  margin-bottom: 100px;
-}
-#C2 hr{
-  width: 70%;
-}
-#C2 h2{
-  padding-top: 5%;
-  padding-left: 15%;
+
+#C h2{
   text-align: left;
+  margin-left: 15%;
   margin-bottom: 0.5em;
 }
 
-#C2 li{
-  padding-left: 15%;
-  margin-bottom: 0.2em;
+
+#C1, #I1{
+  padding-top: 100px;
+  padding-bottom: 70px;
+  background-color: #283747;
+}
+
+#C1 img, #I1 img{
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+  margin: auto;
+  box-shadow: 0px 0px 16px 4px rgba(0,0,0,0.3);
+}
+
+#C1 input[type="file"]{
+  opacity: 0;
+  position: absolute;
+	z-index: -1;
+  overflow: hidden;
+  width: 0.1px;
+	height: 0.1px;
+}
+
+#C1 label{
+  font-family: 'Hind', sans-serif;
+  font-size: 1.5em;
+  display: block;
+  text-align: center;
+  margin-left: 25%;
+  margin-right: 25%;
+  color: white;
 }
 
 
+#C2{
+  display: flex;
+  width: 100%;
+}
+
+#C2 button{
+  padding-top: 5%;
+  padding-bottom: 5%;
+  background: #F2F3F4;
+  width: 25%:
+}
+
+#C2 button:hover{
+  border: #E5E7E9;
+  background-color: #E5E7E9;
+}
+
+
+#C2 i{
+  color: #34495E;
+}
+
+#C3 h5{
+  font-family: 'Abel', sans-serif;
+  margin-left: 15%;
+  margin-right: 10%;
+  text-align: left;
+  color: black;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  font-weight: lighter;
+}
+
+.resize{
+  font-size: 2.5em;
+  margin-left: 15% !important;
+  font-family: 'Abel', sans-serif;
+}
+
+#C3, #I3{
+  margin-bottom: 25%;
+}
+
+
+
+/* ------------------------------ STYLING FOR THE EDIT BIO & RESOURCES PAGE ----------------------------------------- */
+#D, #E{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background: rgb(40, 55, 71);
+  color: white;
+  font-family: 'Hind', sans-serif;
+  z-index: 2;
+}
+
+
+#E1 button{
+  margin-top: 5%;
+  margin-right: 5%;
+  float: right;
+  width: auto;
+  margin-bottom: 10%:
+}
+
+#E2{
+  border: 2px rgb(40, 55, 71) solid;
+  margin-top: 10%;
+}
+
+#E2 h1{
+  display: block;
+  font-size: 4.5em;
+  text-align: center;
+  margin-top: 15%;
+}
+
+#E2 button{
+  background-color: white;
+  color: rgb(40, 55, 71);
+  margin-bottom: 1em;
+}
+
+#E2 i{
+  text-align: right;
+}
 
 
 /* ------------------------------ STYLING FOR THE MATCHING PAGE ----------------------------------------- */
-#D{
+#F{
   margin-top: 30%;
+  position: relative;
+  margin-bottom: 30%;
 }
 
 
-#D img{
-  width: 40%;
-  border-radius: 10px;
+#F img{
   display: block;
   margin: auto;
-  margin-bottom: 10%;
+  object-fit: cover !important;
+  width: 450px;
+  height: 450px;
+  border-radius: 20px;
 }
 
-#D p{
+#F p{
   font-size: 2.5em;
+  margin-left: 15%;
+  margin-right: 15%;
 }
 .match{
   margin-top: 10%;
@@ -311,11 +448,11 @@ li{
   border-radius: 5px;
 }
 
-#D button{
+#F button{
   font-size: 2.5em;
 }
 
-#D b{
+#F b{
   color: rgb(40, 55, 71) ;
 }
 
@@ -345,14 +482,211 @@ li{
 
 /* ------------------------------- STYLING FOR THE SETTINGS FIELD  ------------------------------- */
 #H{
-  margin-top: 30%;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(40, 55, 71);
+  color: white;
+}
+
+#H button{
+  background: white;
+  margin-bottom: 0.3em;
+  font-size: 2.5em;
+  color: rgb(40, 55, 71);
+}
+
+#H1{
+  margin-top: 1em;
+  margin-left: 5%;
+  margin-bottom: 12em;
+  display: block;
+}
+
+#H1 button{
+  float: left;
+  width: auto;
+  background-color: rgb(40, 55, 71);
+  color: white;
 }
 
 #H input{
   font-size: 2em;
+  background: transparent;
+  color: white;
 }
 
-#H button{
-  margin-bottom: 0.3em;
+
+
+/*---------------------------- STYLING FOR OTHER PEOPLE BIO PAGE (E.G HOTLINE) -------------------- */
+#I1 button{
+  border: 1px white solid;
+  width: 30%;
   font-size: 2em;
+  margin-top: 1em;
+}
+
+
+
+/*------------------------------------ STYLING FOR THE MESSAGE PAGE------------------------------ */
+#J{
+  width: 100%;
+  padding-top: 30%;
+  height: 55%;
+  position: fixed;
+  top: 10%;
+  background-color: #EAECEE;
+}
+
+#J0{
+  padding-top: 10%;
+  padding-bottom: 15%;
+  overflow: auto;
+  position: absolute;
+  bottom:0;
+  left:0;
+  right:0;
+  top: 0;
+  max-height: 100%;
+  width: 100%;
+}
+
+#J1{
+  font-family: "Dosis", sans-serif;
+  font-size: 2.5em;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+#J1time{
+  color: #ABB2B9;
+}
+
+#J2{
+  position: fixed;
+  bottom: 10%;
+  width: 100%;
+  padding-bottom: 5%;
+  background: white;
+}
+
+#J2 input{
+  background: transparent;
+  width: 60%;
+  float: left;
+  margin-left: 5%;
+  font-size: 1em;
+  margin-bottom: 0em;
+  display: inline-block;
+  padding-top: 2.5%;
+}
+
+#J2 button{
+  margin-right: 7%;
+  float: right;
+  font-size: 2.5em;
+  padding-bottom: 1%;
+  display: inline-block;
+  width: auto;
+}
+
+/* ---------------------------------------- STYLING FOR THE SEARCH PAGE ------------------------------ */
+#K{
+  position: absolute;
+  margin-top: 30%;
+  width: 100%;
+  height: 100%;
+
+}
+
+#K1{
+  font-family: 'Hind', sans-serif;
+  color: #A6ACAF;
+  margin-left: 15%;
+
+}
+
+#K1 input[type='radio'] {
+  float: left;
+  width: auto;
+  margin-top: 0.5em;
+  transform: scale(2.5);
+}
+
+#K1 label{
+  font-size: 2em;
+  margin-left: 0.5em;
+}
+
+
+#K2{
+  margin-left: 15%;
+  font-size: 2.5em;
+  font-family: 'Hind', sans-serif;
+}
+
+/* ---------------------------------------- STYLING FOR THE LIST PAGE ------------------------------ */
+#L{
+  margin-top: 40%;
+  margin-bottom: 30%;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+
+}
+
+#L img{
+  margin-top: 0.5em;
+  width: 150px;
+
+}
+
+#Lflex{
+  display: flex;
+  width: 130%;
+}
+
+#L1{
+  font-size: 2.5em;
+  font-family: 'Hind', sans-serif;
+}
+
+#L2{
+  width: 30%;
+}
+
+
+#L2, #L3, #L4{
+  margin-left: 15%;
+  margin-right: 0%;
+}
+
+#L4{
+  color: #B3B6B7;
+}
+
+/* ---------------------------------------- STYLING FOR THE LIST PAGE ------------------------------ */
+#M{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  /*background: url('http://blog.connectingthreads.com/wp-content/uploads/2016/04/Stars-and-Stripes-Sketch.jpg');*/
+  /*background: url('https://s-media-cache-ak0.pinimg.com/originals/2f/b3/4f/2fb34fe6b9f6e8bb856f2f5c4721a22f.gif');*/
+  /*background: url('https://s-media-cache-ak0.pinimg.com/originals/74/e6/f4/74e6f423a013bb8decb7deea1b2dfa3f.png');*/
+  background: url('http://static.tumblr.com/13269df65d1d82c3938aa82717413b3f/qx7gnto/9rroi1lyf/tumblr_static_eglnm4oqtegc0o00c0wks4wcc.jpg');
+  background-repeat: no-repeat;
+  background-position: center -30px;
+
+
+}
+
+#M1{
+  position: relative;
+  top: 55%;
+  transform: translateY(-45%);
+}
+
+#M button{
+  background: rgba(40,55,71,0.9);
+  font-size: 5em;
 }
