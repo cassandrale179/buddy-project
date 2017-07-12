@@ -1,20 +1,8 @@
 <!DOCTYPE html>
 <body>
 
-  <!-- ADDING IN NAVIGATION BAR -->
-  <div id="navbar" class="wrap">
-    <a ui-sref="profile" ng-click="show=1"><i class="fa fa-home fa-lg" aria-hidden="true"></i></a>
-    <a ui-sref="interest"><i class="fa fa-tag fa-lg" aria-hidden="true"></i></a>
-    <a ui-sref="match"><i class="fa fa-plus fa-lg" aria-hidden="true"></i></a>
-    <a ui-sref="message"><i class="fa fa-commenting fa-lg" aria-hidden="true"></i></a>
-    <a ui-sref="settings"><i class="fa fa-cog fa-lg" aria-hidden="true"></i></a>
-  </div>
-
-  <div id="header">
-    <h1>SETTINGS</h1>
-  </div>
-
   <div id="H">
+    <div id="H1"><button ui-sref="profile">X</button></div>
     <h2> CHANGE PASSWORD </h2>
     <div id="success" ng-if="successMessage != ''">{{successMessage}}</div>
     <div id="error" ng-if="errorMessage != ''">{{errorMessage}}</div>
@@ -26,6 +14,7 @@
       </form>
     <br />
     <h2> LOGOUT</h2>
+
     <button> REPORT A PROBLEM</button>
     <button ng-click="LogOutUser()"> LOGOUT </button>
   </div>

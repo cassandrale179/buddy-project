@@ -1,5 +1,5 @@
-app.controller('matchPageCtrl', ['$scope', '$state',
-  function matchFunction($scope, $state){
+app.controller('matchPageCtrl', ['$scope', '$state', '$localStorage',
+  function matchFunction($scope, $state, $localStorage){
 
 
     //GLOBAL VARIABLES TO BE USED
@@ -7,7 +7,6 @@ app.controller('matchPageCtrl', ['$scope', '$state',
     var matched = false;
     if (!currentUser){
       firebase.auth().signInWithEmailAndPassword($localStorage.email, $localStorage.password);
-      $state.reload();
     }
 
     //CHECK IF USER ALREADY HAS A CURRENT BUDDY
@@ -29,11 +28,6 @@ app.controller('matchPageCtrl', ['$scope', '$state',
           {
             var buddyNodeObject = buddySnap.val();
             $scope.BuddyName = buddySnap.val().name;
-            var buddyProfilePic = document.getElementById("buddyProfilePic");
-            var storageRef = firebase.storage().ref("Avatars/"+$scope.buddy+"/avatar.jpg");
-            storageRef.getDownloadURL().then(function(url){
-              buddyProfilePic.src=url;
-            });
             $state.go('match');
           });
 
