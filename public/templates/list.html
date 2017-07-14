@@ -19,7 +19,7 @@
   <div id="L">
     <div id="L1" ng-repeat="match in userMatchesArray" ng-click="storeInfo(match.$id)">
       <div id="Lflex">
-        <div id="L2"><img id="img" ng-src="../img/default.png" /><br /></div>
+        <div id="L2"><img id="{{ 'img-' + $index }}" ng-src="img/default.png" /><br /></div>
         <div id="L3">
           <b>{{match.name}} </b><br />
           {{match.lastText}}

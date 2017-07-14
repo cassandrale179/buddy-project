@@ -26,23 +26,33 @@ app.controller('listPageCtrl', ['$scope', '$state', '$firebaseArray', '$localSto
        var convoDatabase = snapshot.child('messages').val();
        var convoId;
        var uidArray = [];
+       var avatar;
+       //index of picture
+       $scope.index = 0;
 
        $scope.userMatchesArray.$loaded()
          .then(function(){
            angular.forEach($scope.userMatchesArray, function(match)
            {
                //$id is ID of other person
+
               var uid = match.$id;
               uidArray.push(uid);
               match.name=userDatabase[uid].name;
               //Get convo ID
               match.convoId = matchDatabase[uid1][uid].convoId;
               match.lastText = matchDatabase[uid1][uid].lastText;
+              match.pictureUrl = userDatabase[uid].pictureUrl;
+              console.log(match.pictureUrl);
+              avatar = document.getElementById("img-"+$scope.index);
+              $scope.index++;
+              avatar.src = match.pictureUrl;
               console.log("This chat's convo ID is: " + match.convoId);
 
 
+
         });
-    
+
 
           $state.go('list');
             console.log(uidArray);
