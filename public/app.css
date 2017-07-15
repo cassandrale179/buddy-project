@@ -91,6 +91,24 @@ li{
   color: #626567;
 }
 
+/*---------------------------- STYLING FOR THE RESOURCES PAGE (E.G HOTLINE) -------------------- */
+#content{
+  padding-left: 10%;
+  padding-right: 10%;
+  font-size: 2em;
+  margin-top: 30%;
+  font-family: 'Hind', sans-serif;
+}
+
+#content h4{
+  font-size: 2em;
+  margin-bottom: 0em;
+}
+
+#content ul{
+  font-size: 1.7em;
+  text-align: left;
+}
 
 /*-------------------------------------- STYLING FOR THE HEADER --------------------------------------- */
 #header{
@@ -129,7 +147,7 @@ li{
   color: white;
   display: block;
   margin: auto;
-  font-size: 2.5em;
+  font-size: 2.5em !important;
 }
 
 #navbar a{
@@ -245,10 +263,7 @@ li{
 /* ---------------------------------- STYLING FOR THE USER PROFILE PAGE ------------------------------------ */
 
 #C, #I{
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  box-shadow: 0px 0px 16px 4px rgba(0,0,0,0.3);
+  position: relative;
   overflow: auto;
 }
 
@@ -277,7 +292,7 @@ li{
 
 
 #C1, #I1{
-  padding-top: 70px;
+  padding-top: 100px;
   padding-bottom: 70px;
   background-color: #283747;
 }
@@ -288,7 +303,28 @@ li{
   object-fit: cover;
   display: block;
   margin: auto;
+  box-shadow: 0px 0px 16px 4px rgba(0,0,0,0.3);
 }
+
+#C1 input[type="file"]{
+  opacity: 0;
+  position: absolute;
+	z-index: -1;
+  overflow: hidden;
+  width: 0.1px;
+	height: 0.1px;
+}
+
+#C1 label{
+  font-family: 'Hind', sans-serif;
+  font-size: 1.5em;
+  display: block;
+  text-align: center;
+  margin-left: 25%;
+  margin-right: 25%;
+  color: white;
+}
+
 
 #C2{
   display: flex;
@@ -312,43 +348,28 @@ li{
   color: #34495E;
 }
 
-#C3 p, #I3 p{
-  font-size: 2em;
+#C3 h5{
+  font-family: 'Abel', sans-serif;
   margin-left: 15%;
   margin-right: 10%;
   text-align: left;
   color: black;
-  margin-top: 0.5em;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  font-weight: lighter;
 }
 
+.resize{
+  font-size: 2.5em;
+  margin-left: 15% !important;
+  font-family: 'Abel', sans-serif;
+}
 
 #C3, #I3{
-  font-size: 1.8em;
   margin-bottom: 25%;
 }
 
-#C3 li, #I3 li{
-  margin-left: 15%;
-  font-size: 2.0em;
-  font-family: 'Hind', sans-serif;
-}
 
-#C5{
-  padding-top: 10%;
-}
-
-#C5 textarea{
-  border: none;
-  display: block;
-  margin: auto;
-  font-size: 2.5em;
-  font-family: 'Hind', sans-serif;
-  width: 70%;
-  background-color: #F8F9F9;
-  margin-bottom: 1em;
-  height: 300px;
-  padding-left: 20px;
-}
 
 /* ------------------------------ STYLING FOR THE EDIT BIO & RESOURCES PAGE ----------------------------------------- */
 #D, #E{
@@ -413,6 +434,8 @@ li{
 
 #F p{
   font-size: 2.5em;
+  margin-left: 15%;
+  margin-right: 15%;
 }
 .match{
   margin-top: 10%;
@@ -459,17 +482,40 @@ li{
 
 /* ------------------------------- STYLING FOR THE SETTINGS FIELD  ------------------------------- */
 #H{
-  margin-top: 30%;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(40, 55, 71);
+  color: white;
+}
+
+#H button{
+  background: white;
+  margin-bottom: 0.3em;
+  font-size: 2.5em;
+  color: rgb(40, 55, 71);
+}
+
+#H1{
+  margin-top: 1em;
+  margin-left: 5%;
+  margin-bottom: 12em;
+  display: block;
+}
+
+#H1 button{
+  float: left;
+  width: auto;
+  background-color: rgb(40, 55, 71);
+  color: white;
 }
 
 #H input{
   font-size: 2em;
+  background: transparent;
+  color: white;
 }
 
-#H button{
-  margin-bottom: 0.3em;
-  font-size: 2em;
-}
 
 
 /*---------------------------- STYLING FOR OTHER PEOPLE BIO PAGE (E.G HOTLINE) -------------------- */
@@ -507,7 +553,7 @@ li{
 
 #J1{
   font-family: "Dosis", sans-serif;
-  font-size: 3.5em;
+  font-size: 2.5em;
   padding-top: 20px;
   padding-bottom: 20px;
 }
@@ -544,22 +590,104 @@ li{
   width: auto;
 }
 
-
-/*---------------------------- STYLING FOR THE RESOURCES PAGE (E.G HOTLINE) -------------------- */
-#content{
-  padding-left: 10%;
-  padding-right: 10%;
-  font-size: 2em;
+/* ---------------------------------------- STYLING FOR THE SEARCH PAGE ------------------------------ */
+#K{
+  position: absolute;
   margin-top: 30%;
+  width: 100%;
+  height: 100%;
+
+}
+
+#K1{
+  font-family: 'Hind', sans-serif;
+  color: #A6ACAF;
+  margin-left: 15%;
+
+}
+
+#K1 input[type='radio'] {
+  float: left;
+  width: auto;
+  margin-top: 0.5em;
+  transform: scale(2.5);
+}
+
+#K1 label{
+  font-size: 2em;
+  margin-left: 0.5em;
+}
+
+
+#K2{
+  margin-left: 15%;
+  font-size: 2.5em;
   font-family: 'Hind', sans-serif;
 }
 
-#content h4{
-  font-size: 2em;
-  margin-bottom: 0em;
+/* ---------------------------------------- STYLING FOR THE LIST PAGE ------------------------------ */
+#top{
+  margin-top: 30%;
+  margin-bottom: 30%;
 }
 
-#content ul{
-  font-size: 1.7em;
-  text-align: left;
+#L{
+  padding-bottom: 5%;
+  width: 100%;
+  display: flex;
+  margin-bottom: 5%;
+  border-bottom: 1px solid #D7DBDD;
+}
+
+#L1{
+  width: 30%;
+  padding-left: 10%; 
+}
+
+#L1 img{
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 100px;
+
+
+}
+
+#L2{
+  font-family: 'Hind', sans-serif;
+  font-size: 200%;
+  color: gray;
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+#L2 b{
+  color: black;
+  font-size: 120%;
+}
+
+/* ---------------------------------------- STYLING FOR THE LIST PAGE ------------------------------ */
+#M{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  /*background: url('http://blog.connectingthreads.com/wp-content/uploads/2016/04/Stars-and-Stripes-Sketch.jpg');*/
+  /*background: url('https://s-media-cache-ak0.pinimg.com/originals/2f/b3/4f/2fb34fe6b9f6e8bb856f2f5c4721a22f.gif');*/
+  /*background: url('https://s-media-cache-ak0.pinimg.com/originals/74/e6/f4/74e6f423a013bb8decb7deea1b2dfa3f.png');*/
+  background: url('http://static.tumblr.com/13269df65d1d82c3938aa82717413b3f/qx7gnto/9rroi1lyf/tumblr_static_eglnm4oqtegc0o00c0wks4wcc.jpg');
+  background-repeat: no-repeat;
+  background-position: center -30px;
+
+
+}
+
+#M1{
+  position: relative;
+  top: 55%;
+  transform: translateY(-45%);
+}
+
+#M button{
+  background: rgba(40,55,71,0.9);
+  font-size: 5em;
 }

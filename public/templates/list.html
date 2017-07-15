@@ -1,0 +1,33 @@
+
+<!DOCTYPE html>
+<html>
+<body>
+  <!-- Display list of people who have or want to have conversations with the user-->
+  <div id="header">
+    <h1>YOUR MATCHES</h1>
+  </div>
+
+<div id="top">
+  <div id="L" ng-repeat="match in userMatchesArray" ng-click="storeInfo(match.$id)">
+    <div id="L1">
+      <img id="{{ 'img-' + $index }}" ng-src="img/default.png" /><br />
+    </div>
+    <div id="L2">
+      <b>{{match.name}} </b><br />
+        {{match.lastText}}
+    </div>
+  </div>
+</div>
+
+
+  <!-- NAVIGATION BAR AT THE BOTTOM -->
+  <div id="navbar" class="wrap">
+    <a ui-sref="profile" ng-click="show=1"><i class="fa fa-user fa-lg" aria-hidden="true"></i></a>
+    <a ui-sref="search"><i class="fa fa-globe fa-lg" aria-hidden="true"></i></a>
+    <a ui-sref="match"><i class="fa fa-star fa-lg" aria-hidden="true"></i></a>
+    <a ui-sref="interest"><i class="fa fa-tag fa-lg" aria-hidden="true"></i></a>
+    <a ui-sref="list"><i class="fa fa-commenting fa-lg" aria-hidden="true"></i></a>
+  </div>
+
+</body>
+</html>

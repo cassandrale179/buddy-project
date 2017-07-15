@@ -2,24 +2,27 @@
 <body>
 
   <!-- ADDING IN NAVIGATION BAR -->
-   <div id="navbar" class="wrap">
-     <a ui-sref="profile"><i class="fa fa-user-o fa-lg" aria-hidden="true"></i></a>
-     <a ui-sref="match"><i class="fa fa-heart-o fa-lg" aria-hidden="true"></i></a>
-     <a ui-sref="interest"><i class="fa fa-plus fa-lg" aria-hidden="true"></i></a>
-     <a ui-sref="settings"><i class="fa fa-cog fa-lg" aria-hidden="true"></i></a>
-   </div>
+  <div id="navbar" class="wrap">
+    <a ui-sref="profile" ng-click="show=1"><i class="fa fa-user fa-lg" aria-hidden="true"></i></a>
+    <a ui-sref="search"><i class="fa fa-globe fa-lg" aria-hidden="true"></i></a>
+    <a ui-sref="match"><i class="fa fa-star fa-lg" aria-hidden="true"></i></a>
+    <a ui-sref="interest"><i class="fa fa-tag fa-lg" aria-hidden="true"></i></a>
+    <a ui-sref="list"><i class="fa fa-commenting fa-lg" aria-hidden="true"></i></a>
+  </div>
 
   <!-- HEADER OF MATCH PAGE -->
   <div id="header">
     <h1> MATCHING </h1>
   </div>
 
-  <!-- CONTENT OF MATCH PAGE -->
-  <div id="D">
-    <button ng-click="MatchMe()"> MATCH ME</button>
-    <p>You have been matched with<br />
-    <b>{{BuddyName}}</b></p>
-    <img id="buddyProfilePic"/>
-    <button class="match"> MESSAGE YOUR BUDDY NOW </button>
+  <div id="F">
+    <p>You have been matched with <br />
+    <b>{{BuddyName}}!</b></p>
+    <img ui-sref="other" id="buddyProfilePic"/>
+     <button class="match" ui-sref="list">MESSAGE YOUR BUDDY</button>
+     <p>Your common interests are: <br />
+       <b ng-repeat="x in commonInterest">{{x}}, </b></p>
   </div>
+
+
 </body>

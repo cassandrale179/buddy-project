@@ -33,6 +33,14 @@ angular.module('app.routes', ['ui.router'])
 
 })
 
+.state('prematch',{
+  name: 'Prematch',
+  url: '/prematchPage',
+    templateUrl: 'templates/prematch.html',
+    controller: 'prematchPageCtrl'
+})
+
+
 .state('match',{
   name: 'Match',
   url: '/matchPage',
@@ -53,6 +61,50 @@ angular.module('app.routes', ['ui.router'])
   url: '/settingsPage',
     templateUrl: 'templates/settings.html',
     controller: 'settingsPageCtrl'
+})
+
+
+.state('message',{
+  name: 'Message',
+  url: '/messagePage',
+    templateUrl: 'templates/message.html',
+    controller: 'messagePageCtrl'
+})
+
+.state('other',{
+  name: 'Other',
+  url: '/otherPage',
+    templateUrl: 'templates/other.html',
+    controller: 'otherPageCtrl'
+})
+
+.state('list',{
+  name: 'List',
+  url: '/listPage',
+    templateUrl: 'templates/list.html',
+    controller: 'listPageCtrl'
+})
+
+.state('search', {
+  name: 'Search',
+  url: '/searchPage',
+    templateUrl: 'templates/search.html',
+    controller: 'searchPageCtrl'
+})
+
+
+.state('resources',{
+  name: 'Resources',
+  url: '/resourcesPage',
+    templateUrl: 'templates/resources/resources.html',
+    controller: 'resourcesPageCtrl'
+})
+
+.state('hotlines',{
+  name: 'Hotlines',
+  url: '/hotlinesPage',
+    templateUrl: 'templates/resources/hotlines.html',
+    controller: 'hotlinesPageCtrl'
 });
 
 $urlRouterProvider.otherwise('/loginPage');
