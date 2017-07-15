@@ -1,6 +1,35 @@
 //--------------------  CONTROLLER FOR THE INTEREST PAGE ---------------------------
-app.controller('interestPageCtrl', ['$scope', '$state', '$localStorage',
-  function($scope, $state, $localStorage){
+app.factory('CountInterest', ['$firebaseObject',
+function($firebaseObject) {
+  var currentUser = firebase.auth().currentUser;
+  var uid = currentUser.uid;
+  var userRef = firebase.database().ref('users/'+uid);
+  var arrLength;
+  userRef.once('value', function(snapshot) {
+    var strInterest = snapshot.val().interest;
+    if (!strInterest) arrLength = 0;
+    else {
+      var interestArr = strInterest.split(',');
+      arrLength = interestArr.length-1;
+      console.log("Users currently has " + arrLength + "interests");
+    }
+  })
+  var CountInterest =
+  {
+    setArrLength: function (len) {
+      arrLength = len;
+    },
+    getArrLength: function() {
+      return arrLength;
+    },
+    decreaseArrLength: function() {
+      arrLength--;
+    }
+  }
+  return CountInterest;
+}]);
+app.controller('interestPageCtrl', ['$scope', '$state', '$localStorage', 'CountInterest',
+  function($scope, $state, $localStorage, CountInterest){
 
     //CREATE SOME VARIABLES
     var user = firebase.auth().currentUser;
@@ -11,7 +40,7 @@ app.controller('interestPageCtrl', ['$scope', '$state', '$localStorage',
     console.log($localStorage.email);
     console.log($localStorage.password);
 
-    var id = user.uid; 
+    var id = user.uid;
     var refUserId = firebase.database().ref("users/"+id);
     var refInterest = firebase.database().ref("interests");
     $scope.errorMessage = "";
@@ -56,6 +85,8 @@ app.controller('interestPageCtrl', ['$scope', '$state', '$localStorage',
         //WHEN USER REMOVES AN INTEREST
         $scope.Remove = function(x){
           $scope.interestArr.splice(x, 1);
+          CountInterest.decreaseArrLength();
+
         };
 
         //WHEN USER SUBMIT THEIR INTERESTS
@@ -63,12 +94,33 @@ app.controller('interestPageCtrl', ['$scope', '$state', '$localStorage',
 
           //ADD THEIR INTEREST TO THE INTERESTS TABLE
           var interestTable = snapshot.val();
-          for (var i = 0; i < $scope.interestArr.length; i++){
+          var counter = 0; //Count how many users has added this interest
+          for (var i = CountInterest.getArrLength(); i < $scope.interestArr.length; i++){
+
+            //Get how many users have this interest
+            var currentInterest = $scope.interestArr[i];
+            if (snapshot.hasChild(currentInterest)){
+              var currentInterestTable = snapshot.child(currentInterest).val();
+              counter = currentInterestTable.count;
+              console.log("Current counter: " + counter);
+              counter++;
+            }
+            else {
+              var info =
+              {
+                count : 1,
+                match : 0,
+                name: currentInterest
+              }
+              refInterest.child(currentInterest).set(info);
+            }
+
+            console.log("Counter for the interest " + currentInterest + "is: " + counter);
+
             var info = {
-              count: 0,
-              match: 0
+              count: counter++
             };
-            refInterest.child($scope.interestArr[i]).set(info);
+            refInterest.child($scope.interestArr[i]).update(info);
           }
 
           //ADD THEIR INTEREST AS A STRING IN THE USER TABLE
@@ -84,6 +136,7 @@ app.controller('interestPageCtrl', ['$scope', '$state', '$localStorage',
             refUserId.update({interest: interestStr});
             console.log(interestStr);
           });
+          CountInterest.setArrLength($scope.interestArr.length);
 
           $state.go('prematch');
         };
