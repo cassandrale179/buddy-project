@@ -626,43 +626,44 @@ li{
 }
 
 /* ---------------------------------------- STYLING FOR THE LIST PAGE ------------------------------ */
-#L{
-  margin-top: 40%;
+#top{
+  margin-top: 30%;
   margin-bottom: 30%;
-  position: absolute;
-  height: 100%;
+}
+
+#L{
+  padding-bottom: 5%;
   width: 100%;
-
-}
-
-#L img{
-  margin-top: 0.5em;
-  width: 150px;
-
-}
-
-#Lflex{
   display: flex;
-  width: 130%;
+  margin-bottom: 5%;
+  border-bottom: 1px solid #D7DBDD;
 }
 
 #L1{
-  font-size: 2.5em;
-  font-family: 'Hind', sans-serif;
+  width: 30%;
+  padding-left: 10%; 
+}
+
+#L1 img{
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 100px;
+
+
 }
 
 #L2{
-  width: 30%;
+  font-family: 'Hind', sans-serif;
+  font-size: 200%;
+  color: gray;
+  padding-left: 10%;
+  padding-right: 10%;
 }
 
-
-#L2, #L3, #L4{
-  margin-left: 15%;
-  margin-right: 0%;
-}
-
-#L4{
-  color: #B3B6B7;
+#L2 b{
+  color: black;
+  font-size: 120%;
 }
 
 /* ---------------------------------------- STYLING FOR THE LIST PAGE ------------------------------ */
