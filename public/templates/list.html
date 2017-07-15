@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <body>
@@ -5,6 +6,19 @@
   <div id="header">
     <h1>YOUR MATCHES</h1>
   </div>
+
+<div id="top">
+  <div id="L" ng-repeat="match in userMatchesArray" ng-click="storeInfo(match.$id)">
+    <div id="L1">
+      <img id="{{ 'img-' + $index }}" ng-src="img/default.png" /><br />
+    </div>
+    <div id="L2">
+      <b>{{match.name}} </b><br />
+        {{match.lastText}}
+    </div>
+  </div>
+</div>
+
 
   <!-- NAVIGATION BAR AT THE BOTTOM -->
   <div id="navbar" class="wrap">
@@ -15,18 +29,5 @@
     <a ui-sref="list"><i class="fa fa-commenting fa-lg" aria-hidden="true"></i></a>
   </div>
 
-  <!-- DISPLAYING YOUR MATCHES AND THE LAST TEXT -->
-  <div id="L">
-    <div id="L1" ng-repeat="match in userMatchesArray" ng-click="storeInfo(match.$id)">
-      <div id="Lflex">
-        <div id="L2"><img id="{{ 'img-' + $index }}" ng-src="img/default.png" /><br /></div>
-        <div id="L3">
-          <b>{{match.name}} </b><br />
-          {{match.lastText}}
-        </div>
-      </div>
-      <hr width="150%"/>
-  </div>
-</div>
 </body>
 </html>
