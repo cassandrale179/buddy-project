@@ -1,8 +1,7 @@
 app.controller('searchPageCtrl', ['$scope', '$state', '$localStorage', '$firebaseArray',
   function ($scope, $state, $localStorage, $firebaseArray)
   {
-    $scope.nameData = [];
-    $scope.emailData = [];
+    $scope.interestData = [];
 
     //IF USER HASN'T LOGGED IN YET, THEN LOG THEM IN
     var currentUser = firebase.auth().currentUser;
@@ -13,16 +12,30 @@ app.controller('searchPageCtrl', ['$scope', '$state', '$localStorage', '$firebas
     }
 
     else{
-      var refUser = firebase.database().ref("users");
-      refUser.once('value', function(snapshot){
-        var table = snapshot.val();
-        for (var user in table){
-          $scope.nameData.push(table[user].name);
-          $scope.emailData.push(table[user].email);
-        }
-        console.log($scope.nameData);
-        console.log($scope.emailData);
+      var count;
+      var refInterest = firebase.database().ref("interests/");
+
+
+      refInterest.orderByChild("count").on('child_added', function(snapshot){
+        var interest = snapshot.val();
+        $scope.interestData.unshift(interest);
+        console.log(interest);
+        // angular.forEach(data, function(inter){
+        //     var interest = {
+        //       count : inter.count,
+        //       match : inter.match,
+        //       name : inter.name
+        //     }
+        //     console.log(interest);
+        //     $scope.interestData.push(interest);
+        // });
+        // for (i=0;i<data.size();i++){
+
+        // }
+
+        console.log($scope.interestData);
       });
+        // console.log($scope.interestData);
 
 
     }
