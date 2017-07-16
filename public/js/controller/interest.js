@@ -110,7 +110,7 @@ app.controller('interestPageCtrl', ['$scope', '$state', '$localStorage', 'CountI
               {
                 count : 1,
                 match : 0,
-                name: currentInterest
+                name : currentInterest
               }
               refInterest.child(currentInterest).set(info);
             }
