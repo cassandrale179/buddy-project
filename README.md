@@ -9,7 +9,7 @@ https://trello.com/b/otuHF1lY/buddy-kanban
 ## Usage:
 1. To run the app on computer, clone the app:
 ```
-$ git clone https://github.com/cassandrale179/myapp.git 
+$ git clone https://github.com/cassandrale179/buddy-project.git
 ```
 2. Install Python 2.7.9, or any version below 3. Then install livereload: 
 ```
