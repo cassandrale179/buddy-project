@@ -9,6 +9,13 @@ app.controller('matchPageCtrl', ['$scope', '$state', '$localStorage', '$sessionS
         });
       }
 
+      //Store other person's ID when using ng-click
+      $scope.storeId = function(uid){
+        $localStorage.otherId = uid;
+        console.log("the other person's ID is: " + uid);
+        $state.go('other');
+      }
+
       //GET MY INTEREST AND STORE IT IN ARRAY FORMAT
       $scope.myInterest = "";
       var refCurrentUserId = firebase.database().ref("users/" + currentUser.uid);

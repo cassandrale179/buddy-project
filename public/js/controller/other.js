@@ -8,9 +8,8 @@ app.controller('otherPageCtrl', ['$scope', '$state', '$localStorage',
       });
     }
 
-    var userRef = firebase.database().ref("users/" + currentUser.uid);
-    userRef.once('value', function(snapshot){
-      var buddyID = snapshot.val().buddy;
+    //Other person's ID is stored in $localStorage in match.js
+      var buddyID = $localStorage.otherId;
       var buddyRef = firebase.database().ref("users/" + buddyID);
       buddyRef.once('value', function(buddySnap){
         $scope.buddyName = buddySnap.val().name;
@@ -26,5 +25,5 @@ app.controller('otherPageCtrl', ['$scope', '$state', '$localStorage',
         });
         $state.go('other');
       });
-    });
+
  }]);
