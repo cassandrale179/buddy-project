@@ -226,7 +226,7 @@ li{
 }
 
 
-/* ------------------------------ STYLING FOR THE FORGOT PASSWORD PAGE --------------------------------- */
+/* --------- STYLING FOR THE FORGOT PASSWORD PAGE ---------*/
 #B1{
   width: 100%;
   height: 30%;
@@ -423,6 +423,72 @@ li{
 }
 
 
+/* ----------------------------------STYLING FOR THE INTEREST INPUT FIELD  ----------------------------------*/
+#G{
+  margin-top: 40%;
+  margin-bottom: 40%;
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+#G input{
+  width: 100%;
+}
+
+#G button{
+  display: inline-block;
+  width: 49%;
+  font-size: 2em;
+}
+
+#G span{
+  float: right;
+  color:  #C0392B;
+}
+
+/* ------------------------------- STYLING FOR THE SETTINGS FIELD  ------------------------------- */
+#H{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(40, 55, 71);
+  color: white;
+}
+
+#H button{
+  background: white;
+  margin-bottom: 0.3em;
+  font-size: 2.5em;
+  color: rgb(40, 55, 71);
+}
+
+#H1{
+  margin-top: 1em;
+  margin-left: 5%;
+  margin-bottom: 12em;
+  display: block;
+}
+
+#H1 button{
+  float: left;
+  width: auto;
+  background-color: rgb(40, 55, 71);
+  color: white;
+}
+
+#H input{
+  font-size: 2em;
+  background: transparent;
+  color: white;
+}
+
+/*---------------------------- STYLING FOR OTHER PEOPLE BIO PAGE (E.G HOTLINE) -------------------- */
+#I1 button{
+  border: 1px white solid;
+  width: 30%;
+  font-size: 2em;
+  margin-top: 1em;
+}
 
 
 /*------------------------------------ STYLING FOR THE MESSAGE PAGE------------------------------ */
@@ -568,9 +634,6 @@ li{
   position: absolute;
   width: 100%;
   height: 100%;
-  /*background: url('http://blog.connectingthreads.com/wp-content/uploads/2016/04/Stars-and-Stripes-Sketch.jpg');*/
-  /*background: url('https://s-media-cache-ak0.pinimg.com/originals/2f/b3/4f/2fb34fe6b9f6e8bb856f2f5c4721a22f.gif');*/
-  /*background: url('https://s-media-cache-ak0.pinimg.com/originals/74/e6/f4/74e6f423a013bb8decb7deea1b2dfa3f.png');*/
   background: url('http://static.tumblr.com/13269df65d1d82c3938aa82717413b3f/qx7gnto/9rroi1lyf/tumblr_static_eglnm4oqtegc0o00c0wks4wcc.jpg');
   background-repeat: no-repeat;
   background-position: center -30px;

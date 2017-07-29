@@ -58,7 +58,6 @@ app.controller('matchPageCtrl', ['$scope', '$state', '$localStorage', '$sessionS
 
         //STORE EVERYTHNG INTO A NAME ARR AND COMMON INTEREST ARR TO DISPLAY
         $scope.people = [];
-        // var userIdRefArr = [];
         refUser.once('value', function(refSnap){
           var UserTable2 = refSnap.val();
           for (var k = 0; k < UserList.length; k++){
@@ -72,39 +71,7 @@ app.controller('matchPageCtrl', ['$scope', '$state', '$localStorage', '$sessionS
           $state.go('match');
         });
 
-        // console.log($scope.peopleInterest);
-        //
-        // console.log(userIdRefArr);
-        //LOOP THROUGH ALL THEIR ID, RETUR THEIR NAME
-        // refUser.once('value', function(refSnap){
-        //   userTableData = refSnap.val();
-        //   for (var l = 0; l < userIdRefArr.length; l++){
-        //     var obj = {
-        //       name: userTableData[userIdRefArr[l]].name,
-        //       interest: UserList[]
-        //     };
-        //   }
-        // });
-
-
 
 
       });
 }]);
-
-
-//0:
-  //0:
-  //Useruid
-  //1:
-    //common1
-    //common2
-//1:
-  //0:
-    //Useruid
-  //1:
-    //common1
-    //common2
-
-
-//var useruid = [uidhsdfu, sdkfhskfhks, iweqwesdfsf]
