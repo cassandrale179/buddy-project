@@ -56,7 +56,8 @@ app.controller('matchPageCtrl', ['$scope', '$state', '$localStorage', '$sessionS
 
 
 
-        //STORE EVERYTHNG INTO A NAME ARR AND COMMON INTEREST ARR TO DISPLAY
+        //STORE EVERYTHNG IN $SCOPE.PEOPLE FOR DISPLAY
+        //$Scope.people: contains user objects with properties: name, uid, commonInterest
         $scope.people = [];
         refUser.once('value', function(refSnap){
           var UserTable2 = refSnap.val();
