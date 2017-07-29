@@ -423,109 +423,6 @@ li{
 }
 
 
-#F img{
-  display: block;
-  margin: auto;
-  object-fit: cover !important;
-  width: 450px;
-  height: 450px;
-  border-radius: 20px;
-}
-
-#F p{
-  font-size: 2.5em;
-  margin-left: 15%;
-  margin-right: 15%;
-}
-.match{
-  margin-top: 10%;
-  background-color: white;
-  border: none;
-  color: #626567;
-  font-family: 'Abel', sans-serif;
-  padding: 5%;
-  border: #85929E 1px solid;
-  border-radius: 5px;
-}
-
-#F button{
-  font-size: 2.5em;
-}
-
-#F b{
-  color: rgb(40, 55, 71) ;
-}
-
-
-/* ----------------------------------STYLING FOR THE INTEREST INPUT FIELD  ----------------------------------*/
-#G{
-  margin-top: 40%;
-  margin-bottom: 40%;
-  padding-left: 10%;
-  padding-right: 10%;
-}
-
-#G input{
-  width: 100%;
-}
-
-#G button{
-  display: inline-block;
-  width: 49%;
-  font-size: 2em;
-}
-
-#G span{
-  float: right;
-  color:  #C0392B;
-}
-
-/* ------------------------------- STYLING FOR THE SETTINGS FIELD  ------------------------------- */
-#H{
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-color: rgb(40, 55, 71);
-  color: white;
-}
-
-#H button{
-  background: white;
-  margin-bottom: 0.3em;
-  font-size: 2.5em;
-  color: rgb(40, 55, 71);
-}
-
-#H1{
-  margin-top: 1em;
-  margin-left: 5%;
-  margin-bottom: 12em;
-  display: block;
-}
-
-#H1 button{
-  float: left;
-  width: auto;
-  background-color: rgb(40, 55, 71);
-  color: white;
-}
-
-#H input{
-  font-size: 2em;
-  background: transparent;
-  color: white;
-}
-
-
-
-/*---------------------------- STYLING FOR OTHER PEOPLE BIO PAGE (E.G HOTLINE) -------------------- */
-#I1 button{
-  border: 1px white solid;
-  width: 30%;
-  font-size: 2em;
-  margin-top: 1em;
-}
-
 
 
 /*------------------------------------ STYLING FOR THE MESSAGE PAGE------------------------------ */
@@ -641,7 +538,7 @@ li{
 
 #L1{
   width: 30%;
-  padding-left: 10%; 
+  padding-left: 10%;
 }
 
 #L1 img{

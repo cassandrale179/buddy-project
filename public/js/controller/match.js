@@ -1,22 +1,110 @@
-app.controller('loginPageCtrl', ['$scope', '$state', '$localStorage', '$sessionStorage',
+app.controller('matchPageCtrl', ['$scope', '$state', '$localStorage', '$sessionStorage',
     function($scope, $state, $localStorage, $sessionStorage){
 
       //SIGN USER IN AUTOMATICALLY WITH EMAIL AND PASSWORD ON PROFILE PAGE
       var currentUser = firebase.auth().currentUser;
-      if (currentUser===null){
+      if (currentUser === null){
         firebase.auth().signInWithEmailAndPassword($localStorage.email, $localStorage.password).then(function(){
           $state.reload();
         });
       }
 
+      //GET MY INTEREST AND STORE IT IN ARRAY FORMAT
+      $scope.myInterest = "";
+      var refCurrentUserId = firebase.database().ref("users/" + currentUser.uid);
+      refCurrentUserId.once('value').then(function(snapshot){
 
-      //SEARCHING THE FIREBASE TABLE AND MATCH PEOPLE WITH THEM
-      var currentUserInterestArr = [];
-      var dataRef = firebase.database().ref("users");
-      dataRef.once('value').then(function(snapshot){
+        //GET THE STRING OF THE CURRENT USER'S INTEREST
+        var interestStr = snapshot.val().interest;
+        console.log('This is the string: ' + interestStr);
+        $scope.myInterest = interestStr.split(",");
+        $scope.myInterest.splice(-1);
+      });
 
-        //GET THE USER'S INTEREST STRNG AND SPLIT IT INTO AN ARRAY
-        var UserTable = snapshot.val();
-        console.log(UserTable); 
+      //GET EVERYONE ELSE INTEREST IN ARRAY FORMAT
+      var refUser = firebase.database().ref("users");
+      refUser.once('value', function(snapshot){
+          var UserList = [/*[uid, count]*/];
+          var UserTable = snapshot.val();
+
+          //LOOP THROUGH ALL USER UID IN THE USER TABLE
+          for (var user in UserTable){
+            if (user == currentUser.uid) delete UserTable.user;
+            else{
+              var OtherInterestArr = UserTable[user].interest.split(",");
+              OtherInterestArr.splice(-1);
+
+               //FILTER FUNCTION TO COUNT COMMON INTEREST
+               $scope.commonInterest = [];
+               for (var i = 0; i < $scope.myInterest.length; i++){
+                 for (var j = 0; j < OtherInterestArr.length; j++){
+                   if ($scope.myInterest[i] == OtherInterestArr[j]){
+                    $scope.commonInterest.push($scope.myInterest[i]);
+                   }
+                 }
+               }
+              UserList.push([user, $scope.commonInterest]);
+            }
+          }
+
+          //SORTING THE USER LIST (UID, COMMON INTEREST) AND RETURN THE LENGTH
+          UserList.sort(function(a,b){
+            return b[1].length - a[1].length;
+          });
+
+          console.log(UserList);
+
+
+
+        //STORE EVERYTHNG INTO A NAME ARR AND COMMON INTEREST ARR TO DISPLAY
+        $scope.people = [];
+        // var userIdRefArr = [];
+        refUser.once('value', function(refSnap){
+          var UserTable2 = refSnap.val();
+          for (var k = 0; k < UserList.length; k++){
+            var obj = {
+              uid: UserList[k][0],
+              name: UserTable2[UserList[k][0]].name,
+              commonInterest: UserList[k][1]
+            };
+            $scope.people.push(obj);
+          }
+          $state.go('match');
+        });
+
+        // console.log($scope.peopleInterest);
+        //
+        // console.log(userIdRefArr);
+        //LOOP THROUGH ALL THEIR ID, RETUR THEIR NAME
+        // refUser.once('value', function(refSnap){
+        //   userTableData = refSnap.val();
+        //   for (var l = 0; l < userIdRefArr.length; l++){
+        //     var obj = {
+        //       name: userTableData[userIdRefArr[l]].name,
+        //       interest: UserList[]
+        //     };
+        //   }
+        // });
+
+
+
+
       });
 }]);
+
+
+//0:
+  //0:
+  //Useruid
+  //1:
+    //common1
+    //common2
+//1:
+  //0:
+    //Useruid
+  //1:
+    //common1
+    //common2
+
+
+//var useruid = [uidhsdfu, sdkfhskfhks, iweqwesdfsf]
