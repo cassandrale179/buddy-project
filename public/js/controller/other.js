@@ -25,5 +25,17 @@ app.controller('otherPageCtrl', ['$scope', '$state', '$localStorage',
         });
         $state.go('other');
       });
+      $scope.message = function() {
+        //Create 2 references to both people
+        var matchRef1 = firebase.database().ref('match/' + currentUser.uid + "/" + $localStorage.otherId);
+        var matchRef2 = firebase.database().ref('match/' + $localStorage.otherId + "/" + currentUser.uid);
+        matchRef1.update({
+          convoId: "",
+          lastText: ""
+        })
+        $state.go('list');
+
+
+      }
 
  }]);

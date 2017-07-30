@@ -18,7 +18,8 @@ app.controller('registerPageCtrl', ['$scope', '$state', '$localStorage',
           gender: "NA",
           description: "Edit your bio",
           interest: "",
-          buddy: ""
+          buddy: "",
+          pictureUrl: "https://firebasestorage.googleapis.com/v0/b/buddy-be3d7.appspot.com/o/default.png?alt=media&token=540dfe34-5559-4d2f-8e42-27258502ea01"
         };
         $localStorage.email = $scope.txtEmail;
         $localStorage.password = $scope.txtPassword;
