@@ -9,20 +9,25 @@
   </div>
 
   <div id="header">
-    <h1>SEARCH</h1>
+    <h1>SEARCH INTERESTS</h1>
   </div>
 
   <div id="K">
-    <input type="text" ng-model="searchUser" placeholder="Search people...."/>
-    <div id="K1">
+    <input type="text" ng-model="searchInterest" placeholder="Search interest...."/>
+    <!-- <div id="K1">
       <label for="nameRadio"> Search by Name</label>
       <input type="radio" id="nameRadio" name="choice"/><br /><br />
       <label for="nameRadio"> Search by Email</label>
       <input type="radio" id="emailRadio"  name="choice"/>
-    </div>
+    </div> -->
     <br />
-    <div id="K2" ng-repeat="user in nameData | filter: searchUser">
-      {{user}}
+    <div id="K2" ng-repeat="int in interestData | filter: searchInterest | emptyifblank: searchInterest">
+      {{int.name}}
+      <div>
+        {{int.count}} people likes this
+        <br />
+      </div>
     </div>
+
   </div>
 </body>

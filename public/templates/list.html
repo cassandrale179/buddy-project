@@ -10,7 +10,7 @@
 <div id="top">
   <div id="L" ng-repeat="match in userMatchesArray" ng-click="storeInfo(match.$id)">
     <div id="L1">
-      <img id="{{ 'img-' + $index }}" ng-src="img/default.png" /><br />
+      <img id="{{ 'img-' + $index }}" ng-src="{{match.pictureUrl}}" /><br />
     </div>
     <div id="L2">
       <b>{{match.name}} </b><br />

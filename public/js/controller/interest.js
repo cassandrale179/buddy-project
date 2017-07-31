@@ -11,7 +11,7 @@ app.controller('interestPageCtrl', ['$scope', '$state', '$localStorage',
     console.log($localStorage.email);
     console.log($localStorage.password);
 
-    var id = user.uid; 
+    var id = user.uid;
     var refUserId = firebase.database().ref("users/"+id);
     var refInterest = firebase.database().ref("interests");
     $scope.errorMessage = "";
@@ -30,6 +30,7 @@ app.controller('interestPageCtrl', ['$scope', '$state', '$localStorage',
 
     refInterest.once('value', function(snapshot)
   {
+
       if (user !== null)
       {
         //WHEN USER ADD AN INTEREST
@@ -56,26 +57,17 @@ app.controller('interestPageCtrl', ['$scope', '$state', '$localStorage',
         //WHEN USER REMOVES AN INTEREST
         $scope.Remove = function(x){
           $scope.interestArr.splice(x, 1);
+
         };
 
         //WHEN USER SUBMIT THEIR INTERESTS
         $scope.CaptureInterest = function(){
 
-          //ADD THEIR INTEREST TO THE INTERESTS TABLE
-          var interestTable = snapshot.val();
-          for (var i = 0; i < $scope.interestArr.length; i++){
-            var info = {
-              count: 0,
-              match: 0
-            };
-            refInterest.child($scope.interestArr[i]).set(info);
-          }
-
           //ADD THEIR INTEREST AS A STRING IN THE USER TABLE
           refUserId.once('value', function(snapshot){
-            var obj = snapshot.val();
-            var interestStr = obj.interest;
-            if (!obj.Interest){
+            var info = snapshot.val().age;
+            var interestStr = info.interest;
+            if (!info.Interest){
               interestStr="";
             }
             for (var k = 0; k< $scope.interestArr.length; k++){
@@ -83,9 +75,16 @@ app.controller('interestPageCtrl', ['$scope', '$state', '$localStorage',
             }
             refUserId.update({interest: interestStr});
             console.log(interestStr);
+
+            //ADD THEIR INTEREST TO THE INTERESTS TABLE
+            for (var i = 0; i<$scope.interestArr.length;i++){
+              var currentInterest = $scope.interestArr[i];
+              var ref = firebase.database().ref("interests/"+currentInterest+"/" +user.uid);
+              ref.set(info);
+            }
           });
 
-          $state.go('prematch');
+          $state.go('match');
         };
       }
     });

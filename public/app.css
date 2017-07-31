@@ -226,7 +226,7 @@ li{
 }
 
 
-/* ------------------------------ STYLING FOR THE FORGOT PASSWORD PAGE --------------------------------- */
+/* --------- STYLING FOR THE FORGOT PASSWORD PAGE ---------*/
 #B1{
   width: 100%;
   height: 30%;
@@ -423,40 +423,6 @@ li{
 }
 
 
-#F img{
-  display: block;
-  margin: auto;
-  object-fit: cover !important;
-  width: 450px;
-  height: 450px;
-  border-radius: 20px;
-}
-
-#F p{
-  font-size: 2.5em;
-  margin-left: 15%;
-  margin-right: 15%;
-}
-.match{
-  margin-top: 10%;
-  background-color: white;
-  border: none;
-  color: #626567;
-  font-family: 'Abel', sans-serif;
-  padding: 5%;
-  border: #85929E 1px solid;
-  border-radius: 5px;
-}
-
-#F button{
-  font-size: 2.5em;
-}
-
-#F b{
-  color: rgb(40, 55, 71) ;
-}
-
-
 /* ----------------------------------STYLING FOR THE INTEREST INPUT FIELD  ----------------------------------*/
 #G{
   margin-top: 40%;
@@ -516,8 +482,6 @@ li{
   color: white;
 }
 
-
-
 /*---------------------------- STYLING FOR OTHER PEOPLE BIO PAGE (E.G HOTLINE) -------------------- */
 #I1 button{
   border: 1px white solid;
@@ -525,7 +489,6 @@ li{
   font-size: 2em;
   margin-top: 1em;
 }
-
 
 
 /*------------------------------------ STYLING FOR THE MESSAGE PAGE------------------------------ */
@@ -641,7 +604,7 @@ li{
 
 #L1{
   width: 30%;
-  padding-left: 10%; 
+  padding-left: 10%;
 }
 
 #L1 img{
@@ -671,9 +634,6 @@ li{
   position: absolute;
   width: 100%;
   height: 100%;
-  /*background: url('http://blog.connectingthreads.com/wp-content/uploads/2016/04/Stars-and-Stripes-Sketch.jpg');*/
-  /*background: url('https://s-media-cache-ak0.pinimg.com/originals/2f/b3/4f/2fb34fe6b9f6e8bb856f2f5c4721a22f.gif');*/
-  /*background: url('https://s-media-cache-ak0.pinimg.com/originals/74/e6/f4/74e6f423a013bb8decb7deea1b2dfa3f.png');*/
   background: url('http://static.tumblr.com/13269df65d1d82c3938aa82717413b3f/qx7gnto/9rroi1lyf/tumblr_static_eglnm4oqtegc0o00c0wks4wcc.jpg');
   background-repeat: no-repeat;
   background-position: center -30px;

@@ -28,7 +28,7 @@ app.factory('Message', ['$firebaseArray',
       console.log("Current database convoID:" + database.convoId);
 
       //IF CONVO ID EXIST, OUTPUT IT. ELSE CREATE NEW ONE
-      if (database.convoId!==undefined){
+      if (database.convoId){
         convoId = database.convoId;
         console.log("Already has a convo Id" + convoId);
       }
