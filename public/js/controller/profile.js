@@ -21,10 +21,16 @@ app.controller('profilePageCtrl', ['$scope', '$state', '$localStorage',
       var userRef = firebase.database().ref('users/'+id);
       var ref = firebase.database().ref("users/" + id);
       var storageRef = firebase.storage().ref("Avatars/"+id+"/avatar.jpg");
-      var profilePic = document.getElementById("profilePic");
-      storageRef.getDownloadURL().then(function(url){
-        if(url){profilePic.src=url;}
-      });
+      userRef.once("value", function(snapshot) {
+        $scope.userProfilePic = snapshot.val().pictureUrl;
+        console.log($scope.userProfilePic);
+        $state.go('profile');
+      })
+
+      // var profilePic = document.getElementById("profilePic");
+      // storageRef.getDownloadURL().then(function(url){
+      //   if(url){profilePic.src=url;}
+      // });
 
       //THIS ALLOW THE USER TO UPLOAD THEIR PROFILE PIC
       $scope.uploadFile = function(event){
@@ -34,8 +40,9 @@ app.controller('profilePageCtrl', ['$scope', '$state', '$localStorage',
           console.log("File uploaded!");
           storageRef.getDownloadURL().then(function(url)
           {
-            profilePic.src = url;
+            $scope.userProfilePic = url;
             userRef.update({pictureUrl: url});
+            $state.go('profile');
 
           });
         });

@@ -30,7 +30,7 @@
 
     <!-- __________________________PROFILE PICTURE __________________________-->
     <div id="C1">
-      <img id="profilePic" src="img/default.png" /><br />
+      <img id="profilePic" ng-src="{{userProfilePic}}" /><br />
       <label for="file">Edit <i class="fa fa-pencil" aria-hidden="true"></i></label>
       <input type="file" name="file" id="file" custom-on-change="uploadFile" />
     </div>
