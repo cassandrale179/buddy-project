@@ -21,12 +21,11 @@
       <input type="radio" id="emailRadio"  name="choice"/>
     </div> -->
     <br />
-    <div id="K2" ng-repeat="int in interestData | filter: searchInterest">
+    <div id="K2" ng-repeat="int in interestData | filter: searchInterest | emptyifblank: searchInterest">
       {{int.name}}
       <div>
         {{int.count}} people likes this
         <br />
-        {{int.match}} matches have this interest
       </div>
     </div>
 

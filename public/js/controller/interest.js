@@ -1,35 +1,6 @@
 //--------------------  CONTROLLER FOR THE INTEREST PAGE ---------------------------
-app.factory('CountInterest', ['$firebaseObject',
-function($firebaseObject) {
-  var currentUser = firebase.auth().currentUser;
-  var uid = currentUser.uid;
-  var userRef = firebase.database().ref('users/'+uid);
-  var arrLength;
-  userRef.once('value', function(snapshot) {
-    var strInterest = snapshot.val().interest;
-    if (!strInterest) arrLength = 0;
-    else {
-      var interestArr = strInterest.split(',');
-      arrLength = interestArr.length-1;
-      console.log("Users currently has " + arrLength + "interests");
-    }
-  })
-  var CountInterest =
-  {
-    setArrLength: function (len) {
-      arrLength = len;
-    },
-    getArrLength: function() {
-      return arrLength;
-    },
-    decreaseArrLength: function() {
-      arrLength--;
-    }
-  }
-  return CountInterest;
-}]);
-app.controller('interestPageCtrl', ['$scope', '$state', '$localStorage', 'CountInterest',
-  function($scope, $state, $localStorage, CountInterest){
+app.controller('interestPageCtrl', ['$scope', '$state', '$localStorage',
+  function($scope, $state, $localStorage){
 
     //CREATE SOME VARIABLES
     var user = firebase.auth().currentUser;
@@ -59,6 +30,7 @@ app.controller('interestPageCtrl', ['$scope', '$state', '$localStorage', 'CountI
 
     refInterest.once('value', function(snapshot)
   {
+
       if (user !== null)
       {
         //WHEN USER ADD AN INTEREST
@@ -85,49 +57,17 @@ app.controller('interestPageCtrl', ['$scope', '$state', '$localStorage', 'CountI
         //WHEN USER REMOVES AN INTEREST
         $scope.Remove = function(x){
           $scope.interestArr.splice(x, 1);
-          CountInterest.decreaseArrLength();
 
         };
 
         //WHEN USER SUBMIT THEIR INTERESTS
         $scope.CaptureInterest = function(){
 
-          //ADD THEIR INTEREST TO THE INTERESTS TABLE
-          var interestTable = snapshot.val();
-          var counter = 0; //Count how many users has added this interest
-          for (var i = CountInterest.getArrLength(); i < $scope.interestArr.length; i++){
-
-            //Get how many users have this interest
-            var currentInterest = $scope.interestArr[i];
-            if (snapshot.hasChild(currentInterest)){
-              var currentInterestTable = snapshot.child(currentInterest).val();
-              counter = currentInterestTable.count;
-              console.log("Current counter: " + counter);
-              counter++;
-            }
-            else {
-              var info =
-              {
-                count : 1,
-                match : 0,
-                name : currentInterest
-              }
-              refInterest.child(currentInterest).set(info);
-            }
-
-            console.log("Counter for the interest " + currentInterest + "is: " + counter);
-
-            var info = {
-              count: counter++
-            };
-            refInterest.child($scope.interestArr[i]).update(info);
-          }
-
           //ADD THEIR INTEREST AS A STRING IN THE USER TABLE
           refUserId.once('value', function(snapshot){
-            var obj = snapshot.val();
-            var interestStr = obj.interest;
-            if (!obj.Interest){
+            var info = snapshot.val().age;
+            var interestStr = info.interest;
+            if (!info.Interest){
               interestStr="";
             }
             for (var k = 0; k< $scope.interestArr.length; k++){
@@ -135,10 +75,16 @@ app.controller('interestPageCtrl', ['$scope', '$state', '$localStorage', 'CountI
             }
             refUserId.update({interest: interestStr});
             console.log(interestStr);
-          });
-          CountInterest.setArrLength($scope.interestArr.length);
 
-          $state.go('prematch');
+            //ADD THEIR INTEREST TO THE INTERESTS TABLE
+            for (var i = 0; i<$scope.interestArr.length;i++){
+              var currentInterest = $scope.interestArr[i];
+              var ref = firebase.database().ref("interests/"+currentInterest+"/" +user.uid);
+              ref.set(info);
+            }
+          });
+
+          $state.go('match');
         };
       }
     });

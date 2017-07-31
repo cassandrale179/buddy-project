@@ -19,7 +19,7 @@ app.controller('registerPageCtrl', ['$scope', '$state', '$localStorage',
           description: "Edit your bio",
           interest: "",
           buddy: "",
-          pictureUrl: "http://www.quran-institute.org/wp-content/uploads/2017/01/default-profile-bfeeabd02c3b38305b18e4c2345fd54dbbd1a0a7bf403a31f08fca4fada50449.png"
+          pictureUrl: "https://firebasestorage.googleapis.com/v0/b/buddy-be3d7.appspot.com/o/default.png?alt=media&token=540dfe34-5559-4d2f-8e42-27258502ea01"
         };
         $localStorage.email = $scope.txtEmail;
         $localStorage.password = $scope.txtPassword;

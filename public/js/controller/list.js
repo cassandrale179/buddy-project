@@ -32,10 +32,10 @@ app.controller('listPageCtrl', ['$scope', '$state', '$firebaseArray', '$localSto
 
        $scope.userMatchesArray.$loaded()
          .then(function(){
-           angular.forEach($scope.userMatchesArray, function(match)
+           console.log($scope.userMatchesArray);
+           $scope.userMatchesArray.forEach(function(match)
            {
                //$id is ID of other person
-
               var uid = match.$id;
               uidArray.push(uid);
               match.name=userDatabase[uid].name;
@@ -46,8 +46,10 @@ app.controller('listPageCtrl', ['$scope', '$state', '$firebaseArray', '$localSto
               console.log(match.pictureUrl);
               avatar = document.getElementById("img-"+$scope.index);
               $scope.index++;
+
               avatar.src = match.pictureUrl;
               console.log("This chat's convo ID is: " + match.convoId);
+
 
 
 
@@ -67,6 +69,8 @@ app.controller('listPageCtrl', ['$scope', '$state', '$firebaseArray', '$localSto
          //Store ID of the 2nd person in the Message object
       $scope.storeInfo = function(uid2){
         Message.setUid(uid1,uid2);
+        console.log("UId 1 is: " + uid1);
+        console.log("Uid 2 is: " + uid2);
         $state.go('message');
       };
 

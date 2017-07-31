@@ -1,3 +1,14 @@
+app.filter("emptyifblank", function(){
+  return function(object, query) {
+    if (!query){
+      return {};
+    }
+    else {
+      return object;
+    }
+  };
+});
+
 app.controller('searchPageCtrl', ['$scope', '$state', '$localStorage', '$firebaseArray',
   function ($scope, $state, $localStorage, $firebaseArray)
   {
@@ -15,27 +26,23 @@ app.controller('searchPageCtrl', ['$scope', '$state', '$localStorage', '$firebas
       var count;
       var refInterest = firebase.database().ref("interests/");
 
+      //----------Create a count property in each interest-------------
+      //Count: how many users like this interest
+      refInterest.once("value", function(interestSnapshot){
+        interestSnapshot.forEach(function(interest) {
+          var count = interest.numChildren() - 1; //Returns how many users like this interest
+          interest.ref.update({count: count});
+        })
+      })
+
 
       refInterest.orderByChild("count").on('child_added', function(snapshot){
         var interest = snapshot.val();
+        interest.name = snapshot.key;
+        console.log("Name of this interest: " + interest.name);
         $scope.interestData.unshift(interest);
-        console.log(interest);
-        // angular.forEach(data, function(inter){
-        //     var interest = {
-        //       count : inter.count,
-        //       match : inter.match,
-        //       name : inter.name
-        //     }
-        //     console.log(interest);
-        //     $scope.interestData.push(interest);
-        // });
-        // for (i=0;i<data.size();i++){
-
-        // }
-
-        console.log($scope.interestData);
       });
-        // console.log($scope.interestData);
+
 
 
     }
