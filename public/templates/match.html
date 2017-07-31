@@ -17,6 +17,9 @@
 
   <div id="F">
     <div id="F1" ng-click="storeId(person.uid)" ng-repeat="person in people">
+      <div>
+        <img ng-src="{{person.pictureUrl}}" /><br />
+      </div>
       {{person.name}}
       <br />
       Common Interest:
