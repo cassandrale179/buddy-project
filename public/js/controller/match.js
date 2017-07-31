@@ -1,6 +1,8 @@
 app.controller('matchPageCtrl', ['$scope', '$state', '$localStorage', '$sessionStorage',
     function($scope, $state, $localStorage, $sessionStorage){
 
+
+
       //SIGN USER IN AUTOMATICALLY WITH EMAIL AND PASSWORD ON PROFILE PAGE
       var currentUser = firebase.auth().currentUser;
       if (currentUser === null){
@@ -66,18 +68,34 @@ app.controller('matchPageCtrl', ['$scope', '$state', '$localStorage', '$sessionS
         //STORE EVERYTHNG IN $SCOPE.PEOPLE FOR DISPLAY
         //$Scope.people: contains user objects with properties: name, uid, commonInterest
         $scope.people = [];
+        var avatar;
+        $scope.index=0;
         refUser.once('value', function(refSnap){
           var UserTable2 = refSnap.val();
           for (var k = 0; k < UserList.length; k++){
             var obj = {
               uid: UserList[k][0],
               name: UserTable2[UserList[k][0]].name,
-              commonInterest: UserList[k][1]
+              commonInterest: UserList[k][1],
+              pictureUrl: UserTable2[UserList[k][0]].pictureUrl
             };
             $scope.people.push(obj);
           }
+          console.log($scope.people);
+
+
+
           $state.go('match');
         });
+        refUser.once('value', function(snapshot){
+          $scope.people.forEach(function(people){
+            avatar = document.getElementById("img-"+$scope.index);
+            console.log(avatar);
+            $scope.index++;
+            // avatar.src=people.pictureUrl;
+            $state.go('match');
+          });
+        })
 
 
 
