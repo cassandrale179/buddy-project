@@ -46,8 +46,9 @@ app.controller('listPageCtrl', ['$scope', '$state', '$firebaseArray', '$localSto
               console.log(match.pictureUrl);
               avatar = document.getElementById("img-"+$scope.index);
               $scope.index++;
-
+              console.log("Avatar" + avatar); 
               avatar.src = match.pictureUrl;
+
               console.log("This chat's convo ID is: " + match.convoId);
 
 
@@ -77,12 +78,6 @@ app.controller('listPageCtrl', ['$scope', '$state', '$firebaseArray', '$localSto
 
     //  });
    }
-
-
-  // rootRef.once("value", function(snapshot){
-  //   var userMatches = snapshot.child('matches/'+uid1);
-  //
-  // });
 
 
 

@@ -1,6 +1,9 @@
 app.controller('matchPageCtrl', ['$scope', '$state', '$localStorage', '$sessionStorage',
     function($scope, $state, $localStorage, $sessionStorage){
 
+      $scope.index = 0;
+      var buddyPicture;
+
       //SIGN USER IN AUTOMATICALLY WITH EMAIL AND PASSWORD ON PROFILE PAGE
       var currentUser = firebase.auth().currentUser;
       if (currentUser === null){
@@ -14,7 +17,7 @@ app.controller('matchPageCtrl', ['$scope', '$state', '$localStorage', '$sessionS
         $localStorage.otherId = uid;
         console.log("the other person's ID is: " + uid);
         $state.go('other');
-      }
+      };
 
       //GET MY INTEREST AND STORE IT IN ARRAY FORMAT
       $scope.myInterest = "";
@@ -72,10 +75,23 @@ app.controller('matchPageCtrl', ['$scope', '$state', '$localStorage', '$sessionS
             var obj = {
               uid: UserList[k][0],
               name: UserTable2[UserList[k][0]].name,
-              commonInterest: UserList[k][1]
+              commonInterest: UserList[k][1],
+              pictureUrl: UserTable2[UserList[k][0]].pictureUrl
             };
             $scope.people.push(obj);
+
+            // buddyPicture = document.getElementById("img-"+$scope.index);
+
+            // $scope.index++;
+
+            // buddyPicture.src = obj.pictureUrl;
+            //
+
+            console.log(obj.pictureUrl);
           }
+
+          buddyPicture = document.getElementById("A10");
+          console.log("Buddy picture: " + buddyPicture);
           $state.go('match');
         });
 

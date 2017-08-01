@@ -602,12 +602,12 @@ li{
   border-bottom: 1px solid #D7DBDD;
 }
 
-#L1{
+#L1, #F0{
   width: 30%;
   padding-left: 10%;
 }
 
-#L1 img{
+#L1 img, #F0 img{
   width: 200px;
   height: 200px;
   object-fit: cover;
