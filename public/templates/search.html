@@ -13,18 +13,16 @@
   </div>
 
   <div id="K">
-    <input type="text" ng-model="searchInterest" placeholder="Search interest...."/>
-    <!-- <div id="K1">
-      <label for="nameRadio"> Search by Name</label>
-      <input type="radio" id="nameRadio" name="choice"/><br /><br />
-      <label for="nameRadio"> Search by Email</label>
-      <input type="radio" id="emailRadio"  name="choice"/>
-    </div> -->
+    <div id="K1">
+        <input type="text" ng-model="searchInterest" placeholder="Search interest...."/>
+    </div>
     <br />
     <div id="K2" ng-repeat="int in interestData | filter: searchInterest | emptyifblank: searchInterest">
-      {{int.name}}
-      <div>
-        {{int.count}} people likes this
+      <div id="K2A">
+        {{int.name}}
+      </div>
+      <div id="K2B">
+        <b>{{int.count}} </b>people like this
         <br />
       </div>
     </div>

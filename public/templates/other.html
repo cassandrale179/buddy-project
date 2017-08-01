@@ -15,21 +15,21 @@
 
     <div id="I1">
       <img id="buddyProfilePic" src="img/default.png" /><br />
-      <button ng-click="message()"> MESSAGE </button>
+      <button ng-click="message()"> ADD BUDDY </button>
     </div>
 
-    <!-- ______________________ THIS DIV WILL BE THE BIO OF OTHER _______________________________ -->
-      <div id="C3">
-        <h2> PROFILE </h2>
-        <h5>
-          <b><i class="fa fa-caret-right" aria-hidden="true"></i> Name: </b> {{buddyName}} <br />
-          <b><i class="fa fa-caret-right" aria-hidden="true"></i> Age: </b> {{buddyAge}}   <br />
-          <b><i class="fa fa-caret-right" aria-hidden="true"></i> Bio: </b>{{buddyDescription}}
-        </h5>
-        <h2> INTEREST </h2>
-        <div id="C3A">
-          <h5 ng-repeat="i in buddyArr"><i class="fa fa-caret-right" aria-hidden="true"></i> {{i}}</h5>
-        </div>
-      </div>
+    <div id="C3">
+      <h2> PROFILE </h2>
+      <h5 style="font-size: 2.5em">
+        <b><i class="fa fa-caret-right" aria-hidden="true"></i> Name: </b> {{buddyName}} <br />
+        <b><i class="fa fa-caret-right" aria-hidden="true"></i> Age: </b> {{buddyAge}}   <br />
+        <b><i class="fa fa-caret-right" aria-hidden="true"></i> Interest: </b><br />
+          <div id="C3A" ng-repeat="x in buddyArr">
+            {{x}}
+          </div>
+        <b ><i class="fa fa-caret-right" aria-hidden="true"></i> Bio: </b>
+        {{buddyDescription}}
+      </h5>
     </div>
+  </div>
 </body>

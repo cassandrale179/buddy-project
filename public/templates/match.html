@@ -16,17 +16,15 @@
   </div>
 
   <div id="F">
+    <div id="F0">Below are a list of people with most common interest with you</div>
     <div id="F1" ng-click="storeId(person.uid)" ng-repeat="person in people">
-      <div>
-        <img ng-src="{{person.pictureUrl}}" /><br />
+      <div id="F1A"><img ng-src="{{person.pictureUrl}}" /><br /></div>
+      <div id="F1B">
+        <b>{{person.name}}</b> also likes:
+        <div ng-repeat="interest in person.commonInterest">
+          {{interest}}
+        </div>
       </div>
-      {{person.name}}
-      <br />
-      Common Interest:
-      <li ng-repeat="interest in person.commonInterest">
-        {{interest}}
-      </li>
-      <br />
     </div>
   </div>
 </body>

@@ -53,7 +53,6 @@ app.controller('profilePageCtrl', ['$scope', '$state', '$localStorage',
       ref.once('value').then(function(snapshot){
         $scope.name = snapshot.val().name;
         $scope.age = snapshot.val().age;
-        // $scope.gender = snapshot.val().gender;
         $scope.description = snapshot.val().description;
         var interestStr = snapshot.val().interest;
         $scope.interestArr = interestStr.split(",");
