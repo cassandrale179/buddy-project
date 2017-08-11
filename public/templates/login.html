@@ -1,26 +1,19 @@
 <!DOCTYPE html>
-<html>
 <body>
   <div id="A">
-    <div id="A0">
+    <div id="A1">
+        <img src="img/download.png" />
+        <h1> BUDDY PROJECT </h1>
+        <div id="error" ng-if="errorMessage != ''">{{errorMessage}}</div>
+        <form>
+          <input ng-model="txtEmail" type="email" placeholder="E-MAIL" />
+          <input ng-model="txtPassword" type="password" placeholder="PASSWORD"/>
+          <button ng-click="LogUser()"> LOG IN </button>
+        </form>
+        <p ui-sref="forgot"> <u> Forgot Password? </u></p>
+        <div id="A1A">
+          <p> Don't have an account? </p> <button ui-sref="register">CREATE</button>
+        </div>
     </div>
-    <h1 id="logo"> BUDDY</h1>
-      <!-- LABEL FOR EMAIL, PASSWORD & LOGIN BUTTON -->
-    <div id="AA">
-      <div id="error" ng-if="errorMessage != ''">{{errorMessage}}</div>
-      <form>
-        <div id="A1">
-          <input ng-model="txtEmail" type="email" id="email" name="email" placeholder="EMAIL" required/>
-          <label for="password"></label>
-          <input ng-model="txtPassword" type="password" id="password" name="password" placeholder="PASSWORD" required/>
-        </div>
-        <div id="A2" data-ng-init="init()">
-          <button ng-click="LogUser()">LOGIN</button>
-          <p>Don't have an account? <a ui-sref="register">REGISTER!</a> <br />
-          Forgot Password? Click <a ui-sref="forgot">HERE. </a></p>
-        </div>
-      </form>
-      </div>
   </div>
 </body>
-</html>
