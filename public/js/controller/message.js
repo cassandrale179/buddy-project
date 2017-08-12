@@ -114,7 +114,7 @@ app.controller('messagePageCtrl', ['$scope', '$state', 'Message', '$firebaseArra
             "margin-left": "25%",
             "text-align": "right",
             "padding-right": "5%",
-            "background-color": "#34495E",
+            "background-color": "#4F62AD",
             "color": "white",
             "margin-top": "20px",
           };
@@ -124,8 +124,8 @@ app.controller('messagePageCtrl', ['$scope', '$state', 'Message', '$firebaseArra
             "margin-left": "5%",
             "text-align": "left",
             "padding-left": "5%",
-            "background-color": "white",
-            "color": "#34495E",
+            "background-color": "#7AB74D",
+            "color": "white",
             "margin-top": "20px"
           };
 
