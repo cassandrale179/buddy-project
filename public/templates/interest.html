@@ -1,34 +1,43 @@
 <!DOCTYPE html>
 <body>
   <!-- ADDING IN NAVIGATION BAR -->
-  <div id="navbar" class="wrap">
-    <a ui-sref="profile" ng-click="show=1"><i class="fa fa-user fa-lg" aria-hidden="true"></i></a>
-    <a ui-sref="search"><i class="fa fa-globe fa-lg" aria-hidden="true"></i></a>
-    <a ui-sref="match"><i class="fa fa-star fa-lg" aria-hidden="true"></i></a>
-    <a ui-sref="interest"><i class="fa fa-tag fa-lg" aria-hidden="true"></i></a>
-    <a ui-sref="list"><i class="fa fa-commenting fa-lg" aria-hidden="true"></i></a>
-  </div>
-
-  <!-- HEADER -->
-  <div id="header">
-    <h1>INTERESTS</h1>
+  <div id="navbar">
+    <div class="navcut" ui-sref="profile">
+      <p><i class="fa fa-user" aria-hidden="true"><br /></i></p>
+      <h3> PROFILE </h3>
+    </div>
+    <div class="navcut" ui-sref="interest">
+      <p><i class="fa fa-handshake-o" aria-hidden="true"><br /></i></p>
+      <h3> BUDDIES </h3>
+    </div>
+    <div class="navcut" ui-sref="list">
+      <p><i class="fa fa-commenting-o" aria-hidden="true"><br /></i></p>
+      <h3> MESSAGE </h3>
+    </div>
+    <div class="navcut" ui-sref="settings">
+      <p><i class="fa fa-cog" aria-hidden="true"><br /></i></p>
+      <h3> SETTINGS </h3>
+    </div>
   </div>
 
   <!-- BODY OF INTEREST PAGE -->
-  <div id="G">
-    <h2> INPUT AT LEAST 3 INTERESTS TO BE MATCH </h2>
-    <ul id="G1">
-      <div id="error" ng-if="errorMessage != ''">{{errorMessage}}</div>
+  <div id="C">
+    <h2> FIND A BUDDY </h2>
+    <p>Input at least 3 interests to be matched</p>
+    <input type="text" ng-model="searchInterest" placeholder="Search interest...."/>
+    <div id="C2" ng-repeat="int in interestData | filter: searchInterest | emptyifblank: searchInterest">
       <li ng-repeat="x in interestArr">
         <h3 class="a">{{x}}
         <span ng-click="Remove($index)">X</span></h3>
       </li>
-    </ul>
-    <form>
-      <input ng-model="interest" type="text" placeholder="Add Interest" /><br />
-      <button ng-click="AddMore()"> ADD+</button>
-      <button ng-click="CaptureInterest()"> SUBMIT </button>
-      <p>Please input interest without space, capital letters or symbols (e.g "gameofthrones", not "game of thrones")</p>
-    </form>
+      <div id="C2A">
+        {{int.name}}
+      </div>
+      <div id="C2B">
+        <b>{{int.count}} </b>people like this
+        <br />
+      </div>
+    </div>
+    <button> SEARCH FOR BUDDIES </button>
   </div>
 </body>

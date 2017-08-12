@@ -2,21 +2,34 @@
 <html>
 <body>
   <div id="navbar">
-    <div class="navcut">
-      <i class="fa fa-user" aria-hidden="true"><br /></i>
+    <div class="navcut" ui-sref="profile">
+      <p><i class="fa fa-user" aria-hidden="true"><br /></i></p>
+      <h3> PROFILE </h3>
     </div>
-    <div class="navcut">
-      <i class="fa fa-user" aria-hidden="true"><br /></i>
+    <div class="navcut" ui-sref="interest">
+      <p><i class="fa fa-handshake-o" aria-hidden="true"><br /></i></p>
+      <h3> BUDDIES </h3>
     </div>
-    <div class="navcut">
-      <i class="fa fa-user" aria-hidden="true"><br /></i>
+    <div class="navcut" ui-sref="list">
+      <p><i class="fa fa-commenting-o" aria-hidden="true"><br /></i></p>
+      <h3> MESSAGE </h3>
     </div>
-    <div class="navcut">
-      <i class="fa fa-user" aria-hidden="true"><br /></i>
+    <div class="navcut" ui-sref="settings">
+      <p><i class="fa fa-cog" aria-hidden="true"><br /></i></p>
+      <h3> SETTINGS </h3>
     </div>
-
   </div>
   <div id="B">
+    <img id="profilePic" ng-src="{{userProfilePic}}" />
+    <!-- <button id="overlay"> HARRY POTTER </button> -->
+    <label for="file">This whole label is to change image and will cover the entire div but will hide behind</label>
+    <input type="file" name="file" id="file" custom-on-change="uploadFile" />
+    <h2> {{name}} </h2>
+    <div id="B1">
+      <p><b>Interest: </b></p>
+      <button id="B1A" ng-repeat="x in interestArr">{{x}}</button>
+      <p> <b>Bio: </b> {{description}} </p>
+    </div>
   </div>
 </body>
 </html>
