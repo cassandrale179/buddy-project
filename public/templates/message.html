@@ -31,6 +31,9 @@
       <div id="Ewrapper">
         <div id="E1A" ng-style="setColor(message)" ng-repeat="message in convo">
           {{message.text}}
+          <div id="E1time">
+            {{message.formattedTime}}
+          </div>
         </div>
       </div>
 

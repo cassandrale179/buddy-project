@@ -1,4 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300');
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans');
+
+
 html, body{
   margin: 0;
 }
@@ -20,7 +23,7 @@ input:focus{
 }
 
 h2{
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: 'Noto Sans', sans-serif;
   color: white;
   font-size: 400%;
   text-align: center;
@@ -44,14 +47,14 @@ h4{
   width: 100%;
   z-index: 1;
   bottom: 0px;
-  height: 14%;
+  height: 12%;
   display: flex;
 }
 
 
 #navbar i{
   color: white;
-  font-size: 400%;
+  font-size: 300%;
   text-align: center;
 }
 
@@ -64,7 +67,7 @@ h4{
 #navbar h3{
   color: white;
   font-family: 'Source Sans Pro', sans-serif;
-  font-size: 170%;
+  font-size: 150%;
   text-align: center;
 }
 
@@ -190,61 +193,77 @@ input::placeholder{
 
 /* ------------------------------------ PROFILE PAGE ------------------------------------ */
 #B{
-  background: url(img/BGprofile.png);
+  background: url(img/blur.png);
   width: 100%;
   height: 100%;
   position: absolute;
   background-size: cover;
+  z-index: -2;
+}
+
+#B0{
+  padding-top: 10%;
 }
 
 #B img{
-  width: 100%;
-  height: 40%;
+  display: block;
+  margin: auto;
+  width: 250px;
+  height: 250px;
   object-fit: cover;
-  box-shadow: 0px 0px 16px 4px rgba(0,0,0,0.3);
+  border-radius: 175px;
 }
 
 
-#B input[type="file"]{
-  opacity: 0;
-  position: absolute;
-	z-index: -1;
-  overflow: hidden;
-  width: 0.1px;
-	height: 0.1px;
-}
-
-#B label{
-  opacity: 0;
+#B0 h3{
   font-family: 'Source Sans Pro', sans-serif;
-  font-size: 500%;
-  position: absolute;
-  top: 0px;
-  text-align: center;
-}
-
-#B p{
   color: white;
-  font-family: 'Source Sans Pro', sans-serif;
   font-size: 300%;
-  margin-right: 5px;
-  margin-bottom: 3px;
+  text-align: center;
+  margin-bottom: 0px;
+  text-transform: uppercase;
+}
+
+#B0 p{
+  font-family: 'Source Sans Pro', sans-serif;
+  color: white;
+  font-size: 200%;
+  text-align: center;
+  margin-top: 0px;
 }
 
 #B1{
-  padding-left: 15%;
+  margin-left: 10%;
 }
 
 #B1 button{
-  font-size: 200%;
+  background: none;
+  border: 0.5px white solid;
+  color: white;
   font-family: 'Source Sans Pro', sans-serif;
-  background: white;
-  border: none;
-  display: inline-block;
-  margin-right: 20px;
-  padding-left: 20px;
-  padding-right: 20px;
+  font-size: 200%;
+  margin-bottom: 10px;
+  margin-right: 10px;
+  padding: 10px;
   border-radius: 5px;
+}
+
+#B1 h3{
+  color: white;
+  font-size: 250%;
+  font-family: 'Noto Sans', sans-serif;
+  text-transform: uppercase;
+}
+
+#circle{
+  position: fixed;
+  border: 1px solid white;
+  width: 280px;
+  height: 280px;
+  top: 0px;
+  border-radius: 140px;
+  margin-left: 28.5%;
+  margin-top: 7.5%;
 }
 
 /* ------------------------------------ INTEREST PAGE ------------------------------------ */
@@ -302,7 +321,7 @@ input::placeholder{
   max-height:65%;
   overflow:auto;
   width:100%;
-  background: rgba(0,0,0,0.2);
+  /*background: rgba(0,0,0,0.2);*/
   padding-top: 5%;
   padding-bottom: 5%;
 }
@@ -337,6 +356,7 @@ input::placeholder{
 
 #E1{
   position: fixed;
+  width: 100%;
 }
 
 #Ewrapper{
@@ -344,10 +364,8 @@ input::placeholder{
   padding-bottom: 5%;
   height: 470px;
   overflow: auto;
-  background-color: rgba(0,0,0,0.2);
+  /*background-color: rgba(0,0,0,0.2);*/
 }
-
-
 
 
 #E1A{
