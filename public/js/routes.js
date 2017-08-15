@@ -33,6 +33,14 @@ angular.module('app.routes', ['ui.router'])
 
 })
 
+.state('buddies',{
+  name: 'Buddies',
+  url: '/buddiesPage',
+    templateUrl: 'templates/buddies.html',
+    controller: 'buddiesPageCtrl'
+})
+
+
 .state('prematch',{
   name: 'Prematch',
   url: '/prematchPage',

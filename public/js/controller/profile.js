@@ -25,7 +25,7 @@ app.controller('profilePageCtrl', ['$scope', '$state', '$localStorage',
         $scope.userProfilePic = snapshot.val().pictureUrl;
         console.log($scope.userProfilePic);
         $state.go('profile');
-      })
+      }); 
 
       // var profilePic = document.getElementById("profilePic");
       // storageRef.getDownloadURL().then(function(url){
