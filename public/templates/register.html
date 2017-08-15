@@ -2,25 +2,18 @@
 <html>
 <body>
   <div id="A">
-    <div id="A02">
+    <i ui-sref="login" class="fa fa-chevron-left" aria-hidden="true"></i>
+    <div id="A2">
+        <img src="img/download.png" />
+        <h1> BUDDY PROJECT </h1>
+        <form>
+          <input ng-model="txtName" type="text" placeholder="NAME" />
+          <input ng-model="txtAge" type="text" placeholder="AGE"/>
+          <input ng-model="txtEmail" type="email" placeholder="E-MAIL" />
+          <input ng-model="txtPassword" type="password" placeholder="PASSWORD"/>
+          <button ng-click="RegisterUser()"> SIGN UP </button>
+        </form>
     </div>
-      <!-- LABEL FOR EMAIL, PASSWORD & LOGIN BUTTON -->
-    <div id="AA">
-      <h1> REGISTER </h1>
-      <div id="error" ng-if="errorMessage != ''">{{errorMessage}}</div>
-      <form>
-        <div id="A1">
-          <input ng-model="txtName" type="text" placeholder="SCREEN NAME" required />
-          <input ng-model="txtAge" type="text" placeholder = "AGE" required />
-          <input ng-model="txtEmail" type="email" placeholder="EMAIL" required />
-          <input ng-model="txtPassword" type="password" placeholder="PASSWORD" required />
-        </div>
-        <div id="A3">
-          <button ng-click="RegisterUser()">SIGNUP</button>
-          <p>Already have an account? <a ui-sref="login">LOGIN</a></p>
-        </div>
-      </form>
-      </div>
   </div>
 </body>
 </html>

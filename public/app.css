@@ -1,678 +1,420 @@
-@import url('https://fonts.googleapis.com/css?family=Dosis');
-@import url('https://fonts.googleapis.com/css?family=Abel|Droid+Sans|Hind|Quicksand');
-@import url('https://fonts.googleapis.com/css?family=Montserrat');
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300');
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans');
 
-body{
+
+html, body{
   margin: 0;
-  height: 100%;
-  width: 100%;
 }
+
+
+/* ------------------------------------ MAIN COMPONENTS------------------------------------ */
+#error, #success{
+  font-family: 'Source Sans Pro', sans-serif;
+  text-align: center;
+  color: white;
+  font-style: italic;
+  font-size: 150%;
+  margin-bottom: 3%;
+}
+
 
 input:focus{
-  outline: none;
+  outline: #4F62AD ;
 }
-
-button:focus{
-  outline: none;
-}
-
-textarea:focus{
-  outline: none;
-}
-
 
 h2{
-  font-family: 'Hind', serif;
-  text-align: center;
-  font-size: 3em;
-  line-height: 1em;
-}
-
-h3{
-  font-family: 'Hind', serif;
-  font-size: 2em !important;
-  line-height: 1em;
-  font-weight: lighter;
-}
-
-
-p{
-  font-family: 'Abel', serif;
-  font-size: 2em;
-  color: #909497;
-  text-align: center;
-}
-
-button{
-  border: none;
-  background-color: rgb(40, 55, 71);
-  padding: 10px;
+  font-family: 'Noto Sans', sans-serif;
   color: white;
-  font-family: 'Hind', sans-serif;
-  font-size: 2.5em;
-  width: 70%;
-  margin-top: 0.5em;
-  display: block;
-  margin: auto;
-}
-
-button:hover{
-  background-color: white;
-  border: rgb(40,55,71) 1px solid;
-  color: rgb(40,55,71);
-}
-
-input{
-  width: 70%;
-  border: none;
-  display: block;
-  margin: auto;
-  border-bottom: 0.1px #85929E solid;
-  font-family: 'Hind', sans-serif;
-  font-size: 2.3em;
-  margin-bottom: 1em;
-}
-
-input::placeholder{
-  color: #D7DBDD;
-}
-
-a{
-  color: #283747;
-  font-size: 1.2em;
-  text-decoration: none;
-}
-
-a:hover{
-  text-decoration: underline;
-}
-
-li{
-  color: #626567;
-}
-
-/*---------------------------- STYLING FOR THE RESOURCES PAGE (E.G HOTLINE) -------------------- */
-#content{
-  padding-left: 10%;
-  padding-right: 10%;
-  font-size: 2em;
-  margin-top: 30%;
-  font-family: 'Hind', sans-serif;
-}
-
-#content h4{
-  font-size: 2em;
-  margin-bottom: 0em;
-}
-
-#content ul{
-  font-size: 1.7em;
-  text-align: left;
-}
-
-/*-------------------------------------- STYLING FOR THE HEADER --------------------------------------- */
-#header{
-  width: 100%;
-  top: 0;
-  position: fixed;
-  background-color:  rgb(40, 55, 71);
-  box-shadow: 0px 0px 16px 4px rgba(0,0,0,0.3);
-  text-transform: uppercase;
-  color: white;
-  font-family: 'Hind', serif;
-  font-size: 1.5em;
-  height: 12%;
-  z-index: 3;
-}
-
-#header h1{
+  font-size: 400%;
   text-align: center;
+  font-weight: 900;
 }
 
-/* ---------------------------- STYLING FOR THE BOTTOM NAVIGATION BAR ---------------------------------- */
+h4{
+  font-family: 'Source Sans Pro', sans-serif;
+  color: white;
+  font-size: 300%;
+  text-align: center;
+  margin-top: -50px;
+  margin-bottom: 20px;
+}
+
+
+
+/* ------------------------------------ NAVIGATION BAR------------------------------------ */
 #navbar{
-  position: fixed;
-  bottom: 0;
-  background-color: rgb(33, 47, 60);
-  z-index: 3;
-}
-
-.wrap{
-  display: flex;
-  width: 100%;
-}
-
-#navbar i{
-  display: block;
-  margin: auto;
-  width: 20%;
-  color: white;
-  font-size: 3em !important;
-}
-
-#navbar a{
-  width: 20%;
-  padding-top: 5%;
-  padding-bottom: 5%;
-  text-decoration: none;
-}
-
-#navbar a:hover{
-  text-decoration: none;
-}
-
-/* ----------------------------- STYLING FOR ERROR MESSAGE ON REGISTRATION PAGE ------------------------ */
-#error, #success{
-  font-family: 'Hind', sans-serif;
-  font-size: 1.5em;
-  text-align: center;
-  font-style: italic;
-}
-
-#error{
-  color: #C0392B;
-}
-
-#success{
-  color: #45B39D;
-}
-
-/* ----------------------------- STYLING FOR SIGN IN AND REGISTRATION PAGE -------------------------------- */
-#A, #B{
-  font-family: 'Hind', sans-serif;
-}
-
-#A0, #A02{
-  background: url('img/bg.jpg');
-  background-size: cover;
-  height: 45%;
-  width: 100%;
-  position: fixed;
-  top: 0;
-  background-position: 0 -40px;
-}
-
-#A02{
-  height: 30%;
-}
-
-#AA{
   position: absolute;
   width: 100%;
-  bottom: 5%;
+  z-index: 1;
+  bottom: 0px;
+  height: 12%;
+  display: flex;
+}
+
+
+#navbar i{
+  color: white;
+  font-size: 300%;
+  text-align: center;
+}
+
+#navbar p{
+  color: white;
+  text-align: center;
+  margin-bottom: -10px;
+}
+
+#navbar h3{
+  color: white;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 150%;
+  text-align: center;
+}
+
+.navcut{
+  width: 25%;
+}
+
+
+
+/* ------------------------------------ LOGIN / REGISTRATION BACKGROUND------------------------------------ */
+#A{
+  background: url(img/BGlogin.png);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-size: cover;
 }
 
 #A h1{
-  margin-bottom: 0em !important;
-  font-size: 5em;
-  color: #34495E;
+  font-family: 'Source Sans Pro', sans-serif;
+  color: white;
   text-align: center;
+  font-size: 400%;
+  font-weight: bold;
 }
 
-
-#logo{
-  background: #34495E;
-  width: 60%;
-  left: 20%;
-  color: white !important;
-  text-align: center;
-  top: 35%;
-  position: fixed;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  border-radius: 50px;
-  border: 3px solid white;
-  font-size: 5em;
-}
-
-
-/* --------- STYLING FOR THE FORGOT PASSWORD PAGE ---------*/
-#B1{
-  width: 100%;
-  height: 30%;
-  position: fixed;
-  background: url('img/bg.jpg');
-  background-size: cover;
-}
-
-#B2{
-  width: 100%;
-  top: 35%;
-  position: fixed;
-  padding-top: 20px;
-  color: #626567;
-}
-
-
-#B3{
-  height: 20%;
-  width: 100%;
-  background-color: rgb(40, 55, 71);
-  position: fixed;
-  bottom: 0;
-}
-
-#B p{
-  display: block;
-  width: 70%;
-  margin: auto;
-  font-size: 2em;
-}
-
-
-/* ---------------------------------- STYLING FOR THE USER PROFILE PAGE ------------------------------------ */
-
-#C, #I{
-  position: relative;
-  overflow: auto;
-}
-
-#one, #two{
+#A input, #C input, #H input, #E input{
   background: none;
-  width: auto;
-  position: absolute;
-  padding: 40px;
-}
-
-#two{
-  right: 5px;
-}
-
-#C0 button:hover{
-  border: none;
-  color: white;
-}
-
-
-#C h2{
-  text-align: left;
-  margin-left: 15%;
-  margin-bottom: 0.5em;
-}
-
-
-#C1, #I1{
-  padding-top: 100px;
-  padding-bottom: 70px;
-  background-color: #283747;
-}
-
-#C1 img, #I1 img{
-  width: 200px;
-  height: 200px;
-  object-fit: cover;
+  border: 1px white solid;
   display: block;
   margin: auto;
-  box-shadow: 0px 0px 16px 4px rgba(0,0,0,0.3);
+  width: 75%;
+  height: 80px;
+  margin-bottom: 3%;
+  color: white;
+  font-size: 200%;
+  font-family: 'Source Sans Pro', sans-serif;
+  padding-left: 20px;
 }
 
-#C1 input[type="file"]{
-  opacity: 0;
-  position: absolute;
-	z-index: -1;
-  overflow: hidden;
-  width: 0.1px;
-	height: 0.1px;
-}
 
-#C1 label{
-  font-family: 'Hind', sans-serif;
-  font-size: 1.5em;
-  display: block;
-  text-align: center;
-  margin-left: 25%;
-  margin-right: 25%;
+input::placeholder{
   color: white;
 }
 
+/* ------------------------------------ LOGIN AND REGISTRATION PAGE ------------------------------------ */
 
-#C2{
-  display: flex;
-  width: 100%;
+#A1{
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
-#C2 button{
-  padding-top: 5%;
-  padding-bottom: 5%;
-  background: #F2F3F4;
-  width: 25%:
-}
-
-#C2 button:hover{
-  border: #E5E7E9;
-  background-color: #E5E7E9;
+#A1 img{
+  display: block;
+  margin: auto;
+  width: 40%;
+  object-fit: cover;
 }
 
 
-#C2 i{
-  color: #34495E;
-}
-
-#C3 h5{
-  font-family: 'Abel', sans-serif;
-  margin-left: 15%;
-  margin-right: 10%;
-  text-align: left;
-  color: black;
-  margin-bottom: 0px;
-  margin-top: 0px;
+#A1 button, #A2 button, #C button, #H button{
+  background-color: #4F62AD;
+  width: 80%;
+  color: white;
+  border: none;
+  display: block;
+  margin: auto;
+  font-size: 200%;
+  padding-top: 4%;
+  padding-bottom: 4%;
+  font-family: 'Source Sans Pro', sans-serif;
   font-weight: lighter;
 }
 
-.resize{
-  font-size: 2.5em;
-  margin-left: 15% !important;
-  font-family: 'Abel', sans-serif;
-}
-
-#C3{
-  margin-bottom: 25%;
-}
-
-#C3A{
-  margin-left: 20px;
-}
-
-
-/* ------------------------------ STYLING FOR THE EDIT BIO & RESOURCES PAGE ----------------------------------------- */
-#D, #E{
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background: rgb(40, 55, 71);
+#A1 p, #C p, #H p{
   color: white;
-  font-family: 'Hind', sans-serif;
-  z-index: 2;
-}
-
-
-#E1 button{
-  margin-top: 5%;
-  margin-right: 5%;
-  float: right;
-  width: auto;
-  margin-bottom: 10%:
-}
-
-#E2{
-  border: 2px rgb(40, 55, 71) solid;
-  margin-top: 10%;
-}
-
-#E2 h1{
-  display: block;
-  font-size: 4.5em;
+  font-family: 'Source Sans Pro', sans-serif;
   text-align: center;
-  margin-top: 15%;
+  font-size: 170%;
+  font-weight: 50;
+  line-height: 2em;
 }
 
-#E2 button{
-  background-color: white;
-  color: rgb(40, 55, 71);
-  margin-bottom: 1em;
+#A1A{
+  margin-left: 10%;
+  margin-right: 10%;
+  padding-left: 10%;
 }
 
-#E2 i{
-  text-align: right;
+#A1A p{
+  display: inline-block;
+  margin-right: 2%;
+  font-size: 170%;
+}
+#A1A button{
+  background-color: #7AB74D;
+  width: 30%;
+  display: inline-block;
+  border-radius: 10px;
+  font-size: 180%;
 }
 
-
-/* --------------------------- STYLING FOR THE MATCHING PAGE --------------------------------------- */
-#F{
-  margin-top: 30%;
-  position: relative;
-  margin-bottom: 30%;
+#A i, #E i{
+  padding-top: 10%;
+  padding-left: 5%;
+  color: white;
+  font-size: 500%;
 }
 
-#F0{
-  text-align: center;
-  font-size: 2.5em;
-  font-family: 'Hind', sans-serif;
-  color: #34495E;
-  margin-left: 5%;
-  margin-right: 5%;
-}
-
-#F1{
-  padding-top: 50px;
-  padding-bottom: 50px;
-  border-bottom: 1px #E5E7E9 solid;
-}
-
-#F1 img{
-  width: 300px;
-  height: 300px;
-  object-fit: cover;
+#A2 img{
   display: block;
   margin: auto;
-  border-radius: 150px;
+  width: 30%;
+  object-fit: cover;
 }
 
-#F1B{
+#A2 button, #C button{
+  background-color: #7AB74D;
+}
+
+
+
+/* ------------------------------------ PROFILE PAGE ------------------------------------ */
+#B{
+  background: url(img/blur.png);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-size: cover;
+  z-index: -2;
+}
+
+#B0{
+  padding-top: 10%;
+}
+
+#B img{
+  display: block;
+  margin: auto;
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 175px;
+}
+
+
+#B0 h3{
+  font-family: 'Source Sans Pro', sans-serif;
+  color: white;
+  font-size: 300%;
   text-align: center;
-  font-size: 3em;
-  font-family: 'Hind', sans-serif;
+  margin-bottom: 0px;
+  text-transform: uppercase;
+}
+
+#B0 p{
+  font-family: 'Source Sans Pro', sans-serif;
+  color: white;
+  font-size: 200%;
+  text-align: center;
+  margin-top: 0px;
+}
+
+#B1{
+  margin-left: 10%;
+}
+
+#B1 button{
+  background: none;
+  border: 0.5px white solid;
+  color: white;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 200%;
+  margin-bottom: 10px;
+  margin-right: 10px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+#B1 h3{
+  color: white;
+  font-size: 250%;
+  font-family: 'Noto Sans', sans-serif;
+  text-transform: uppercase;
+}
+
+#circle{
+  position: fixed;
+  border: 1px solid white;
+  width: 280px;
+  height: 280px;
+  top: 0px;
+  border-radius: 140px;
+  margin-left: 28.5%;
+  margin-top: 7.5%;
+}
+
+/* ------------------------------------ INTEREST PAGE ------------------------------------ */
+#C{
+  background: url(img/BGbuddys.png);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-size: cover;
 }
 
 
+/* ------------------------------------ MESSAGE PAGE  ------------------------------------ */
+#D{
+  background: url(img/BGmessages.png);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-size: cover;
+  /*overflow-x: hidden; */
 
-/* ----------------------------------STYLING FOR THE INTEREST INPUT FIELD  ----------------------------------*/
-#G{
-  margin-top: 40%;
-  margin-bottom: 40%;
+}
+
+#D1{
+  display: flex;
+  width: 80%;
+  margin-bottom: 5%;
   padding-left: 10%;
   padding-right: 10%;
 }
 
-#G input{
+
+#D1B{
   width: 100%;
+  font-size: 150%;
+  font-family: 'Source Sans Pro', sans-serif;
+  color: white;
+  padding-left: 10%;
 }
 
-#G button{
-  display: inline-block;
-  width: 49%;
-  font-size: 2em;
+#D1B b{
+  font-weight: 900;
 }
 
-#G span{
-  float: right;
-  color:  #C0392B;
+
+#D1A img{
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 100px;
 }
 
-/* ------------------------------- STYLING FOR THE SETTINGS FIELD  ------------------------------- */
-#H{
-  position: absolute;
+
+#wrapper{
+  max-height:65%;
+  overflow:auto;
+  width:100%;
+  /*background: rgba(0,0,0,0.2);*/
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
+
+
+/* -------------------------------------------- MESSAGE PAGE ------------------------------------ */
+#E{
+  background: url(img/BGmessages.png);
   width: 100%;
   height: 100%;
-  background-color: rgb(40, 55, 71);
-  color: white;
+  position: absolute;
+  background-size: cover;
 }
 
-#H button{
+#E img{
+  width: 170px;
+  height: 170px;
+  border-radius: 100px;
+  display: block;
+  margin: auto;
+  object-fit: cover;
+  margin-bottom: 3%;
+}
+
+
+#E input{
+  width: 70%;
+  float: left;
+  margin-left: 5%;
+  font-size: 170%;
+}
+
+#E1{
+  position: fixed;
+  width: 100%;
+}
+
+#Ewrapper{
+  padding-top: 5%;
+  padding-bottom: 5%;
+  height: 470px;
+  overflow: auto;
+  /*background-color: rgba(0,0,0,0.2);*/
+}
+
+
+#E1A{
+  padding: 5%;
+  font-size: 150%;
+  font-family: 'Source Sans Pro',  sans-serif;
+  opacity: 0.9;
+  border-radius: 10px;
+}
+
+#E1B{
+  width: 100%;
+  position: fixed;
+  bottom: 12%;
+}
+
+#E1B button{
+  margin-left: 3%;
+  height: 80px;
+  width: 80px;
+  border: none;
   background: white;
-  margin-bottom: 0.3em;
-  font-size: 2.5em;
-  color: rgb(40, 55, 71);
+  color:  #4F62AD;
+}
+
+#E1B i{
+    color:  #4F62AD;
+}
+
+
+
+/* -------------------------------------------- SETTINGS PAGE ------------------------------------ */
+#H{
+  background: url(img/BGsettings.png);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-size: cover;
+  padding-top: 5%;
 }
 
 #H1{
-  margin-top: 1em;
-  margin-left: 5%;
-  margin-bottom: 12em;
-  display: block;
+  margin-top: 10%;
 }
 
-#H1 button{
-  float: left;
-  width: auto;
-  background-color: rgb(40, 55, 71);
-  color: white;
+#H2{
+  margin-bottom: 10%;
 }
 
-#H input{
-  font-size: 2em;
-  background: transparent;
-  color: white;
-}
-
-/*---------------------------- STYLING FOR OTHER PEOPLE BIO PAGE (E.G HOTLINE) -------------------- */
-#I1 button{
-  border: 0.5px #F2F3F4 solid;
-  width: 40%;
-  font-size: 2em;
-  margin-top: 1em;
-}
-
-
-/*------------------------------------ STYLING FOR THE MESSAGE PAGE------------------------------ */
-#J{
-  width: 100%;
-  padding-top: 30%;
-  height: 55%;
-  position: fixed;
-  top: 10%;
-  background-color: #EAECEE;
-}
-
-#J0{
-  padding-top: 10%;
-  padding-bottom: 15%;
-  overflow: auto;
-  position: absolute;
-  bottom:0;
-  left:0;
-  right:0;
-  top: 0;
-  max-height: 100%;
-  width: 100%;
-}
-
-#J1{
-  font-family: "Dosis", sans-serif;
-  font-size: 2.5em;
-  padding-top: 20px;
-  padding-bottom: 20px;
-}
-
-#J1time{
-  color: #ABB2B9;
-}
-
-#J2{
-  position: fixed;
-  bottom: 10%;
-  width: 100%;
-  padding-bottom: 5%;
-  background: white;
-}
-
-#J2 input{
-  background: transparent;
-  width: 60%;
-  float: left;
-  margin-left: 5%;
-  font-size: 1em;
-  margin-bottom: 0em;
-  display: inline-block;
-  padding-top: 2.5%;
-}
-
-#J2 button{
-  margin-right: 7%;
-  float: right;
-  font-size: 2.5em;
-  padding-bottom: 1%;
-  display: inline-block;
-  width: auto;
-}
-
-/* ---------------------------------------- STYLING FOR THE SEARCH PAGE ------------------------------ */
-#K{
-  position: absolute;
-  margin-top: 30%;
-  width: 100%;
-  height: 100%;
-}
-
-#K1{
-  font-size: 1.5em;
-}
-
-#K2{
-  margin-left: 15%;
-  font-family: 'Hind', sans-serif;
-}
-
-#K2A{
-  font-size: 3em;
-}
-
-#K2B{
-  font-size: 2.5em;
-  color: #5D6D7E;
-}
-
-/* ---------------------------------------- STYLING FOR THE LIST PAGE ------------------------------ */
-#top{
-  margin-top: 30%;
-  margin-bottom: 30%;
-}
-
-#L{
-  padding-bottom: 5%;
-  width: 100%;
-  display: flex;
-  margin-bottom: 5%;
-  border-bottom: 1px solid #D7DBDD;
-}
-
-#L1{
-  width: 30%;
-  padding-left: 10%;
-}
-
-#L1 img{
-  width: 200px;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 100px;
-
-
-}
-
-#L2{
-  font-family: 'Hind', sans-serif;
-  font-size: 200%;
-  color: gray;
-  padding-left: 10%;
-  padding-right: 10%;
-}
-
-#L2 b{
-  color: black;
-  font-size: 120%;
-}
-
-/* ---------------------------------------- STYLING FOR THE LIST PAGE ------------------------------ */
-#M{
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: url('http://static.tumblr.com/13269df65d1d82c3938aa82717413b3f/qx7gnto/9rroi1lyf/tumblr_static_eglnm4oqtegc0o00c0wks4wcc.jpg');
-  background-repeat: no-repeat;
-  background-position: center -30px;
-
-
-}
-
-#M1{
-  position: relative;
-  top: 55%;
-  transform: translateY(-45%);
-}
-
-#M button{
-  background: rgba(40,55,71,0.9);
-  font-size: 5em;
+#H2 button{
+  background-color: #7AB74D;
 }
