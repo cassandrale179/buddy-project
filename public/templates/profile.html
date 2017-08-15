@@ -20,11 +20,16 @@
     </div>
   </div>
   <div id="B">
-      <div id="circle"></div>
+      <div id="circle">
+        <label for="file">This is where user can upload file</label>
+        <input type="file" name="file" id="file" custom-on-change="uploadFile" /></div>
       <div id="B0">
         <img id="profilePic" ng-src="{{userProfilePic}}" />
         <h3>{{name}}</h3>
         <p>{{age}} years old </p>
+      </div>
+      <div id="B1A">
+        Lorem ipsum sit dolor amet, this is just some dummy text.
       </div>
       <div id="B1">
         <button ng-repeat="x in interestArr">{{x}}</button>
