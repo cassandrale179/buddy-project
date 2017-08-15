@@ -233,7 +233,10 @@ input::placeholder{
 }
 
 #B1{
-  margin-left: 10%;
+  margin-left: 15%;
+  margin-right: 10%;
+  max-height: 350px;
+  overflow: auto;
 }
 
 #B1 button{
@@ -255,6 +258,20 @@ input::placeholder{
   text-transform: uppercase;
 }
 
+#B1A{
+  font-size: 200%;
+  color: white;
+  font-family: 'Source Sans Pro', sans-serif;
+  border: 0.9px solid white;
+  margin-right: 15%;
+  margin-left: 15%;
+  height: 100px;
+  margin-bottom: 20px;
+  padding: 3%;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
 #circle{
   position: fixed;
   border: 1px solid white;
@@ -265,6 +282,17 @@ input::placeholder{
   margin-left: 28.5%;
   margin-top: 7.5%;
 }
+
+#B label{
+  text-align: center;
+  opacity: 0;
+  font-size: 400%;
+}
+
+#B input[type="file"]{
+  opacity: 0;
+}
+
 
 /* ------------------------------------ INTEREST PAGE ------------------------------------ */
 #C{
