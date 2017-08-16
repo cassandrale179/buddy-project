@@ -19,6 +19,10 @@ app.controller('listPageCtrl', ['$scope', '$state', '$firebaseArray', '$localSto
      //Get array of user matches
      $scope.userMatchesArray = $firebaseArray(userMatchesRef);
 
+     //GET CURRENT TIMESTAMP OF TODAY
+     var dateTime = Date.now();
+     var todayTimestamp = Math.floor(dateTime/1000);
+
      //Get the names of the user matches
      rootRef.once("value", function(snapshot){
        var userDatabase = snapshot.child('users').val();
@@ -43,6 +47,22 @@ app.controller('listPageCtrl', ['$scope', '$state', '$firebaseArray', '$localSto
               match.convoId = matchDatabase[uid1][uid].convoId;
               match.lastText = matchDatabase[uid1][uid].lastText;
               match.pictureUrl = userDatabase[uid].pictureUrl;
+
+              //Get time of last text in conversation, and how much time has passed
+              match.lastFormattedTime = matchDatabase[uid1][uid].lastFormattedTime;
+              match.dayPassed = Math.ceil((matchDatabase[uid1][uid].lastTimestamp - todayTimestamp) / 86400);
+
+              //Create "days ago" timestamp
+              if (match.dayPassed==0){
+                match.lastDate = "Today";
+              }
+              else if (match.dayPassed=="1"){
+                match.lastDate = match.dayPassed + "day ago";
+              }
+              else {
+                match.lastDate = match.dayPassed + "days ago";
+              }
+
               console.log("This chat's convo ID is: " + match.convoId);
 
 
@@ -52,7 +72,6 @@ app.controller('listPageCtrl', ['$scope', '$state', '$firebaseArray', '$localSto
 
 
           $state.go('list');
-            console.log(uidArray);
 
            });
 

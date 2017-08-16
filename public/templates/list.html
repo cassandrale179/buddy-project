@@ -24,13 +24,16 @@
 <div id="D">
   <h2> MESSAGES </h2>
   <div id="wrapper">
+
     <div id="D1" ng-repeat="match in userMatchesArray" ng-click="storeInfo(match.$id)">
       <div id="D1A">
-        <img id="{{ 'img-' + $index }}" ng-src="{{match.pictureUrl}}" /><br />
+        <img id="{{ 'img-' + $index }}" src="img/loader.gif" ng-src="{{match.pictureUrl}}" /><br />
       </div>
       <div id="D1B">
         <b>{{match.name}} </b><br />
           {{match.lastText}}
+          <br />
+          {{match.lastDate}}
       </div>
     </div>
   </div>

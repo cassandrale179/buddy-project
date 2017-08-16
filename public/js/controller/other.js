@@ -29,9 +29,10 @@ app.controller('otherPageCtrl', ['$scope', '$state', '$localStorage',
         //Create 2 references to both people
         var matchRef1 = firebase.database().ref('match/' + currentUser.uid + "/" + $localStorage.otherId);
         var matchRef2 = firebase.database().ref('match/' + $localStorage.otherId + "/" + currentUser.uid);
+        var lastText = "You and " + $scope.buddyName + "has been connected as buddies!";
         matchRef1.update({
           convoId: "",
-          lastText: ""
+          lastText: lastText
         })
         $state.go('list');
 
