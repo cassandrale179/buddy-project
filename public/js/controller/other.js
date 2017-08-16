@@ -12,7 +12,7 @@ app.controller('otherPageCtrl', ['$scope', '$state', '$localStorage',
       matchTableRef.once('value', function(snapshot){
         var matchTable = snapshot.val();
         for (var user in matchTable){
-          if ($localStorage.otherId){
+          if ($localStorage.otherId == user){
             $scope.add = 1;
           }
         }

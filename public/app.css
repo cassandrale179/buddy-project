@@ -285,8 +285,10 @@ input::placeholder{
 
 #B label{
   text-align: center;
+  position: fixed;
+  width: 100%;
+  font-size: 300%;
   opacity: 0;
-  font-size: 400%;
 }
 
 #B input[type="file"]{
@@ -297,7 +299,7 @@ input::placeholder{
 
 #B h5{
   width: 100%;
-  position: fixed; 
+  position: fixed;
   text-align: center;
   color: white;
   font-family: 'Source Sans Pro', sans-serif;

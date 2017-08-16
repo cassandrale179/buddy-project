@@ -20,11 +20,12 @@
     </div>
   </div>
   <div id="B">
-      <div id="circle">
-        <label for="file">This is where user can upload file</label>
-        <input type="file" name="file" id="file" custom-on-change="uploadFile" /></div>
-      <div id="B0">
-        <img id="profilePic" ng-src="{{userProfilePic}}" />
+      <div id="B0" style="margin-top: 10%">
+        <label for="file">UPLOAD <br /> GODDAMN <br /> PICTURE </label>
+        <input type="file" name="file" id="file" custom-on-change="uploadFile" />
+        <div id="imgwrapper">
+            <img id="buddyProfilePic" ng-src="{{userProfilePic}}" />
+        </div>
         <h3>{{name}}</h3>
         <p>{{age}} years old </p>
       </div>
