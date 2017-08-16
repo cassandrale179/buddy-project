@@ -29,7 +29,7 @@ app.controller('registerPageCtrl', ['$scope', '$state', '$localStorage',
           }, function(error) {
           });
 
-        $state.go('interest');
+        $state.go('buddies');
       })
 
       //------------CATCHING ERROR HERE------------

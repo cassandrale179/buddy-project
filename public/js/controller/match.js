@@ -16,7 +16,7 @@ app.controller('matchPageCtrl', ['$scope', '$state', '$localStorage', '$sessionS
         $localStorage.otherId = uid;
         console.log("the other person's ID is: " + uid);
         $state.go('other');
-      }
+      };
 
       //GET MY INTEREST AND STORE IT IN ARRAY FORMAT
       $scope.myInterest = "";
@@ -40,6 +40,7 @@ app.controller('matchPageCtrl', ['$scope', '$state', '$localStorage', '$sessionS
           for (var user in UserTable){
             if (user == currentUser.uid) delete UserTable.user;
             else{
+              console.log(UserTable[user]);
               var OtherInterestArr = UserTable[user].interest.split(",");
               OtherInterestArr.splice(-1);
 
@@ -52,7 +53,12 @@ app.controller('matchPageCtrl', ['$scope', '$state', '$localStorage', '$sessionS
                    }
                  }
                }
-              UserList.push([user, $scope.commonInterest]);
+
+               //IF SOMEONE ACTUALLY HAS A COMMON INTEREST, THEN PUSH THEM TO USER LIST
+               if ($scope.commonInterest.length > 0){
+                   UserList.push([user, $scope.commonInterest]);
+               }
+            
             }
           }
 
@@ -95,9 +101,6 @@ app.controller('matchPageCtrl', ['$scope', '$state', '$localStorage', '$sessionS
             // avatar.src=people.pictureUrl;
             $state.go('match');
           });
-        })
-
-
-
+        });
       });
 }]);

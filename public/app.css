@@ -171,7 +171,7 @@ input::placeholder{
   font-size: 180%;
 }
 
-#A i, #E i{
+#A i, #E i, #F i{
   padding-top: 10%;
   padding-left: 5%;
   color: white;
@@ -239,7 +239,7 @@ input::placeholder{
   overflow: auto;
 }
 
-#B1 button, #C2 button{
+#B1 button, #C2 button, #F1A button{
   background: none;
   border: 0.5px white solid;
   color: white;
@@ -460,12 +460,11 @@ input::placeholder{
   width: 100%;
 }
 
-#Ewrapper{
+#Ewrapper, #F1wrapper{
   padding-top: 5%;
   padding-bottom: 5%;
   height: 470px;
   overflow: auto;
-  /*background-color: rgba(0,0,0,0.2);*/
 }
 
 
@@ -495,6 +494,73 @@ input::placeholder{
 #E1B i{
     color:  #4F62AD;
 }
+
+
+
+/* -------------------------------------------- MATCH PAGE ------------------------------------ */
+#F{
+  background: url(img/BGmatches.png);
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background-size: cover;
+  padding-top: 5%;
+}
+
+#F h2{
+  margin-top: 0px;
+  margin-bottom: 10px;
+}
+
+#F p{
+  color: white;
+  font-family: 'Source Sans Pro', sans-serif;
+  text-align: center;
+  margin-top: 0px;
+  font-size: 170%;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+#F img{
+  width: 170px;
+  height: 170px;
+  border-radius: 100px;
+  object-fit: cover;
+  margin-left: 10%;
+}
+
+#F1wrapper{
+  height: 50%;
+}
+
+#F1{
+  display: flex;
+  margin-bottom: 10%;
+}
+
+#F1 b{
+  font-family: 'Noto Sans', sans-serif;
+}
+
+#F1A{
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+#F1A p{
+  margin-left: 0px;
+  margin-right: 20px;
+  font-size: 170%;
+  color: white;
+  font-family: 'Source Sans Pro', sans-serif;
+  text-align: left;
+}
+
+
+
+
+
 
 
 

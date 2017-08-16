@@ -106,7 +106,7 @@ app.controller('buddiesPageCtrl', ['$scope', '$state', '$localStorage', '$fireba
           }
         });
 
-        $state.go('profile');
+        $state.go('match');
       };
     }
   }
