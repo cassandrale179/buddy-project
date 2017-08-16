@@ -13,6 +13,10 @@ input:focus{
   outline: #4F62AD ;
 }
 
+input::placeholder{
+  color: white;
+}
+
 h2{
   font-family: 'Noto Sans', sans-serif;
   color: white;
@@ -120,7 +124,7 @@ h4{
   font-weight: bold;
 }
 
-#A input, #C input, #H input, #E input{
+#A input, #C input, #H input, #E input, #B2 input{
   background: none;
   border: 1px white solid;
   display: block;
@@ -134,10 +138,6 @@ h4{
   padding-left: 20px;
 }
 
-
-input::placeholder{
-  color: white;
-}
 
 /* --------------------------------- LOGIN AND REGISTRATION PAGE -------------------------------- */
 
@@ -155,7 +155,7 @@ input::placeholder{
 }
 
 
-#A1 button, #A2 button, #H button, #C3 button{
+#A1 button, #A2 button, #H button, #C3 button, #G button, #B2 button{
   background-color: #4F62AD;
   width: 80%;
   color: white;
@@ -198,7 +198,7 @@ input::placeholder{
 }
 
 
-#A2 img{
+#A2 img,  #B2 img{
   display: block;
   margin: auto;
   width: 30%;
@@ -296,7 +296,6 @@ input::placeholder{
 }
 
 
-
 #B h5{
   width: 100%;
   position: fixed;
@@ -308,7 +307,19 @@ input::placeholder{
 }
 
 
-/* ------------------------------------ INTEREST PAGE ------------------------------------ */
+#B2{
+  font-family: 'Source Sans Pro', sans-serif;
+  color: white;
+  text-align: center;
+}
+
+#B2 p{
+  font-size: 200%;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+/* ------------------------------------ BUDDIES PAGE ------------------------------------ */
 #C{
   background: url(img/BGbuddys.png);
   width: 100%;
@@ -323,7 +334,7 @@ input::placeholder{
   font-style: italic;
 }
 
-#C i{
+#C i, #F i{
   font-size: 100%;
   margin-left: 10px;
 }
@@ -375,9 +386,9 @@ input::placeholder{
 
 /* THIS IS WHERE THE USER INTEREST WILL BE DISPLAY */
 #C2{
-  padding-top: 10%;
+  padding-top: 5%;
   margin-left: 12%;
-  height: 300px;
+  height: 290px;
   overflow: auto;
   margin-right: 10%;
   position: absolute;
@@ -388,6 +399,22 @@ input::placeholder{
   position: fixed;
   width: 100%;
   bottom: 20%;
+}
+
+
+
+/* BELOW WILL BE THE NAVIGATION BAR */
+#Cnav i{
+  color: white;
+}
+
+#C h2, #F h2{
+  margin-bottom: 20px;
+}
+
+#Cnav{
+  padding-left: 45%;
+  margin-bottom: 50px;
 }
 
 
@@ -521,8 +548,7 @@ input::placeholder{
 }
 
 #F h2{
-  margin-top: 0px;
-  margin-bottom: 10px;
+  margin-top: -50px;
 }
 
 #F p{
@@ -535,7 +561,7 @@ input::placeholder{
   margin-right: 10%;
 }
 
-#F img{
+#F img, #G1 img{
   width: 170px;
   height: 170px;
   border-radius: 100px;
@@ -583,6 +609,9 @@ input::placeholder{
   margin-top: 100px;
   z-index: 1;
 }
+
+
+/* ------------------------------------- SAVED BUDDIES ------------------------------------ */
 
 
 /* ------------------------------------- SETTINGS PAGE ------------------------------------ */

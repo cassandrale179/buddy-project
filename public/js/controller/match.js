@@ -58,7 +58,7 @@ app.controller('matchPageCtrl', ['$scope', '$state', '$localStorage', '$sessionS
                if ($scope.commonInterest.length > 0){
                    UserList.push([user, $scope.commonInterest]);
                }
-            
+
             }
           }
 
@@ -88,9 +88,6 @@ app.controller('matchPageCtrl', ['$scope', '$state', '$localStorage', '$sessionS
             $scope.people.push(obj);
           }
           console.log($scope.people);
-
-
-
           $state.go('match');
         });
         refUser.once('value', function(snapshot){
