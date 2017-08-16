@@ -21,9 +21,9 @@
 
 
   <div id="F">
-    <i ui-sref="buddies" class="fa fa-chevron-left" aria-hidden="true"></i>
+    <div id="back"><i ui-sref="buddies" class="fa fa-chevron-left" aria-hidden="true"></i></div>
     <h2> MATCHES </h2>
-    <p>Click on a person to view their profile</p>
+    <p>Click on a person to view and add them</p>
     <div id="F1wrapper">
       <div id="F1" ng-click="storeId(person.uid)" ng-repeat="person in people">
         <img ng-src="{{person.pictureUrl}}" />
