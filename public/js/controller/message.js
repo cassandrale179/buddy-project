@@ -148,14 +148,42 @@ app.controller('messagePageCtrl', ['$scope', '$state', 'Message', '$firebaseArra
           $scope.newmessage.formattedTime = formattedTime;
           $scope.newmessage.timestamp = timestamp;
 
+          //GET THE CURRENT DATE OF THE TEXT
+          var today = new Date();
+          var dd = today.getDate();
+          var mm = today.getMonth()+1; //January is 0!
+
+          if(dd<10){
+              dd='0'+dd;
+          }
+          if(mm<10){
+              mm='0'+mm;
+          }
+          message.date = mm+'/'+dd;
+
           //GET THE SENDER AND RECEIVER UID
           $scope.newmessage.sender = uid1;
           $scope.newmessage.receiver = uid2;
 
           //CREATE THE OBJECT MESSAGE
           Message.create(message);
-          userMatchRef1.update({lastText: message.text});
-          userMatchRef2.update({lastText: message.text});
+
+          //Update last text under match Databas for both users
+          userMatchRef1.update(
+            {
+              lastText: message.text,
+              lastFormattedTime: message.formattedTime,
+              lastDate: message.date,
+              lastTimestamp: message.timestamp
+            }
+          );
+          userMatchRef2.update(
+            {
+            lastText: message.text,
+            lastFormattedTime: message.formattedTime,
+            lastDate: message.date,
+            lastTimestamp: message.timestamp
+          });
 
           $scope.newmessage.text = "";
         };
