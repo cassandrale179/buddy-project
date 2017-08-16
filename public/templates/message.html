@@ -22,7 +22,9 @@
 
  <div id="E">
    <!-- DISPLAY THE PICTURE OF THE PERSON YOU ARE CHATTING WITH -->
-    <i ui-sref="list" class="fa fa-chevron-left" aria-hidden="true"> </i>
+   <div id="back">
+     <i ui-sref="login" class="fa fa-chevron-left" aria-hidden="true"></i>
+   </div>
     <h4> FIRST LAST </h4>
     <img src="https://userscontent2.emaze.com/images/f6c451eb-257f-4f3b-abd4-07c166b0de10/f8541688048ce8c8fdf5b439c0f7be26.jpg" />
 
@@ -43,7 +45,7 @@
           <input type="text" placeholder="Type here" ng-model="newmessage.text" />
           <p ng-model="newmessage.sender"></p>
           <p ng-model="newmessage.receiver"></p>
-          <button ng-click="insert(newmessage)"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
+          <button ng-click="insert(newmessage)"><i class="fa fa-chevron-right" aria-hidden="true" style="font-size: 300%"></i></button>
         </form>
       </div>
     </div>
