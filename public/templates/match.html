@@ -1,28 +1,37 @@
 <!DOCTYPE html>
 <body>
-
-  <!-- ADDING IN NAVIGATION BAR -->
-  <div id="navbar" class="wrap">
-    <a ui-sref="profile" ng-click="show=1"><i class="fa fa-user fa-lg" aria-hidden="true"></i></a>
-    <a ui-sref="search"><i class="fa fa-globe fa-lg" aria-hidden="true"></i></a>
-    <a ui-sref="match"><i class="fa fa-star fa-lg" aria-hidden="true"></i></a>
-    <a ui-sref="interest"><i class="fa fa-tag fa-lg" aria-hidden="true"></i></a>
-    <a ui-sref="list"><i class="fa fa-commenting fa-lg" aria-hidden="true"></i></a>
+  <div id="navbar">
+    <div class="navcut" ui-sref="profile">
+      <p><i class="fa fa-address-book-o" aria-hidden="true"><br /></i></p>
+      <h3> PROFILE </h3>
+    </div>
+    <div class="navcut" ui-sref="buddies">
+      <p><i class="fa fa-users" aria-hidden="true"><br /></i></p>
+      <h3> BUDDIES </h3>
+    </div>
+    <div class="navcut" ui-sref="list">
+      <p><i class="fa fa-commenting-o" aria-hidden="true"><br /></i></p>
+      <h3> MESSAGE </h3>
+    </div>
+    <div class="navcut" ui-sref="settings">
+      <p><i class="fa fa-cog" aria-hidden="true"><br /></i></p>
+      <h3> SETTINGS </h3>
+    </div>
   </div>
 
-  <!-- HEADER OF MATCH PAGE -->
-  <div id="header">
-    <h1> MATCHING </h1>
-  </div>
 
   <div id="F">
-    <div id="F0">Below are a list of people with most common interest with you</div>
-    <div id="F1" ng-click="storeId(person.uid)" ng-repeat="person in people">
-      <div id="F1A"><img ng-src="{{person.pictureUrl}}" /><br /></div>
-      <div id="F1B">
-        <b>{{person.name}}</b> also likes:
-        <div ng-repeat="interest in person.commonInterest">
-          {{interest}}
+    <div id="back"><i ui-sref="buddies" class="fa fa-chevron-left" aria-hidden="true"></i></div>
+    <h2> MATCHES </h2>
+    <p><i>Click on a person to view and add them</i></p>
+    <div id="F1wrapper">
+      <div id="F1" ng-click="storeId(person.uid)" ng-repeat="person in people">
+        <img ng-src="{{person.pictureUrl}}" />
+        <div id="F1A">
+          <b><p>{{person.name}} </b> also likes: </p>
+          <button ng-repeat="interest in person.commonInterest">
+            {{interest}}
+          </button>
         </div>
       </div>
     </div>

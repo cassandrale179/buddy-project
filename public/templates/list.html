@@ -7,7 +7,7 @@
       <p><i class="fa fa-address-book-o" aria-hidden="true"><br /></i></p>
       <h3> PROFILE </h3>
     </div>
-    <div class="navcut" ui-sref="interest">
+    <div class="navcut" ui-sref="buddies">
       <p><i class="fa fa-users" aria-hidden="true"><br /></i></p>
       <h3> BUDDIES </h3>
     </div>
@@ -31,7 +31,9 @@
       </div>
       <div id="D1B">
         <b>{{match.name}} </b><br />
-          {{match.lastText}}
+          <div ng-style="checkReadStatus(match)">
+            {{match.lastText}}
+          </div>
           <br />
           {{match.lastDate}}
       </div>

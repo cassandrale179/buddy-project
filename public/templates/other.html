@@ -1,35 +1,43 @@
 <!DOCTYPE html>
-
-<!-- _________________________ ADDING IN NAVIGATION BAR AT THE BOTTOM  ________________________ -->
-<div id="navbar" class="wrap">
-  <a ui-sref="profile" ng-click="show=1"><i class="fa fa-user fa-lg" aria-hidden="true"></i></a>
-  <a ui-sref="search"><i class="fa fa-globe fa-lg" aria-hidden="true"></i></a>
-  <a ui-sref="match"><i class="fa fa-star fa-lg" aria-hidden="true"></i></a>
-  <a ui-sref="interest"><i class="fa fa-tag fa-lg" aria-hidden="true"></i></a>
-  <a ui-sref="list"><i class="fa fa-commenting fa-lg" aria-hidden="true"></i></a>
+<body>
+<div id="navbar">
+  <div class="navcut" ui-sref="profile">
+    <p><i class="fa fa-address-book-o" aria-hidden="true"><br /></i></p>
+    <h3> PROFILE </h3>
+  </div>
+  <div class="navcut" ui-sref="buddies">
+    <p><i class="fa fa-users" aria-hidden="true"><br /></i></p>
+    <h3> BUDDIES </h3>
+  </div>
+  <div class="navcut" ui-sref="list">
+    <p><i class="fa fa-commenting-o" aria-hidden="true"><br /></i></p>
+    <h3> MESSAGE </h3>
+  </div>
+  <div class="navcut" ui-sref="settings">
+    <p><i class="fa fa-cog" aria-hidden="true"><br /></i></p>
+    <h3> SETTINGS </h3>
+  </div>
 </div>
 
-<body>
-  <div id="I">
-    <!-- ________________NAV BAR TO RESOURCES PAGE AND EDIT PROFILE _________-->
-
-    <div id="I1">
-      <img id="buddyProfilePic" src="img/default.png" /><br />
-      <button ng-click="message()"> ADD BUDDY </button>
+  <div id="B">
+    <h5 ng-show="add==1">You and {{buddyName}} are friends</h5>
+    <div id="back"><i ui-sref="match" class="fa fa-chevron-left" aria-hidden="true"></i>
     </div>
-
-    <div id="C3">
-      <h2> PROFILE </h2>
-      <h5 style="font-size: 2.5em">
-        <b><i class="fa fa-caret-right" aria-hidden="true"></i> Name: </b> {{buddyName}} <br />
-        <b><i class="fa fa-caret-right" aria-hidden="true"></i> Age: </b> {{buddyAge}}   <br />
-        <b><i class="fa fa-caret-right" aria-hidden="true"></i> Interest: </b><br />
-          <div id="C3A" ng-repeat="x in buddyArr">
-            {{x}}
-          </div>
-        <b ><i class="fa fa-caret-right" aria-hidden="true"></i> Bio: </b>
-        {{buddyDescription}}
-      </h5>
+    <div id="add">
+      <i ng-hide="add==1" ng-click="message()" class="fa fa-user-plus" aria-hidden="true"></i>
+      <i ng-show="add==1" class="fa fa-check" aria-hidden="true"></i>
     </div>
-  </div>
+    <div id="B0">
+      <div id="imgwrapper">
+          <img id="buddyProfilePic" ng-src="{{userProfilePic}}" />
+      </div>
+      <h3>{{buddyName}}</h3>
+      <p>{{buddyAge}} years old </p>
+    </div>
+    <div id="B1A">
+      {{buddyDescription}}
+    </div>
+    <div id="B1" style="max-height: 200px;">
+      <button ng-repeat="x in buddyArr">{{x}}</button>
+   </div>
 </body>

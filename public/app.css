@@ -1,29 +1,19 @@
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300');
 @import url('https://fonts.googleapis.com/css?family=Noto+Sans');
+@import url('https://fonts.googleapis.com/css?family=Roboto:700');
+/*@import url('https://fonts.googleapis.com/css?family=Amaranth:700|Anton|Exo:800|Fredoka+One|Kanit:700|Maven+Pro:900');*/
+@import url('https://fonts.googleapis.com/css?family=Istok+Web:700|Palanquin+Dark|Viga|Yanone+Kaffeesatz:700');
 
-
-html, body{
-  margin: 0;
-}
-
-
-/* ------------------------------------ MAIN COMPONENTS------------------------------------ */
-#error, #success{
-  font-family: 'Source Sans Pro', sans-serif;
-  text-align: center;
+h1{
+  font-family: 'Palanquin Dark', sans-serif;
   color: white;
-  font-style: italic;
-  font-size: 150%;
-  margin-bottom: 3%;
-}
-
-
-input:focus{
-  outline: #4F62AD ;
+  text-align: center;
+  font-size: 500%;
+  font-weight: bold;
 }
 
 h2{
-  font-family: 'Noto Sans', sans-serif;
+  font-family: 'Palanquin Dark', sans-serif;
   color: white;
   font-size: 400%;
   text-align: center;
@@ -39,9 +29,61 @@ h4{
   margin-bottom: 20px;
 }
 
+html, body{
+  margin: 0;
+}
 
 
-/* ------------------------------------ NAVIGATION BAR------------------------------------ */
+/* ------------------------------------ MAIN COMPONENTS------------------------------------ */
+
+input:focus{
+  outline: #4F62AD ;
+}
+
+input::placeholder{
+  color: white;
+}
+
+
+/* -------------------------------- SELF MADE MAIN COMPONENTS-------------------------------- */
+#error, #success{
+  font-family: 'Source Sans Pro', sans-serif;
+  text-align: center;
+  color: white;
+  font-style: italic;
+  font-size: 240%;
+  margin-bottom: 3%;
+  color: white;
+}
+
+
+
+#imgwrapper{
+  border: 1px white solid;
+  border-radius: 250px;
+  width: 300px;
+  padding: 3%;
+  margin-top: -100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#imgwrapper img{
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 200px;
+}
+
+#back{
+  padding-top: 10%;
+  padding-left: 5%;
+  color: white;
+  font-size: 700% ;
+}
+
+
+/* --------------------------------------- NAVIGATION BAR------------------------------------ */
 #navbar{
   position: absolute;
   width: 100%;
@@ -54,7 +96,7 @@ h4{
 
 #navbar i{
   color: white;
-  font-size: 300%;
+  font-size: 400%;
   text-align: center;
 }
 
@@ -67,7 +109,7 @@ h4{
 #navbar h3{
   color: white;
   font-family: 'Source Sans Pro', sans-serif;
-  font-size: 150%;
+  font-size: 200%;
   text-align: center;
 }
 
@@ -77,7 +119,7 @@ h4{
 
 
 
-/* ------------------------------------ LOGIN / REGISTRATION BACKGROUND------------------------------------ */
+/* -------------------------------- LOGIN / REGISTRATION BACKGROUND------------------------------- */
 #A{
   background: url(img/BGlogin.png);
   width: 100%;
@@ -86,15 +128,8 @@ h4{
   background-size: cover;
 }
 
-#A h1{
-  font-family: 'Source Sans Pro', sans-serif;
-  color: white;
-  text-align: center;
-  font-size: 400%;
-  font-weight: bold;
-}
 
-#A input, #C input, #H input, #E input{
+#A input, #C input, #H input, #E input, #B2 input{
   background: none;
   border: 1px white solid;
   display: block;
@@ -103,17 +138,13 @@ h4{
   height: 80px;
   margin-bottom: 3%;
   color: white;
-  font-size: 200%;
+  font-size: 300%;
   font-family: 'Source Sans Pro', sans-serif;
   padding-left: 20px;
 }
 
 
-input::placeholder{
-  color: white;
-}
-
-/* ------------------------------------ LOGIN AND REGISTRATION PAGE ------------------------------------ */
+/* --------------------------------- LOGIN AND REGISTRATION PAGE -------------------------------- */
 
 #A1{
   position: relative;
@@ -129,27 +160,25 @@ input::placeholder{
 }
 
 
-#A1 button, #A2 button, #C button, #H button{
+#A1 button, #A2 button, #H button, #C3 button, #G button, #B2 button{
   background-color: #4F62AD;
   width: 80%;
   color: white;
   border: none;
   display: block;
   margin: auto;
-  font-size: 200%;
+  font-size: 300%;
   padding-top: 4%;
   padding-bottom: 4%;
   font-family: 'Source Sans Pro', sans-serif;
-  font-weight: lighter;
 }
 
 #A1 p, #C p, #H p{
   color: white;
   font-family: 'Source Sans Pro', sans-serif;
   text-align: center;
-  font-size: 170%;
+  font-size: 250%;
   font-weight: 50;
-  line-height: 2em;
 }
 
 #A1A{
@@ -161,31 +190,25 @@ input::placeholder{
 #A1A p{
   display: inline-block;
   margin-right: 2%;
-  font-size: 170%;
+  font-size: 250%;
 }
 #A1A button{
   background-color: #7AB74D;
   width: 30%;
   display: inline-block;
   border-radius: 10px;
-  font-size: 180%;
+  font-size: 300%;
 }
 
-#A i, #E i{
-  padding-top: 10%;
-  padding-left: 5%;
-  color: white;
-  font-size: 500%;
-}
 
-#A2 img{
+#A2 img,  #B2 img{
   display: block;
   margin: auto;
   width: 30%;
   object-fit: cover;
 }
 
-#A2 button, #C button{
+#A2 button, #C3 button{
   background-color: #7AB74D;
 }
 
@@ -205,18 +228,8 @@ input::placeholder{
   padding-top: 10%;
 }
 
-#B img{
-  display: block;
-  margin: auto;
-  width: 250px;
-  height: 250px;
-  object-fit: cover;
-  border-radius: 175px;
-}
-
-
 #B0 h3{
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: 'Palaquin Dark', sans-serif;
   color: white;
   font-size: 300%;
   text-align: center;
@@ -239,12 +252,12 @@ input::placeholder{
   overflow: auto;
 }
 
-#B1 button{
+#B1 button, #C2 button, #F1A button{
   background: none;
   border: 0.5px white solid;
   color: white;
   font-family: 'Source Sans Pro', sans-serif;
-  font-size: 200%;
+  font-size: 300%;
   margin-bottom: 10px;
   margin-right: 10px;
   padding: 10px;
@@ -259,7 +272,7 @@ input::placeholder{
 }
 
 #B1A{
-  font-size: 200%;
+  font-size: 300%;
   color: white;
   font-family: 'Source Sans Pro', sans-serif;
   border: 0.9px solid white;
@@ -269,24 +282,25 @@ input::placeholder{
   margin-bottom: 20px;
   padding: 3%;
   border-radius: 5px;
-  overflow: hidden;
+  overflow: auto;
+  overflow-x: hidden;
 }
 
-#circle{
+#Bicon i{
+  color: white;
+  font-size: 300%;
+  border: 0.5px white solid;
+  border-radius: 100px;
+  padding: 3%;
   position: fixed;
-  border: 1px solid white;
-  width: 280px;
-  height: 280px;
-  top: 0px;
-  border-radius: 140px;
-  margin-left: 28.5%;
-  margin-top: 7.5%;
 }
 
 #B label{
   text-align: center;
+  position: fixed;
+  width: 100%;
+  font-size: 300%;
   opacity: 0;
-  font-size: 400%;
 }
 
 #B input[type="file"]{
@@ -294,17 +308,133 @@ input::placeholder{
 }
 
 
-/* ------------------------------------ INTEREST PAGE ------------------------------------ */
+#B h5{
+  width: 100%;
+  position: fixed;
+  text-align: center;
+  color: white;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 150%;
+  font-style: italic;
+}
+
+
+#B2{
+  font-family: 'Source Sans Pro', sans-serif;
+  color: white;
+  text-align: center;
+}
+
+#B2 p{
+  font-size: 200%;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+/* ------------------------------------ BUDDIES PAGE ------------------------------------ */
 #C{
   background: url(img/BGbuddys.png);
   width: 100%;
   height: 100%;
-  position: absolute;
+  position: fixed;
   background-size: cover;
+
+}
+
+#C p{
+  margin-top: -30px;
+  font-style: italic;
+}
+
+#C i, #F i{
+  font-size: 100%;
+  margin-left: 10px;
+}
+
+#C input{
+  width: 65%;
+  float: left;
+  margin-left: 10%;
+}
+
+/* THIS IS THE ADD BUTTON TO ADD AN INTEREST */
+#C0 button{
+  font-size: 200%;
+  background: none;
+  color: white;
+  font-family: 'Source Sans Pro', sans-serif;
+  border: none;
+  height: 80px;
+  width: 80px;
+  margin-left: 10px;
+
+}
+
+#C0 i{
+  font-size: 170%;
+}
+
+/* THIS IS WHERE THE SEARCH INFORMATION WILL DISPLAY*/
+#C1wrap{
+  max-height: 200px;
+  overflow: auto;
+  width: 100%;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+#C1{
+  padding-left: 2%;
+  width: 65%;
+}
+
+#C1A{
+  font-size: 300%;
+  color: white;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+#C1A span{
+  display: block;
+  float: right;
+  font-size: 90%;
+}
+
+/* THIS IS WHERE THE USER INTEREST WILL BE DISPLAY */
+#C2{
+  padding-top: 5%;
+  margin-left: 12%;
+  height: 290px;
+  overflow: auto;
+  margin-right: 10%;
+  position: absolute;
 }
 
 
-/* ------------------------------------ MESSAGE PAGE  ------------------------------------ */
+#C3{
+  position: fixed;
+  width: 100%;
+  bottom: 20%;
+}
+
+
+
+/* BELOW WILL BE THE NAVIGATION BAR */
+#Cnav i{
+  color: white;
+}
+
+#C h2, #F h2{
+  margin-bottom: 20px;
+}
+
+#Cnav{
+  padding-left: 45%;
+  margin-bottom: 50px;
+}
+
+
+/* ------------------------------------ LIST PAGE  ------------------------------------ */
 #D{
   background: url(img/BGmessages.png);
   width: 100%;
@@ -326,7 +456,7 @@ input::placeholder{
 
 #D1B{
   width: 100%;
-  font-size: 150%;
+  font-size: 300%;
   font-family: 'Source Sans Pro', sans-serif;
   color: white;
   padding-left: 10%;
@@ -349,13 +479,12 @@ input::placeholder{
   max-height:65%;
   overflow:auto;
   width:100%;
-  /*background: rgba(0,0,0,0.2);*/
   padding-top: 5%;
   padding-bottom: 5%;
 }
 
 
-/* -------------------------------------------- MESSAGE PAGE ------------------------------------ */
+/* ----------------------------------- MESSAGE PAGE ------------------------------------ */
 #E{
   background: url(img/BGmessages.png);
   width: 100%;
@@ -364,6 +493,9 @@ input::placeholder{
   background-size: cover;
 }
 
+#E h4{
+  font-size: 350%;
+}
 #E img{
   width: 170px;
   height: 170px;
@@ -379,7 +511,8 @@ input::placeholder{
   width: 70%;
   float: left;
   margin-left: 5%;
-  font-size: 170%;
+  font-size: 300%;
+
 }
 
 #E1{
@@ -387,27 +520,27 @@ input::placeholder{
   width: 100%;
 }
 
-#Ewrapper{
+#Ewrapper, #F1wrapper{
   padding-top: 5%;
   padding-bottom: 5%;
   height: 470px;
   overflow: auto;
-  /*background-color: rgba(0,0,0,0.2);*/
 }
 
 
 #E1A{
   padding: 5%;
-  font-size: 150%;
+  font-size: 300%;
   font-family: 'Source Sans Pro',  sans-serif;
   opacity: 0.9;
   border-radius: 10px;
 }
 
 #E1B{
+  padding-left: 3%;
   width: 100%;
   position: fixed;
-  bottom: 12%;
+  bottom: 5%;
 }
 
 #E1B button{
@@ -425,7 +558,107 @@ input::placeholder{
 
 
 
-/* -------------------------------------------- SETTINGS PAGE ------------------------------------ */
+/* ------------------------------------- MATCH PAGE ------------------------------------ */
+#F{
+  background: url(img/BGmatches.png);
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background-size: cover;
+  padding-top: 5%;
+}
+
+#F h2{
+  margin-top: -50px;
+}
+
+#F p{
+  color: white;
+  font-family: 'Source Sans Pro', sans-serif;
+  text-align: center;
+  margin-top: 0px;
+  font-size: 250%;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+#F img, #G1 img{
+  width: 200px;
+  height: 200px;
+  border-radius: 100px;
+  object-fit: cover;
+  margin-left: 10%;
+}
+
+#F1wrapper{
+  height: 50%;
+}
+
+#F1{
+  display: flex;
+  margin-bottom: 10%;
+}
+
+#F1 b{
+  font-family: 'Noto Sans', sans-serif;
+}
+
+#F1A{
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+#F1A p{
+  margin-left: 0px;
+  margin-right: 20px;
+  font-size: 300%;
+  color: white;
+  font-family: 'Source Sans Pro', sans-serif;
+  text-align: left;
+}
+
+/*----------------------------------- OTHER PAGE ----------------------------------------------- */
+#add{
+  background: white;
+  color: #4F62AD;
+  font-size: 300%;
+  position: fixed;
+  border: 0.5px white solid;
+  border-radius: 100px;
+  padding: 3%;
+  margin-left: 63%;
+  margin-top: 100px;
+  z-index: 1;
+}
+
+
+/* ------------------------------------- SAVED BUDDIES ------------------------------------ */
+#G1{
+  color: white;
+  font-family: 'Source Sans Pro', sans-serif;
+  display: flex;
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+#G1wrapper{
+  position: absolute;
+  width: 100%;
+  height: 60%;
+  overflow: auto;
+}
+
+#G1A{
+  font-size: 300%;
+  margin-left: 7%;
+}
+
+
+
+
+
+
+/* ------------------------------------- SETTINGS PAGE ------------------------------------ */
 #H{
   background: url(img/BGsettings.png);
   width: 100%;
