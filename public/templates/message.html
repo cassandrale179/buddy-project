@@ -22,7 +22,11 @@
 
  <div id="E">
    <!-- DISPLAY THE PICTURE OF THE PERSON YOU ARE CHATTING WITH -->
-    <i ui-sref="list" class="fa fa-chevron-left" aria-hidden="true"> </i>
+
+   <div id="back">
+     <i ui-sref="list" class="fa fa-chevron-left" aria-hidden="true"></i>
+   </div>
+  
     <h4> {{buddyName}} </h4>
     <img src="img/loader.gif" ng-src="{{buddyPictureUrl}}" />
 
@@ -44,7 +48,7 @@
           <input type="text" placeholder="Type here" ng-model="newmessage.text" />
           <p ng-model="newmessage.sender"></p>
           <p ng-model="newmessage.receiver"></p>
-          <button ng-click="insert(newmessage)"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
+          <button ng-click="insert(newmessage)"><i class="fa fa-chevron-right" aria-hidden="true" style="font-size: 300%"></i></button>
         </form>
       </div>
     </div>

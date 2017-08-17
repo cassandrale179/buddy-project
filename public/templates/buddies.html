@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<body>
+  <!-- _____________________ ADDING IN NAVIGATION BAR __________________________ -->
+  <div id="navbar">
+    <div class="navcut" ui-sref="profile">
+      <p><i class="fa fa-address-book-o" aria-hidden="true"><br /></i></p>
+      <h3> PROFILE </h3>
+    </div>
+    <div class="navcut" ui-sref="buddies">
+      <p><i class="fa fa-users" aria-hidden="true"><br /></i></p>
+      <h3> BUDDIES </h3>
+    </div>
+    <div class="navcut" ui-sref="list">
+      <p><i class="fa fa-commenting-o" aria-hidden="true"><br /></i></p>
+      <h3> MESSAGE </h3>
+    </div>
+    <div class="navcut" ui-sref="settings">
+      <p><i class="fa fa-cog" aria-hidden="true"><br /></i></p>
+      <h3> SETTINGS </h3>
+    </div>
+  </div>
+
+  <!-- __________________________ BODY OF INTEREST PAGE __________________________-->
+  <div id="C">
+    <h2> FIND A BUDDY </h2>
+    <div id="Cnav">
+      <i class="fa fa-circle" aria-hidden="true" ui-sref="buddies"></i>
+      <i class="fa fa-circle" aria-hidden="true" style="opacity: 0.5" ui-sref="saved"></i>
+    </div>
+
+    <!-- __________________DISPLAY INSTRUCTIONS AND ERROR MESSAGE ________________ -->
+    <p>Tap on an interest to automatically add them.</p>
+      <div id="error" ng-if="errorMessage != ''">{{errorMessage}}</div>
+
+    <!-- ___________________ SEARCH BAR FROM THE INTEREST DATA ___________________ -->
+    <div id="C0">
+      <input type="text" ng-model="searchInterest" placeholder="Search interest...."/>
+      <button ng-click="CaptureInterest()"> <i class="fa fa-plus-circle " aria-hidden="true"></i>&nbsp;&nbsp;Add </button>
+    </div>
+
+    <!-- __________ THE SEARCH BAR TO SEARCH INTEREST THAT ALREADY EXIST __________-->
+    <div id="C1wrap">
+      <div id="C1" ng-repeat="interest in interestData | filter: searchInterest | emptyifblank: searchInterest">
+        <div id="C1A" ng-click="AutoFill(interest)">
+          {{interest.name}}
+          <span>{{interest.count}} likes this</span>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- _______________ DISPLAY INTEREST WHICH THE USER ALREADY HAS ______________ -->
+    <div id="C2">
+        <button id="C0A" ng-repeat="x in interestArr">{{x}}<i class="fa fa-times" aria-hidden="true" ng-click="Remove($index)"></i></button>
+    </div>
+
+
+    <div id="C3">
+      <button ng-click="SubmitInterest()"> SEARCH FOR BUDDIES </button>
+    </div>
+  </div>
+
+</body>

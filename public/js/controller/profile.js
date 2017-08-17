@@ -25,12 +25,8 @@ app.controller('profilePageCtrl', ['$scope', '$state', '$localStorage',
         $scope.userProfilePic = snapshot.val().pictureUrl;
         console.log($scope.userProfilePic);
         $state.go('profile');
-      })
+      });
 
-      // var profilePic = document.getElementById("profilePic");
-      // storageRef.getDownloadURL().then(function(url){
-      //   if(url){profilePic.src=url;}
-      // });
 
       //THIS ALLOW THE USER TO UPLOAD THEIR PROFILE PIC
       $scope.uploadFile = function(event){
@@ -59,8 +55,12 @@ app.controller('profilePageCtrl', ['$scope', '$state', '$localStorage',
         $scope.interestArr.splice(-1);
         $state.go('profile');
       });
-      $scope.updateBio = function($data) {
-        ref.update({description: $data});
-      };
+      // $scope.updateBio = function($data) {
+      //   ref.update({description: $data});
+      // };
+
+      $scope.updateBio = function(){
+
+      }; 
   }
 }]);

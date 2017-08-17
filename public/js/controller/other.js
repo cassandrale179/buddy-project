@@ -7,6 +7,17 @@ app.controller('otherPageCtrl', ['$scope', '$state', '$localStorage',
         $state.reload();
       });
     }
+    else{
+      var matchTableRef = firebase.database().ref("match/" + currentUser.uid);
+      matchTableRef.once('value', function(snapshot){
+        var matchTable = snapshot.val();
+        for (var user in matchTable){
+          if ($localStorage.otherId == user){
+            $scope.add = 1;
+          }
+        }
+      });
+    }
 
     //Other person's ID is stored in $localStorage in match.js
       var buddyID = $localStorage.otherId;
@@ -25,6 +36,9 @@ app.controller('otherPageCtrl', ['$scope', '$state', '$localStorage',
         });
         $state.go('other');
       });
+
+      //CHECK IF A PERSON IS ALREADY ADDED AS A FRIEnd
+
       $scope.message = function() {
         //Create 2 references to both people
         var matchRef1 = firebase.database().ref('match/' + currentUser.uid + "/" + $localStorage.otherId);
@@ -35,8 +49,6 @@ app.controller('otherPageCtrl', ['$scope', '$state', '$localStorage',
           lastText: lastText
         })
         $state.go('list');
-
-
-      }
+      };
 
  }]);
