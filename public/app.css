@@ -493,6 +493,9 @@ input::placeholder{
   background-size: cover;
 }
 
+#E h4{
+  font-size: 350%;
+}
 #E img{
   width: 170px;
   height: 170px;
@@ -508,7 +511,8 @@ input::placeholder{
   width: 70%;
   float: left;
   margin-left: 5%;
-  font-size: 170%;
+  font-size: 300%;
+
 }
 
 #E1{
@@ -526,16 +530,17 @@ input::placeholder{
 
 #E1A{
   padding: 5%;
-  font-size: 150%;
+  font-size: 300%;
   font-family: 'Source Sans Pro',  sans-serif;
   opacity: 0.9;
   border-radius: 10px;
 }
 
 #E1B{
+  padding-left: 3%;
   width: 100%;
   position: fixed;
-  bottom: 12%;
+  bottom: 5%;
 }
 
 #E1B button{
