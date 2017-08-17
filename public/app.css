@@ -4,11 +4,11 @@
 /*@import url('https://fonts.googleapis.com/css?family=Amaranth:700|Anton|Exo:800|Fredoka+One|Kanit:700|Maven+Pro:900');*/
 @import url('https://fonts.googleapis.com/css?family=Istok+Web:700|Palanquin+Dark|Viga|Yanone+Kaffeesatz:700');
 
-#A h1{
+h1{
   font-family: 'Palanquin Dark', sans-serif;
   color: white;
   text-align: center;
-  font-size: 400%;
+  font-size: 500%;
   font-weight: bold;
 }
 
@@ -18,6 +18,15 @@ h2{
   font-size: 400%;
   text-align: center;
   font-weight: 900;
+}
+
+h4{
+  font-family: 'Source Sans Pro', sans-serif;
+  color: white;
+  font-size: 300%;
+  text-align: center;
+  margin-top: -50px;
+  margin-bottom: 20px;
 }
 
 html, body{
@@ -36,41 +45,32 @@ input::placeholder{
 }
 
 
-
-h4{
-  font-family: 'Source Sans Pro', sans-serif;
-  color: white;
-  font-size: 300%;
-  text-align: center;
-  margin-top: -50px;
-  margin-bottom: 20px;
-}
-
-
 /* -------------------------------- SELF MADE MAIN COMPONENTS-------------------------------- */
 #error, #success{
   font-family: 'Source Sans Pro', sans-serif;
   text-align: center;
   color: white;
   font-style: italic;
-  font-size: 150%;
+  font-size: 240%;
   margin-bottom: 3%;
+  color: white;
 }
+
 
 
 #imgwrapper{
-  margin-top: -100px;
-  width: 250px;
-  height: 250px;
   border: 1px white solid;
-  border-radius: 200px;
+  border-radius: 250px;
+  width: 300px;
   padding: 3%;
-  margin-left: 28%;
+  margin-top: -100px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #imgwrapper img{
-  width: 250px;
-  height: 250px;
+  width: 300px;
+  height: 300px;
   object-fit: cover;
   border-radius: 200px;
 }
@@ -79,7 +79,7 @@ h4{
   padding-top: 10%;
   padding-left: 5%;
   color: white;
-  font-size: 500% ;
+  font-size: 700% ;
 }
 
 
@@ -96,7 +96,7 @@ h4{
 
 #navbar i{
   color: white;
-  font-size: 300%;
+  font-size: 400%;
   text-align: center;
 }
 
@@ -109,7 +109,7 @@ h4{
 #navbar h3{
   color: white;
   font-family: 'Source Sans Pro', sans-serif;
-  font-size: 150%;
+  font-size: 200%;
   text-align: center;
 }
 
@@ -128,13 +128,6 @@ h4{
   background-size: cover;
 }
 
-/*#A h1{
-  font-family: 'Maven Pro', sans-serif;
-  color: white;
-  text-align: center;
-  font-size: 400%;
-  font-weight: bold;
-}*/
 
 #A input, #C input, #H input, #E input, #B2 input{
   background: none;
@@ -145,7 +138,7 @@ h4{
   height: 80px;
   margin-bottom: 3%;
   color: white;
-  font-size: 200%;
+  font-size: 300%;
   font-family: 'Source Sans Pro', sans-serif;
   padding-left: 20px;
 }
@@ -174,20 +167,18 @@ h4{
   border: none;
   display: block;
   margin: auto;
-  font-size: 200%;
+  font-size: 300%;
   padding-top: 4%;
   padding-bottom: 4%;
   font-family: 'Source Sans Pro', sans-serif;
-  font-weight: lighter;
 }
 
 #A1 p, #C p, #H p{
   color: white;
   font-family: 'Source Sans Pro', sans-serif;
   text-align: center;
-  font-size: 170%;
+  font-size: 250%;
   font-weight: 50;
-  line-height: 2em;
 }
 
 #A1A{
@@ -199,14 +190,14 @@ h4{
 #A1A p{
   display: inline-block;
   margin-right: 2%;
-  font-size: 170%;
+  font-size: 250%;
 }
 #A1A button{
   background-color: #7AB74D;
   width: 30%;
   display: inline-block;
   border-radius: 10px;
-  font-size: 180%;
+  font-size: 300%;
 }
 
 
@@ -266,7 +257,7 @@ h4{
   border: 0.5px white solid;
   color: white;
   font-family: 'Source Sans Pro', sans-serif;
-  font-size: 200%;
+  font-size: 300%;
   margin-bottom: 10px;
   margin-right: 10px;
   padding: 10px;
@@ -281,14 +272,13 @@ h4{
 }
 
 #B1A{
-  font-size: 200%;
+  font-size: 300%;
   color: white;
   font-family: 'Source Sans Pro', sans-serif;
   border: 0.9px solid white;
   margin-right: 15%;
   margin-left: 15%;
   height: 100px;
-  width: 450px;
   margin-bottom: 20px;
   padding: 3%;
   border-radius: 5px;
@@ -399,7 +389,7 @@ h4{
 }
 
 #C1A{
-  font-size: 190%;
+  font-size: 300%;
   color: white;
   font-family: 'Source Sans Pro', sans-serif;
 }
@@ -466,7 +456,7 @@ h4{
 
 #D1B{
   width: 100%;
-  font-size: 150%;
+  font-size: 300%;
   font-family: 'Source Sans Pro', sans-serif;
   color: white;
   padding-left: 10%;
@@ -582,14 +572,14 @@ h4{
   font-family: 'Source Sans Pro', sans-serif;
   text-align: center;
   margin-top: 0px;
-  font-size: 170%;
+  font-size: 250%;
   margin-left: 10%;
   margin-right: 10%;
 }
 
 #F img, #G1 img{
-  width: 170px;
-  height: 170px;
+  width: 200px;
+  height: 200px;
   border-radius: 100px;
   object-fit: cover;
   margin-left: 10%;
@@ -616,7 +606,7 @@ h4{
 #F1A p{
   margin-left: 0px;
   margin-right: 20px;
-  font-size: 170%;
+  font-size: 300%;
   color: white;
   font-family: 'Source Sans Pro', sans-serif;
   text-align: left;
@@ -638,6 +628,29 @@ h4{
 
 
 /* ------------------------------------- SAVED BUDDIES ------------------------------------ */
+#G1{
+  color: white;
+  font-family: 'Source Sans Pro', sans-serif;
+  display: flex;
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+#G1wrapper{
+  position: absolute;
+  width: 100%;
+  height: 60%;
+  overflow: auto;
+}
+
+#G1A{
+  font-size: 300%;
+  margin-left: 7%;
+}
+
+
+
+
 
 
 /* ------------------------------------- SETTINGS PAGE ------------------------------------ */
