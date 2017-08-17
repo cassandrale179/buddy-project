@@ -31,7 +31,9 @@
       </div>
       <div id="D1B">
         <b>{{match.name}} </b><br />
-          {{match.lastText}}
+          <div ng-style="checkReadStatus(match)">
+            {{match.lastText}}
+          </div>
           <br />
           {{match.lastDate}}
       </div>

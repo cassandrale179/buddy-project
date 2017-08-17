@@ -9,7 +9,7 @@ app.controller('listPageCtrl', ['$scope', '$state', '$firebaseArray', '$localSto
    }
    else{
 
-     
+
      $scope.imgSrc = "https://firebasestorage.googleapis.com/v0/b/buddy-be3d7.appspot.com/o/Avatars%2FODOYM3uPvBgkClDq9a1p0dsh1r52%2Favatar.jpg?alt=media&token=dc079964-b972-41eb-895c-dbb6716c00e8";
      var uid1 = currentUser.uid;
      //Store conversation to get last text
@@ -52,17 +52,27 @@ app.controller('listPageCtrl', ['$scope', '$state', '$firebaseArray', '$localSto
 
               //Get time of last text in conversation, and how much time has passed
               match.lastFormattedTime = matchDatabase[uid1][uid].lastFormattedTime;
-              match.dayPassed = Math.ceil((matchDatabase[uid1][uid].lastTimestamp - todayTimestamp) / 86400);
+              match.dayPassed = Math.ceil(((matchDatabase[uid1][uid].lastTimestamp - todayTimestamp) / 86400));
 
               //Create "days ago" timestamp
               if (match.dayPassed==0){
                 match.lastDate = "Today";
               }
-              else if (match.dayPassed=="1"){
-                match.lastDate = match.dayPassed + "day ago";
-              }
               else {
-                match.lastDate = match.dayPassed + "days ago";
+                match.lastDate = match.lastDate;
+              }
+
+              //If there are unread messages, readStatus="unread", if none readStatus="read"
+              match.readStatus = matchDatabase[uid1][uid].readStatus;
+              console.log(match.readStatus);
+              $scope.checkReadStatus = function(match) {
+                if (match.readStatus=="unread"){
+                  var bold = {
+                    "font-weight": "bold"
+                  };
+                  console.log("bold founded");
+                  return bold;
+                }
               }
 
               console.log("This chat's convo ID is: " + match.convoId);
