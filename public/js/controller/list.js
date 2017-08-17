@@ -8,7 +8,9 @@ app.controller('listPageCtrl', ['$scope', '$state', '$firebaseArray', '$localSto
      });
    }
    else{
-    $scope.imgSrc = "https://firebasestorage.googleapis.com/v0/b/buddy-be3d7.appspot.com/o/Avatars%2FODOYM3uPvBgkClDq9a1p0dsh1r52%2Favatar.jpg?alt=media&token=dc079964-b972-41eb-895c-dbb6716c00e8";
+
+
+     $scope.imgSrc = "https://firebasestorage.googleapis.com/v0/b/buddy-be3d7.appspot.com/o/Avatars%2FODOYM3uPvBgkClDq9a1p0dsh1r52%2Favatar.jpg?alt=media&token=dc079964-b972-41eb-895c-dbb6716c00e8";
      var uid1 = currentUser.uid;
      //Store conversation to get last text
      var convoArrayRef;
@@ -18,6 +20,10 @@ app.controller('listPageCtrl', ['$scope', '$state', '$firebaseArray', '$localSto
      var userMatchesRef = firebase.database().ref('match/'+uid1);
      //Get array of user matches
      $scope.userMatchesArray = $firebaseArray(userMatchesRef);
+
+     //GET CURRENT TIMESTAMP OF TODAY
+     var dateTime = Date.now();
+     var todayTimestamp = Math.floor(dateTime/1000);
 
      //Get the names of the user matches
      rootRef.once("value", function(snapshot){
@@ -43,6 +49,32 @@ app.controller('listPageCtrl', ['$scope', '$state', '$firebaseArray', '$localSto
               match.convoId = matchDatabase[uid1][uid].convoId;
               match.lastText = matchDatabase[uid1][uid].lastText;
               match.pictureUrl = userDatabase[uid].pictureUrl;
+
+              //Get time of last text in conversation, and how much time has passed
+              match.lastFormattedTime = matchDatabase[uid1][uid].lastFormattedTime;
+              match.dayPassed = Math.ceil(((matchDatabase[uid1][uid].lastTimestamp - todayTimestamp) / 86400));
+
+              //Create "days ago" timestamp
+              if (match.dayPassed==0){
+                match.lastDate = "Today";
+              }
+              else {
+                match.lastDate = match.lastDate;
+              }
+
+              //If there are unread messages, readStatus="unread", if none readStatus="read"
+              match.readStatus = matchDatabase[uid1][uid].readStatus;
+              console.log(match.readStatus);
+              $scope.checkReadStatus = function(match) {
+                if (match.readStatus=="unread"){
+                  var bold = {
+                    "font-weight": "bold"
+                  };
+                  console.log("bold founded");
+                  return bold;
+                }
+              }
+
               console.log("This chat's convo ID is: " + match.convoId);
 
 
@@ -52,7 +84,6 @@ app.controller('listPageCtrl', ['$scope', '$state', '$firebaseArray', '$localSto
 
 
           $state.go('list');
-            console.log(uidArray);
 
            });
 
