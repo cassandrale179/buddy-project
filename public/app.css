@@ -1,6 +1,24 @@
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300');
 @import url('https://fonts.googleapis.com/css?family=Noto+Sans');
+@import url('https://fonts.googleapis.com/css?family=Roboto:700');
+/*@import url('https://fonts.googleapis.com/css?family=Amaranth:700|Anton|Exo:800|Fredoka+One|Kanit:700|Maven+Pro:900');*/
+@import url('https://fonts.googleapis.com/css?family=Istok+Web:700|Palanquin+Dark|Viga|Yanone+Kaffeesatz:700');
 
+#A h1{
+  font-family: 'Palanquin Dark', sans-serif;
+  color: white;
+  text-align: center;
+  font-size: 400%;
+  font-weight: bold;
+}
+
+h2{
+  font-family: 'Palanquin Dark', sans-serif;
+  color: white;
+  font-size: 400%;
+  text-align: center;
+  font-weight: 900;
+}
 
 html, body{
   margin: 0;
@@ -17,13 +35,7 @@ input::placeholder{
   color: white;
 }
 
-h2{
-  font-family: 'Noto Sans', sans-serif;
-  color: white;
-  font-size: 400%;
-  text-align: center;
-  font-weight: 900;
-}
+
 
 h4{
   font-family: 'Source Sans Pro', sans-serif;
@@ -116,13 +128,13 @@ h4{
   background-size: cover;
 }
 
-#A h1{
-  font-family: 'Source Sans Pro', sans-serif;
+/*#A h1{
+  font-family: 'Maven Pro', sans-serif;
   color: white;
   text-align: center;
   font-size: 400%;
   font-weight: bold;
-}
+}*/
 
 #A input, #C input, #H input, #E input, #B2 input{
   background: none;
@@ -226,7 +238,7 @@ h4{
 }
 
 #B0 h3{
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: 'Palaquin Dark', sans-serif;
   color: white;
   font-size: 300%;
   text-align: center;
@@ -366,6 +378,10 @@ h4{
   width: 80px;
   margin-left: 10px;
 
+}
+
+#C0 i{
+  font-size: 170%;
 }
 
 /* THIS IS WHERE THE SEARCH INFORMATION WILL DISPLAY*/
