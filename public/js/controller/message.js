@@ -41,6 +41,17 @@ app.factory('Message', ['$firebaseArray',
       //CREATE A CONVO ID UNDER THE MESSAGE TABLE
       convoRef = messageRef.child(convoId);
       convo = $firebaseArray(convoRef);
+
+      //ADD READ STATUS
+      // convo.$loaded()
+      //   .then(function() {
+      //     angular.forEach(convo, function(msg){
+      //       if (msg.sender=uid2){
+      //         msg.read=true;
+      //       }
+      //       console.log(msg);
+      //     })
+      //   })
       var conversation = {
         convoId: convoId //convoID: XOsksjdsjdad
       };
@@ -65,6 +76,19 @@ app.factory('Message', ['$firebaseArray',
     },
     returnUid2: function() {
       return uid2;
+    },
+    addReadStatus: function(convo) {
+      angular.forEach(convo, function(msg){
+        if (msg.sender==uid2){
+          msg.read=true;
+          convo.$save(msg);
+        }
+      })
+    },
+    countUnreadMessage: function(convo){
+      angular.forEach(convo, function(msg){
+        console.log(msg);
+      })
     }
   };
   return Message;
@@ -75,12 +99,17 @@ app.controller('messagePageCtrl', ['$scope', '$state', 'Message', '$firebaseArra
   function ($scope, $state, Message, $firebaseArray, $localStorage){
 
     //-----IF USER IS NULL, SIGN THEM BACK IN AND GET THEIR UID-----
+
       var user = firebase.auth().currentUser;
       if (user===null){
         firebase.auth().signInWithEmailAndPassword($localStorage.email, $localStorage.password).then(function(){
+
           $state.reload();
         });
       }
+      messageRef = firebase.database().ref('messages');
+
+
       var uid1 = user.uid;
 
       //-----ROOT REFERENCE-----
@@ -106,6 +135,14 @@ app.controller('messagePageCtrl', ['$scope', '$state', 'Message', '$firebaseArra
         //OUTPUT THE MESSAGE IN CONVO SCOPE ARRAY
         var matchDatabase = snapshot.child("match/" + uid1 + "/" + uid2).val();
         $scope.convo = Message.getConvoId(matchDatabase, uid1, uid2);
+
+        //ADD READ STATUS
+        $scope.convo.$loaded()
+        .then(function(){
+          Message.addReadStatus($scope.convo);
+          Message.countUnreadMessage($scope.convo);
+        });
+
 
         //----- CHANGE COLOR OF THE TEXT DEPENDING ON THE ID OF THE PERSON -----
         $scope.setColor = function(message){
@@ -164,6 +201,9 @@ app.controller('messagePageCtrl', ['$scope', '$state', 'Message', '$firebaseArra
           //GET THE SENDER AND RECEIVER UID
           $scope.newmessage.sender = uid1;
           $scope.newmessage.receiver = uid2;
+
+          //CREATE READ STATUS
+          message.read = false;
 
           //CREATE THE OBJECT MESSAGE
           Message.create(message);

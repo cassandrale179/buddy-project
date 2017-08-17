@@ -8,7 +8,9 @@ app.controller('listPageCtrl', ['$scope', '$state', '$firebaseArray', '$localSto
      });
    }
    else{
-    $scope.imgSrc = "https://firebasestorage.googleapis.com/v0/b/buddy-be3d7.appspot.com/o/Avatars%2FODOYM3uPvBgkClDq9a1p0dsh1r52%2Favatar.jpg?alt=media&token=dc079964-b972-41eb-895c-dbb6716c00e8";
+
+     
+     $scope.imgSrc = "https://firebasestorage.googleapis.com/v0/b/buddy-be3d7.appspot.com/o/Avatars%2FODOYM3uPvBgkClDq9a1p0dsh1r52%2Favatar.jpg?alt=media&token=dc079964-b972-41eb-895c-dbb6716c00e8";
      var uid1 = currentUser.uid;
      //Store conversation to get last text
      var convoArrayRef;
