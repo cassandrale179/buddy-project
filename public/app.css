@@ -40,7 +40,7 @@ input:focus{
   outline: #4F62AD ;
 }
 
-input::placeholder{
+input::placeholder, textarea::placeholder{
   color: white;
 }
 
@@ -169,7 +169,7 @@ input::placeholder{
 }
 
 
-#A1 button, #A2 button, #H button, #C3 button, #G button, #B2 button{
+#A1 button, #A2 button, #H button, #C3 button, #G button, #B2 button, #B4 button{
   background-color: #4F62AD;
   width: 80%;
   color: white;
@@ -296,6 +296,7 @@ input::placeholder{
   overflow-x: hidden;
 }
 
+
 #Bicon i{
   color: white;
   font-size: 300%;
@@ -306,12 +307,9 @@ input::placeholder{
 }
 
 #B label{
-  text-align: center;
-  position: fixed;
-  width: 100%;
-  font-size: 300%;
-  opacity: 0;
   width: 0.1px;
+  font-size: 100%;
+  opacity: 0; 
 }
 
 #B input[type="file"]{
@@ -330,6 +328,27 @@ input::placeholder{
   font-style: italic;
 }
 
+
+/* ------------------------------------ EDIT PAGE ------------------------------------ */
+#B4 textarea{
+  font-size: 300%;
+  background: transparent;
+  color: white;
+  font-family: 'Source Sans Pro', sans-serif;
+  margin-bottom: 20px;
+  border: none;
+  border: 0.5px white solid;
+  width: 69.5%;
+  display: block;
+  margin: auto;
+  margin-top: 100px;
+  margin-bottom: 30px;
+  padding: 3%;
+}
+
+#B4 button{
+  width: 75%;
+}
 
 
 /* ------------------------------------ FORGOT PASSWORD ------------------------------------ */
@@ -726,5 +745,5 @@ input::placeholder{
 }
 
 #I a{
-  text-decoration: none; 
+  text-decoration: none;
 }

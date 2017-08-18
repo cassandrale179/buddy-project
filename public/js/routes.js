@@ -89,6 +89,13 @@ angular.module('app.routes', ['ui.router'])
   url: '/resourcesPage',
     templateUrl: 'templates/resources.html',
     controller: 'resourcesPageCtrl'
+})
+
+.state('edit',{
+  name: 'Edit',
+  url: '/editPage',
+    templateUrl: 'templates/edit.html',
+    controller: 'editPageCtrl'
 });
 
 
