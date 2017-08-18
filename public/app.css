@@ -82,6 +82,13 @@ input::placeholder{
   font-size: 700% ;
 }
 
+#resources i{
+  color: white;
+  font-size: 500%;
+  position: absolute;
+  margin-left: 5%;
+  margin-top: 5%;
+}
 
 /* --------------------------------------- NAVIGATION BAR------------------------------------ */
 #navbar{
@@ -126,6 +133,8 @@ input::placeholder{
   height: 100%;
   position: absolute;
   background-size: cover;
+  overflow: auto;
+  padding-bottom: 5%;
 }
 
 
@@ -192,6 +201,7 @@ input::placeholder{
   margin-right: 2%;
   font-size: 250%;
 }
+
 #A1A button{
   background-color: #7AB74D;
   width: 30%;
@@ -301,10 +311,12 @@ input::placeholder{
   width: 100%;
   font-size: 300%;
   opacity: 0;
+  width: 0.1px;
 }
 
 #B input[type="file"]{
   opacity: 0;
+  width: 0.1px;
 }
 
 
@@ -314,11 +326,13 @@ input::placeholder{
   text-align: center;
   color: white;
   font-family: 'Source Sans Pro', sans-serif;
-  font-size: 150%;
+  font-size: 250%;
   font-style: italic;
 }
 
 
+
+/* ------------------------------------ FORGOT PASSWORD ------------------------------------ */
 #B2{
   font-family: 'Source Sans Pro', sans-serif;
   color: white;
@@ -326,7 +340,7 @@ input::placeholder{
 }
 
 #B2 p{
-  font-size: 200%;
+  font-size: 250%;
   margin-left: 10%;
   margin-right: 10%;
 }
@@ -422,6 +436,7 @@ input::placeholder{
 /* BELOW WILL BE THE NAVIGATION BAR */
 #Cnav i{
   color: white;
+  font-size: 200%;
 }
 
 #C h2, #F h2{
@@ -496,6 +511,7 @@ input::placeholder{
 #E h4{
   font-size: 350%;
 }
+
 #E img{
   width: 170px;
   height: 170px;
@@ -525,6 +541,10 @@ input::placeholder{
   padding-bottom: 5%;
   height: 470px;
   overflow: auto;
+}
+
+#Ewrapper{
+  height: 550px;
 }
 
 
