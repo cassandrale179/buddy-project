@@ -82,6 +82,13 @@ angular.module('app.routes', ['ui.router'])
   url: '/listPage',
     templateUrl: 'templates/list.html',
     controller: 'listPageCtrl'
+})
+
+.state('resources',{
+  name: 'Resources',
+  url: '/resourcesPage',
+    templateUrl: 'templates/resources.html',
+    controller: 'resourcesPageCtrl'
 });
 
 

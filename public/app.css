@@ -699,3 +699,32 @@ input::placeholder{
 #H2 button{
   background-color: #7AB74D;
 }
+
+
+/* ------------------------------------- RESOURCES PAGE ------------------------------------ */
+#I{
+  background: url(img/BGsettings.png);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-size: cover;
+  padding-top: 5%;
+}
+
+#I button{
+  display: block;
+  margin: auto;
+  width: 70%;
+  font-size: 350%;
+  color: white;
+  margin-bottom: 20px;
+  background: none;
+  border: none;
+  font-family: 'Source Sans Pro', sans-serif;
+  background-color: rgba(255,255,255,0.3);
+  padding: 3%;
+}
+
+#I a{
+  text-decoration: none; 
+}
