@@ -685,6 +685,13 @@ button{
   background-color: #7AB74D;
 }
 
+#H p{
+  color: white;
+  text-align: center;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 250%;
+}
+
 
 /* ------------------------------------- RESOURCES PAGE ------------------------------------ */
 #I{
