@@ -232,6 +232,7 @@ input::placeholder, textarea::placeholder{
   position: absolute;
   background-size: cover;
   z-index: -2;
+  overflow: auto;
 }
 
 #B0{
@@ -309,7 +310,7 @@ input::placeholder, textarea::placeholder{
 #B label{
   width: 0.1px;
   font-size: 100%;
-  opacity: 0; 
+  opacity: 0;
 }
 
 #B input[type="file"]{

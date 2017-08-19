@@ -86,20 +86,21 @@ app.factory('Message', ['$firebaseArray',
       // })
       matchRef.update({
         readStatus: "read"
-      })
+      });
     },
     countUnreadMessage: function(convo){
       angular.forEach(convo, function(msg){
         console.log(msg);
-      })
+      });
     }
   };
   return Message;
 }]);
 
 //----------------------------  CONTROLLER FOR THE MESSAGE PAGE -----------------------------------
-app.controller('messagePageCtrl', ['$scope', '$state', 'Message', '$firebaseArray', '$localStorage',
-  function ($scope, $state, Message, $firebaseArray, $localStorage){
+app.controller('messagePageCtrl', ['$scope', '$state', 'Message', '$firebaseArray', '$localStorage', '$anchorScroll', '$location',
+  function ($scope, $state, Message, $firebaseArray, $localStorage, $anchorScroll, $location){
+
 
     //-----IF USER IS NULL, SIGN THEM BACK IN AND GET THEIR UID-----
 
@@ -110,6 +111,8 @@ app.controller('messagePageCtrl', ['$scope', '$state', 'Message', '$firebaseArra
           $state.reload();
         });
       }
+
+
       messageRef = firebase.database().ref('messages');
 
 
@@ -145,6 +148,10 @@ app.controller('messagePageCtrl', ['$scope', '$state', 'Message', '$firebaseArra
         Message.addReadStatus(userMatchRef1);
 
 
+        //AUTOMATICALLY SCROLL TO THE BOTTOM OF MESSAGE PAGE
+        $location.hash('bottom');
+        $anchorScroll();
+
 
         //----- CHANGE COLOR OF THE TEXT DEPENDING ON THE ID OF THE PERSON -----
         $scope.setColor = function(message){
@@ -171,6 +178,8 @@ app.controller('messagePageCtrl', ['$scope', '$state', 'Message', '$firebaseArra
 
           if (message.sender == uid1) return style1;
           if (message.sender == uid2) return style2;
+
+
         };
 
         //----- WHEN USER CLICK INSERT, THEIR UID AND TIME OF MESSAGE ARE TAKEN -----
