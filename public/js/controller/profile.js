@@ -55,12 +55,12 @@ app.controller('profilePageCtrl', ['$scope', '$state', '$localStorage',
         $scope.interestArr.splice(-1);
         $state.go('profile');
       });
-      // $scope.updateBio = function($data) {
-      //   ref.update({description: $data});
-      // };
+      $scope.updateBio = function($data) {
+        ref.update({description: $data});
+      };
 
       $scope.updateBio = function(){
 
-      }; 
+      };
   }
 }]);

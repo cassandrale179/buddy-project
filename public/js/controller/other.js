@@ -47,7 +47,7 @@ app.controller('otherPageCtrl', ['$scope', '$state', '$localStorage',
         matchRef1.update({
           convoId: "",
           lastText: lastText
-        })
+        }); 
         $state.go('list');
       };
 

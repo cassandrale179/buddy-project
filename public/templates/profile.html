@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <body>
+  <!--  ________________________ BOTTOM NAVIGATION BAR ________________________ -->
   <div id="navbar">
     <div class="navcut" ui-sref="profile">
       <p><i class="fa fa-address-book-o" aria-hidden="true"><br /></i></p>
@@ -19,13 +20,23 @@
       <h3> SETTINGS </h3>
     </div>
   </div>
+
+  <!-- ____________ THIS DIV WILL CONTAIN THE FRIEND LIST AND INFORMATION ____________ -->
   <div id="B">
+    <div id="resources">
+      <i class="fa fa-info-circle" ui-sref="resources" aria-hidden="true"></i>
+    </div>
+
+    <!-- ____________ THIS DIV ALLOW USER TO UPLOAD THEIR OWN PICTURE ____________ -->
       <div id="B0" style="margin-top: 10%">
         <div id="add">
-          <i class="fa fa-wrench" aria-hidden="true"></i>
+          <i class="fa fa-wrench" aria-hidden="true">
+            <label for="file"></label>
+            <input type="file" name="file" id="file" custom-on-change="uploadFile" />
+          </i>
         </div>
-        <label for="file">UPLOAD <br /> GODDAMN <br /> PICTURE </label>
-        <input type="file" name="file" id="file" custom-on-change="uploadFile" />
+
+    <!-- ____________ THIS DIV DISPLAY USER PICTURE, NAME, AGE AND BIO ____________ -->
         <div id="imgwrapper">
              <img id="profilePic" src="img/loader.gif" ng-src="{{userProfilePic}}" />
         </div>
@@ -33,9 +44,14 @@
         <h3>{{name}}</h3>
         <p>{{age}} years old </p>
       </div>
-      <div id="B1A">
-        {{description}} by tapping on wrench icon above
+      <div id="B1A" ui-sref="edit">
+        {{description}}
       </div>
+
+
+
+
+    <!-- ____________ THIS DIV DISPLAY THE USER INTEREST ________________________ -->
       <div id="B1">
         <button ng-repeat="x in interestArr">{{x}}</button>
      </div>
