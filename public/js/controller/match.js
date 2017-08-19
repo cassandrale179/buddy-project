@@ -96,7 +96,7 @@ app.controller('matchPageCtrl', ['$scope', '$state', '$localStorage', '$sessionS
             console.log(avatar);
             $scope.index++;
             // avatar.src=people.pictureUrl;
-            $state.go('match');
+          $state.go('match');
           });
         });
       });
