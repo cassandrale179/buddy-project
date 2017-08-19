@@ -714,6 +714,11 @@ input::placeholder, textarea::placeholder{
 }
 
 
+#H p{
+  color: white;
+  text-align: center;
+}
+
 /* ------------------------------------- RESOURCES PAGE ------------------------------------ */
 #I{
   background: url(img/BGsettings.png);

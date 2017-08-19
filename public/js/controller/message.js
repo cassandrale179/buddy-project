@@ -240,6 +240,10 @@ app.controller('messagePageCtrl', ['$scope', '$state', 'Message', '$firebaseArra
           });
 
           $scope.newmessage.text = "";
+
+
         };
+
+
     });
 }]);
