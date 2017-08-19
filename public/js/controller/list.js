@@ -47,6 +47,10 @@ app.controller('listPageCtrl', ['$scope', '$state', '$firebaseArray', '$localSto
             var uid = match.id;
             match.name=userDatabase[uid].name;
             match.pictureUrl = userDatabase[uid].pictureUrl;
+            //If last text exists, match is no longer considered new
+            if (match.lastText){
+              match.newMatch = "";
+            }
 
             //Get time of last text in conversation, and how much time has passed
 

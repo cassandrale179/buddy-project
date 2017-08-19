@@ -37,17 +37,36 @@ app.controller('otherPageCtrl', ['$scope', '$state', '$localStorage',
         $state.go('other');
       });
 
+      var userRef = firebase.database().ref("users/" + currentUser.uid);
+      userRef.once('value', function(userSnap){
+        userName = userSnap.name;
+      })
+
+
+
       //CHECK IF A PERSON IS ALREADY ADDED AS A FRIEnd
 
       $scope.message = function() {
+        //GET CURRENT TIMESTAMP OF TODAY
+        var dateTime = Date.now();
+        var todayTimestamp = Math.floor(dateTime/1000);
+
         //Create 2 references to both people
         var matchRef1 = firebase.database().ref('match/' + currentUser.uid + "/" + $localStorage.otherId);
         var matchRef2 = firebase.database().ref('match/' + $localStorage.otherId + "/" + currentUser.uid);
-        var lastText = "You and " + $scope.buddyName + "has been connected as buddies!";
+        var lastText = "You are now connected with " + $scope.buddyName + "!";
+        var newMatch = "You got a new match!";
         matchRef1.update({
           convoId: "",
-          lastText: lastText
-        }); 
+          lastText: lastText,
+          lastTimestamp: todayTimestamp,
+          readStatus: "unread"
+        });
+        matchRef2.update({
+          convoId: "",
+          newMatch: newMatch,
+          lastTimestamp: todayTimestamp
+        })
         $state.go('list');
       };
 
