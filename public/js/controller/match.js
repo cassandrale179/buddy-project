@@ -25,9 +25,9 @@ app.controller('matchPageCtrl', ['$scope', '$state', '$localStorage', '$sessionS
 
         //GET THE STRING OF THE CURRENT USER'S INTEREST
         var interestStr = snapshot.val().interest;
-        console.log('This is the string: ' + interestStr);
         $scope.myInterest = interestStr.split(",");
         $scope.myInterest.splice(-1);
+        console.log($scope.myInterest); 
       });
 
       //GET EVERYONE ELSE INTEREST IN ARRAY FORMAT
@@ -40,7 +40,6 @@ app.controller('matchPageCtrl', ['$scope', '$state', '$localStorage', '$sessionS
           for (var user in UserTable){
             if (user == currentUser.uid) delete UserTable.user;
             else{
-              console.log(UserTable[user]);
               var OtherInterestArr = UserTable[user].interest.split(",");
               OtherInterestArr.splice(-1);
 
@@ -67,7 +66,7 @@ app.controller('matchPageCtrl', ['$scope', '$state', '$localStorage', '$sessionS
             return b[1].length - a[1].length;
           });
 
-          console.log(UserList);
+          // console.log(UserList);
 
 
 
