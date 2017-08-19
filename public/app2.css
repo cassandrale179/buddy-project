@@ -349,6 +349,27 @@ button{
   margin-right: 10%;
 }
 
+/* ------------------------------------ EDIT PAGE ------------------------------------ */
+#B4 textarea{
+  font-size: 300%;
+  background: transparent;
+  color: white;
+  font-family: 'Source Sans Pro', sans-serif;
+  margin-bottom: 20px;
+  border: none;
+  border: 0.5px white solid;
+  width: 69.5%;
+  display: block;
+  margin: auto;
+  margin-top: 100px;
+  margin-bottom: 30px;
+  padding: 3%;
+}
+
+#B4 button{
+  width: 75%;
+}
+
 
 /* -------------------------------------- BUDDIES PAGE ------------------------------------ */
 #C{
