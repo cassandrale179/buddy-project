@@ -4,12 +4,14 @@
  <div id="E">
    <!-- DISPLAY THE PICTURE OF THE PERSON YOU ARE CHATTING WITH -->
 
-   <div id="back">
-     <i ui-sref="list" class="fa fa-chevron-left" aria-hidden="true"></i>
+   <div id="E0">
+     <div id="back">
+       <i ui-sref="list" class="fa fa-chevron-left" aria-hidden="true"></i>
+     </div>
+      <h4> {{buddyName}} </h4>
+      <img ng-src="{{buddyPictureUrl}}" />
    </div>
 
-    <h4> {{buddyName}} </h4>
-    <img ng-src="{{buddyPictureUrl}}" />
 
     <!-- DISPLAY TEXT MESSAGES FROM PAST CONVERSAION -->
     <div id="E1">
@@ -20,6 +22,7 @@
             {{message.formattedTime}}
           </div>
         </div>
+        <div id="bottom"></div>
       </div>
 
     <!-- USER CAN INPUT TEXT TO SEND TO THE OTHER USER -->
@@ -28,7 +31,7 @@
           <input type="text" placeholder="Type here" ng-model="newmessage.text" />
           <p ng-model="newmessage.sender"></p>
           <p ng-model="newmessage.receiver"></p>
-          <button ng-click="insert(newmessage)"><i class="fa fa-chevron-right" aria-hidden="true" style="font-size: 300%"></i></button>
+          <button ng-click="insert(newmessage)"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
         </form>
       </div>
     </div>

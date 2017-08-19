@@ -30,11 +30,10 @@
     <!-- ____________ THIS DIV ALLOW USER TO UPLOAD THEIR OWN PICTURE ____________ -->
       <div id="B0" style="margin-top: 10%">
         <div id="add">
-          <i class="fa fa-wrench" aria-hidden="true">
-            <label for="file"></label>
-            <input type="file" name="file" id="file" custom-on-change="uploadFile" />
-          </i>
+          <i class="fa fa-wrench" aria-hidden="true"></i>
         </div>
+        <label for="file"> UPLOAD <br />YOUR <br /> PICTURE </label>
+        <input type="file" name="file" id="file" custom-on-change="uploadFile" />
 
     <!-- ____________ THIS DIV DISPLAY USER PICTURE, NAME, AGE AND BIO ____________ -->
         <div id="imgwrapper">
@@ -47,9 +46,6 @@
       <div id="B1A" ui-sref="edit">
         {{description}}
       </div>
-
-
-
 
     <!-- ____________ THIS DIV DISPLAY THE USER INTEREST ________________________ -->
       <div id="B1">
