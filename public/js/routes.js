@@ -99,6 +99,6 @@ angular.module('app.routes', ['ui.router'])
 });
 
 
-$urlRouterProvider.otherwise('/profilePage');
+$urlRouterProvider.otherwise('/loginPage');
 
 });
