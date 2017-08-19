@@ -33,11 +33,11 @@ angular.module('app.routes', ['ui.router'])
 
 })
 
-.state('prematch',{
-  name: 'Prematch',
-  url: '/prematchPage',
-    templateUrl: 'templates/prematch.html',
-    controller: 'prematchPageCtrl'
+.state('buddies',{
+  name: 'Buddies',
+  url: '/buddiesPage',
+    templateUrl: 'templates/buddies.html',
+    controller: 'buddiesPageCtrl'
 })
 
 
@@ -48,12 +48,11 @@ angular.module('app.routes', ['ui.router'])
     controller: 'matchPageCtrl'
 })
 
-.state('interest',{
-  name: 'Interest',
-  url: '/interestPage',
-    templateUrl: 'templates/interest.html',
-    controller: 'interestPageCtrl'
-
+.state('saved',{
+  name: 'Saved',
+  url: '/savedPage',
+    templateUrl: 'templates/saved.html',
+    controller: 'savedPageCtrl'
 })
 
 .state('settings',{
@@ -85,27 +84,20 @@ angular.module('app.routes', ['ui.router'])
     controller: 'listPageCtrl'
 })
 
-.state('search', {
-  name: 'Search',
-  url: '/searchPage',
-    templateUrl: 'templates/search.html',
-    controller: 'searchPageCtrl'
-})
-
-
 .state('resources',{
   name: 'Resources',
   url: '/resourcesPage',
-    templateUrl: 'templates/resources/resources.html',
+    templateUrl: 'templates/resources.html',
     controller: 'resourcesPageCtrl'
 })
 
-.state('hotlines',{
-  name: 'Hotlines',
-  url: '/hotlinesPage',
-    templateUrl: 'templates/resources/hotlines.html',
-    controller: 'hotlinesPageCtrl'
+.state('edit',{
+  name: 'Edit',
+  url: '/editPage',
+    templateUrl: 'templates/edit.html',
+    controller: 'editPageCtrl'
 });
+
 
 $urlRouterProvider.otherwise('/loginPage');
 

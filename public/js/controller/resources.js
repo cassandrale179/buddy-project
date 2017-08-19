@@ -1,9 +1,7 @@
-//-------------------  CONTROLLER FOR THE RESOURCES PAGE ------------------------
-app.controller('resourcesPageCtrl', ['$scope', '$state',
-  function ($scope, $state){
-}]); 
+//--------------------  CONTROLLER FOR THE REGISTER PAGE --------------------
+app.controller('resourcesPageCtrl', ['$scope', '$state', '$localStorage',
+  function ($scope, $state, $localStorage){
+  }
 
 
-app.controller('hotlinesPageCtrl', ['$scope', '$state',
-  function ($scope, $state){
-}]);
+]);

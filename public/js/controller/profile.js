@@ -21,10 +21,12 @@ app.controller('profilePageCtrl', ['$scope', '$state', '$localStorage',
       var userRef = firebase.database().ref('users/'+id);
       var ref = firebase.database().ref("users/" + id);
       var storageRef = firebase.storage().ref("Avatars/"+id+"/avatar.jpg");
-      var profilePic = document.getElementById("profilePic");
-      storageRef.getDownloadURL().then(function(url){
-        if(url){profilePic.src=url;}
+      userRef.once("value", function(snapshot) {
+        $scope.userProfilePic = snapshot.val().pictureUrl;
+        console.log($scope.userProfilePic);
+        $state.go('profile');
       });
+
 
       //THIS ALLOW THE USER TO UPLOAD THEIR PROFILE PIC
       $scope.uploadFile = function(event){
@@ -34,8 +36,9 @@ app.controller('profilePageCtrl', ['$scope', '$state', '$localStorage',
           console.log("File uploaded!");
           storageRef.getDownloadURL().then(function(url)
           {
-            profilePic.src = url;
+            $scope.userProfilePic = url;
             userRef.update({pictureUrl: url});
+            $state.go('profile');
 
           });
         });
@@ -46,7 +49,6 @@ app.controller('profilePageCtrl', ['$scope', '$state', '$localStorage',
       ref.once('value').then(function(snapshot){
         $scope.name = snapshot.val().name;
         $scope.age = snapshot.val().age;
-        // $scope.gender = snapshot.val().gender;
         $scope.description = snapshot.val().description;
         var interestStr = snapshot.val().interest;
         $scope.interestArr = interestStr.split(",");
@@ -55,6 +57,10 @@ app.controller('profilePageCtrl', ['$scope', '$state', '$localStorage',
       });
       $scope.updateBio = function($data) {
         ref.update({description: $data});
+      };
+
+      $scope.updateBio = function(){
+
       };
   }
 }]);

@@ -2,32 +2,47 @@
 <!DOCTYPE html>
 <html>
 <body>
-  <!-- Display list of people who have or want to have conversations with the user-->
-  <div id="header">
-    <h1>YOUR MATCHES</h1>
+  <div id="navbar">
+    <div class="navcut" ui-sref="profile">
+      <p><i class="fa fa-address-book-o" aria-hidden="true"><br /></i></p>
+      <h3> PROFILE </h3>
+    </div>
+    <div class="navcut" ui-sref="buddies">
+      <p><i class="fa fa-users" aria-hidden="true"><br /></i></p>
+      <h3> BUDDIES </h3>
+    </div>
+    <div class="navcut" ui-sref="list">
+      <p><i class="fa fa-commenting-o" aria-hidden="true"><br /></i></p>
+      <h3> MESSAGE </h3>
+    </div>
+    <div class="navcut" ui-sref="settings">
+      <p><i class="fa fa-cog" aria-hidden="true"><br /></i></p>
+      <h3> SETTINGS </h3>
+    </div>
   </div>
 
-<div id="top">
-  <div id="L" ng-repeat="match in userMatchesArray" ng-click="storeInfo(match.$id)">
-    <div id="L1">
-      <img id="{{ 'img-' + $index }}" ng-src="{{match.pictureUrl}}" /><br />
-    </div>
-    <div id="L2">
-      <b>{{match.name}} </b><br />
-        {{match.lastText}}
+<div id="D">
+  <h2> MESSAGES </h2>
+  <div id="wrapper">
+
+    <div id="D1" ng-repeat="match in userMatchesArray" ng-click="storeInfo(match.$id)">
+      <div id="D1A">
+        <img id="{{ 'img-' + $index }}" src="img/loader.gif" ng-src="{{match.pictureUrl}}" /><br />
+      </div>
+      <div id="D1B">
+        <b>{{match.name}} </b><br />
+          <div ng-style="checkReadStatus(match)">
+            {{match.lastText}}
+          </div>
+          <br />
+          {{match.lastDate}}
+      </div>
     </div>
   </div>
 </div>
 
 
-  <!-- NAVIGATION BAR AT THE BOTTOM -->
-  <div id="navbar" class="wrap">
-    <a ui-sref="profile" ng-click="show=1"><i class="fa fa-user fa-lg" aria-hidden="true"></i></a>
-    <a ui-sref="search"><i class="fa fa-globe fa-lg" aria-hidden="true"></i></a>
-    <a ui-sref="match"><i class="fa fa-star fa-lg" aria-hidden="true"></i></a>
-    <a ui-sref="interest"><i class="fa fa-tag fa-lg" aria-hidden="true"></i></a>
-    <a ui-sref="list"><i class="fa fa-commenting fa-lg" aria-hidden="true"></i></a>
-  </div>
+
 
 </body>
 </html>

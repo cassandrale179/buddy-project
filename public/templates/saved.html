@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<body>
+  <!-- _____________________ ADDING IN NAVIGATION BAR __________________________ -->
+  <div id="navbar">
+    <div class="navcut" ui-sref="profile">
+      <p><i class="fa fa-address-book-o" aria-hidden="true"><br /></i></p>
+      <h3> PROFILE </h3>
+    </div>
+    <div class="navcut" ui-sref="buddies">
+      <p><i class="fa fa-users" aria-hidden="true"><br /></i></p>
+      <h3> BUDDIES </h3>
+    </div>
+    <div class="navcut" ui-sref="list">
+      <p><i class="fa fa-commenting-o" aria-hidden="true"><br /></i></p>
+      <h3> MESSAGE </h3>
+    </div>
+    <div class="navcut" ui-sref="settings">
+      <p><i class="fa fa-cog" aria-hidden="true"><br /></i></p>
+      <h3> SETTINGS </h3>
+    </div>
+  </div>
+
+  <div id="C">
+    <h2> SAVED BUDDIES </h2>
+    <div id="Cnav">
+      <i class="fa fa-circle" aria-hidden="true" style="opacity: 0.5" ui-sref="buddies"></i>
+      <i class="fa fa-circle" aria-hidden="true" ui-sref="saved"></i>
+    </div>
+    <div id="G" ng-show="nofriends==1">
+      <h6>You have not saved any buddies yet.</h6>
+      <button> SEARCH FOR BUDDIES </button>
+    </div>
+    <h6>Your current list of added buddies.</h6>
+    <div id="G1">
+      <div id="G1wrapper">
+        <div id="G1" ng-repeat="person in buddiesInfo">
+          <img ng-src="{{person.pictureUrl}}" />
+          <div id="G1A">
+            <b>{{person.name}} </b>
+          </div>
+        </div>
+      </div>
+    </div>
+</body>

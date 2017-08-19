@@ -1,38 +1,39 @@
 <!DOCTYPE html>
 <body>
 
-  <!-- ADDING IN NAVIGATION BAR -->
-  <div id="navbar" class="wrap">
-    <a ui-sref="profile" ng-click="show=1"><i class="fa fa-user fa-lg" aria-hidden="true"></i></a>
-    <a ui-sref="search"><i class="fa fa-globe fa-lg" aria-hidden="true"></i></a>
-    <a ui-sref="match"><i class="fa fa-star fa-lg" aria-hidden="true"></i></a>
-    <a ui-sref="interest"><i class="fa fa-tag fa-lg" aria-hidden="true"></i></a>
-    <a ui-sref="list"><i class="fa fa-commenting fa-lg" aria-hidden="true"></i></a>
-  </div>
+ <div id="E">
+   <!-- DISPLAY THE PICTURE OF THE PERSON YOU ARE CHATTING WITH -->
 
-   <!-- HEADER OF MESSAGE PAGE -->
-   <div id="header">
-     <h1> MESSAGE </h1>
+   <div id="E0">
+     <div id="back">
+       <i ui-sref="list" class="fa fa-chevron-left" aria-hidden="true"></i>
+     </div>
+      <h4> {{buddyName}} </h4>
+      <img ng-src="{{buddyPictureUrl}}" />
    </div>
 
-  <div id="J">
-    <div id="J0">
-      <div id="J1" ng-style="setColor(message)" ng-repeat="message in convo">
-        {{message.text}}
-        <div id="J1time">
-           {{message.formattedTime}}
-       </div>
+
+    <!-- DISPLAY TEXT MESSAGES FROM PAST CONVERSAION -->
+    <div id="E1">
+      <div id="Ewrapper">
+        <div id="E1A" ng-style="setColor(message)" ng-repeat="message in convo">
+          {{message.text}}
+          <div id="E1time">
+            {{message.formattedTime}}
+          </div>
+        </div>
+        <div id="bottom"></div>
+      </div>
+
+    <!-- USER CAN INPUT TEXT TO SEND TO THE OTHER USER -->
+      <div id="E1B">
+        <form>
+          <input type="text" placeholder="Type here" ng-model="newmessage.text" />
+          <p ng-model="newmessage.sender"></p>
+          <p ng-model="newmessage.receiver"></p>
+          <button ng-click="insert(newmessage)"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
+        </form>
       </div>
     </div>
-  </div>
-  <div id="J2">
-    <form>
-       <p>
-         <input type="text" placeholder="Type your message..." ng-model="newmessage.text" />
-         <p ng-model="newmessage.sender"></p>
-         <p ng-model="newmessage.receiver"></p>
-       </p>
-       <button ng-click="insert(newmessage)">Submit</button>
-    </form>
-  </div>
+</div>
 </body>
