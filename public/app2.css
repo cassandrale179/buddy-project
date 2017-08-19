@@ -1,6 +1,13 @@
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300');
 @import url('https://fonts.googleapis.com/css?family=Palanquin+Dark:700');
 
+
+html, body{
+  margin: 0;
+}
+
+
+/* ------------------------------------ TEXT FONT -------------------------------------------- */
 h1{
   font-family: 'Palanquin Dark', sans-serif;
   color: white;
@@ -15,6 +22,16 @@ h2{
   font-size: 400%;
   text-align: center;
   font-weight: 900;
+  margin-bottom: 0px;
+}
+
+h3{
+  font-family: 'Palaquin Dark', sans-serif;
+  color: white;
+  font-size: 300%;
+  text-align: center;
+  margin-bottom: 0px;
+  text-transform: uppercase;
 }
 
 h4{
@@ -26,12 +43,26 @@ h4{
   margin-bottom: 20px;
 }
 
-html, body{
-  margin: 0;
+h5{
+  width: 100%;
+  position: fixed;
+  text-align: center;
+  color: white;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 250%;
+  font-style: italic;
 }
 
+h6{
+  color: white;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 250%;
+  font-style: italic;
+  text-align: center;
+  margin-top: 0px;
+}
 
-/* ------------------------------------ MAIN COMPONENTS------------------------------------ */
+/* --------------------------------------- INPUT STYLING --------------------------------------- */
 
 input:focus{
   outline: #4F62AD ;
@@ -41,48 +72,34 @@ input::placeholder, textarea::placeholder{
   color: white;
 }
 
-
-/* -------------------------------- SELF MADE MAIN COMPONENTS-------------------------------- */
-#error, #success{
-  font-family: 'Source Sans Pro', sans-serif;
-  text-align: center;
-  color: white;
-  font-style: italic;
-  font-size: 240%;
+input{
+  background: none;
+  border: 1px white solid;
+  display: block;
+  margin: auto;
+  width: 75%;
+  height: 80px;
   margin-bottom: 3%;
   color: white;
+  font-size: 300%;
+  font-family: 'Source Sans Pro', sans-serif;
+  padding-left: 20px;
 }
 
-#imgwrapper{
-  border: 1px white solid;
-  border-radius: 250px;
-  width: 300px;
-  padding: 3%;
-  margin-top: -100px;
-  margin-left: auto;
-  margin-right: auto;
-}
 
-#imgwrapper img{
-  width: 300px;
-  height: 300px;
-  object-fit: cover;
-  border-radius: 200px;
-}
 
-#back{
-  padding-top: 10%;
-  padding-left: 5%;
+/* --------------------------------------- BUTTON STYLING ----------------------------------- */
+button{
+  background-color: #4F62AD;
+  width: 80%;
   color: white;
-  font-size: 700% ;
-}
-
-#resources i{
-  color: white;
-  font-size: 500%;
-  position: absolute;
-  margin-left: 5%;
-  margin-top: 5%;
+  border: none;
+  display: block;
+  margin: auto;
+  font-size: 300%;
+  padding-top: 4%;
+  padding-bottom: 4%;
+  font-family: 'Source Sans Pro', sans-serif;
 }
 
 /* --------------------------------------- NAVIGATION BAR------------------------------------ */
@@ -121,7 +138,75 @@ input::placeholder, textarea::placeholder{
 
 
 
-/* -------------------------------- LOGIN / REGISTRATION BACKGROUND------------------------------- */
+
+/* -------------------------------- MISCELLANEOUS --------------------------------- */
+
+/* ----- BACK BUTTON ----- */
+#back{
+  padding-top: 10%;
+  padding-left: 5%;
+  color: white;
+  font-size: 700% ;
+  z-index: 5;
+}
+
+#resources i{
+  color: white;
+  font-size: 500%;
+  position: absolute;
+  margin-left: 5%;
+  margin-top: 5%;
+}
+
+#imgwrapper{
+  border: 1px white solid;
+  border-radius: 250px;
+  width: 300px;
+  padding: 3%;
+  margin-top: -100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#imgwrapper img{
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 200px;
+}
+
+
+#add{
+  background: white;
+  font-size: 300%;
+  color: #4F62AD;
+  border-radius: 100px;
+  padding: 3%;
+  position: fixed;
+  margin-left: 63%;
+  margin-top: 100px;
+
+}
+
+
+/* --------- INTEREST TAG ---------------- */
+#B1 button, #C2 button, #F1A button{
+  width: auto;
+  display: inline-block;
+  background: none;
+  border: 0.5px white solid;
+  color: white;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 300%;
+  margin-bottom: 10px;
+  margin-right: 10px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+
+
+/* -------------------------------- LOGIN PAGE ------------------------------- */
 #A{
   background: url(img/BGlogin.png);
   width: 100%;
@@ -130,54 +215,24 @@ input::placeholder, textarea::placeholder{
   background-size: cover;
   overflow: auto;
   padding-bottom: 5%;
+  z-index: -2;
 }
 
 
-#A input, #C input, #H input, #E input, #B2 input{
-  background: none;
-  border: 1px white solid;
-  display: block;
-  margin: auto;
-  width: 75%;
-  height: 80px;
-  margin-bottom: 3%;
-  color: white;
-  font-size: 300%;
-  font-family: 'Source Sans Pro', sans-serif;
-  padding-left: 20px;
-}
-
-
-/* --------------------------------- LOGIN AND REGISTRATION PAGE -------------------------------- */
-
-#A1{
+#A1, #A2{
   position: relative;
   top: 50%;
   transform: translateY(-50%);
 }
 
-#A1 img{
+#A img{
   display: block;
   margin: auto;
   width: 40%;
   object-fit: cover;
 }
 
-
-#A1 button, #A2 button, #H button, #C3 button, #G button, #B2 button, #B4 button{
-  background-color: #4F62AD;
-  width: 80%;
-  color: white;
-  border: none;
-  display: block;
-  margin: auto;
-  font-size: 300%;
-  padding-top: 4%;
-  padding-bottom: 4%;
-  font-family: 'Source Sans Pro', sans-serif;
-}
-
-#A1 p, #C p, #H p{
+#A p{
   color: white;
   font-family: 'Source Sans Pro', sans-serif;
   text-align: center;
@@ -185,6 +240,8 @@ input::placeholder, textarea::placeholder{
   font-weight: 50;
 }
 
+
+/* -------------- CREATE ACCOUNT TAGLINE ON LOGIN PAGE ---------------- */
 #A1A{
   margin-left: 10%;
   margin-right: 10%;
@@ -203,23 +260,31 @@ input::placeholder, textarea::placeholder{
   display: inline-block;
   border-radius: 10px;
   font-size: 300%;
+
 }
 
-
-#A2 img,  #B2 img{
-  display: block;
-  margin: auto;
+/* ----------------------------------- REGISTRATION PAGE ------------------------------- */
+#A2 img{
+  margin-top: -150px;
   width: 30%;
-  object-fit: cover;
-}
-
-#A2 button, #C3 button{
-  background-color: #7AB74D;
 }
 
 
+/* ------------------------------- FORGOT PASSWORD PAGE ------------------------------- */
+#A3{
+  position: relative;
+  top: 40%;
+  transform: translateY(-60%);
+  z-index: -1;
+}
 
-/* ------------------------------------ PROFILE PAGE ------------------------------------ */
+#A3 p{
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+
+/* ----------------------------------------------- PROFILE PAGE ------------------------------------ */
 #B{
   background: url(img/blur.png);
   width: 100%;
@@ -227,21 +292,22 @@ input::placeholder, textarea::placeholder{
   position: absolute;
   background-size: cover;
   z-index: -2;
-  overflow: auto;
 }
 
-#B0{
-  padding-top: 10%;
+#B label{
+  position: fixed;
+  margin-left: 63%;
+  margin-top: 100px;
+  font-size: 100%;
+  font-size: 200%;
+  opacity: 0;
 }
 
-#B0 h3{
-  font-family: 'Palaquin Dark', sans-serif;
-  color: white;
-  font-size: 300%;
-  text-align: center;
-  margin-bottom: 0px;
-  text-transform: uppercase;
+#B input[type="file"]{
+  opacity: 0;
 }
+
+/* ------------- THIS DISPLAY NAME AND AGE OF THE USER ---------- */
 
 #B0 p{
   font-family: 'Source Sans Pro', sans-serif;
@@ -251,32 +317,7 @@ input::placeholder, textarea::placeholder{
   margin-top: 0px;
 }
 
-#B1{
-  margin-left: 15%;
-  margin-right: 10%;
-  max-height: 350px;
-  overflow: auto;
-}
-
-#B1 button, #C2 button, #F1A button{
-  background: none;
-  border: 0.5px white solid;
-  color: white;
-  font-family: 'Source Sans Pro', sans-serif;
-  font-size: 300%;
-  margin-bottom: 10px;
-  margin-right: 10px;
-  padding: 10px;
-  border-radius: 5px;
-}
-
-#B1 h3{
-  color: white;
-  font-size: 250%;
-  font-family: 'Noto Sans', sans-serif;
-  text-transform: uppercase;
-}
-
+/* ---------- DESCRIPTION BOX -------------------- */
 #B1A{
   font-size: 300%;
   color: white;
@@ -292,77 +333,14 @@ input::placeholder, textarea::placeholder{
   overflow-x: hidden;
 }
 
-
-#Bicon i{
-  color: white;
-  font-size: 300%;
-  border: 0.5px white solid;
-  border-radius: 100px;
-  padding: 3%;
-  position: fixed;
-}
-
-#B label{
-  height: 0.1px !important;
-  width: 0.1px;
-  font-size: 100%;
-  /*opacity: ;*/
-}
-
-#B input[type="file"]{
-  opacity: 0;
-  width: 0.1px;
-  height: 0.1px !important;
-}
-
-
-#B h5{
-  width: 100%;
-  position: fixed;
-  text-align: center;
-  color: white;
-  font-family: 'Source Sans Pro', sans-serif;
-  font-size: 250%;
-  font-style: italic;
-}
-
-
-/* ------------------------------------ EDIT PAGE ------------------------------------ */
-#B4 textarea{
-  font-size: 300%;
-  background: transparent;
-  color: white;
-  font-family: 'Source Sans Pro', sans-serif;
-  margin-bottom: 20px;
-  border: none;
-  border: 0.5px white solid;
-  width: 69.5%;
-  display: block;
-  margin: auto;
-  margin-top: 100px;
-  margin-bottom: 30px;
-  padding: 3%;
-}
-
-#B4 button{
-  width: 75%;
-}
-
-
-/* ------------------------------------ FORGOT PASSWORD ------------------------------------ */
-#B2{
-  font-family: 'Source Sans Pro', sans-serif;
-  color: white;
-  text-align: center;
-}
-
-#B2 p{
-  font-size: 250%;
-  margin-left: 10%;
+/* ------------- THIS DISPLAY ALL THE USER INTEREST TAGS ---------- */
+#B1{
+  margin-left: 15%;
   margin-right: 10%;
 }
 
-/* ------------------------------------ BUDDIES PAGE ------------------------------------ */
+
+/* -------------------------------------- BUDDIES PAGE ------------------------------------ */
 #C{
   background: url(img/BGbuddys.png);
   width: 100%;
@@ -372,37 +350,31 @@ input::placeholder, textarea::placeholder{
 
 }
 
-#C p{
-  margin-top: -30px;
-  font-style: italic;
-}
-
-#C i, #F i{
-  font-size: 100%;
-  margin-left: 10px;
-}
-
 #C input{
   width: 65%;
   float: left;
   margin-left: 10%;
 }
 
-/* THIS IS THE ADD BUTTON TO ADD AN INTEREST */
-#C0 button{
-  font-size: 200%;
-  background: none;
+/* NAVIGATION BAR*/
+#Cnav i{
   color: white;
-  font-family: 'Source Sans Pro', sans-serif;
-  border: none;
-  height: 80px;
-  width: 80px;
-  margin-left: 10px;
+  font-size: 200%;
+}
 
+#C i, #F i{
+  margin-left: 10px;
+}
+
+#Cnav{
+  padding-left: 45%;
+  margin-bottom: 50px;
 }
 
 #C0 i{
-  font-size: 170%;
+  font-size: 350%;
+  color: white;
+  padding: 2%;
 }
 
 /* THIS IS WHERE THE SEARCH INFORMATION WILL DISPLAY*/
@@ -441,32 +413,14 @@ input::placeholder, textarea::placeholder{
   position: absolute;
 }
 
-
+/* SEARCH FOR BUDDY BUTTON */
 #C3{
   position: fixed;
   width: 100%;
   bottom: 20%;
 }
 
-
-
-/* BELOW WILL BE THE NAVIGATION BAR */
-#Cnav i{
-  color: white;
-  font-size: 200%;
-}
-
-#C h2, #F h2{
-  margin-bottom: 20px;
-}
-
-#Cnav{
-  padding-left: 45%;
-  margin-bottom: 50px;
-}
-
-
-/* ------------------------------------ LIST PAGE  ------------------------------------ */
+/* -------------------------------------- LIST PAGE ----------------------------------- */
 #D{
   background: url(img/BGmessages.png);
   width: 100%;
@@ -516,6 +470,7 @@ input::placeholder, textarea::placeholder{
 }
 
 
+
 /* ----------------------------------- MESSAGE PAGE ------------------------------------ */
 #E{
   background: url(img/BGmessages.png);
@@ -556,12 +511,12 @@ input::placeholder, textarea::placeholder{
 #Ewrapper, #F1wrapper{
   padding-top: 5%;
   padding-bottom: 5%;
-  height: 470px;
   overflow: auto;
 }
 
 #Ewrapper{
-  height: 550px;
+  position: relative;
+  height: 700px;
 }
 
 
@@ -581,18 +536,19 @@ input::placeholder, textarea::placeholder{
 }
 
 #E1B button{
+  display: inline-block;
   margin-left: 3%;
   height: 80px;
   width: 80px;
   border: none;
   background: white;
-  color:  #4F62AD;
+  padding: 0%;
 }
+
 
 #E1B i{
-    color:  #4F62AD;
+  color: #4F62AD;
 }
-
 
 
 /* ------------------------------------- MATCH PAGE ------------------------------------ */
@@ -628,7 +584,8 @@ input::placeholder, textarea::placeholder{
 }
 
 #F1wrapper{
-  height: 50%;
+  height: 55%;
+  overflow: auto;
 }
 
 #F1{
@@ -654,21 +611,6 @@ input::placeholder, textarea::placeholder{
   text-align: left;
 }
 
-/*----------------------------------- OTHER PAGE ----------------------------------------------- */
-#add{
-  background: white;
-  color: #4F62AD;
-  font-size: 300%;
-  position: fixed;
-  border: 0.5px white solid;
-  border-radius: 100px;
-  padding: 3%;
-  margin-left: 63%;
-  margin-top: 100px;
-  z-index: 1;
-}
-
-
 /* ------------------------------------- SAVED BUDDIES ------------------------------------ */
 #G1{
   color: white;
@@ -689,11 +631,6 @@ input::placeholder, textarea::placeholder{
   font-size: 300%;
   margin-left: 7%;
 }
-
-
-
-
-
 
 /* ------------------------------------- SETTINGS PAGE ------------------------------------ */
 #H{
@@ -744,4 +681,23 @@ input::placeholder, textarea::placeholder{
 
 #I a{
   text-decoration: none;
+}
+
+
+
+@media only screen and (max-height: 1300px) {
+  #navbar{
+    display: none;
+  }
+  #C3{
+    display: none;
+  }
+
+  #Ewrapper{
+    top: 10%;
+    transform: translateY(-40%);
+    margin-top: 200px;
+    height: 300px;
+  }
+
 }
