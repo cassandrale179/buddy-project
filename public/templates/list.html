@@ -25,7 +25,7 @@
   <h2> MESSAGES </h2>
   <div id="wrapper">
 
-    <div id="D1" ng-repeat="match in userMatchesArray" ng-click="storeInfo(match.$id)">
+    <div id="D1" ng-repeat="match in userMatchesArray" ng-click="storeInfo(match.id)">
       <div id="D1A">
         <img id="{{ 'img-' + $index }}" src="img/loader.gif" ng-src="{{match.pictureUrl}}" /><br />
       </div>

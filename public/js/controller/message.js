@@ -130,7 +130,9 @@ app.controller('messagePageCtrl', ['$scope', '$state', 'Message', '$firebaseArra
 
         //GET DETAILS OF OTHER PERSON
         var buddyData = snapshot.child("users/"+uid2).val();
+        console.log(buddyData.pictureUrl);
         $scope.buddyPictureUrl = buddyData.pictureUrl;
+
         $scope.buddyName = buddyData.name;
 
         //GET REFERENCE TO BOTH USER MATCH TABLE TO STORE CONVO ID
