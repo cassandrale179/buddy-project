@@ -86,6 +86,16 @@ input{
   padding-left: 20px;
 }
 
+#error, #success{
+  font-family: 'Source Sans Pro', sans-serif;
+  text-align: center;
+  color: white;
+  font-style: italic;
+  font-size: 240%;
+  margin-bottom: 3%;
+  color: white;
+}
+
 
 
 /* --------------------------------------- BUTTON STYLING ----------------------------------- */
@@ -693,11 +703,15 @@ button{
     display: none;
   }
 
-  #Ewrapper{
+  /*#Ewrapper{
     top: 10%;
-    transform: translateY(-40%);
+    transform: translateY(-90%);
     margin-top: 200px;
-    height: 300px;
+    height: 100px;
+  }*/
+
+  #Ewrapper{
+    display: none;
   }
 
 }
