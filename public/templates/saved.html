@@ -28,15 +28,17 @@
     </div>
     <div id="G" ng-show="nofriends==1">
       <h6>You have not saved any buddies yet.</h6>
-      <button> SEARCH FOR BUDDIES </button>
+      <button ui-sref="buddies"> SEARCH FOR BUDDIES </button>
     </div>
-    <h6>Your current list of added buddies.</h6>
-    <div id="G1">
-      <div id="G1wrapper">
-        <div id="G1" ng-repeat="person in buddiesInfo">
-          <img ng-src="{{person.pictureUrl}}" />
-          <div id="G1A">
-            <b>{{person.name}} </b>
+    <div ng-hide="nofriends==1">
+      <h6>Your current list of added buddies.</h6>
+      <div id="G1">
+        <div id="G1wrapper">
+          <div id="G1" ng-repeat="person in buddiesInfo">
+            <img ng-src="{{person.pictureUrl}}" />
+            <div id="G1A">
+              <b>{{person.name}} </b>
+            </div>
           </div>
         </div>
       </div>

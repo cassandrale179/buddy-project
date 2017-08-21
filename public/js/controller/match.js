@@ -27,7 +27,7 @@ app.controller('matchPageCtrl', ['$scope', '$state', '$localStorage', '$sessionS
         var interestStr = snapshot.val().interest;
         $scope.myInterest = interestStr.split(",");
         $scope.myInterest.splice(-1);
-        console.log($scope.myInterest); 
+        console.log($scope.myInterest);
       });
 
       //GET EVERYONE ELSE INTEREST IN ARRAY FORMAT
@@ -61,12 +61,37 @@ app.controller('matchPageCtrl', ['$scope', '$state', '$localStorage', '$sessionS
             }
           }
 
+          //HANDLE CASE WHEN USER HAS NO COMMON INTEREST WITH ANYONE IN THE DATABASE
+          if (UserList.length === 0){
+            $scope.nomatch = 1;
+            $state.go("match");
+
+          }
+
+          //GENERATE A RANDOM MATCH FOR THE USER
+          $scope.randomMatch = function(){
+            var numberOfPeople = Object.keys(UserTable).length;
+            var randomUser = "";
+            do{
+              var randomNum = Math.floor((Math.random() * numberOfPeople-1)+1);
+              randomUser = Object.keys(UserTable)[randomNum];
+            }
+            while(randomUser == currentUser.uid);
+            $scope.randomName = UserTable[randomUser].name;
+            $scope.randomPic = UserTable[randomUser].pictureUrl;
+            $scope.randomID = randomUser;
+            $scope.showPicture = 1; 
+            $state.go("match");
+
+          };
+
+
           //SORTING THE USER LIST (UID, COMMON INTEREST) AND RETURN THE LENGTH
           UserList.sort(function(a,b){
             return b[1].length - a[1].length;
           });
 
-          // console.log(UserList);
+
 
 
 
