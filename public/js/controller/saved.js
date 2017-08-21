@@ -14,6 +14,9 @@ app.controller('savedPageCtrl', ['$scope', '$state', '$localStorage',
         for (var user in matchTable){
           $scope.buddiesArr.push(user);
         }
+        if ($scope.buddiesArr.length === 0){
+          $scope.nofriends = 1;
+        }
       });
 
       $scope.buddiesInfo = [];

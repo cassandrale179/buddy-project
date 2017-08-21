@@ -60,6 +60,8 @@ h6{
   font-style: italic;
   text-align: center;
   margin-top: 0px;
+  margin-left: 10%;
+  margin-right: 10%;
 }
 
 /* --------------------------------------- INPUT STYLING --------------------------------------- */
@@ -116,7 +118,7 @@ button{
 #navbar{
   position: absolute;
   width: 100%;
-  z-index: 1;
+  z-index: 10;
   bottom: 0px;
   height: 12%;
   display: flex;
@@ -194,8 +196,7 @@ button{
   padding: 3%;
   position: fixed;
   margin-left: 63%;
-  margin-top: 100px;
-
+  margin-top: 150px;
 }
 
 
@@ -596,26 +597,38 @@ button{
   margin-top: -50px;
 }
 
-#F p{
-  color: white;
-  font-family: 'Source Sans Pro', sans-serif;
-  text-align: center;
-  margin-top: 0px;
-  font-size: 250%;
-  margin-left: 10%;
-  margin-right: 10%;
+#F0 h3{
+  margin-top: 100px;
 }
 
-#F img, #G1 img{
+#F0 img{
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 200px;
+  display: block;
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 100px;
+}
+
+#F0 button{
+  margin-bottom: 50px;
+}
+
+
+
+/* ----------- NORMAL MATTCH PAGE ---------- */
+#F1 img, #G1 img{
   width: 200px;
   height: 200px;
-  border-radius: 100px;
+  border-radius: 150px;
   object-fit: cover;
   margin-left: 10%;
 }
 
 #F1wrapper{
-  height: 55%;
+  height: 850px;
   overflow: auto;
 }
 
