@@ -48,10 +48,11 @@ app.controller('matchPageCtrl', ['$scope', '$state', '$localStorage', '$sessionS
                for (var i = 0; i < $scope.myInterest.length; i++){
                  for (var j = 0; j < OtherInterestArr.length; j++){
                    if ($scope.myInterest[i] == OtherInterestArr[j]){
-                    $scope.commonInterest.push($scope.myInterest[i]);
+                        $scope.commonInterest.push($scope.myInterest[i]);
                    }
                  }
                }
+
 
                //IF SOMEONE ACTUALLY HAS A COMMON INTEREST, THEN PUSH THEM TO USER LIST
                if ($scope.commonInterest.length > 0){
@@ -80,7 +81,7 @@ app.controller('matchPageCtrl', ['$scope', '$state', '$localStorage', '$sessionS
             $scope.randomName = UserTable[randomUser].name;
             $scope.randomPic = UserTable[randomUser].pictureUrl;
             $scope.randomID = randomUser;
-            $scope.showPicture = 1; 
+            $scope.showPicture = 1;
             $state.go("match");
 
           };
@@ -90,9 +91,6 @@ app.controller('matchPageCtrl', ['$scope', '$state', '$localStorage', '$sessionS
           UserList.sort(function(a,b){
             return b[1].length - a[1].length;
           });
-
-
-
 
 
         //STORE EVERYTHNG IN $SCOPE.PEOPLE FOR DISPLAY

@@ -7,6 +7,15 @@ app.controller('savedPageCtrl', ['$scope', '$state', '$localStorage',
       });
     }
     else{
+
+      //-------- STORE OTHER PEOPLE ID WHEN CLICKED ON IT ----------------
+      $scope.storeId = function(uid){
+        $localStorage.otherId = uid;
+        console.log("the other person's ID is: " + uid);
+        $state.go('other');
+      };
+
+      //----------------CHECK IF A USER HAVE FRIENDS OR NOT----------------
       $scope.buddiesArr = [];
       var matchRef = firebase.database().ref("match/" + currentUser.uid);
       matchRef.once('value', function(snapshot){
@@ -19,6 +28,7 @@ app.controller('savedPageCtrl', ['$scope', '$state', '$localStorage',
         }
       });
 
+      //-------- DISPLAY ALL THE FRIENDS THAT THE USER CURRENTLY HAVE--------
       $scope.buddiesInfo = [];
       var userRef = firebase.database().ref("users");
       userRef.once('value', function(snapshot){

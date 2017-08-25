@@ -33,7 +33,7 @@
     <div ng-hide="nofriends==1">
       <h6>Your current list of added buddies.</h6>
       <div id="G1">
-          <div id="G1repeat" ng-repeat="person in buddiesInfo">
+          <div id="G1repeat" ng-repeat="person in buddiesInfo" ng-click="storeId(person.uid)">
             <img ng-src="{{person.pictureUrl}}" />
             <div id="G1name"><b>{{person.name}} </b></div>
           </div>
