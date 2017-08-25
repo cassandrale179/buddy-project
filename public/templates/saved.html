@@ -23,8 +23,8 @@
   <div id="C">
     <h2> SAVED BUDDIES </h2>
     <div id="Cnav">
-      <i class="fa fa-circle" aria-hidden="true" style="opacity: 0.5" ui-sref="buddies"></i>
       <i class="fa fa-circle" aria-hidden="true" ui-sref="saved"></i>
+      <i class="fa fa-circle" aria-hidden="true" style="opacity: 0.5" ui-sref="buddies"></i>
     </div>
     <div id="G" ng-show="nofriends==1">
       <h6>You have not saved any buddies yet.</h6>
@@ -33,14 +33,14 @@
     <div ng-hide="nofriends==1">
       <h6>Your current list of added buddies.</h6>
       <div id="G1">
-        <div id="G1wrapper">
-          <div id="G1" ng-repeat="person in buddiesInfo">
+          <div id="G1repeat" ng-repeat="person in buddiesInfo">
             <img ng-src="{{person.pictureUrl}}" />
-            <div id="G1A">
-              <b>{{person.name}} </b>
-            </div>
+            <div id="G1name"><b>{{person.name}} </b></div>
           </div>
-        </div>
+      </div>
+      <div id="G2">
+          <button ui-sref="buddies"> SEARCH FOR MORE BUDDIES </button>
       </div>
     </div>
+  </div>
 </body>
