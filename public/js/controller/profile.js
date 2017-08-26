@@ -5,6 +5,7 @@ app.controller('profilePageCtrl', ['$scope', '$state', '$localStorage',
   function ($scope, $state, $localStorage){
 
     $scope.show = 1;
+    $scope.successMessage = ""; //For uploading profile picture
 
     //SIGN USER IN AUTOMATICALLY WITH EMAIL AND PASSWORD ON PROFILE PAGE
     var user = firebase.auth().currentUser;
@@ -31,6 +32,8 @@ app.controller('profilePageCtrl', ['$scope', '$state', '$localStorage',
       //THIS ALLOW THE USER TO UPLOAD THEIR PROFILE PIC
       $scope.uploadFile = function(event){
         var file = event.target.files[0];
+        $scope.successMessage="Updating..."
+        $state.go('profile');
 
         storageRef.put(file).then(function(snapshot){
           console.log("File uploaded!");
@@ -38,6 +41,7 @@ app.controller('profilePageCtrl', ['$scope', '$state', '$localStorage',
           {
             $scope.userProfilePic = url;
             userRef.update({pictureUrl: url});
+            $scope.successMessage = "Picture uploaded!"
             $state.go('profile');
 
           });
