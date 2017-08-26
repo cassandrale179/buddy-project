@@ -93,11 +93,12 @@ app.controller('matchPageCtrl', ['$scope', '$state', '$localStorage', '$sessionS
           });
 
 
-        //STORE EVERYTHNG IN $SCOPE.PEOPLE FOR DISPLAY
-        //$Scope.people: contains user objects with properties: name, uid, commonInterest
+        //STORE EVERYTHNG IN ARRAY $SCOPE.PEOPLE FOR DISPLAY
         $scope.people = [];
         var avatar;
         $scope.index=0;
+
+        //------------- CREATE A PERSON OBEJCT AND PUSHED IT INTO SCOPE
         refUser.once('value', function(refSnap){
           var UserTable2 = refSnap.val();
           for (var k = 0; k < UserList.length; k++){
@@ -105,13 +106,30 @@ app.controller('matchPageCtrl', ['$scope', '$state', '$localStorage', '$sessionS
               uid: UserList[k][0],
               name: UserTable2[UserList[k][0]].name,
               commonInterest: UserList[k][1],
-              pictureUrl: UserTable2[UserList[k][0]].pictureUrl
+              pictureUrl: UserTable2[UserList[k][0]].pictureUrl,
+              added: 0
             };
             $scope.people.push(obj);
           }
+
+          //CHECK IF THE USER ARE ALREADY FRIENDS ON THE MATCH TABLE
+          matchRef = firebase.database().ref("match/" + currentUser.uid);
+          matchRef.once('value', function(matchSnap){
+            var matchTable = matchSnap.val();
+            for (var friends in matchTable){
+              for (var l = 0; l < $scope.people.length; l++){
+                if (friends == $scope.people[l].uid){
+                  $scope.people[l].added = 1;
+                }
+              }
+            }
+          });
+
           console.log($scope.people);
           $state.go('match');
         });
+
+        //------------- DISPLAY PEOPLE'S AVATAR ---------------------------
         refUser.once('value', function(snapshot){
           $scope.people.forEach(function(people){
             avatar = document.getElementById("img-"+$scope.index);
