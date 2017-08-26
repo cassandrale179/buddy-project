@@ -50,7 +50,7 @@ app.controller('profilePageCtrl', ['$scope', '$state', '$localStorage', '$swipe'
           {
             $scope.userProfilePic = url;
             userRef.update({pictureUrl: url});
-            $scope.successMessage = "Picture uploaded!"; 
+            $scope.successMessage = "Picture uploaded!";
             $state.go('profile');
 
           });
@@ -74,10 +74,6 @@ app.controller('profilePageCtrl', ['$scope', '$state', '$localStorage', '$swipe'
 
       $scope.updateBio = function($data) {
         ref.update({description: $data});
-      };
-
-      $scope.updateBio = function(){
-
       };
   }
 }]);
