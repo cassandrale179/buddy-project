@@ -20,6 +20,25 @@
         <p><i class="fa fa-cog" aria-hidden="true"><br /></i></p>
         <h3> SETTINGS </h3>
       </div>
+
+  <!--  ________________________ BOTTOM NAVIGATION BAR ________________________ -->
+  <div id="navbar">
+    <div class="navcut" ui-sref="profile" style="border-bottom: 10px white solid">
+      <p><i class="fa fa-address-book-o" aria-hidden="true"><br /></i></p>
+        <h3><b> PROFILE </b></h3>
+    </div>
+    <div class="navcut" ui-sref="saved">
+      <p><i class="fa fa-users" aria-hidden="true"><br /></i></p>
+      <h3> BUDDIES </h3>
+    </div>
+    <div class="navcut" ui-sref="list">
+      <p><i class="fa fa-commenting-o" aria-hidden="true"><br /></i></p>
+      <h3> MESSAGE </h3>
+    </div>
+    <div class="navcut" ui-sref="settings">
+      <p><i class="fa fa-cog" aria-hidden="true"><br /></i></p>
+      <h3> SETTINGS </h3>
+
     </div>
 
     <!-- ____________ THIS DIV WILL CONTAIN THE FRIEND LIST AND INFORMATION ____________ -->
@@ -27,6 +46,7 @@
       <div id="resources">
         <i class="fa fa-info-circle" ui-sref="resources" aria-hidden="true"></i>
       </div>
+
 
       <!-- ____________ THIS DIV ALLOW USER TO UPLOAD THEIR OWN PICTURE ____________ -->
         <div id="B0" style="margin-top: 10%">
@@ -43,6 +63,22 @@
                  {{successMessage}}
                </div>
           </div>
+
+    <h5>{{successMessage}}</h5>
+
+    <!-- ____________ THIS DIV ALLOW USER TO UPLOAD THEIR OWN PICTURE ____________ -->
+      <div id="B0" style="margin-top: 15%">
+        <div id="add">
+          <i class="fa fa-wrench" aria-hidden="true"></i>
+        </div>
+        <label for="file"> UPLOAD <br />YOUR <br /> PICTURE </label>
+        <input type="file" name="file" id="file" custom-on-change="uploadFile" />
+
+    <!-- ____________ THIS DIV DISPLAY USER PICTURE, NAME, AGE AND BIO ____________ -->
+        <div id="imgwrapper">
+             <img id="profilePic" src="img/loader.gif" ng-src="{{userProfilePic}}" />
+        </div>
+
 
           <h3>{{name}}</h3>
           <p>{{age}} years old </p>

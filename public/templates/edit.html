@@ -1,7 +1,7 @@
 <body>
   <!--  ________________________ BOTTOM NAVIGATION BAR ________________________ -->
   <div id="navbar">
-    <div class="navcut" ui-sref="profile">
+    <div class="navcut" ui-sref="profile" style="border-bottom: 10px white solid">
       <p><i class="fa fa-address-book-o" aria-hidden="true"><br /></i></p>
       <h3> PROFILE </h3>
     </div>
@@ -23,7 +23,7 @@
   <div id="B">
     <h2> EDIT YOUR INFORMATION </h2>
     <div id="B4">
-      <textarea ng-model="userDescription" placeholder="Edit your bio...."></textarea>
+      <textarea ng-model="description"></textarea>
       <button ng-click="updateBio()"> SUBMIT </button>
   </div>
 </body>

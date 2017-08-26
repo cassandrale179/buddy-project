@@ -13,13 +13,14 @@ app.controller('editPageCtrl', ['$scope', '$state', '$localStorage',
       userRef = firebase.database().ref("users/" + currentUser.uid);
       userRef.once("value", function(snapshot){
         $scope.description = snapshot.val().description;
-        $state.go("edit"); 
+        $state.go("edit");
       });
+
 
 
       $scope.updateBio = function(){
         userRef.update({
-          description: $scope.userDescription
+          description: $scope.description
         });
         $state.go("profile");
       };
