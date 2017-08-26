@@ -32,7 +32,7 @@ app.controller('profilePageCtrl', ['$scope', '$state', '$localStorage',
       //THIS ALLOW THE USER TO UPLOAD THEIR PROFILE PIC
       $scope.uploadFile = function(event){
         var file = event.target.files[0];
-        $scope.successMessage="Updating..."
+        $scope.successMessage="Updating...";
         $state.go('profile');
 
         storageRef.put(file).then(function(snapshot){
@@ -41,7 +41,7 @@ app.controller('profilePageCtrl', ['$scope', '$state', '$localStorage',
           {
             $scope.userProfilePic = url;
             userRef.update({pictureUrl: url});
-            $scope.successMessage = "Picture uploaded!"
+            $scope.successMessage = "Picture uploaded!"; 
             $state.go('profile');
 
           });

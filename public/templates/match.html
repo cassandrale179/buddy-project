@@ -39,10 +39,11 @@
       <h6><i>Click on a person to view and add them</i></h6>
       <div id="F1wrapper">
         <div id="F1" ng-click="storeId(person.uid)" ng-repeat="person in people">
-          <i ng-hide="{{person.added}}==1"class="fa fa-check"></i>
+          <i ng-show="{{person.added}} == 0" class="fa fa-user-plus"></i>
+          <i ng-hide="{{person.added}} == 0"class="fa fa-check"></i>
           <img ng-src="{{person.pictureUrl}}" />
           <div id="F1A">
-            <b><p>{{person.name}} {{person.added}}</b> also likes: </p>
+            <b><p>{{person.name}}</b> also likes: </p>
             <button ng-repeat="interest in person.commonInterest">
               {{interest}}
             </button>
