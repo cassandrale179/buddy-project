@@ -29,7 +29,7 @@ app.controller('buddiesPageCtrl', ['$scope', '$state', '$localStorage', '$fireba
       var refUserId = firebase.database().ref("users/"+currentUser.uid);
 
       //----------GET THE CURRENT USER INTEREST----------
-      refUserId.once('value', function(snapshot){
+      refUserId.on('value', function(snapshot){
         var interestStr = snapshot.val().interest;
         if (interestStr === null) $scope.interestArr = {};
         else{
@@ -42,7 +42,7 @@ app.controller('buddiesPageCtrl', ['$scope', '$state', '$localStorage', '$fireba
 
 
       //---------- RETURN HOW MANY USERS LIKE AN INTEREST ----------
-      refInterest.once("value", function(interestSnapshot){
+      refInterest.on("value", function(interestSnapshot){
         interestSnapshot.forEach(function(interest) {
           var likes = interest.numChildren() - 1;
           interest.ref.update({count: likes});
@@ -86,7 +86,7 @@ app.controller('buddiesPageCtrl', ['$scope', '$state', '$localStorage', '$fireba
       $scope.SubmitInterest = function(){
 
         //ADD THEIR INTEREST AS A STRING IN THE USER TABLE
-        refUserId.once('value', function(snapshot){
+        refUserId.on('value', function(snapshot){
           var info = snapshot.val().age;
           var interestStr = info.interest;
           if (!info.Interest){
