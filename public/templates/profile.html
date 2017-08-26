@@ -5,9 +5,9 @@
   <div id="navbar">
     <div class="navcut" ui-sref="profile">
       <p><i class="fa fa-address-book-o" aria-hidden="true"><br /></i></p>
-      <h3> PROFILE </h3>
+        <h3><b> PROFILE </b></h3>
     </div>
-    <div class="navcut" ui-sref="buddies">
+    <div class="navcut" ui-sref="saved">
       <p><i class="fa fa-users" aria-hidden="true"><br /></i></p>
       <h3> BUDDIES </h3>
     </div>
@@ -38,6 +38,9 @@
     <!-- ____________ THIS DIV DISPLAY USER PICTURE, NAME, AGE AND BIO ____________ -->
         <div id="imgwrapper">
              <img id="profilePic" src="img/loader.gif" ng-src="{{userProfilePic}}" />
+             <div>
+               {{successMessage}}
+             </div>
         </div>
 
         <h3>{{name}}</h3>

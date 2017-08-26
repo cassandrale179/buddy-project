@@ -104,9 +104,10 @@ app.controller('buddiesPageCtrl', ['$scope', '$state', '$localStorage', '$fireba
             var ref = firebase.database().ref("interests/"+currentInterest+"/" +currentUser.uid);
             ref.set(info);
           }
+            $state.go('match');
         });
 
-        $state.go('match');
+
       };
     }
   }

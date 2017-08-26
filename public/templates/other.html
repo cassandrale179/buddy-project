@@ -5,7 +5,7 @@
     <p><i class="fa fa-address-book-o" aria-hidden="true"><br /></i></p>
     <h3> PROFILE </h3>
   </div>
-  <div class="navcut" ui-sref="buddies">
+  <div class="navcut" ui-sref="saved">
     <p><i class="fa fa-users" aria-hidden="true"><br /></i></p>
     <h3> BUDDIES </h3>
   </div>
@@ -29,7 +29,7 @@
     </div>
     <div id="B0" style="padding-top: 5%; ">
       <div id="imgwrapper">
-          <img id="buddyProfilePic" ng-src="{{userProfilePic}}" />
+          <img id="buddyProfilePic" src="img/loader.gif" ng-src="{{userProfilePic}}" />
       </div>
       <h3>{{buddyName}}</h3>
       <p>{{buddyAge}} years old </p>

@@ -60,12 +60,18 @@ h6{
   font-style: italic;
   text-align: center;
   margin-top: 0px;
+  margin-left: 10%;
+  margin-right: 10%;
 }
 
 /* --------------------------------------- INPUT STYLING --------------------------------------- */
 
 input:focus{
   outline: #4F62AD ;
+}
+
+button:focus{
+  outline: none;
 }
 
 input::placeholder, textarea::placeholder{
@@ -84,6 +90,16 @@ input{
   font-size: 300%;
   font-family: 'Source Sans Pro', sans-serif;
   padding-left: 20px;
+}
+
+#error, #success{
+  font-family: 'Source Sans Pro', sans-serif;
+  text-align: center;
+  color: white;
+  font-style: italic;
+  font-size: 240%;
+  margin-bottom: 3%;
+  color: white;
 }
 
 
@@ -106,7 +122,7 @@ button{
 #navbar{
   position: absolute;
   width: 100%;
-  z-index: 1;
+  z-index: 10;
   bottom: 0px;
   height: 12%;
   display: flex;
@@ -130,6 +146,13 @@ button{
   font-family: 'Source Sans Pro', sans-serif;
   font-size: 200%;
   text-align: center;
+
+
+}
+
+.cover{
+  padding-bottom: 20px;
+  border-bottom: 5px white solid;
 }
 
 .navcut{
@@ -184,8 +207,7 @@ button{
   padding: 3%;
   position: fixed;
   margin-left: 63%;
-  margin-top: 100px;
-
+  margin-top: 150px;
 }
 
 
@@ -193,8 +215,7 @@ button{
 #B1 button, #C2 button, #F1A button{
   width: auto;
   display: inline-block;
-  background: none;
-  border: 0.5px white solid;
+  background: rgba(255,255,255,0.1);
   color: white;
   font-family: 'Source Sans Pro', sans-serif;
   font-size: 300%;
@@ -286,7 +307,7 @@ button{
 
 /* ----------------------------------------------- PROFILE PAGE ------------------------------------ */
 #B{
-  background: url(img/blur.png);
+  background: url(img/BGprofile.png);
   width: 100%;
   height: 100%;
   position: absolute;
@@ -337,6 +358,27 @@ button{
 #B1{
   margin-left: 15%;
   margin-right: 10%;
+}
+
+/* ------------------------------------ EDIT PAGE ------------------------------------ */
+#B4 textarea{
+  font-size: 300%;
+  background: transparent;
+  color: white;
+  font-family: 'Source Sans Pro', sans-serif;
+  margin-bottom: 20px;
+  border: none;
+  border: 0.5px white solid;
+  width: 69.5%;
+  display: block;
+  margin: auto;
+  margin-top: 100px;
+  margin-bottom: 30px;
+  padding: 3%;
+}
+
+#B4 button{
+  width: 75%;
 }
 
 
@@ -565,26 +607,38 @@ button{
   margin-top: -50px;
 }
 
-#F p{
-  color: white;
-  font-family: 'Source Sans Pro', sans-serif;
-  text-align: center;
-  margin-top: 0px;
-  font-size: 250%;
-  margin-left: 10%;
-  margin-right: 10%;
+#F0 h3{
+  margin-top: 100px;
 }
 
-#F img, #G1 img{
+#F0 img{
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 200px;
+  display: block;
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 100px;
+}
+
+#F0 button{
+  margin-bottom: 50px;
+}
+
+
+
+/* ----------- NORMAL MATTCH PAGE ---------- */
+#F1 img, #G1 img{
   width: 200px;
   height: 200px;
-  border-radius: 100px;
+  border-radius: 150px;
   object-fit: cover;
   margin-left: 10%;
 }
 
 #F1wrapper{
-  height: 55%;
+  height: 850px;
   overflow: auto;
 }
 
@@ -615,21 +669,29 @@ button{
 #G1{
   color: white;
   font-family: 'Source Sans Pro', sans-serif;
-  display: flex;
   width: 100%;
   margin-bottom: 30px;
-}
-
-#G1wrapper{
   position: absolute;
   width: 100%;
-  height: 60%;
+  height: 50%;
   overflow: auto;
 }
 
-#G1A{
+#G1repeat{
+  display: flex;
+  margin-bottom: 50px;
+}
+
+#G1name{
   font-size: 300%;
   margin-left: 7%;
+  margin-top: 5%;
+}
+
+#G2{
+  width: 100%;
+  position: absolute;
+  margin-top: 90%;
 }
 
 /* ------------------------------------- SETTINGS PAGE ------------------------------------ */
@@ -652,6 +714,13 @@ button{
 
 #H2 button{
   background-color: #7AB74D;
+}
+
+#H p{
+  color: white;
+  text-align: center;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 250%;
 }
 
 
@@ -693,11 +762,15 @@ button{
     display: none;
   }
 
-  #Ewrapper{
+  /*#Ewrapper{
     top: 10%;
-    transform: translateY(-40%);
+    transform: translateY(-90%);
     margin-top: 200px;
-    height: 300px;
+    height: 100px;
+  }*/
+
+  #Ewrapper{
+    display: none;
   }
 
 }

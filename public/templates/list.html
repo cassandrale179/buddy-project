@@ -7,7 +7,7 @@
       <p><i class="fa fa-address-book-o" aria-hidden="true"><br /></i></p>
       <h3> PROFILE </h3>
     </div>
-    <div class="navcut" ui-sref="buddies">
+    <div class="navcut" ui-sref="saved">
       <p><i class="fa fa-users" aria-hidden="true"><br /></i></p>
       <h3> BUDDIES </h3>
     </div>
@@ -25,7 +25,7 @@
   <h2> MESSAGES </h2>
   <div id="wrapper">
 
-    <div id="D1" ng-repeat="match in userMatchesArray" ng-click="storeInfo(match.$id)">
+    <div id="D1" ng-repeat="match in userMatchesArray" ng-click="storeInfo(match.id)">
       <div id="D1A">
         <img id="{{ 'img-' + $index }}" src="img/loader.gif" ng-src="{{match.pictureUrl}}" /><br />
       </div>
@@ -36,6 +36,9 @@
           </div>
           <br />
           {{match.lastDate}}
+          <br  />
+          {{match.newMatch}}
+
       </div>
     </div>
   </div>

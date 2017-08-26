@@ -5,7 +5,7 @@
       <p><i class="fa fa-address-book-o" aria-hidden="true"><br /></i></p>
       <h3> PROFILE </h3>
     </div>
-    <div class="navcut" ui-sref="buddies">
+    <div class="navcut" ui-sref="saved">
       <p><i class="fa fa-users" aria-hidden="true"><br /></i></p>
       <h3> BUDDIES </h3>
     </div>
@@ -23,15 +23,29 @@
   <div id="F">
     <div id="back"><i ui-sref="buddies" class="fa fa-chevron-left" aria-hidden="true"></i></div>
     <h2> MATCHES </h2>
-    <p><i>Click on a person to view and add them</i></p>
-    <div id="F1wrapper">
-      <div id="F1" ng-click="storeId(person.uid)" ng-repeat="person in people">
-        <img ng-src="{{person.pictureUrl}}" />
-        <div id="F1A">
-          <b><p>{{person.name}} </b> also likes: </p>
-          <button ng-repeat="interest in person.commonInterest">
-            {{interest}}
-          </button>
+
+    <!-- THIS DIV IS DISPLAYED IF A PERSON ACTUALLY HAS MATCH -->
+    <div id="F0" ng-show="nomatch == 1">
+      <h6><i>Unfortuntely, nobody has the same interest as you at the moment :( </i></h6>
+      <button ng-click="randomMatch()"> GIVE ME A RANDOM MATCH </button>
+      <h3> {{randomName}} </h3>
+      <img ng-show="showPicture==1" ng-click="storeId(randomID)" id="profilePic" src="img/loader.gif" ng-src="{{randomPic}}" />
+      <button style="background: #7AB74D" ui-sref="buddies"> ADD MORE INTERESTS </button>
+    </div>
+
+
+    <!-- THIS DIV IS DISPLAYED IF A PERSON ACTUALLY HAS MATCH -->
+    <div ng-hide="nomatch == 1">
+      <h6><i>Click on a person to view and add them</i></h6>
+      <div id="F1wrapper">
+        <div id="F1" ng-click="storeId(person.uid)" ng-repeat="person in people">
+          <img ng-src="{{person.pictureUrl}}" />
+          <div id="F1A">
+            <b><p>{{person.name}} </b> also likes: </p>
+            <button ng-repeat="interest in person.commonInterest">
+              {{interest}}
+            </button>
+          </div>
         </div>
       </div>
     </div>
