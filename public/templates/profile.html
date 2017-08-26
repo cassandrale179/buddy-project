@@ -1,6 +1,26 @@
 <!DOCTYPE html>
 <html>
 <body>
+  <div ng-swipe-left="transitionRight()" ng-swipe-right="transitionLeft()">
+    <!--  ________________________ BOTTOM NAVIGATION BAR ________________________ -->
+    <div id="navbar">
+      <div class="navcut" ui-sref="profile">
+        <p><i class="fa fa-address-book-o" aria-hidden="true"><br /></i></p>
+          <h3><b> PROFILE </b></h3>
+      </div>
+      <div class="navcut" ui-sref="saved">
+        <p><i class="fa fa-users" aria-hidden="true"><br /></i></p>
+        <h3> BUDDIES </h3>
+      </div>
+      <div class="navcut" ui-sref="list">
+        <p><i class="fa fa-commenting-o" aria-hidden="true"><br /></i></p>
+        <h3> MESSAGE </h3>
+      </div>
+      <div class="navcut" ui-sref="settings">
+        <p><i class="fa fa-cog" aria-hidden="true"><br /></i></p>
+        <h3> SETTINGS </h3>
+      </div>
+
   <!--  ________________________ BOTTOM NAVIGATION BAR ________________________ -->
   <div id="navbar">
     <div class="navcut" ui-sref="profile" style="border-bottom: 10px white solid">
@@ -18,14 +38,31 @@
     <div class="navcut" ui-sref="settings">
       <p><i class="fa fa-cog" aria-hidden="true"><br /></i></p>
       <h3> SETTINGS </h3>
-    </div>
-  </div>
 
-  <!-- ____________ THIS DIV WILL CONTAIN THE FRIEND LIST AND INFORMATION ____________ -->
-  <div id="B">
-    <div id="resources">
-      <i class="fa fa-info-circle" ui-sref="resources" aria-hidden="true"></i>
     </div>
+
+    <!-- ____________ THIS DIV WILL CONTAIN THE FRIEND LIST AND INFORMATION ____________ -->
+    <div id="B" ng-swipe-right="transition()" >
+      <div id="resources">
+        <i class="fa fa-info-circle" ui-sref="resources" aria-hidden="true"></i>
+      </div>
+
+
+      <!-- ____________ THIS DIV ALLOW USER TO UPLOAD THEIR OWN PICTURE ____________ -->
+        <div id="B0" style="margin-top: 10%">
+          <div id="add">
+            <i class="fa fa-wrench" aria-hidden="true"></i>
+          </div>
+          <label for="file"> UPLOAD <br />YOUR <br /> PICTURE </label>
+          <input type="file" name="file" id="file" custom-on-change="uploadFile" />
+
+      <!-- ____________ THIS DIV DISPLAY USER PICTURE, NAME, AGE AND BIO ____________ -->
+          <div id="imgwrapper">
+               <img id="profilePic" src="img/loader.gif" ng-src="{{userProfilePic}}" />
+               <div>
+                 {{successMessage}}
+               </div>
+          </div>
 
     <h5>{{successMessage}}</h5>
 
@@ -42,17 +79,19 @@
              <img id="profilePic" src="img/loader.gif" ng-src="{{userProfilePic}}" />
         </div>
 
-        <h3>{{name}}</h3>
-        <p>{{age}} years old </p>
-      </div>
-      <div id="B1A" ui-sref="edit">
-        {{description}}
-      </div>
 
-    <!-- ____________ THIS DIV DISPLAY THE USER INTEREST ________________________ -->
-      <div id="B1">
-        <button ng-repeat="x in interestArr">{{x}}</button>
-     </div>
+          <h3>{{name}}</h3>
+          <p>{{age}} years old </p>
+        </div>
+        <div id="B1A" ui-sref="edit">
+          {{description}}
+        </div>
+
+      <!-- ____________ THIS DIV DISPLAY THE USER INTEREST ________________________ -->
+        <div id="B1">
+          <button ng-repeat="x in interestArr">{{x}}</button>
+       </div>
+    </div>
   </div>
 </body>
 </html>
