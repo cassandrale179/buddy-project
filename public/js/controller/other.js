@@ -23,16 +23,17 @@ app.controller('otherPageCtrl', ['$scope', '$state', '$localStorage',
       var buddyID = $localStorage.otherId;
       var buddyRef = firebase.database().ref("users/" + buddyID);
       buddyRef.once('value', function(buddySnap){
-        var snapshot = buddySnap.val();
-        $scope.buddyName = snapshot.name;
-        $scope.buddyAge = snapshot.age;
-        $scope.buddyGender =snapshot.gender;
-        $scope.buddyDescription = snapshot.description;
-        $scope.buddyArr = snapshot.interest.split(",");
-        $scope.buddyPictureUrl = snapshot.pictureUrl;
-        console.log($scope.buddyPictureUrl);
+        $scope.buddyName = buddySnap.val().name;
+        $scope.buddyAge = buddySnap.val().age;
+        $scope.buddyGender = buddySnap.val().gender;
+        $scope.buddyDescription = buddySnap.val().description;
+        $scope.buddyArr = buddySnap.val().interest.split(",");
         $scope.buddyArr.splice(-1);
-
+        var buddyProfilePic = document.getElementById("buddyProfilePic");
+        var storageRef = firebase.storage().ref("Avatars/"+buddyID+"/avatar.jpg");
+        storageRef.getDownloadURL().then(function(url){
+          buddyProfilePic.src=url;
+        });
         $state.go('other');
       });
 
