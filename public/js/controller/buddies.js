@@ -58,14 +58,23 @@ app.controller('buddiesPageCtrl', ['$scope', '$state', '$localStorage', '$fireba
 
       //----------- WHEN USER CLICK ADD AN INTEREST -----------------
       $scope.AutoFill = function(interest){
-        $scope.searchInterest = interest.name;
+        // $scope.searchInterest = interest.name;
+        if ($scope.interestArr.indexOf(interest.name) == -1){
+          $scope.interestArr.push(interest.name);
+          $scope.searchInterest = null;
+          $scope.errorMessage = "";
+        }
+        else{
+          $scope.errorMessage = "You already added this interest";
+        }
       };
 
       //----------- WHEN USER CLICK ADD AN INTEREST -----------------
       $scope.CaptureInterest = function(){
         if (!$scope.searchInterest){
           $scope.errorMessage = "Please input an interest";
-          return;}
+          return;
+        }
         if ($scope.interestArr.indexOf($scope.searchInterest) == -1){
           $scope.interestArr.push($scope.searchInterest);
           $scope.searchInterest = null;
