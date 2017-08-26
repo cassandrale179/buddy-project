@@ -48,10 +48,11 @@ app.controller('matchPageCtrl', ['$scope', '$state', '$localStorage', '$sessionS
                for (var i = 0; i < $scope.myInterest.length; i++){
                  for (var j = 0; j < OtherInterestArr.length; j++){
                    if ($scope.myInterest[i] == OtherInterestArr[j]){
-                    $scope.commonInterest.push($scope.myInterest[i]);
+                        $scope.commonInterest.push($scope.myInterest[i]);
                    }
                  }
                }
+
 
                //IF SOMEONE ACTUALLY HAS A COMMON INTEREST, THEN PUSH THEM TO USER LIST
                if ($scope.commonInterest.length > 0){
@@ -80,7 +81,7 @@ app.controller('matchPageCtrl', ['$scope', '$state', '$localStorage', '$sessionS
             $scope.randomName = UserTable[randomUser].name;
             $scope.randomPic = UserTable[randomUser].pictureUrl;
             $scope.randomID = randomUser;
-            $scope.showPicture = 1; 
+            $scope.showPicture = 1;
             $state.go("match");
 
           };
@@ -92,14 +93,12 @@ app.controller('matchPageCtrl', ['$scope', '$state', '$localStorage', '$sessionS
           });
 
 
-
-
-
-        //STORE EVERYTHNG IN $SCOPE.PEOPLE FOR DISPLAY
-        //$Scope.people: contains user objects with properties: name, uid, commonInterest
+        //STORE EVERYTHNG IN ARRAY $SCOPE.PEOPLE FOR DISPLAY
         $scope.people = [];
         var avatar;
         $scope.index=0;
+
+        //------------- CREATE A PERSON OBEJCT AND PUSHED IT INTO SCOPE
         refUser.once('value', function(refSnap){
           var UserTable2 = refSnap.val();
           for (var k = 0; k < UserList.length; k++){
@@ -107,13 +106,30 @@ app.controller('matchPageCtrl', ['$scope', '$state', '$localStorage', '$sessionS
               uid: UserList[k][0],
               name: UserTable2[UserList[k][0]].name,
               commonInterest: UserList[k][1],
-              pictureUrl: UserTable2[UserList[k][0]].pictureUrl
+              pictureUrl: UserTable2[UserList[k][0]].pictureUrl,
+              added: 0
             };
             $scope.people.push(obj);
           }
+
+          //CHECK IF THE USER ARE ALREADY FRIENDS ON THE MATCH TABLE
+          matchRef = firebase.database().ref("match/" + currentUser.uid);
+          matchRef.once('value', function(matchSnap){
+            var matchTable = matchSnap.val();
+            for (var friends in matchTable){
+              for (var l = 0; l < $scope.people.length; l++){
+                if (friends == $scope.people[l].uid){
+                  $scope.people[l].added = 1;
+                }
+              }
+            }
+          });
+
           console.log($scope.people);
           $state.go('match');
         });
+
+        //------------- DISPLAY PEOPLE'S AVATAR ---------------------------
         refUser.once('value', function(snapshot){
           $scope.people.forEach(function(people){
             avatar = document.getElementById("img-"+$scope.index);
