@@ -656,12 +656,12 @@ button{
   color: white;
   font-size: 250%;
   position: relative;
-  margin-left: 10%; 
 }
 
 #F1wrapper{
   height: 850px;
   overflow: auto;
+  padding-left: 10%; 
 }
 
 #F1A{
