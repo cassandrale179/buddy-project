@@ -6,7 +6,7 @@
       <p><i class="fa fa-address-book-o" aria-hidden="true"><br /></i></p>
       <h3> PROFILE </h3>
     </div>
-    <div class="navcut" ui-sref="buddies">
+    <div class="navcut" ui-sref="saved" style="border-bottom: 10px white solid">
       <p><i class="fa fa-users" aria-hidden="true"><br /></i></p>
       <h3> BUDDIES </h3>
     </div>
@@ -25,12 +25,12 @@
     <div id="X">
       <h2> FIND A BUDDY </h2>
       <div id="Cnav">
+        <i class="fa fa-circle" aria-hidden="true" ui-sref="saved" style="opacity: 0.5" ></i>
         <i class="fa fa-circle" aria-hidden="true" ui-sref="buddies"></i>
-        <i class="fa fa-circle" aria-hidden="true" style="opacity: 0.5" ui-sref="saved"></i>
       </div>
 
       <!-- __________________DISPLAY INSTRUCTIONS AND ERROR MESSAGE ________________ -->
-      <h6>Tap on an interest to automatically add them, or you can add your own interests.</h6>
+      <h6>Search for interests and add them to your list to find matching buddies</h6>
         <div id="error" ng-if="errorMessage != ''">{{errorMessage}}</div>
 
       <!-- ___________________ SEARCH BAR FROM THE INTEREST DATA ___________________ -->
