@@ -7,6 +7,14 @@ app.controller('savedPageCtrl', ['$scope', '$state', '$localStorage',
       });
     }
     else{
+      //SWIPE TRANSITION
+      $scope.transitionRight = function() {
+        $state.go('buddies');
+      }
+      $scope.transitionLeft = function() {
+        $state.go('profile');
+      }
+
       $scope.buddiesArr = [];
       var matchRef = firebase.database().ref("match/" + currentUser.uid);
       matchRef.once('value', function(snapshot){

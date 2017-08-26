@@ -25,6 +25,14 @@ app.controller('buddiesPageCtrl', ['$scope', '$state', '$localStorage', '$fireba
 
 
     else{
+      //SWIPE TRANSITION
+      $scope.transitionRight = function() {
+        $state.go('list');
+      }
+      $scope.transitionLeft = function() {
+        $state.go('saved');
+      }
+
       var refInterest = firebase.database().ref("interests/");
       var refUserId = firebase.database().ref("users/"+currentUser.uid);
 

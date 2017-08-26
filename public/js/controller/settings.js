@@ -1,6 +1,13 @@
 app.controller('settingsPageCtrl', ['$scope', '$state', '$localStorage',
   function ($scope, $state, $localStorage){
+    //SWIPE TRANSITION
+    $scope.transitionLeft = function() {
+      $state.go('list');
+    }
     $scope.resetPassword = function() {
+
+
+
       var providedPassword = $scope.oldPassword;
 
       //Reauthenticate user

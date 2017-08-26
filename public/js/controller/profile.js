@@ -8,8 +8,8 @@ app.controller('profilePageCtrl', ['$scope', '$state', '$localStorage', '$swipe'
     $scope.successMessage = ""; //For uploading profile picture
 
     //Swipe transition
-    $scope.transition = function() {
-      $state.go('buddies');
+    $scope.transitionRight = function() {
+      $state.go('saved');
     }
 
     //SIGN USER IN AUTOMATICALLY WITH EMAIL AND PASSWORD ON PROFILE PAGE
