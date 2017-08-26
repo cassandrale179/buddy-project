@@ -123,10 +123,9 @@ app.controller('matchPageCtrl', ['$scope', '$state', '$localStorage', '$sessionS
                 }
               }
             }
+            console.log($scope.people);
+            $state.go('match');
           });
-
-          console.log($scope.people);
-          $state.go('match');
         });
 
         //------------- DISPLAY PEOPLE'S AVATAR ---------------------------

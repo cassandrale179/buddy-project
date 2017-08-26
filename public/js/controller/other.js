@@ -40,7 +40,7 @@ app.controller('otherPageCtrl', ['$scope', '$state', '$localStorage',
       var userRef = firebase.database().ref("users/" + currentUser.uid);
       userRef.once('value', function(userSnap){
         userName = userSnap.name;
-      })
+      });
 
 
 
@@ -66,7 +66,7 @@ app.controller('otherPageCtrl', ['$scope', '$state', '$localStorage',
           convoId: "",
           newMatch: newMatch,
           lastTimestamp: todayTimestamp
-        })
+        }); 
         $state.go('list');
       };
 
