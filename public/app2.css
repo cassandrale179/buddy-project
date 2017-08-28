@@ -404,6 +404,11 @@ button{
   margin-left: 10%;
 }
 
+#C a{
+  color: white;
+
+}
+
 /* NAVIGATION BAR*/
 #Cnav i{
   color: white;
@@ -635,7 +640,7 @@ button{
 
 
 /* ----------- NORMAL MATTCH PAGE ---------- */
-#F1 img, #G1 img{
+#F1 img{
   width: 200px;
   height: 200px;
   border-radius: 150px;
@@ -659,9 +664,9 @@ button{
 }
 
 #F1wrapper{
-  height: 850px;
+  height: 620px;
   overflow: auto;
-  padding-left: 10%; 
+  padding-left: 10%;
 }
 
 #F1A{
@@ -678,7 +683,7 @@ button{
   text-align: left;
 }
 
-/* ------------------------------------- SAVED BUDDIES ------------------------------------ */
+/* ------------------------------------- SAVED PAGE ------------------------------------ */
 #G1{
   color: white;
   font-family: 'Source Sans Pro', sans-serif;
@@ -686,11 +691,15 @@ button{
   margin-bottom: 30px;
   position: absolute;
   width: 100%;
-  height: 50%;
+  height: 650px;
   overflow: auto;
 }
 
 #G1 img{
+  width: 170px;
+  height: 170px;
+  border-radius: 150px;
+  object-fit: cover;
   margin-left: 10%;
 }
 
@@ -706,9 +715,9 @@ button{
 }
 
 #G2{
+  position: fixed;
+  bottom: 170px;
   width: 100%;
-  position: absolute;
-  margin-top: 90%;
 }
 
 /* ------------------------------------- SETTINGS PAGE ------------------------------------ */
