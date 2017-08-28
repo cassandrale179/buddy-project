@@ -31,7 +31,8 @@
       </div>
 
       <!-- __________________DISPLAY INSTRUCTIONS AND ERROR MESSAGE ________________ -->
-      <h6>Search for interests and add them to your list to find matching buddies</h6>
+      <h6 ng-hide="survey != 0">Search for interests and add them to your list to find matching buddies</h6>
+      <h6 ng-show="survey != 0">If you would like to enter a disorder, please let us know <a href="http://www.buddy-project.org/contact/"> HERE </a></h6>
         <div id="error" ng-if="errorMessage != ''">{{errorMessage}}</div>
 
       <!-- ___________________ SEARCH BAR FROM THE INTEREST DATA ___________________ -->
