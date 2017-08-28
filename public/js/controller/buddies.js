@@ -14,6 +14,9 @@ app.controller('buddiesPageCtrl', ['$scope', '$state', '$localStorage', '$fireba
   {
     $scope.errorMessage = "";
     $scope.interestData = [];
+    $scope.survey = 0;
+    console.log($scope.survey);
+    $scope.triggers = ["depression", "anorexia", "suicide", "bulimia", "obsessivecompulsivedisorder", "pospartum", "schizo", "socialanxiety", "bdd", "bed", "ocd", "adhd", "selfharm", "ptsd", "cutting", "anxiety", "trichotillomania", "orthorexia", "mentalillness", "personalitydisorder", "anorexianervosa", "antiosicaldisorder"]; 
 
     //IF USER HASN'T LOGGED IN YET, THEN LOG THEM IN
     var currentUser = firebase.auth().currentUser;
@@ -69,17 +72,30 @@ app.controller('buddiesPageCtrl', ['$scope', '$state', '$localStorage', '$fireba
         }
       };
 
-      //----------- WHEN USER CLICK ADD AN INTEREST -----------------
+      //----------- WHEN USER MANUALLY TYPE AN INTEREST -----------------
       $scope.CaptureInterest = function(){
         if (!$scope.searchInterest){
           $scope.errorMessage = "Please input an interest";
           return;
         }
+
+          //----------- IF USER ENTER A VALID INTEREST -----------------
         if ($scope.interestArr.indexOf($scope.searchInterest) == -1){
-          $scope.interestArr.push($scope.searchInterest);
-          $scope.searchInterest = null;
-          $scope.errorMessage = "";
+            $scope.searchInterest = $scope.searchInterest.toLowerCase().replace(/\s/g,'');
+
+          //----------- IF THE INTEREST IS A TRIGGER ------------------
+          if ($scope.triggers.indexOf($scope.searchInterest) != -1){
+            $scope.survey = 1;
+          }
+
+          else{
+            $scope.interestArr.push($scope.searchInterest);
+            $scope.searchInterest = null;
+            $scope.errorMessage = "";
+          }
         }
+
+          //----------- IF THE INTEREST IS ALREADY ADDED  ------------------
         else{
           $scope.errorMessage = "You already added this interest";
         }
