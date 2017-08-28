@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <body>
-  <div ng-swipe-left="transitionRight()" ng-swipe-right="transitionLeft()">
 
   <!-- _____________________ ADDING IN NAVIGATION BAR __________________________ -->
   <div id="navbar">
@@ -22,7 +21,7 @@
     </div>
   </div>
 
-  <div id="C">
+  <div id="C" ng-swipe-left="transitionRight()">
     <h2> SAVED BUDDIES </h2>
     <div id="Cnav">
       <i class="fa fa-circle" aria-hidden="true" ui-sref="saved"></i>
@@ -46,5 +45,4 @@
     </div>
   </div>
 
-</div>
 </body>

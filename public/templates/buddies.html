@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <body>
-  <div ng-swipe-left="transitionRight()" ng-swipe-right="transitionLeft()">
+
   <!-- _____________________ ADDING IN NAVIGATION BAR __________________________ -->
   <div id="navbar">
     <div class="navcut" ui-sref="profile">
@@ -22,7 +22,7 @@
   </div>
 
   <!-- __________________________ BODY OF INTEREST PAGE __________________________-->
-  <div id="C">
+  <div id="C" ng-swipe-right="transitionLeft()">
     <div id="X">
       <h2> FIND A BUDDY </h2>
       <div id="Cnav">
@@ -63,5 +63,4 @@
       </div>
     </div>
   </div>
-</div>
 </body>

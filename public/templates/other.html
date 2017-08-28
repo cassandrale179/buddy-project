@@ -34,8 +34,11 @@
 
     <!-- DISPLAY THE USER PROFILE, AGE, NAME AND THEIR INTEREST -->
       <div id="B0" style="padding-top: 5%; ">
-        <div id="imgwrapper">
+        <div id="imgwrapper" ng-hide="nopic == 1">
             <img id="buddyProfilePic" src="img/loader.gif" ng-src="{{userProfilePic}}" />
+        </div>
+        <div id="imgwrapper" ng-show="nopic == 1">
+          <img id="buddyProfilePic" src="img/default.png" />
         </div>
         <h3>{{buddyName}}</h3>
         <p>{{buddyAge}} years old </p>

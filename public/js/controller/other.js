@@ -1,6 +1,7 @@
 //-------------------  CONTROLLER FOR OTHER PEOPLE PROFILE PAGE ------------------------
 app.controller('otherPageCtrl', ['$scope', '$state', '$localStorage',
   function ($scope, $state, $localStorage){
+    $scope.nopic = 0;
     var currentUser = firebase.auth().currentUser;
     if (currentUser===null){
       firebase.auth().signInWithEmailAndPassword($localStorage.email, $localStorage.password).then(function(){
@@ -29,11 +30,20 @@ app.controller('otherPageCtrl', ['$scope', '$state', '$localStorage',
         $scope.buddyDescription = buddySnap.val().description;
         $scope.buddyArr = buddySnap.val().interest.split(",");
         $scope.buddyArr.splice(-1);
-        var buddyProfilePic = document.getElementById("buddyProfilePic");
-        var storageRef = firebase.storage().ref("Avatars/"+buddyID+"/avatar.jpg");
-        storageRef.getDownloadURL().then(function(url){
-          buddyProfilePic.src=url;
-        });
+        $scope.pictureUrl = buddySnap.val().pictureUrl;
+
+        //IF PICTURE IS OF A BLANK MOTHERFUCKER
+        if ($scope.pictureUrl == "https://firebasestorage.googleapis.com/v0/b/buddy-be3d7.appspot.com/o/default.png?alt=media&token=540dfe34-5559-4d2f-8e42-27258502ea01"){
+          $scope.nopic = 1;
+        }
+        else{
+          var buddyProfilePic = document.getElementById("buddyProfilePic");
+          var storageRef = firebase.storage().ref("Avatars/"+buddyID+"/avatar.jpg");
+          storageRef.getDownloadURL().then(function(url){
+              buddyProfilePic.src=url;
+          });
+        }
+
         $state.go('other');
       });
 
@@ -66,7 +76,7 @@ app.controller('otherPageCtrl', ['$scope', '$state', '$localStorage',
           convoId: "",
           newMatch: newMatch,
           lastTimestamp: todayTimestamp
-        }); 
+        });
         $state.go('list');
       };
 

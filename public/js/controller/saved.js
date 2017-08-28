@@ -10,10 +10,10 @@ app.controller('savedPageCtrl', ['$scope', '$state', '$localStorage',
       //SWIPE TRANSITION
       $scope.transitionRight = function() {
         $state.go('buddies');
-      }
+      };
       $scope.transitionLeft = function() {
         $state.go('profile');
-      }
+      }; 
 
       //-------- STORE OTHER PEOPLE ID WHEN CLICKED ON IT ----------------
       $scope.storeId = function(uid){

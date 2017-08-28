@@ -716,9 +716,11 @@ button{
 
 #G2{
   position: fixed;
-  bottom: 170px;
+  bottom: 200px;
   width: 100%;
+  z-index: 100;
 }
+
 
 /* ------------------------------------- SETTINGS PAGE ------------------------------------ */
 #H{
