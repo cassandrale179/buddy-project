@@ -2,11 +2,11 @@
 A mobile platform aim to tackle mental health issues by pairing teenagers as buddies.
 
 
-## Link to Kanban Board
+## LINK TO KANBAN BOARD 
 https://trello.com/b/otuHF1lY/buddy-kanban 
 
 
-## Usage:
+## USAGE: 
 1. To run the app on computer, clone the app:
 ```
 $ git clone https://github.com/cassandrale179/buddy-project.git
@@ -20,3 +20,6 @@ python -m pip install livereload
 cd buddy-project\public
 livereload
 ``` 
+
+## LINK TO MOST STABLE APK VERSION: 
+http://bit.ly/2wyuDT2 
