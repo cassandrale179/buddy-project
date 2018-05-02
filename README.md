@@ -1,5 +1,5 @@
 # buddy-project
-A mobile platform aim to tackle mental health issues by pairing teenagers as buddies.
+This repo has been deprecated. For the latest version, visit https://github.com/cassandrale179/buddy-project2 
 
 
 ## LINK TO KANBAN BOARD 
